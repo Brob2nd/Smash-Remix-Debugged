@@ -510,7 +510,7 @@ scope MIDI {
     insert_midi(DKROPTIONS, OS.TRUE, OS.TRUE, "Main Menu (Diddy Kong Racing)", dkr)
     insert_midi(GALLERY, OS.TRUE, OS.TRUE, "Gallery", ssbr)
     insert_midi(QUEQUE, OS.TRUE, OS.TRUE, "Que Que", drm64)
-    insert_midi(MK64MENU, OS.TRUE, OS.TRUE, "Main Menu (Mario Kart 64)", mk64)
+    insert_midi(MK64MENU, OS.TRUE, OS.TRUE, "Select Screen (Mario Kart 64)", mk64)
     insert_midi(GOLDENROD_CITY, OS.TRUE, OS.TRUE, "Goldenrod City", pokemongold)
     insert_midi(CLOCKTOWN, OS.TRUE, OS.TRUE, "Clock Town", majora)
     insert_midi(BUMPERCROPBUMP, OS.TRUE, OS.TRUE, "Bumper Crop Bump", kirby64)
