@@ -551,6 +551,7 @@ scope MIDI {
     insert_midi(KALOS, OS.TRUE, OS.TRUE, "Battle! Champion", pokemonruby)
     insert_midi(CASTLEWALL, OS.TRUE, OS.TRUE, "Inside the Castle Walls", sm64)
     insert_midi(I_BELIEVE_IN_YOU, OS.TRUE, OS.TRUE, "I Believe in You", earthboundb)
+    insert_midi(SHOWDOWN, OS.TRUE, OS.TRUE, "Gourmet Race (Piano)", kirbysuperstar)
     insert_midi(TESTMIDI, OS.TRUE, OS.TRUE, "Test Midi", ssbr)
 
     pushvar origin, base
