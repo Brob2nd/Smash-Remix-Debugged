@@ -1,3 +1,33 @@
+# Smash Remix Debugged
+This is a Smash Remix mod with the objective being a template for future mods and to also make some certain things in the game itself more usable (like Sandbag and Home Run Contest in the CSS and SSS, a 6th page for stages, or musics exclusive to certain stages and menus now in the Music Settings menu).
+
+# Changes
+Sandbag now is not longer a Training Mode exclusive character, and now is a playable character for all game modes except 12 Character Batlle at the moment
+
+Added a 6th page in the SSS
+
+Added Home Run Contest stage to the SSS 6th page
+
+now Fray's Stage (Night), Pokemon Stadium 2, Town and City (previously called Smashville Remix), Flat Zone 2, Muda Kingdom, Mementos, Showdown, Dream Land Beta 2 and Mushroom Kingdom Omega are not longer a stage variant for Fray's Stage, Pokemon Stadium, Smashville, Flat Zone, Game Boy Land, Grim Reaper's Cavern, First Destination, Dream Land Beta 1 and Mushroom Kingdom, and now are in their own slot now in the 6th SSS page
+
+Now special/stage exclusive songs which didn't were available in the 'Music Settings' menu now are available and so are usable for stages, these being:
+
+Game Boy Land: Bubbly Clouds, Road to Cerulean City, Stage 1 and Mabe Village (previously only available when choosing the stage with the 'Muda Kingdom' song)
+All Star Rest Area stage: Rest Area
+
+Subcon: SMB2 Boss (previously only when the timer has 30 seconds or less with the song 'SMB2. Overworld' chosen)
+
+Gallery Mode: Gallery song (only when in Gallery mode) and Conker the King (only when you press 'A' for the first time in Conker's congratulations image)
+
+Also, menu songs which previously weren't available in the 'Music Settings' menu and only were usable for the Menu Screen now are in the Music List and so are usable in stages, these being:
+File Select (SM64), File Select SM64 (Alternative), called 'It's a trap' in game's code, Main Menu (Diddy Kong Racing), Select Screen (Mario Kart 64) and Play a Mini-game! (Mario Party 1)
+
+Re-added deleted and replaced (not re-made versions of the songs, tho) songs to the game, these being: Horror Manor, Gourmet Race (Alternative), Blooming Villain, All i needed (was you), Piggy guys, Metal Cap, Elite Four, Temple (8-bit), Click Clock Wood (Spring), Carrington Institute, Battle! Champion and Inside the Castle Walls
+
+A problem with adding too many sounds to the game now was fixed thanks to MarioReincarnate!
+
+To see the full changes list, go here: https://github.com/Brob2nd/smashremixdebugged/releases/tag/v1.0.0
+
 # Smash Remix
 *A Super Smash Bros. 64 Mod Organized by The_Smashfather*
 
@@ -42,7 +72,7 @@ Computer controlled players have received a variety of improvements.
 - Japanese versions of the original cast are available via d-pad left.
 - European versions of some of the original cast are available via d-pad right.
 - Giga Bowser, Mad Piano, Super Sonic, Peppy, Slippy, Metal Luigi, Ebisumaru, and Dragon King are available via d-pad up.
-- Polygon versions of some of the remix cast are available via d-pad down.
+- Polygon versions of the remix cast are available via d-pad down.
 
 ### Character Select Debug Menu
 A menu for modifying certain character attributes is available on each panel.
@@ -567,12 +597,14 @@ When Special Model Display is Hitbox or Hitbox+, these changes are applied:
 ### Remix BTT/BTP
 - Use any character on any BTT/BTP stage and track best times.
 
+### Remix RTTF
+- Record best times for completing a new RTTF stage using all characters just like for Bonus 1 and Bonus 2.
+
 ### Remix 1p Mode
 - A new take on the standard 1p Mode
     - Fight randomly selected Remix characters at one of their three randomly selected stages
     - Increased difficulty with Very Easy mode being the equivalent of standard 1p Mode's Normal Difficulty
-    - Challenge Fox and Falco in a doubles battle
-    - Characters have Alternate Bonus Stages for Bonuses 1 & 2
+    - Challenge 1 of 10 new duos teams in a doubles battle
     - Fight a Kirby Team with brand new powers
     - Face new boss characters
 
