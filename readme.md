@@ -1,5 +1,5 @@
 # Smash Remix Debugged
-This is a Smash Remix mod with the objective being a template for future mods and to also make some certain things in the game itself more usable (like Sandbag and Home Run Contest in the CSS and SSS, a 6th page for stages, or musics exclusive to certain stages and menus now in the Music Settings menu).
+This is a Smash Remix mod with the objective of being a template for future mods and to also make some certain things in the game itself more usable (like Sandbag and Home Run Contest in the CSS and SSS, a 6th page for stages, or musics exclusive to certain stages and menus now in the Music Settings menu).
 
 # Changes
 Sandbag now is not longer a Training Mode exclusive character, and now is a playable character for all game modes except 12 Character Batlle at the moment
