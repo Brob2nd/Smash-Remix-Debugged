@@ -430,11 +430,11 @@ scope MIDI {
     insert_midi(ROCKSOLID, OS.TRUE, OS.TRUE, "Rock Solid", conker)
     insert_midi(RAINBOWROAD, OS.TRUE, OS.TRUE, "Rainbow Road", mk64)
     insert_midi(MK64_CREDITS, OS.TRUE, OS.TRUE, "Victory Lap", mk64)
-    insert_midi(RACEWAYS, OS.TRUE, OS.TRUE, "Raceways", mk64)
+    insert_midi(RACEWAYS, OS.TRUE, OS.TRUE, "Raceways/Wario Stadium", mk64)
     insert_midi(LINKS_AWAKENING_MEDLEY, OS.TRUE, OS.TRUE, "Link's Awakening Medley", awakening)
     insert_midi(CORRIDORS_OF_TIME, OS.TRUE, OS.TRUE, "Corridors of Time", chrono)
     insert_midi(KIRBY_64_BOSS, OS.TRUE, OS.TRUE, "Kirby 64 Boss", kirby64)
-    insert_midi(WALUIGI_PINBALL, OS.TRUE, OS.TRUE, "Waluigi Pinball", mkds)
+    insert_midi(WALUIGI_PINBALL, OS.TRUE, OS.TRUE, "Waluigi Pinball/Wario Stadium", mkds)
     insert_extra_midi(MARINA_VICTORY)
     insert_extra_midi(SHEIK_VICTORY)
     insert_extra_midi(DEDEDE_VICTORY)
@@ -552,7 +552,7 @@ scope MIDI {
     insert_midi(CASTLEWALL, OS.TRUE, OS.TRUE, "Inside the Castle Walls", sm64)
     insert_midi(I_BELIEVE_IN_YOU, OS.TRUE, OS.TRUE, "I Believe in You", earthboundb)
     insert_midi(SHOWDOWN, OS.TRUE, OS.TRUE, "Gourmet Race (Piano)", kirbysuperstar)
-    insert_midi(TESTMIDI, OS.TRUE, OS.TRUE, "Test Midi", ssbr)
+    insert_midi(TESTMIDI, OS.TRUE, OS.TRUE, "Koopa's Theme (Beta)/ Test Midi", sm64)
 
     pushvar origin, base
 
