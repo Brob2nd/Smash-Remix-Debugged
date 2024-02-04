@@ -1755,14 +1755,12 @@ scope Stages {
         layout_DL:; String.insert("DL")
         layout_O:; String.insert('~' + 1) // Omega
         layout_remix:; String.insert("Remix")
-        layout_remix2:; String.insert("Remix")
 
         layout_text_table:
         dw layout_NORMAL
         dw layout_DL
         dw layout_O
         dw layout_remix
-        dw layout_remix2
     }
 
     // @ Arguments
@@ -4329,7 +4327,6 @@ scope Stages {
     // 0x0000 - DL variant stage_id
     // 0x0001 - Omega variant stage_id
     // 0x0002 - Remix variant stage_id
-    // 0x0003 - Remix 2 variant stage_id
     variant_table:
     constant variant_table_origin(origin())
     fill 4 * (id.MAX_STAGE_ID + 1), 0xFF
@@ -4341,7 +4338,6 @@ scope Stages {
         OS.patch_end()
     }
 
-    set_remix_variant(DREAM_LAND_BETA_1, DREAM_LAND_BETA_2)
     set_remix_variant(YOSHIS_ISLAND, MINI_YOSHIS_ISLAND)
 
     // @ Description
