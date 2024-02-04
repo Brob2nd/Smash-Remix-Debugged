@@ -2003,7 +2003,7 @@ scope Toggles {
     entry_css_panel_menu:;              entry_bool("CSS Panel Menu", OS.TRUE, OS.FALSE, OS.TRUE, OS.TRUE, entry_practice_overlay)
     entry_practice_overlay:;            entry_bool("Color Overlays", OS.FALSE, OS.FALSE, OS.FALSE, OS.FALSE, entry_cinematic_entry)
     entry_cinematic_entry:;             entry("Cinematic Entry", Menu.type.INT, 0, 0, 0, 0, 0, 2, OS.NULL, string_table_frequency, OS.NULL, entry_flash_on_z_cancel)
-    entry_flash_on_z_cancel:;           entry_bool("Flash On Z-Cancel", OS.TRUE, OS.FALSE, OS.TRUE, OS.TRUE,, entry_fps)
+    entry_flash_on_z_cancel:;           entry_bool("Flash On Z-Cancel", OS.TRUE, OS.TRUE, OS.TRUE, OS.TRUE,, entry_fps)
     entry_fps:;                         entry("FPS Display *BETA", Menu.type.INT, OS.FALSE, OS.FALSE, OS.FALSE, OS.FALSE, 0, 2, OS.NULL, string_table_fps, OS.NULL, entry_model_display)
     entry_model_display:;               entry("Model Display", Menu.type.INT, 0, 0, 1, 0, 0, 2, OS.NULL, string_table_poly, OS.NULL, entry_special_model)
     entry_special_model:;               entry("Special Model Display", Menu.type.INT, OS.FALSE, OS.FALSE, OS.FALSE, OS.FALSE, 0, 3, OS.NULL, string_table_model, OS.NULL, entry_advanced_hurtbox)
