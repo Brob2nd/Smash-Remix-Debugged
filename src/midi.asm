@@ -552,7 +552,10 @@ scope MIDI {
     insert_midi(CASTLEWALL, OS.TRUE, OS.TRUE, "Inside the Castle Walls", sm64)
     insert_midi(I_BELIEVE_IN_YOU, OS.TRUE, OS.TRUE, "I Believe in You", earthboundb)
     insert_midi(SHOWDOWN, OS.TRUE, OS.TRUE, "Gourmet Race (Piano)", kirbysuperstar)
+    insert_midi(KROOLS_ACID_PUNK, OS.TRUE, OS.TRUE, "K. Rool's Acid Punk (Old ver.)", dkl)
+    insert_midi(WARIO_WARE, OS.TRUE, OS.TRUE, "WarioWare, Inc. (Old. ver)", warioware)
     insert_midi(TESTMIDI, OS.TRUE, OS.TRUE, "Koopa's Theme (Beta)/ Test Midi", sm64)
+    insert_midi(PLACEHOLDER, OS.TRUE, OS.TRUE, "PLACEHOLDER", ssbr)
 
     pushvar origin, base
 
