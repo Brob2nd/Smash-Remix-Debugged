@@ -567,7 +567,7 @@ scope MIDI {
     insert_midi(OLDSONIC2_SPECIAL, OS.TRUE, OS.TRUE, "Sonic 2 Special Stage (Old ver.)", sonic2)
     insert_midi(OLDSONICCD_SPECIAL, OS.TRUE, OS.TRUE, "Sonic CD Special Stage (Old ver.)", soniccd)
     insert_midi(OLDSPIRAL_MOUNTAIN, OS.TRUE, OS.TRUE, "Spiral Mountain (Old ver.)", banjokazooie)
-    insert_midi(OLDYOSHI_TALE, OS.TRUE, OS.TRUE, ""Yoshi's Tale (Old ver.)", yoshis_story)
+    insert_midi(OLDYOSHI_TALE, OS.TRUE, OS.TRUE, "Yoshi's Tale (Old ver.)", yoshis_story)
     insert_midi(PLACEHOLDER, OS.TRUE, OS.TRUE, "Metal Cap (Old ver.)", sm64)
 
     pushvar origin, base
