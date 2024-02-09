@@ -327,6 +327,7 @@ scope BGM {
         add_to_list(Toggles.entry_random_music_data, menu.DATA)
         add_to_list(Toggles.entry_random_music_bonus, menu.BONUS)
         add_to_list(Toggles.entry_random_music_credits, menu.CREDITS)
+        add_to_list(Toggles.entry_random_music_credits, menu.RESULTS)
 
         // Add custom MIDIs
         define n(0x2F)
@@ -1063,7 +1064,7 @@ scope BGM {
     dw 0x0,                                        0x0                                                    // Falcon victory
     dw 0x0,                                        0x0                                                    // Pikachu/Jigglypuff victory
     dw 0x0,                                        0x0                                                    // Link victory
-    dw 0x0,                                        0x0                                                    // Results
+    dw MIDI.game_{MIDI.GAME_ssb}_title,            Toggles.entry_random_music_results + 0x28              // Results
     dw 0x0,                                        0x0                                                    // Master Hand 1
     dw MIDI.game_{MIDI.GAME_ssb}_title,            Toggles.entry_random_music_final_destination + 0x28    // Master Hand 2 (intro) - putting the title to avoid crash on FD
     dw MIDI.game_{MIDI.GAME_ssb}_title,            Toggles.entry_random_music_final_destination + 0x28
