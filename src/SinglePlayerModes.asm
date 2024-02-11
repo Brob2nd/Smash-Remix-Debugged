@@ -3047,7 +3047,7 @@ scope SinglePlayerModes: {
     ds_match_setting:
     dw  0x00000000                      // flag
     db  Character.id.DSAMUS             // Character ID
-    db  Stages.id.NORFAIR               // Stage Option 1
+    db  Stages.id.PLANET_ZEBES          // Stage Option 1
     db  Stages.id.ZLANDING              // Stage Option 2
     db  Stages.id.NORFAIR               // Stage Option 3
     dw  SinglePlayer.name_texture.DSAMUS + 0x10    // name texture
@@ -3107,7 +3107,7 @@ scope SinglePlayerModes: {
     //  Samus match settings
     dw  0x00000000                      // flag
     db  Character.id.SAMUS              // Character ID
-    db  Stages.id.ZLANDING              // Stage Option 1
+    db  Stages.id.PLANET_ZEBES          // Stage Option 1
     db  Stages.id.ZLANDING              // Stage Option 2
     db  Stages.id.NORFAIR               // Stage Option 3
     dw  SinglePlayer.name_texture.DRM + 0x10    // name texture
