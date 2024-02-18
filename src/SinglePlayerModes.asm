@@ -1733,13 +1733,25 @@ scope SinglePlayerModes: {
         ori     a1, r0, Stages.id.NPC
         beql    t6, a1, _update_bgm
         addiu   a1, r0, {MIDI.id.DANGEROUS_FOE}     // PSI Rockers
+        ori     a1, r0, Stages.id.OSOHE
+        beql    t6, a1, _update_bgm
+        addiu   a1, r0, {MIDI.id.DANGEROUS_FOE}     // PSI Rockers
+        ori     a1, r0, Stages.id.POKEMON_STADIUM
+        beql    t6, a1, _update_bgm
+        addiu   a1, r0, {MIDI.id.PIKA_CUP}     // Pocket Monsters
         ori     a1, r0, Stages.id.POKEMON_STADIUM_2
         beql    t6, a1, _update_bgm
         addiu   a1, r0, {MIDI.id.PIKA_CUP}     // Pocket Monsters
         ori     a1, r0, Stages.id.GYM_LEADER_CASTLE
         beql    t6, a1, _update_bgm
         addiu   a1, r0, {MIDI.id.PIKA_CUP}     // Pocket Monsters
+        ori     a1, r0, Stages.id.SAFFRON_CITY
+        beql    t6, a1, _update_bgm
+        addiu   a1, r0, {MIDI.id.PIKA_CUP}     // Pocket Monsters
         ori     a1, r0, Stages.id.SAFFRON_DL
+        beql    t6, a1, _update_bgm
+        addiu   a1, r0, {MIDI.id.PIKA_CUP}     // Pocket Monsters
+        ori     a1, r0, Stages.id.SAFFRON_O
         beql    t6, a1, _update_bgm
         addiu   a1, r0, {MIDI.id.PIKA_CUP}     // Pocket Monsters
         ori     a1, r0, Stages.id.SPIRALM
@@ -2874,8 +2886,8 @@ scope SinglePlayerModes: {
     dw  0x00000000                      // flag
     db  Character.id.GND                // Character ID
     db  Stages.id.GANONS_TOWER          // Stage Option 1
-    db  Stages.id.GANONS_TOWER          // Stage Option 2
-    db  Stages.id.GANONS_TOWER          // Stage Option 3
+    db  Stages.id.HTEMPLE               // Stage Option 2
+    db  Stages.id.HCASTLE_REMIX         // Stage Option 3
     dw  SinglePlayer.name_texture.GND + 0x10    // name texture
     dw  0x000002C5                      // Announcer Call
     dw  0x00006F80                      // Model Scale
@@ -2884,9 +2896,9 @@ scope SinglePlayerModes: {
     // Young Link match settings
     dw  0x00000000                      // flag
     db  Character.id.YLINK              // Character ID
-    db  Stages.id.DEKU_TREE             // Stage Option 1
+    db  Stages.id.DEKU_TREE_DL          // Stage Option 1
     db  Stages.id.TALTAL                // Stage Option 2
-    db  Stages.id.GREAT_BAY             // Stage Option 3
+    db  Stages.id.TALTAL_REMIX          // Stage Option 3
     dw  SinglePlayer.name_texture.YLINK + 0x10    // name texture
     dw  0x000002E5                      // Announcer Call
     dw  0x00006F80                      // Model Scale
@@ -2989,8 +3001,8 @@ scope SinglePlayerModes: {
     dw  0x00000000                      // flag
     db  Character.id.SHEIK              // Character ID
     db  Stages.id.GERUDO                // Stage Option 1
-    db  Stages.id.GERUDO                // Stage Option 2
-    db  Stages.id.GERUDO                // Stage Option 3
+    db  Stages.id.GREAT_BAY             // Stage Option 2
+    db  Stages.id.DEKU_TREE             // Stage Option 3
     dw  SinglePlayer.name_texture.SHEIK + 0x10    // name texture
     dw  0x00000409                      // Announcer Call
     dw  0x00006F80                      // Model Scale
@@ -3036,7 +3048,7 @@ scope SinglePlayerModes: {
     dw  0x00000000                      // flag
     db  Character.id.FALCO              // Character ID
     db  Stages.id.CORNERIACITY          // Stage Option 1
-    db  Stages.id.VENOM                 // Stage Option 2
+    db  Stages.id.SECTOR_Z_REMIX        // Stage Option 2
     db  Stages.id.CORNERIA2             // Stage Option 3
     dw  SinglePlayer.name_texture.FALCO + 0x10    // name texture
     dw  0x000002D6                      // Announcer Call
@@ -3047,7 +3059,7 @@ scope SinglePlayerModes: {
     ds_match_setting:
     dw  0x00000000                      // flag
     db  Character.id.DSAMUS             // Character ID
-    db  Stages.id.PLANET_ZEBES          // Stage Option 1
+    db  Stages.id.ZLANDING_DL           // Stage Option 1
     db  Stages.id.ZLANDING              // Stage Option 2
     db  Stages.id.NORFAIR               // Stage Option 3
     dw  SinglePlayer.name_texture.DSAMUS + 0x10    // name texture
@@ -3074,9 +3086,9 @@ scope SinglePlayerModes: {
     //  Mario match settings
     dw  0x00000000                      // flag
     db  Character.id.MARIO              // Character ID
-    db  Stages.id.DELFINO                  // Stage Option 1
+    db  Stages.id.DELFINO               // Stage Option 1
     db  Stages.id.GOOMBA_ROAD           // Stage Option 2
-    db  Stages.id.PIRATE                // Stage Option 3
+    db  Stages.id.N64                   // Stage Option 3
     dw  SinglePlayer.name_texture.DRM + 0x10    // name texture
     dw  0x000002E6                      // Announcer Call
     dw  0x00006F80                      // Model Scale
@@ -3107,7 +3119,7 @@ scope SinglePlayerModes: {
     //  Samus match settings
     dw  0x00000000                      // flag
     db  Character.id.SAMUS              // Character ID
-    db  Stages.id.PLANET_ZEBES          // Stage Option 1
+    db  Stages.id.ZLANDING_DL           // Stage Option 1
     db  Stages.id.ZLANDING              // Stage Option 2
     db  Stages.id.NORFAIR               // Stage Option 3
     dw  SinglePlayer.name_texture.DRM + 0x10    // name texture
@@ -3129,9 +3141,9 @@ scope SinglePlayerModes: {
     //  Link match settings
     dw  0x00000000                      // flag
     db  Character.id.LINK               // Character ID
-    db  Stages.id.DEKU_TREE             // Stage Option 1
-    db  Stages.id.TALTAL                // Stage Option 2
-    db  Stages.id.GREAT_BAY             // Stage Option 3
+    db  Stages.id.HYRULE_CASTLE         // Stage Option 1
+    db  Stages.id.HCASTLE_DL            // Stage Option 2
+    db  Stages.id.HCASTLE_O             // Stage Option 3
     dw  SinglePlayer.name_texture.DRM + 0x10    // name texture
     dw  0x000002E6                      // Announcer Call
     dw  0x00006F80                      // Model Scale
