@@ -282,7 +282,7 @@ scope MIDI {
     insert_midi(SMASHVILLE, OS.TRUE, OS.TRUE, "Town Hall and Tom Nook's Store", acww)
     insert_midi(STONECARVING_CITY, OS.TRUE, OS.TRUE, "Stonecarving City", warioshake)
     insert_midi(FIRST_DESTINATION, OS.TRUE, OS.TRUE, "Final Destination (Melee)", melee)
-    insert_midi(COOLCOOLMOUNTAIN, OS.TRUE, OS.TRUE, "Cool, Cool Mountain", sm64)
+    insert_midi(COOLCOOLMOUNTAIN, OS.TRUE, OS.TRUE, "Cool, Cool Mountain/Snowman's Land", sm64)
     insert_midi(GODDESSBALLAD, OS.TRUE, OS.TRUE, "Ballad of the Goddess", skyward)
     insert_midi(SARIA, OS.TRUE, OS.TRUE, "Saria's Song", ocarina)
     insert_midi(TOWEROFHEAVEN, OS.TRUE, OS.TRUE, "Luna Ascension", toh)
