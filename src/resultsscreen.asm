@@ -706,7 +706,7 @@ scope ResultsScreen {
     add_to_results_screen(Character.id.MTWO,     FGM.announcer.names.MEWTWO,                 POKEMON,         Character.id.SAMUS,   185,     MEWTWO,          20,     0.8,       {MIDI.id.MEWTWO_VICTORY})
     add_to_results_screen(Character.id.MARTH,    FGM.announcer.names.MARTH,                  FIRE_EMBLEM,     Character.id.CAPTAIN, 185,     MARTH,           20,     1,         {MIDI.id.MARTH_VICTORY})
     add_to_results_screen(Character.id.SONIC,    FGM.announcer.names.SONIC,                  SONIC,           Character.id.FOX,     165,     SONIC,           35,     1,         {MIDI.id.SONIC_VICTORY})
-    add_to_results_screen(Character.id.SANDBAG,  FGM.announcer.names.MARTH,                  SMASH,           Character.id.CAPTAIN, 175,     SANDBAG,         20,     0.8,        0x0B)
+    add_to_results_screen(Character.id.SANDBAG,  FGM.announcer.names.MARTH,                  SMASH,           Character.id.CAPTAIN, 175,     SANDBAG,         20,     0.75,        0x0B)
     add_to_results_screen(Character.id.SSONIC,   FGM.announcer.names.SSONIC,                 SONIC,           Character.id.FOX,     170,     SUPER SONIC,     20,     0.55,      {MIDI.id.SONIC_VICTORY})
     add_to_results_screen(Character.id.SHEIK,    FGM.announcer.names.SHEIK,                  ZELDA,           Character.id.CAPTAIN, 165,     SHEIK,           30,     1,         {MIDI.id.SHEIK_VICTORY})
     add_to_results_screen(Character.id.MARINA,   FGM.announcer.names.MARINA,                 MISCHIEF_MAKERS, Character.id.CAPTAIN, 180,     M1AR1I111NA,     25,     0.85,      {MIDI.id.MARINA_VICTORY})
