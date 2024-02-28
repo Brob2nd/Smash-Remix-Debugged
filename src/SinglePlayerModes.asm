@@ -1736,22 +1736,13 @@ scope SinglePlayerModes: {
         ori     a1, r0, Stages.id.OSOHE
         beql    t6, a1, _update_bgm
         addiu   a1, r0, {MIDI.id.DANGEROUS_FOE}     // PSI Rockers
-        ori     a1, r0, Stages.id.POKEMON_STADIUM
-        beql    t6, a1, _update_bgm
-        addiu   a1, r0, {MIDI.id.PIKA_CUP}     // Pocket Monsters
         ori     a1, r0, Stages.id.POKEMON_STADIUM_2
         beql    t6, a1, _update_bgm
         addiu   a1, r0, {MIDI.id.PIKA_CUP}     // Pocket Monsters
         ori     a1, r0, Stages.id.GYM_LEADER_CASTLE
         beql    t6, a1, _update_bgm
         addiu   a1, r0, {MIDI.id.PIKA_CUP}     // Pocket Monsters
-        ori     a1, r0, Stages.id.SAFFRON_CITY
-        beql    t6, a1, _update_bgm
-        addiu   a1, r0, {MIDI.id.PIKA_CUP}     // Pocket Monsters
         ori     a1, r0, Stages.id.SAFFRON_DL
-        beql    t6, a1, _update_bgm
-        addiu   a1, r0, {MIDI.id.PIKA_CUP}     // Pocket Monsters
-        ori     a1, r0, Stages.id.SAFFRON_O
         beql    t6, a1, _update_bgm
         addiu   a1, r0, {MIDI.id.PIKA_CUP}     // Pocket Monsters
         ori     a1, r0, Stages.id.SPIRALM
@@ -3048,7 +3039,7 @@ scope SinglePlayerModes: {
     dw  0x00000000                      // flag
     db  Character.id.FALCO              // Character ID
     db  Stages.id.CORNERIACITY          // Stage Option 1
-    db  Stages.id.SECTOR_Z_REMIX        // Stage Option 2
+    db  Stages.id.VENOM                 // Stage Option 2
     db  Stages.id.CORNERIA2             // Stage Option 3
     dw  SinglePlayer.name_texture.FALCO + 0x10    // name texture
     dw  0x000002D6                      // Announcer Call
