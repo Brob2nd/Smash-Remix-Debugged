@@ -572,13 +572,14 @@ scope MIDI {
     insert_midi(DR_MARIOOLD, OS.TRUE, OS.TRUE, "Fever (Old ver.)", drm)
     insert_midi(DR_MARIOBETA, OS.TRUE, OS.TRUE, "Town Hall and Tom Nook's Store (Old. ver)", acww)
     insert_midi(PLACEHOLDER, OS.TRUE, OS.TRUE, "Metal Cap (Old ver.)", sm64)
+    insert_midi(OLDPIKA_CUP, OS.TRUE, OS.TRUE, "Pika Cup Battles 1-3 (Old ver.)", stadium)
+    insert_midi(OLDGERUDO_VALLEY, OS.TRUE, OS.TRUE, "Gerudo Valley (Old ver.)", ocarina)
     insert_midi(TESTMIDI, OS.TRUE, OS.TRUE, "Koopa's Theme (Beta)", sm64)
     insert_midi(FODBETA1, OS.TRUE, OS.TRUE, "Gourmet Race (Melee, Beta 1)", kirbysuperstar)
     insert_midi(FODBETA2, OS.TRUE, OS.TRUE, "Gourmet Race (Melee, Beta 2)", kirbysuperstar)
     insert_midi(COOLCOOLMOUNTAINBETA, OS.TRUE, OS.TRUE, "Cool, Cool Mountain/Snowman's Land (Beta)", sm64)
     insert_midi(MUDABETA, OS.TRUE, OS.TRUE, "Muda Kingdom (Beta)", sml)
     insert_extra_midi(OLDFALCO_VICTORY)
-    insert_extra_midi(OLDDRMARIO_VICTORY)
 
     pushvar origin, base
 
