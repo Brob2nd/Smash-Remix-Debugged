@@ -2887,7 +2887,7 @@ scope SinglePlayerModes: {
     // Young Link match settings
     dw  0x00000000                      // flag
     db  Character.id.YLINK              // Character ID
-    db  Stages.id.DEKU_TREE_DL          // Stage Option 1
+    db  Stages.id.DEKU_TREE             // Stage Option 1
     db  Stages.id.TALTAL                // Stage Option 2
     db  Stages.id.TALTAL_REMIX          // Stage Option 3
     dw  SinglePlayer.name_texture.YLINK + 0x10    // name texture
@@ -2993,7 +2993,7 @@ scope SinglePlayerModes: {
     db  Character.id.SHEIK              // Character ID
     db  Stages.id.GERUDO                // Stage Option 1
     db  Stages.id.GREAT_BAY             // Stage Option 2
-    db  Stages.id.DEKU_TREE             // Stage Option 3
+    db  Stages.id.DEKU_TREE_DL          // Stage Option 3
     dw  SinglePlayer.name_texture.SHEIK + 0x10    // name texture
     dw  0x00000409                      // Announcer Call
     dw  0x00006F80                      // Model Scale
@@ -3079,7 +3079,7 @@ scope SinglePlayerModes: {
     db  Character.id.MARIO              // Character ID
     db  Stages.id.DELFINO               // Stage Option 1
     db  Stages.id.GOOMBA_ROAD           // Stage Option 2
-    db  Stages.id.N64                   // Stage Option 3
+    db  Stages.id.MUDA                   // Stage Option 3
     dw  SinglePlayer.name_texture.DRM + 0x10    // name texture
     dw  0x000002E6                      // Announcer Call
     dw  0x00006F80                      // Model Scale
@@ -3088,9 +3088,9 @@ scope SinglePlayerModes: {
     //  Fox match settings
     dw  0x00000000                      // flag
     db  Character.id.FOX                // Character ID
-    db  Stages.id.SECTOR_Z              // Stage Option 1
-    db  Stages.id.SECTOR_Z_DL           // Stage Option 2
-    db  Stages.id.SECTOR_Z_O            // Stage Option 3
+    db  Stages.id.CORNERIACITY          // Stage Option 1
+    db  Stages.id.VENOM                 // Stage Option 2
+    db  Stages.id.CORNERIA2             // Stage Option 3
     dw  SinglePlayer.name_texture.DRM + 0x10    // name texture
     dw  0x000002E6                      // Announcer Call
     dw  0x00006F80                      // Model Scale
@@ -3132,9 +3132,9 @@ scope SinglePlayerModes: {
     //  Link match settings
     dw  0x00000000                      // flag
     db  Character.id.LINK               // Character ID
-    db  Stages.id.HYRULE_CASTLE         // Stage Option 1
-    db  Stages.id.HCASTLE_DL            // Stage Option 2
-    db  Stages.id.HCASTLE_O             // Stage Option 3
+    db  Stages.id.DEKU_TREE             // Stage Option 1
+    db  Stages.id.TALTAL                // Stage Option 2
+    db  Stages.id.TALTAL_REMIX          // Stage Option 3
     dw  SinglePlayer.name_texture.DRM + 0x10    // name texture
     dw  0x000002E6                      // Announcer Call
     dw  0x00006F80                      // Model Scale
