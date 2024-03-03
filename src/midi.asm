@@ -586,6 +586,7 @@ scope MIDI {
     insert_midi(OLDMADMONSTER, OS.TRUE, OS.TRUE, "Mad Monster Mansion (Old ver.)", banjokazooie)
     insert_midi(OLDUNFOUNDED_REVENGE, OS.TRUE, OS.TRUE, "Unfounded Revenge (Old ver.)", mother3)
     insert_midi(OLDYOSHI_GOLF, OS.TRUE, OS.TRUE, "Yoshi's Island (Old ver.)", mariogolf)
+    insert_midi(OLDKITCHEN_ISLAND, OS.TRUE, OS.TRUE, "Wario Land (Old. ver)", warioland)
     insert_midi(TESTMIDI, OS.TRUE, OS.TRUE, "Koopa's Theme (Beta)", sm64)
     insert_midi(FODBETA1, OS.TRUE, OS.TRUE, "Gourmet Race (Melee, Beta 1)", kirbysuperstar)
     insert_midi(FODBETA2, OS.TRUE, OS.TRUE, "Gourmet Race (Melee, Beta 2)", kirbysuperstar)
