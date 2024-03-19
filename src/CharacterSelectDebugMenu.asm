@@ -2669,6 +2669,10 @@ scope CharacterSelectDebugMenu {
         include "css/PoisonDmg.asm"
     }
 
+    scope StickJump {
+        include "css/StickJump.asm"
+    }
+
     // Add Menu Items
     add_menu_item(Shield)
     add_menu_item(PlayerTag)
@@ -2689,6 +2693,7 @@ scope CharacterSelectDebugMenu {
     add_menu_item(DpadControl)
     add_menu_item(Damage)
     add_menu_item(PoisonDmg)
+    add_menu_item(StickJump)
     add_menu_item(Practice_1P)
 
     // Write Menu Items
