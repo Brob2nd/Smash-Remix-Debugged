@@ -2982,7 +2982,7 @@ scope Stages {
     // Page 2 - Viable Stages
     db id.GERUDO                            // 12
     db id.WARIOWARE                         // 13
-    db id.DELFINO                           // 14       <-- Movement On
+    db id.DELFINO                           // 14       <-- Movement ON
     db id.CSIEGE                            // 15
     db id.SPIRALM                           // 16       <-- Movement ON
     db id.SMASHVILLE_REMIX                  // 17       <-- Movement ON
@@ -3019,22 +3019,22 @@ scope Stages {
     db id.RANDOM                            // 36
     // Page 4 - Additional Viable Stages
     db id.COOLCOOL_REMIX                    // 37
-    db id.EDO                               // 38
-    db id.NORFAIR                           // 39       <-- Hazards OFF
+    db id.CONGO_JUNGLE                      // 38
+    db id.TOH                               // 39
     db id.RAINBOWROAD                       // 3A       <-- Movement OFF
     db id.BOWSERB                           // 3B       <-- Hazards OFF
     db id.DUEL_ZONE                         // 3C
     db id.MINI_YOSHIS_ISLAND                // 3D       
     db id.MMADNESS                          // 3E       <-- Hazards OFF
     db id.DRAGONKING                        // 3F
-    db id.KITCHEN                           // 40       <-- Movement OFF
-    db id.TOH                               // 41
+    db id.KITCHEN                           // 40       <-- Movement ON
+    db id.NORFAIR                           // 41       <-- Hazards OFF
     db id.META_CRYSTAL                      // 42
     db id.CORNERIACITY                      // 43       <-- Hazards OFF
     db id.TALTAL_REMIX                      // 44       <-- Hazards OFF
     db id.REAPERS                           // 45
     db id.MEMENTOS                          // 46       <-- Movement OFF
-    db id.CONGO_JUNGLE                      // 47       <-- Hazards OFF
+    db id.EDO                               // 47       <-- Hazards OFF
     db id.RANDOM                            // 48
     // Page 5 - Omega (No Hazards or Movement), Other Stages and Custom Competitive/Viable Stages go here
     db id.PCASTLE_O                         // 49       <-- Hazards OFF
@@ -3047,8 +3047,8 @@ scope Stages {
     db id.DREAM_LAND_O                      // 50       <-- Hazards OFF
     db id.SECTOR_Z_O                        // 51       <-- Hazards OFF
     db id.SAFFRON_O                         // 52       <-- Movement OFF
-    db id.HOW_TO_PLAY                       // 53
-    db id.NORFAIR_REMIX                     // 54       <-- Hazards OFF
+    db id.NORFAIR_REMIX                     // 53       <-- Hazards OFF
+    db id.HOW_TO_PLAY                       // 54
     db id.RANDOM                            // 55
     db id.RANDOM                            // 56
     db id.RANDOM                            // 57
