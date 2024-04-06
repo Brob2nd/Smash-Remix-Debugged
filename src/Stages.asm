@@ -2935,6 +2935,26 @@ scope Stages {
     db id.BIG_SNOWMAN                       // 59
     db id.RANDOM                            // 60
 
+    // page 6 (more stages)
+    db id.HRC                               // 61
+    db id.FRAYS_STAGE_NIGHT                 // 62
+    db id.POKEMON_STADIUM_2                 // 63
+    db id.SMASHVILLE_REMIX                  // 64
+    db id.FLAT_ZONE_2                       // 65
+    db id.MUDA                              // 66
+    db id.MEMENTOS                          // 67
+    db id.SHOWDOWN                          // 68
+    db id.DREAM_LAND_BETA_2                 // 69
+    db id.RANDOM                            // 6A
+    db id.RANDOM                            // 6B
+    db id.RANDOM                            // 6C
+    db id.RANDOM                            // 6D
+    db id.RANDOM                            // 6E
+    db id.RANDOM                            // 6F
+    db id.RANDOM                            // 70
+    db id.RANDOM                            // 71
+    db id.RANDOM                            // 72
+
     OS.align(16)
 
     // @ Description
