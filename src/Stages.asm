@@ -506,7 +506,7 @@ scope Stages {
     constant NUM_ROWS(3)
     constant NUM_COLUMNS(6)
     constant NUM_ICONS(NUM_ROWS * NUM_COLUMNS)
-    constant NUM_PAGES(0x05)
+    constant NUM_PAGES(0x06)
 
     // list of instructions that read from the stage id (A press on versus stage select screen)
     // they're in order (you're welcome)
