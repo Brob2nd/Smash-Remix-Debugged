@@ -2914,7 +2914,6 @@ scope Stages {
     db id.YOSHIS_ISLAND_II                  // 46
     db id.GHZ                               // 47
     db id.RANDOM                            // 48
-
     // page 5 (more stages)
     db id.SUBCON                            // 49
     db id.PIRATE                            // 4A
@@ -2934,17 +2933,16 @@ scope Stages {
     db id.POKEFLOATS                        // 58
     db id.BIG_SNOWMAN                       // 59
     db id.RANDOM                            // 60
-
     // page 6 (more stages)
-    db id.HRC                               // 61
-    db id.FRAYS_STAGE_NIGHT                 // 62
-    db id.POKEMON_STADIUM_2                 // 63
-    db id.SMASHVILLE_REMIX                  // 64
-    db id.FLAT_ZONE_2                       // 65
-    db id.MUDA                              // 66
-    db id.MEMENTOS                          // 67
-    db id.SHOWDOWN                          // 68
-    db id.DREAM_LAND_BETA_2                 // 69
+    db id.DREAM_LAND_BETA_2                 // 61
+    db id.POKEMON_STADIUM_2                 // 62
+    db id.MUDA                              // 63
+    db id.MEMENTOS                          // 64
+    db id.SHOWDOWN                          // 65
+    db id.FLAT_ZONE_2                       // 66
+    db id.FRAYS_STAGE_NIGHT                 // 67
+    db id.SMASHVILLE_REMIX                  // 68
+    db id.HRC                               // 69
     db id.RANDOM                            // 6A
     db id.RANDOM                            // 6B
     db id.RANDOM                            // 6C
@@ -4311,7 +4309,6 @@ scope Stages {
         OS.patch_end()
     }
 
-    set_remix_variant(DREAM_LAND_BETA_1, DREAM_LAND_BETA_2)
     set_remix_variant(YOSHIS_ISLAND, MINI_YOSHIS_ISLAND)
 
     // @ Description
@@ -4830,7 +4827,7 @@ scope Stages {
     add_stage(bowserb, "Bowser's Stadium", {MIDI.id.BOWSERBOSS}, {MIDI.id.BOWSERROAD}, {MIDI.id.BOWSERFINAL}, OS.FALSE, HAZARDS_OFF_MOVEMENT_ON, OS.TRUE, OS.TRUE, class.BATTLE, -1, -1, -1, -1, -1, 0x05, 0x05, 0x05, default_blue_shell_rate, default_lightning_rate, default_item_rate, default_item_rate,  BOWSER, Hazards.type.HAZARDS)
     add_stage(peach2, "Princess Peach's Castle", {MIDI.id.PEACH_CASTLE}, {MIDI.id.SLIDER}, {MIDI.id.SMB3OVERWORLD}, OS.FALSE, HAZARDS_ON_MOVEMENT_ON, OS.FALSE, OS.TRUE, class.BATTLE, -1, -1, -1, -1, -1, 0x05, 0x05, 0x05, default_blue_shell_rate + 1, default_lightning_rate + 1, default_item_rate, default_item_rate,  MARIO_BROS, Hazards.type.MOVEMENT)
     add_stage(delfino, "Delfino Plaza", {MIDI.id.DELFINO}, {MIDI.id.SMW_TITLECREDITS}, {MIDI.id.SMW_ATHLETIC}, OS.FALSE, HAZARDS_ON_MOVEMENT_ON, OS.TRUE, OS.TRUE, class.BATTLE, -1, -1, -1, -1, -1, 0x05, 0x05, 0x05, default_blue_shell_rate + 1, default_lightning_rate + 1, default_item_rate, default_item_rate,  MARIO_BROS, Hazards.type.MOVEMENT)
-    add_stage(corneria2, "Corneria", {MIDI.id.CORNERIA}, {MIDI.id.AREA6}, {MIDI.id.STARFOX_MEDLEY}, OS.FALSE, HAZARDS_ON_MOVEMENT_ON, OS.FALSE, OS.TRUE, class.BATTLE, -1, -1, -1, -1, -1, 0x05, 0x05, 0x05, default_blue_shell_rate, default_lightning_rate, default_item_rate, default_item_rate,  STARFOX, Hazards.type.HAZARDS)
+    add_stage(corneria2, "Corneria", {MIDI.id.STARFOX_MEDLEY}, {MIDI.id.AREA6}, {MIDI.id.CORNERIA}, OS.FALSE, HAZARDS_ON_MOVEMENT_ON, OS.FALSE, OS.TRUE, class.BATTLE, -1, -1, -1, -1, -1, 0x05, 0x05, 0x05, default_blue_shell_rate, default_lightning_rate, default_item_rate, default_item_rate,  STARFOX, Hazards.type.HAZARDS)
     add_stage(kitchen, "Kitchen Island", {MIDI.id.KITCHEN_ISLAND}, {MIDI.id.WL2_PERFECT}, {MIDI.id.STARRING_WARIO}, OS.FALSE, HAZARDS_ON_MOVEMENT_ON, OS.TRUE, OS.TRUE, class.BATTLE, -1, -1, -1, -1, -1, 0x05, 0x05, 0x05, default_blue_shell_rate, default_lightning_rate, default_item_rate, default_item_rate,  WARIO, Hazards.type.MOVEMENT)
     add_position_array(KITCHEN, 0, -832, 0)
     add_stage(blue, "Big Blue", {MIDI.id.BIG_BLUE}, {MIDI.id.MACHRIDER}, {MIDI.id.FZERO_CLIMBUP}, OS.FALSE, HAZARDS_ON_MOVEMENT_ON, OS.FALSE, OS.TRUE, class.BATTLE, -1, -1, -1, -1, -1, 0x05, 0x05, 0x05, default_blue_shell_rate, default_lightning_rate, default_item_rate, default_item_rate,  FZERO, Hazards.type.BOTH)
