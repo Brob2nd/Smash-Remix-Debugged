@@ -3007,7 +3007,7 @@ scope TwelveCharBattle {
     dw 0xAC100001                           // Set Texture Form
     dw 0xD0000000                           // FSM = 0.0
     dw 0x00000000                           // End
-    // Moveset commands for defeated Sheik.
+    // Moveset commands for defeated Marina.
     defeated_moveset_marina:
     dw 0xAC000001                           // Set Texture Form
     dw 0xAC100001                           // Set Texture Form
@@ -3021,7 +3021,7 @@ scope TwelveCharBattle {
     dw 0x00000000                           // End
     // Moveset commands for defeated Sheik.
     defeated_moveset_sheik:
-    dw 0xAC000002                           // Set Texture Form
+    dw 0xAC000006                           // Set Texture Form
     dw 0xD0000000                           // FSM = 0.0
     dw 0x00000000                           // End
 
@@ -4015,6 +4015,14 @@ scope TwelveCharBattle {
         addu    t6, t6, t7                  // t6 = address of updated_character_id
         lbu     t6, 0x0000(t6)              // t6 = updated character_id
 
+        lli     t7, Character.id.SANDBAG
+        bne     t6, t7, _valid_char_id      // if not Sandbag, we can keep going
+        nop
+
+        lw      t0, 0x0048(sp)              // t0 = character set index
+        b       _do_update                  // skip Sandbag
+        sll     t3, t3, 0x0001              // t3 = -2 or +2
+
         _valid_char_id:
         beqz    t3, _update_all             // if updating all portraits, use different logic
         nop
@@ -4112,6 +4120,10 @@ scope TwelveCharBattle {
         jal     Global.get_random_int_      // v0 = random character_id
         lli     a0, Character.NUM_CHARACTERS
 
+        lli     t0, Character.id.BOSS
+        beq     v0, t0, _loop_randomize     // if Master Hand, get a different ID
+        lli     t0, Character.id.SANDBAG
+        beq     v0, t0, _loop_randomize     // if Sandbag, get a different ID
         lli     t0, Character.id.PLACEHOLDER
         beq     v0, t0, _loop_randomize     // if invalid, get a different ID
         lli     t0, Character.id.NONE
