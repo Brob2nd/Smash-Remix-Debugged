@@ -1,4 +1,4 @@
-// Toggles.asm
+// Toggles.asm CLASSICS
 if !{defined __TOGGLES__} {
 define __TOGGLES__()
 print "included Toggles.asm\n"
@@ -2149,11 +2149,11 @@ scope Toggles {
     evaluate first_stage_toggle(num_toggles)
     entry_random_stage_congo_jungle:;           entry_bool("Congo Jungle", OS.TRUE, OS.FALSE, OS.TRUE, OS.TRUE, entry_random_stage_dream_land)
     entry_random_stage_dream_land:;             entry_bool("Dream Land", OS.TRUE, OS.TRUE, OS.TRUE, OS.TRUE, entry_random_stage_dream_land_beta_1)
-    entry_random_stage_dream_land_beta_1:;      entry_bool("Dream Land Beta 1", OS.FALSE, OS.FALSE, OS.FALSE, OS.FALSE, entry_random_stage_dream_land_beta_2)
-    entry_random_stage_dream_land_beta_2:;      entry_bool("Dream Land Beta 2", OS.FALSE, OS.FALSE, OS.FALSE, OS.FALSE, entry_random_stage_duel_zone)
+    entry_random_stage_dream_land_beta_1:;      entry_bool("Dream Land Beta 1", OS.FALSE, OS.FALSE, OS.FALSE, OS.TRUE, entry_random_stage_dream_land_beta_2)
+    entry_random_stage_dream_land_beta_2:;      entry_bool("Dream Land Beta 2", OS.FALSE, OS.FALSE, OS.FALSE, OS.TRUE, entry_random_stage_duel_zone)
     entry_random_stage_duel_zone:;              entry_bool("Duel Zone", OS.TRUE, OS.FALSE, OS.FALSE, OS.TRUE, entry_random_stage_final_destination)
     entry_random_stage_final_destination:;      entry_bool("Final Destination", OS.TRUE, OS.FALSE, OS.FALSE, OS.TRUE, entry_random_stage_how_to_play)
-    entry_random_stage_how_to_play:;            entry_bool("How to Play", OS.FALSE, OS.FALSE, OS.FALSE, OS.FALSE, entry_random_stage_hyrule_castle)
+    entry_random_stage_how_to_play:;            entry_bool("How to Play", OS.FALSE, OS.FALSE, OS.FALSE, OS.TRUE, entry_random_stage_hyrule_castle)
     entry_random_stage_hyrule_castle:;          entry_bool("Hyrule Castle", OS.TRUE, OS.FALSE, OS.TRUE, OS.TRUE, entry_random_stage_meta_crystal)
     entry_random_stage_meta_crystal:;           entry_bool("Meta Crystal", OS.TRUE, OS.FALSE, OS.TRUE, OS.TRUE, entry_random_stage_mushroom_kingdom)
     entry_random_stage_mushroom_kingdom:;       entry_bool("Mushroom Kingdom", OS.TRUE, OS.FALSE, OS.FALSE, OS.TRUE, entry_random_stage_peachs_castle)
@@ -2607,6 +2607,7 @@ scope Toggles {
     // Include music profiles here
     include "/music/profiles/vanilla.asm"
     include "/music/profiles/classics.asm"
+    include "/music/profiles/classicsdebugged.asm"
     include "/music/profiles/intobattle.asm"
     include "/music/profiles/positivevibes.asm"
     include "/music/profiles/slappers.asm"
