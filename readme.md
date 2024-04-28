@@ -36,6 +36,7 @@ Brobgonal Second: Leader of the project, programmer, musician/composer
 MetaSSB / Meta Nais: Co-leader of the project, programmer, musician/composer, helper/assistant with programming and composing songs for the mod.
 
 NewoRGBY_255/ Newo Regevoide: musician/composer, helper/assistant with composing songs for the mod.
+- Special thanks to the last 2 mentioned for really helping me with Smash Remix Debugged.
 
 Halofactory: Creator of the Tap Jump option, programmer for Vanilla Smash Remix.
 
