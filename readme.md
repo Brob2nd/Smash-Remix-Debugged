@@ -3,7 +3,7 @@
 
 Smash Remix Debugged is a mod for the Super Smash Bros. 64 mod, Smash Remix, this mod's purpose is to work as a template for future Smash Remix mods, adding things like inaccessible features now being accessible, such as Sandbag for all game modes, Home-Run Contest as a normal stage, or certain inaccessible songs (such as the Game Boy Land or some Menu music) now being able to play in all stages.
 
-It also adds some extra content, such as the the Tap Jump option, New Songs, More Stages for Characters for Remix 1P Mode and All-stars, More songs for some stages, 6 Stage Pages and 5 Tournament Stage Pages with a list of viable stages for Tourney, and more.
+It also adds some extra content, such as the the Tap Jump option, New Songs, More instruments being available for songs, More Stages for Characters for Remix 1P Mode and All-stars, More songs for some stages, 6 Stage Pages and 5 Tournament Stage Pages with a list of viable stages for Tourney, and more.
 
 # FAQ/Q&A
 
@@ -28,6 +28,20 @@ A4: Yes, you can! That's why there's an extended Tournament SSS in the mod! It's
 Q1/Q2: Does the mod run on the latest 'original.z64' file/I need to port all of my work imported to the previous original.z64 to the new one?
 
 A1/A2: Yes, it does! The mod itself is based/build of the latest original.z64 file (and also from the latest Smash Remix patch) meaning that if you ported something to the 1.5.2 original.z64, you don't have any need of having to re-import it to the "new" one.
+
+# Credits
+
+Brobgonal Second: Leader of the project, programmer, musician/composer
+
+MetaSSB / Meta Nais: Co-leader of the project, programmer, musician/composer, helper/assistant with programming and composing songs for the mod.
+
+NewoRGBY_255/ Newo Regevoide: musician/composer, helper/assistant with composing songs for the mod.
+
+Halofactory: Creator of the Tap Jump option, programmer for Vanilla Smash Remix.
+
+coffee: Musician/Composer of the Donkey Kong Jr. Song and part of the Vanilla Smash Remix OST.
+
+B3313 Team and Newsupkaizo55: Creators of B3313, and musicians/composers of the 16 entirely new songs added for the mod
 
 # Smash Remix
 *A Super Smash Bros. 64 Mod Organized by The_Smashfather*
