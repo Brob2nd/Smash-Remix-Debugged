@@ -1,3 +1,34 @@
+# Smash Remix Debugged
+*A Smash Remix Mod Made by Brobgonal Second*
+
+Smash Remix Debugged is a mod for the Super Smash Bros. 64 mod, Smash Remix, this mod's purpose is to work as a template for future Smash Remix mods, adding things like inaccessible features now being accessible, such as Sandbag for all game modes, Home-Run Contest as a normal stage, or certain inaccessible songs (such as the Game Boy Land or some Menu music) now being able to play in all stages.
+
+It also adds some extra content, such as the the Tap Jump option, New Songs, More Stages for Characters for Remix 1P Mode and All-stars, More songs for some stages, 6 Stage Pages and 5 Tournament Stage Pages with a list of viable stages for Tourney, and more.
+
+# FAQ/Q&A
+
+Q1: Does Smash Remix Debugged run on the latest Smash Remix patch?
+
+A1: Yes, it does!
+
+Q2: Does the mod modify/change or delete anything from Vanilla Smash Remix?
+
+A2: No! the mod has all content already available on Vanilla Smash Remix!
+
+Q3: Does the mod add new characters, stages, items, songs, or game modes?
+
+A3: Technically, no, the only "new" character and stage added is Sandbag (Boss character for Samus) and Home-run Contest respectively, it doesn't add any new item or game mode, however, it does add new songs! 17 from those new songs are songs that previously at least once were in a Smash Remix version, but they were removed, 4 of them are straight up scrapped songs that never appeared in any Smash Remix version, meaning they never saw the light of day, 16 of them are entirely new songs made for the mod, 46 of them are old versions of already existing songs that are still in Smash Remix to this day, 6 of them are even older versions of already existing songs, and 9 of them are Beta versions, meaning they are versions of songs that were exclusive to play testing and were later improved in the future until the Smash Remix version these songs were came out
+
+Q4: Can i use this mod for my tournament?
+
+A4: Yes, you can! That's why there's an extended Tournament SSS in the mod! It's optional tho, meaning that if you want, you can still use vanilla Smash Remix for your tournaments!
+
+# Modder's FAQ/Q&A
+
+Q1/Q2: Does the mod run on the latest 'original.z64' file/I need to port all of my work imported to the previous original.z64 to the new one?
+
+A1/A2: Yes, it does! The mod itself is based/build of the latest original.z64 file (and also from the latest Smash Remix patch) meaning that if you ported something to the 1.5.2 original.z64, you don't have any need of having to re-import it to the "new" one.
+
 # Smash Remix
 *A Super Smash Bros. 64 Mod Organized by The_Smashfather*
 
@@ -37,12 +68,12 @@ Computer controlled players have received a variety of improvements.
 #### Toggle Names: _Combo Meter_, _1v1 Combo Meter Swap_
 
 ### Expanded Character Select Screen
-- The character select screen is now expanded to 30 slots including 16 custom characters.
+- The character select screen is now expanded to 30 slots including 18 custom characters.
 - Metal Mario, Giant DK, and polygon versions of the original cast are available via d-pad up or down.
 - Japanese versions of the original cast are available via d-pad left.
 - European versions of some of the original cast are available via d-pad right.
 - Giga Bowser, Mad Piano, Super Sonic, Peppy, Slippy, Metal Luigi, Ebisumaru, and Dragon King are available via d-pad up.
-- Polygon versions of some of the remix cast are available via d-pad down.
+- Polygon versions of the remix cast are available via d-pad down.
 
 ### Character Select Debug Menu
 A menu for modifying certain character attributes is available on each panel.
