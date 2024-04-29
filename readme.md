@@ -1,9 +1,9 @@
 # Smash Remix Debugged
 *A Smash Remix Mod Made by Brobgonal Second*
 
-Smash Remix Debugged is a mod for the Super Smash Bros. 64 mod, Smash Remix, this mod's purpose is to work as a template for future Smash Remix mods, adding things like inaccessible features now being accessible, such as Sandbag for all game modes, Home-Run Contest as a normal stage, or certain inaccessible songs (such as the Game Boy Land or some Menu music) now being able to play in all stages.
+Smash Remix Debugged is a mod for the Super Smash Bros. 64 mod, Smash Remix, this mod's purpose is to work as a template for future Smash Remix mods, adding things like inaccessible features now being accessible, such as Sandbag for all game modes, Home-Run Contest as a normal stage, or certain inaccessible songs (such as the Game Boy Land ones, All-star Rest Area, SMB2 Boss or some Menu music) now being able to play in all stages.
 
-It also adds some extra content, such as the the Tap Jump option, New Songs, More instruments being available for songs, More Stages for Characters for Remix 1P Mode and All-stars, More songs for some stages, 6 Stage Pages and 5 Tournament Stage Pages with a list of viable stages for Tourney, and more.
+It also adds some extra content, such as the Tap Jump option, New Songs, More instruments being available for songs, More Stages for Characters for Remix 1P Mode and All-stars, More songs for some stages, 6 Stage Pages and 5 Tournament Stage Pages with a list of viable stages for Tourney, and more.
 
 # FAQ/Q&A
 
