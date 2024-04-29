@@ -147,11 +147,12 @@ scope Gallery {
     dh {MIDI.id.STATUS}
 
     bgm_bowser:
-    dh 9                                    // number of BGM
+    dh 10                                   // number of BGM
     dh {MIDI.id.BOWSERBOSS}
     dh {MIDI.id.BOWSERROAD}
     dh {MIDI.id.BOWSERFINAL}
     dh {MIDI.id.BOWSERCHECKEREDMADNESS}
+    dh {MIDI.id.BOWSERAIRSHIP}
     dh {MIDI.id.BIG_BOO}
     dh {MIDI.id.FIGHT_AGAINST_BOWSER}
     dh {MIDI.id.KING_OF_THE_KOOPAS}
@@ -166,7 +167,7 @@ scope Gallery {
     dh {MIDI.id.TALENTSTUDIO}
 
     bgm_dk:
-    dh 11                                    // number of BGM
+    dh 12                                    // number of BGM
     dh BGM.stage.CONGO_JUNGLE
     dh {MIDI.id.DKCTITLE}
     dh {MIDI.id.DK_JR_STAGE}
@@ -174,6 +175,7 @@ scope Gallery {
     dh {MIDI.id.JUNGLEJAPES64}
     dh {MIDI.id.JUNGLEJAPES}
     dh {MIDI.id.SNAKEY_CHANTEY}
+    dh {MIDI.id.SKERRIES}
     dh {MIDI.id.FOREST_INTERLUDE}
     dh {MIDI.id.STICKERBRUSH_SYMPHONY}
     dh {MIDI.id.DK_RAP}
@@ -296,10 +298,10 @@ scope Gallery {
     dh 6                                   // number of BGM
     dh {MIDI.id.ONETT}
     dh {MIDI.id.POLLYANNA}
+    dh {MIDI.id.I_BELIEVE_IN_YOU}
     dh {MIDI.id.BEIN_FRIENDS}
     dh {MIDI.id.ALL_I_NEEDED_WAS_YOU}
     dh {MIDI.id.DANGEROUS_FOE}
-    dh {MIDI.id.I_BELIEVE_IN_YOU}
 
     bgm_lucas:
     dh 7                                   // number of BGM
@@ -371,6 +373,7 @@ scope Gallery {
     bgm_ebi:
     dh 1                                   // number of BGM
     dh {MIDI.id.KAI_HIGHWAY}
+    dh {MIDI.id.TRAVELING}
 
     bgm_banjo:
     dh 10                                   // number of BGM
@@ -697,6 +700,7 @@ scope Gallery {
     add_bgm_to_gallery({MIDI.id.PIGGYGUYS}, id.LUCAS)
     add_bgm_to_gallery({MIDI.id.ALL_I_NEEDED_WAS_YOU}, id.NESS)
     add_bgm_to_gallery({MIDI.id.I_BELIEVE_IN_YOU}, id.NESS)
+    add_bgm_to_gallery({MIDI.id.BOWSERAIRSHIP}, id.BOWSER)
 
     // @ Description
     // Table which holds the 'L' and 'R' sound effects for drumming
