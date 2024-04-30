@@ -701,6 +701,7 @@ scope MIDI {
     insert_midi(INFINITECASTLEMAZE, OS.TRUE, OS.TRUE, "Infinite Castle Maze", b3313)
     insert_midi(BOWSERAIRSHIP, OS.TRUE, OS.TRUE, "Koopa in the Airship Cabin", b3313)
     insert_midi(BOWSERCHECKEREDMADNESS, OS.TRUE, OS.TRUE, "Koopa's Checkered Madness", b3313)
+    insert_midi(BOWSERPRISON, OS.TRUE, OS.TRUE, "Koopa's Prison", b3313)
     insert_midi(NEGATIVE_WING_CAP, OS.TRUE, OS.TRUE, "Negative Aura Wing Cap", b3313)
     insert_midi(NEBULALOBBY, OS.TRUE, OS.TRUE, "Nebula Lobby", b3313)
     insert_midi(SEAFORT, OS.TRUE, OS.TRUE, "Sea Fort", b3313)    
