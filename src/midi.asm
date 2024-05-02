@@ -690,7 +690,7 @@ scope MIDI {
     insert_midi(ALTAQUARIUMLIMBO, OS.TRUE, OS.TRUE, "Aquarium Limbo/Eel Graveyard", b3313)
     insert_midi(AQUARIUMLIMBO, OS.TRUE, OS.TRUE, "Aquarium Limbo/Eel Graveyard (Alt ver.)", b3313)
     insert_midi(ALTAQUARIUMLIMBO2, OS.TRUE, OS.TRUE, "Aquarium Limbo/Eel Graveyard (Alt. ver 2)", b3313)
-    insert_midi(BASSDRIVE, OS.TRUE, OS.TRUE, "BassDrive.mid, smkr)
+    insert_midi(BASSDRIVE, OS.TRUE, OS.TRUE, "BassDrive.mid", smkr)
     insert_midi(CLOCKHALL, OS.TRUE, OS.TRUE, "Clock Hall/Cryptic Hideout", b3313)
     insert_midi(CRESCENTCASTLE, OS.TRUE, OS.TRUE, "Crescent Castle", b3313)
     insert_midi(CRUMBLINGHALLS, OS.TRUE, OS.TRUE, "Crumbling Halls", b3313)
