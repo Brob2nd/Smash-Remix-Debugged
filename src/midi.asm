@@ -686,6 +686,8 @@ scope MIDI {
     insert_midi(DANGEROUS_GUYS, OS.TRUE, OS.TRUE, "Dangerous Guys", mother3)
     insert_midi(MORAY_TOWERS, OS.TRUE, OS.TRUE, "Splattack!", splatoon)
     insert_midi(DK_JR_STAGE, OS.TRUE, OS.TRUE, "Donkey Kong Jr.", dkjr)
+    insert_midi(BLOCKFORT, OS.TRUE, OS.TRUE, "Choco Mountain", mk64)
+    insert_midi(ODYSSEY, OS.TRUE, OS.TRUE, "Fossil Falls", smo)
     insert_midi(4THFLOOR, OS.TRUE, OS.TRUE, "4th Floor", b3313)
     insert_midi(ALTAQUARIUMLIMBO, OS.TRUE, OS.TRUE, "Aquarium Limbo/Eel Graveyard", b3313)
     insert_midi(AQUARIUMLIMBO, OS.TRUE, OS.TRUE, "Aquarium Limbo/Eel Graveyard (Alt ver.)", b3313)
