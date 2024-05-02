@@ -701,7 +701,7 @@ scope MIDI {
     insert_midi(FLOOR4B, OS.TRUE, OS.TRUE, "Floor 4B", b3313)
     insert_midi(FILESELECT_B3313, OS.TRUE, OS.TRUE, "File Select (B3313)", b3313)
     insert_midi(GRIMGREENFOREST, OS.TRUE, OS.TRUE, "Grim Green Forest", b3313)
-    insert_midi(GRIMGREENFORESTUNABANDONED, OS.TRUE, OS.TRUE, "Grim Green Forest", b3313u)
+    insert_midi(GRIMGREENFORESTUNABANDONED, OS.TRUE, OS.TRUE, "Grim Green Forest (Unabandoned)", b3313u)
     insert_midi(HISDOMAIN, OS.TRUE, OS.TRUE, "His Domain/Plexal Hallway", b3313)
     insert_midi(INFINITECASTLEMAZE, OS.TRUE, OS.TRUE, "Infinite Castle Maze", b3313)
     insert_midi(BOWSERAIRSHIP, OS.TRUE, OS.TRUE, "Koopa in the Airship Cabin", b3313)
