@@ -693,7 +693,7 @@ scope MIDI {
     insert_midi(BASSDRIVE, OS.TRUE, OS.TRUE, "BassDrive.mid", smkr)
     insert_midi(CLOCKHALL, OS.TRUE, OS.TRUE, "Clock Hall/Cryptic Hideout", b3313)
     insert_midi(CRESCENTCASTLE, OS.TRUE, OS.TRUE, "Crescent Castle", b3313)
-    insert_midi(CRUMBLINGHALLS, OS.TRUE, OS.TRUE, "Crumbling Halls", b3313)
+    insert_midi(CRUMBLINGHALLS, OS.TRUE, OS.TRUE, "Crumbling Castle", b3313)
     insert_midi(DIREDIREVICTORY, OS.TRUE, OS.TRUE, "Dire, Dire Victory", b3313)
     insert_midi(DIREDIRELOSS, OS.TRUE, OS.TRUE, "Dire, Dire Loss/Wiggler's Fortress", b3313)
     insert_midi(DOWNTOWNCITY, OS.TRUE, OS.TRUE, "Downtown City", b3313)
