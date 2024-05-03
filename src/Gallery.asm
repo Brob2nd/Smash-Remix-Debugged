@@ -129,7 +129,6 @@ scope Gallery {
     dh {MIDI.id.PAPER_MARIO_BATTLE}
     dh {MIDI.id.GHOSTGULPING}
 
-
     bgm_luigi:
     dh 13                                    // number of BGM
     dh BGM.stage.MUSHROOM_KINGDOM
@@ -167,7 +166,7 @@ scope Gallery {
     dh {MIDI.id.TALENTSTUDIO}
 
     bgm_dk:
-    dh 12                                    // number of BGM
+    dh 12                                   // number of BGM
     dh BGM.stage.CONGO_JUNGLE
     dh {MIDI.id.DKCTITLE}
     dh {MIDI.id.DK_JR_STAGE}
@@ -341,7 +340,7 @@ scope Gallery {
     dh {MIDI.id.HYRULE_TEMPLE}
 
     bgm_sonic:
-    dh 14                                   // number of BGM
+    dh 14                                  // number of BGM
     dh {MIDI.id.GREEN_HILL_ZONE}
     dh {MIDI.id.EMERALDHILL}
     dh {MIDI.id.CHEMICAL_PLANT}
@@ -371,7 +370,7 @@ scope Gallery {
     dh {MIDI.id.THE_ALOOF_SOLDIER}
 
     bgm_ebi:
-    dh 1                                   // number of BGM
+    dh 2                                   // number of BGM
     dh {MIDI.id.KAI_HIGHWAY}
     dh {MIDI.id.TRAVELING}
 
