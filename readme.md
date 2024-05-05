@@ -33,14 +33,14 @@ A1/A2: Yes, it does! The mod itself is based/build of the latest original.z64 fi
 
 Brobgonal Second: Leader of the project, programmer, musician/composer
 
-MetaSSB / Meta Nais: Co-leader of the project, programmer, musician/composer, helper/assistant with programming and composing songs for the mod.
+MetaSSB / Meta Nais: Co-leader of the project, programmer, musician/composer, helper/assistant with programming and composing songs for the mod, Special Thanks.
 
-NewoRGBY_255/ Newo Regevoide: musician/composer, helper/assistant with composing songs for the mod.
+NewoRGBY_255/ Newo Regevoide:  Instrument Design, Musician/Arranger, helper/assistant with composing songs for the mod, Special Thanks.
 - Special thanks to the last 2 mentioned for really helping me with Smash Remix Debugged.
 
 Halofactory: Creator of the Tap Jump option, programmer for Vanilla Smash Remix.
 
-coffee: Musician/Composer of the Donkey Kong Jr. Song and part of the Vanilla Smash Remix OST.
+coffee: Musician/Arranger of the Donkey Kong Jr. Song and part of the Vanilla Smash Remix OST.
 
 B3313 Team and Newsupkaizo55: Creators of B3313, and musicians/composers of the 16 entirely new songs added for the mod
 
