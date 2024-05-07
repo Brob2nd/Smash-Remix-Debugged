@@ -85,10 +85,10 @@ scope Sandbag {
     Character.edit_menu_action_parameters(SANDBAG, 0x3,           File.SANDBAG_IDLE,       0x80000000,                   -1)
     Character.edit_menu_action_parameters(SANDBAG, 0x4,           File.SANDBAG_IDLE,       0x80000000,                   -1)
     Character.edit_menu_action_parameters(SANDBAG, 0x5,           File.SANDBAG_IDLE,       0x80000000,                   -1)
-    Character.edit_menu_action_parameters(SANDBAG, 0x9,           File.SANDBAG_IDLE,       0x80000000,                   -1)
-    Character.edit_menu_action_parameters(SANDBAG, 0xA,           File.SANDBAG_IDLE,       0x80000000,                   -1)
-    Character.edit_menu_action_parameters(SANDBAG, 0xD,           File.SANDBAG_IDLE,       0x80000000,                   -1)
-    Character.edit_menu_action_parameters(SANDBAG, 0xE,           File.SANDBAG_IDLE,       0x80000000,                   -1)
+    Character.edit_menu_action_parameters(SANDBAG, 0x9,           -1,                      0x80000000,                   -1)
+    Character.edit_menu_action_parameters(SANDBAG, 0xA,           -1,                      0x80000000,                   -1)
+    Character.edit_menu_action_parameters(SANDBAG, 0xD,           -1,                      0x80000000,                   -1)
+    Character.edit_menu_action_parameters(SANDBAG, 0xE,           -1,                      0x80000000,                   -1)
 
     // Shield colors for costume matching
     Character.set_costume_shield_colors(SANDBAG, WHITE, WHITE, WHITE, WHITE, WHITE, WHITE, NA, NA)
