@@ -715,7 +715,7 @@ scope MIDI {
     insert_midi(SEAFORT, OS.TRUE, OS.TRUE, "Sea Fort", b3313)    
     insert_midi(PARALLELLOBBY, OS.TRUE, OS.TRUE, "Pararell Lobby", b3313)
     insert_midi(TOADSTOOLROOM, OS.TRUE, OS.TRUE, "Toadstool's Room", b3313)
-    insert_midi(WETTOWN, OS.TRUE, OS.TRUE, "Wet Town", b3313)
+    insert_midi(WETTOWN, OS.TRUE, OS.TRUE, "Wet Dry Paradise/Wet Town", b3313)
     insert_midi(KROOLS_ACID_PUNK, OS.TRUE, OS.TRUE, "K. Rool's Acid Punk (Old ver.)", dkl)
     insert_midi(WARIO_WARE, OS.TRUE, OS.TRUE, "Stonecarving City (Old ver.)", warioshake)
     insert_midi(OLDBANJO_MAIN, OS.TRUE, OS.TRUE, "Main Theme (Old ver.)", banjokazooie)
