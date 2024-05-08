@@ -1,6 +1,6 @@
 // Sandbag.asm
 
-// This file contains file inclusions, action edits, and assembly for Sheik.
+// This file contains file inclusions, action edits, and assembly for Sandbag.
 
 scope Sandbag {
     // Insert Moveset files
