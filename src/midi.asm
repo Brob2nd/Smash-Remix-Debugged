@@ -394,6 +394,8 @@ scope MIDI {
     add_game(cavestory, "Cave Story")
     add_game(sbk, "Snowboard Kids")
     add_game(sbk2, "Snowboard Kids 2")
+    add_game(hl, "Half-life")
+    add_game(hl2, "Half-Life 2")
     add_game(2hu6, "Touhou 6: Embodiment of Scarlet Devil")
     add_game(sf2snes, "Street Fighter II: The World Warrior (SNES)")
     add_game(ssf2t, "Super Street Fighter II Turbo")
@@ -691,7 +693,7 @@ scope MIDI {
     insert_midi(4THFLOOR, OS.TRUE, OS.TRUE, "4th Floor", b3313)
     insert_midi(ALTAQUARIUMLIMBO, OS.TRUE, OS.TRUE, "Aquarium Limbo/Eel Graveyard", b3313)
     insert_midi(AQUARIUMLIMBO, OS.TRUE, OS.TRUE, "Aquarium Limbo/Eel Graveyard (Alt ver.)", b3313)
-    insert_midi(ALTAQUARIUMLIMBO2, OS.TRUE, OS.TRUE, "Aquarium Limbo/Eel Graveyard (Alt. ver 2)", b3313)
+    insert_midi(ALTAQUARIUMLIMBO2, OS.TRUE, OS.TRUE, "Aquarium Limbo/Eel Graveyard (Alt ver. 2)", b3313)
     insert_midi(BASSDRIVEALT, OS.TRUE, OS.TRUE, "BassDrive.mid", smkr)
     insert_midi(BASSDRIVE, OS.TRUE, OS.TRUE, "BassDrive.mid (Alt ver.)", smkr)
     insert_midi(CLOCKHALL, OS.TRUE, OS.TRUE, "Clock Hall/Cryptic Hideout", b3313)
@@ -769,6 +771,7 @@ scope MIDI {
     insert_midi(OLDERLIVE_AND_LEARN, OS.TRUE, OS.TRUE, "Live and Learn (Older ver.)", sonicadventure2)
     insert_midi(OLDERSONIC2_SPECIAL, OS.TRUE, OS.TRUE, "Sonic 2 Special Stage (Older ver.)", sonic2)
     insert_midi(OLDERBATTLEFIELD, OS.TRUE, OS.TRUE, "Battlefield (Older ver.)", brawl)
+    insert_midi(OLDERGERUDO_VALLEY, OS.TRUE, OS.TRUE, "Gerudo Valley (Older ver.)", ocarina)
     insert_midi(TESTMIDI, OS.TRUE, OS.TRUE, "Koopa's Theme (Beta)", sm64)
     insert_midi(FODBETA1, OS.TRUE, OS.TRUE, "Gourmet Race (Melee, Beta 1)", kirbysuperstar)
     insert_midi(FODBETA2, OS.TRUE, OS.TRUE, "Gourmet Race (Melee, Beta 2)", kirbysuperstar)
@@ -1345,6 +1348,31 @@ scope MIDI {
     add_instrument_sample(french_horn-0, 0x00000000, 0xFFFFFFFF, 0x0000704E, 0x7F, 0x7F, 0x00, 0x7F, 0x00, 0x57, 0x55, 0x23, 0x40, 0x7F, OS.TRUE, 0x00000596, 0x0000099E, 0xFFFFFFFF, OS.TRUE)
     add_instrument_sample(french_horn-1, 0x00000000, 0xFFFFFFFF, 0x0000704E, 0x7F, 0x7F, 0x00, 0x7F, 0x58, 0x7F, 0x5B, 0x1F, 0x40, 0x7F, OS.TRUE, 0x00000518, 0x00000934, 0xFFFFFFFF, OS.TRUE)
     add_instrument(French Horn, 0x7F, 0x40, 0x05, 0x04DD, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0)
+
+    // Custom instruments start
+    add_instrument_sample(Roland_WowScrape, 0x0, 0x0, 66 * 200, 0x7F, 0x7F, 0x00, 0x7F, 0, 71, 48, -15, 0x3F, 0x7E, OS.TRUE, 12440, 26687, 0xFFFFFFFF, OS.FALSE)
+    add_instrument(Roland WOW Pick Scrape, 0x7E, 0x3F, 0x05, 0x04DD, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0)
+
+    // Soothing, classic CAPCOM instrument
+    add_instrument_sample(Vibra_C3, 0x0, 0x0000E8E0, 66 * 3200, 0x7F, 0x7F, 0x00, 0x7F, 0,  59, 48, 0x0, 0x3F, 0x7E, OS.TRUE, 9459, 9704, 0xFFFFFFFF, OS.FALSE)
+    add_instrument_sample(Vibra_C4, 0x0, 0x0000E8E0, 66 * 3200, 0x7F, 0x7F, 0x00, 0x7F, 60,  71, 60, 0x0, 0x3F, 0x7E, OS.TRUE, 8491, 8613, 0xFFFFFFFF, OS.FALSE)
+    add_instrument_sample(Vibra_C5, 0x0, 0x0000E8E0, 66 * 3200, 0x7F, 0x7F, 0x00, 0x7F, 72, 83, 72, 0x0, 0x3F, 0x7E, OS.TRUE, 3057, 3546, 0xFFFFFFFF, OS.FALSE)
+    add_instrument_sample(Vibra_C6, 0x0, 0x0000E8E0, 66 * 3200, 0x7F, 0x7F, 0x00, 0x7F, 84, 95, 84, 0x0, 0x3F, 0x7E, OS.TRUE, 2641, 2885, 0xFFFFFFFF, OS.FALSE)
+    add_instrument(Triton Vibraphone, 0x70, 0x3F, 0x05, 0x04DD, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0) //0x01, 0x04, 0x01, 0x0A, 0x01, 0x04, 0x3B, 0x0A
+
+    // Exotic yet mysterious
+    add_instrument_sample(Sitarr_F5, 0x0, 0x0, 66 * 350, 0x7F, 0x7F, 0x0, 0x7F, 0,  127,  65, 0x0, 0x3F, 0x7E, OS.TRUE, 33157, 33527, 0xFFFFFFFF, OS.FALSE)
+    add_instrument(Sitar, 0x7E, 0x3F, 0x05, 0x04DD, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0)
+
+    // Alto saxo papá
+    add_instrument_sample(D50_A.Sax_FF_F4, 0x0, 0x002DC6C0, 66 * 350, 0x7F, 0x7F, 0x0, 0x7F, 0,  65,  65, 0x0, 0x3F, 0x7E, OS.TRUE, 18657, 19754, 0xFFFFFFFF, OS.FALSE)
+    add_instrument_sample(D50_A.Sax_FF_B4, 0x0, 0x002DC6C0, 66 * 350, 0x7F, 0x7F, 0x0, 0x7F, 66, 71,  71, 0x0, 0x3F, 0x7E, OS.TRUE, 10559, 11331, 0xFFFFFFFF, OS.FALSE)
+    add_instrument_sample(D50_A.Sax_FF_D5, 0x0, 0x002DC6C0, 66 * 350, 0x7F, 0x7F, 0x0, 0x7F, 72,  75,  75, 0x0, 0x3F, 0x7E, OS.TRUE, 14114, 14522, 0xFFFFFFFF, OS.FALSE)
+    add_instrument_sample(D50_A.Sax_FF_G5, 0x0, 0x002DC6C0, 66 * 350, 0x7F, 0x7F, 0x0, 0x7F, 76, 79,  79, 0x0, 0x3F, 0x7E, OS.TRUE, 18116, 18768, 0xFFFFFFFF, OS.FALSE)
+    add_instrument_sample(D50_A.Sax_FF_B5, 0x0, 0x002DC6C0, 66 * 350, 0x7F, 0x7F, 0x0, 0x7F, 80,  83,  83, 0x0, 0x3F, 0x7E, OS.TRUE, 11833, 12155, 0xFFFFFFFF, OS.FALSE)
+    add_instrument_sample(D50_A.Sax_FF_D6, 0x0, 0x002DC6C0, 66 * 350, 0x7F, 0x7F, 0x0, 0x7F, 84, 86,  86, 0x0, 0x3F, 0x7E, OS.TRUE, 6809, 7079, 0xFFFFFFFF, OS.FALSE)
+    add_instrument_sample(D50_A.Sax_FF_F6, 0x0, 0x002DC6C0, 66 * 350, 0x7F, 0x7F, 0x0, 0x7F, 87, 127,  89, 0x0, 0x3F, 0x7E, OS.TRUE, 10798, 10980, 0xFFFFFFFF, OS.FALSE)
+    add_instrument(Alto Saxophone, 0x70, 0x3F, 0x05, 0x04DD, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0)
 
     move_instrument_bank_map()
 
