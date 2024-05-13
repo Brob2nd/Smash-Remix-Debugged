@@ -396,6 +396,7 @@ scope MIDI {
     add_game(sbk2, "Snowboard Kids 2")
     add_game(hl, "Half-life")
     add_game(hl2, "Half-Life 2")
+    add_game(pt, "Pizza Tower")
     add_game(2hu6, "Touhou 6: Embodiment of Scarlet Devil")
     add_game(sf2snes, "Street Fighter II: The World Warrior (SNES)")
     add_game(ssf2t, "Super Street Fighter II Turbo")
@@ -697,7 +698,8 @@ scope MIDI {
     insert_midi(BATTLECYRUS, OS.TRUE, OS.TRUE, "Battle! Cyrus", pokemondp)
     insert_midi(BASSDRIVEALT, OS.TRUE, OS.TRUE, "BassDrive.mid", smkr)
     insert_midi(BASSDRIVE, OS.TRUE, OS.TRUE, "BassDrive.mid (Alt ver.)", smkr)
-    insert_midi(CLOCKHALL, OS.TRUE, OS.TRUE, "Clock Hall/Cryptic Hideout", b3313)
+    insert_midi(CARRYBOYFARMLAND, OS.TRUE, OS.TRUE, "Carryboy Farmland", b3313)
+    insert_midi(CHROMATUNDRA, OS.TRUE, OS.TRUE, "Chroma Tundra/Frosty Highlands", b3313)
     insert_midi(CRESCENTCASTLE, OS.TRUE, OS.TRUE, "Crescent Castle", b3313)
     insert_midi(CRUMBLINGHALLS, OS.TRUE, OS.TRUE, "Crumbling Castle", b3313)
     insert_midi(DKCOURT, OS.TRUE, OS.TRUE, "Donkey Kong's Court", mariotennis)
@@ -713,11 +715,14 @@ scope MIDI {
     insert_midi(INFINITECASTLEMAZE, OS.TRUE, OS.TRUE, "Infinite Castle Maze", b3313)
     insert_midi(BOWSERAIRSHIP, OS.TRUE, OS.TRUE, "Koopa in the Airship Cabin", b3313)
     insert_midi(BOWSERCHECKEREDMADNESS, OS.TRUE, OS.TRUE, "Koopa's Checkered Madness", b3313)
+    insert_midi(BOWSERROOM, OS.TRUE, OS.TRUE, "Koopa's Room", b3313)
     insert_midi(BOWSERPRISON, OS.TRUE, OS.TRUE, "Koopa's Prison", b3313)
     insert_midi(NEGATIVE_WING_CAP, OS.TRUE, OS.TRUE, "Negative Aura Wing Cap", b3313)
     insert_midi(NEBULALOBBY, OS.TRUE, OS.TRUE, "Nebula Lobby", b3313)
     insert_midi(SEAFORT, OS.TRUE, OS.TRUE, "Sea Fort", b3313)
-    insert_midi(MKDSMENU, OS.TRUE, OS.TRUE, "Single-Player Menu", mkds)
+    insert_midi(MIPSTHEME, OS.TRUE, OS.TRUE, "Mips the Rabbit Theme", sm64ds)
+    insert_midi(MKDSMENU, OS.TRUE, OS.TRUE, "Single-Player Menu (MKDS)", mkds)
+    insert_midi(MK7MENU, OS.TRUE, OS.TRUE, "Single-Player Menu (MK7)", mk7)
     insert_midi(PARALLELLOBBY, OS.TRUE, OS.TRUE, "Pararell Lobby", b3313)
     insert_midi(TOADSTOOLROOM, OS.TRUE, OS.TRUE, "Toadstool's Room", b3313)
     insert_midi(WETTOWN, OS.TRUE, OS.TRUE, "Wet Dry Paradise/Wet Town", b3313)
@@ -1304,6 +1309,10 @@ scope MIDI {
     add_instrument_sample(yoshi3, 0x0, 0x0, 66 * 1879, 0x7F, 0x7F, 0x0, 0x7F,  41, 72,  60, 0x0, 0x3F, 0x7E, OS.FALSE, 0, 0, 0, OS.FALSE)
     add_instrument(Yoshis, 0x7E, 0x3F, 0x05, 1200, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0)
 
+    // Custom instruments start
+    add_instrument_sample(Roland_WowScrape, 0x0, 0x0, 66 * 200, 0x7F, 0x7F, 0x00, 0x7F, 0, 71, 48, -15, 0x3F, 0x7E, OS.TRUE, 12440, 26687, 0xFFFFFFFF, OS.FALSE)
+    add_instrument(Roland WOW Pick Scrape, 0x7E, 0x3F, 0x05, 0x04DD, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0)
+
     // TODO: Why the heck wasn't this Marimba added?
 	add_instrument_sample(marimba-0, 0x0, 0x002625A0, 66 * 1879, 0x7F, 0x0, 0x0, 0x7F,  0,  72,  60, 0x0, 0x3F, 0x7E, OS.FALSE, 0, 0, 0, OS.FALSE)
     add_instrument_sample(marimba-1, 0x0, 0x00249F00, 66 * 1879, 0x7F, 0x0, 0x0, 0x7F, 73,  127,  72, 0x0, 0x3F, 0x7E, OS.FALSE, 0, 0, 0, OS.FALSE)
@@ -1343,6 +1352,13 @@ scope MIDI {
     add_instrument_sample(synth_strings-6, 0x000123FE, 0xFFFFFFFF, 0x0002FBAC, 0x7F, 0x7F, 0x00, 0x7F, 0x4C, 0x7F, 0x4E, 0x0, 0x40, 0x7F, OS.TRUE, 0x00000001, 0x00005E11, 0xFFFFFFFF, OS.TRUE)
     add_instrument(Synth Strings, 0x7F, 0x40, 0x05, 0x04DD, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0)
 
+    // Soothing, classic CAPCOM instrument
+    add_instrument_sample(Vibra_C3, 0x0, 0x0000E8E0, 66 * 3200, 0x7F, 0x7F, 0x00, 0x7F, 0,  59, 48, 0x0, 0x3F, 0x7E, OS.TRUE, 9459, 9704, 0xFFFFFFFF, OS.FALSE)
+    add_instrument_sample(Vibra_C4, 0x0, 0x0000E8E0, 66 * 3200, 0x7F, 0x7F, 0x00, 0x7F, 60,  71, 60, 0x0, 0x3F, 0x7E, OS.TRUE, 8491, 8613, 0xFFFFFFFF, OS.FALSE)
+    add_instrument_sample(Vibra_C5, 0x0, 0x0000E8E0, 66 * 3200, 0x7F, 0x7F, 0x00, 0x7F, 72, 83, 72, 0x0, 0x3F, 0x7E, OS.TRUE, 3057, 3546, 0xFFFFFFFF, OS.FALSE)
+    add_instrument_sample(Vibra_C6, 0x0, 0x0000E8E0, 66 * 3200, 0x7F, 0x7F, 0x00, 0x7F, 84, 95, 84, 0x0, 0x3F, 0x7E, OS.TRUE, 2641, 2885, 0xFFFFFFFF, OS.FALSE)
+    add_instrument(Triton Vibraphone, 0x70, 0x3F, 0x05, 0x04DD, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0) //0x01, 0x04, 0x01, 0x0A, 0x01, 0x04, 0x3B, 0x0A)
+
     // TODO: for these samples, make sure values are correct (assuming we keep this instrument)
     add_instrument_sample(choir-0, 0x00000000, 0x0000C028, 0x00004F2D, 0x1E, 0x7F, 0x00, 0x7F, 0x00, 0x7F, 0x5D, 0x1D, 0x40, 0x7F, OS.TRUE, 0x00000000, 0x000011D0, 0xFFFFFFFF, OS.TRUE)
     add_instrument(Choir, 0x7F, 0x40, 0x05, 0x04DD, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0)
@@ -1351,17 +1367,6 @@ scope MIDI {
     add_instrument_sample(french_horn-0, 0x00000000, 0xFFFFFFFF, 0x0000704E, 0x7F, 0x7F, 0x00, 0x7F, 0x00, 0x57, 0x55, 0x23, 0x40, 0x7F, OS.TRUE, 0x00000596, 0x0000099E, 0xFFFFFFFF, OS.TRUE)
     add_instrument_sample(french_horn-1, 0x00000000, 0xFFFFFFFF, 0x0000704E, 0x7F, 0x7F, 0x00, 0x7F, 0x58, 0x7F, 0x5B, 0x1F, 0x40, 0x7F, OS.TRUE, 0x00000518, 0x00000934, 0xFFFFFFFF, OS.TRUE)
     add_instrument(French Horn, 0x7F, 0x40, 0x05, 0x04DD, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0)
-
-    // Custom instruments start
-    add_instrument_sample(Roland_WowScrape, 0x0, 0x0, 66 * 200, 0x7F, 0x7F, 0x00, 0x7F, 0, 71, 48, -15, 0x3F, 0x7E, OS.TRUE, 12440, 26687, 0xFFFFFFFF, OS.FALSE)
-    add_instrument(Roland WOW Pick Scrape, 0x7E, 0x3F, 0x05, 0x04DD, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0)
-
-    // Soothing, classic CAPCOM instrument
-    add_instrument_sample(Vibra_C3, 0x0, 0x0000E8E0, 66 * 3200, 0x7F, 0x7F, 0x00, 0x7F, 0,  59, 48, 0x0, 0x3F, 0x7E, OS.TRUE, 9459, 9704, 0xFFFFFFFF, OS.FALSE)
-    add_instrument_sample(Vibra_C4, 0x0, 0x0000E8E0, 66 * 3200, 0x7F, 0x7F, 0x00, 0x7F, 60,  71, 60, 0x0, 0x3F, 0x7E, OS.TRUE, 8491, 8613, 0xFFFFFFFF, OS.FALSE)
-    add_instrument_sample(Vibra_C5, 0x0, 0x0000E8E0, 66 * 3200, 0x7F, 0x7F, 0x00, 0x7F, 72, 83, 72, 0x0, 0x3F, 0x7E, OS.TRUE, 3057, 3546, 0xFFFFFFFF, OS.FALSE)
-    add_instrument_sample(Vibra_C6, 0x0, 0x0000E8E0, 66 * 3200, 0x7F, 0x7F, 0x00, 0x7F, 84, 95, 84, 0x0, 0x3F, 0x7E, OS.TRUE, 2641, 2885, 0xFFFFFFFF, OS.FALSE)
-    add_instrument(Triton Vibraphone, 0x70, 0x3F, 0x05, 0x04DD, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0) //0x01, 0x04, 0x01, 0x0A, 0x01, 0x04, 0x3B, 0x0A
 
     // Exotic yet mysterious
     add_instrument_sample(Sitarr_F5, 0x0, 0x0, 66 * 350, 0x7F, 0x7F, 0x0, 0x7F, 0,  127,  65, 0x0, 0x3F, 0x7E, OS.TRUE, 33157, 33527, 0xFFFFFFFF, OS.FALSE)
