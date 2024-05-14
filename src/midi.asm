@@ -775,7 +775,6 @@ scope MIDI {
     insert_midi(OLDERBOWSERBOSS, OS.TRUE, OS.TRUE, "Koopa's Theme (Older ver.)", sm64)
     insert_midi(OLDERSTAR_WOLF, OS.TRUE, OS.TRUE, "Star Wolf (Older ver.)", starfox64)
     insert_midi(OLDERLIVE_AND_LEARN, OS.TRUE, OS.TRUE, "Live and Learn (Older ver.)", sonicadventure2)
-    insert_midi(OLDERSONIC2_SPECIAL, OS.TRUE, OS.TRUE, "Sonic 2 Special Stage (Older ver.)", sonic2)
     insert_midi(OLDERBATTLEFIELD, OS.TRUE, OS.TRUE, "Battlefield (Older ver.)", brawl)
     insert_midi(OLDERGERUDOVALLEY, OS.TRUE, OS.TRUE, "Gerudo Valley (Older ver.)", ocarina)
     insert_midi(TESTMIDI, OS.TRUE, OS.TRUE, "Koopa's Theme (Beta)", sm64)
