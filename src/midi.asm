@@ -722,7 +722,6 @@ scope MIDI {
     insert_midi(NEGATIVE_WING_CAP, OS.TRUE, OS.TRUE, "Negative Aura Wing Cap", b3313)
     insert_midi(NEBULALOBBY, OS.TRUE, OS.TRUE, "Nebula Lobby", b3313)
     insert_midi(SEAFORT, OS.TRUE, OS.TRUE, "Sea Fort", b3313)
-    insert_midi(MIPSTHEME, OS.TRUE, OS.TRUE, "Mips the Rabbit Theme", sm64ds)
     insert_midi(MKDSMENU, OS.TRUE, OS.TRUE, "Single-Player Menu (MKDS)", mkds)
     insert_midi(MK7MENU, OS.TRUE, OS.TRUE, "Single-Player Menu (MK7)", mk7)
     insert_midi(PARALLELLOBBY, OS.TRUE, OS.TRUE, "Pararell Lobby", b3313)
