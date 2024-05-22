@@ -774,6 +774,7 @@ scope MIDI {
     insert_midi(OLDGANONDORF_BATTLE, OS.TRUE, OS.TRUE, "Ganondorf Battle (Old ver.)", ocarina)
     insert_midi(OLDWARIOWARE, OS.TRUE, OS.TRUE, "WarioWare, Inc. (Old ver.)", warioware)
     insert_midi(OLDMM_TITLE, OS.TRUE, OS.TRUE, "Mischief Makers Title Theme (Old ver.)", mischiefmakers)
+    insert_midi(OLDMEMENTOS, OS.TRUE, OS.TRUE, "Last Surprise (Old ver.)", persona5)
     insert_midi(OLDERBOWSERBOSS, OS.TRUE, OS.TRUE, "Koopa's Theme (Older ver.)", sm64)
     insert_midi(OLDERSTAR_WOLF, OS.TRUE, OS.TRUE, "Star Wolf (Older ver.)", starfox64)
     insert_midi(OLDERLIVE_AND_LEARN, OS.TRUE, OS.TRUE, "Live and Learn (Older ver.)", sonicadventure2)
