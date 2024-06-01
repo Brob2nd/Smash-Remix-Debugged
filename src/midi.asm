@@ -475,7 +475,7 @@ scope MIDI {
     insert_midi(TAZMILY, OS.TRUE, OS.TRUE, "Mom's Hometown", mother3)
     insert_midi(FLAT_ZONE, OS.TRUE, OS.TRUE, "Flat Zone", melee)
     insert_midi(FLAT_ZONE_2, OS.TRUE, OS.TRUE, "Flat Zone II", brawl)
-    insert_midi(YOSHI_GOLF, OS.TRUE, OS.TRUE, "Yoshi's Island", mariogolf)
+    insert_midi(YOSHI_GOLF, OS.TRUE, OS.TRUE, "Yoshi's Island (Mario Golf)", mariogolf)
     insert_midi(FINALTEMPLE, OS.TRUE, OS.TRUE, "Great Temple/Dark Link", zelda2)
     insert_midi(OBSTACLE, OS.TRUE, OS.TRUE, "Obstacle Course", yoshis_island)
     insert_midi(EVEN_DRIER_GUYS, OS.TRUE, OS.TRUE, "Even Drier Guys", mother3)
@@ -754,7 +754,7 @@ scope MIDI {
     insert_midi(OLDKOKIRI_FOREST, OS.TRUE, OS.TRUE, "Kokiri Forest (Old ver.)", ocarina)
     insert_midi(OLDLIVE_AND_LEARN, OS.TRUE, OS.TRUE, "Live and Learn (Old ver.)", sonicadventure2)
     insert_midi(OLDMADMONSTER, OS.TRUE, OS.TRUE, "Mad Monster Mansion (Old ver.)", banjokazooie)
-    insert_midi(OLDYOSHI_GOLF, OS.TRUE, OS.TRUE, "Yoshi's Island (Old ver.)", mariogolf)
+    insert_midi(OLDYOSHI_GOLF, OS.TRUE, OS.TRUE, "Yoshi's Island (Mario Golf, Old ver.)", mariogolf)
     insert_midi(OLDKITCHEN_ISLAND, OS.TRUE, OS.TRUE, "Wario Land Theme (Old ver.)", warioland)
     insert_midi(OLDSTAR_WOLF, OS.TRUE, OS.TRUE, "Star Wolf (Old ver.)", starfox64)
     insert_midi(OLDBATTLEFIELD, OS.TRUE, OS.TRUE, "Battlefield (Old ver.)", brawl)
@@ -1063,7 +1063,7 @@ scope MIDI {
     // TODO: Rock out with this organ!
     add_instrument_sample(rock_organ_m3_0, 0x0, 0x0, 66 * 250, 0x7F, 0x7F, 0x0, 0x7F, 0,  78,  67, 0x0, 0x3F, 0x7E, OS.TRUE, 6027, 16305, 0xFFFFFFFF, OS.FALSE)
     add_instrument_sample(rock_organ_m3_1, 0x0, 0x0, 66 * 250, 0x7F, 0x7F, 0x0, 0x7F, 79,  91,  79, 0x0, 0x3F, 0x7E, OS.TRUE, 3014, 8153, 0xFFFFFFFF, OS.FALSE)
-    add_instrument(Rock Organ, 0x7E, 0x3F, 0x05, 1200, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0)
+    add_instrument(Mother 3/WarioWare Rock Organ, 0x7E, 0x3F, 0x05, 1200, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0)
 
     // TODO: Make some cool omninus sounding music with this, or cool backing vocals
     add_instrument_sample(choir_ahhs-0, 0x0, 0x0, 66 * 1754, 0x7F, 0x7F, 0x0, 0x7F,  0, 77, 65, 0x0, 0x3F, 0x7E, OS.TRUE, 3332, 27392, 0xFFFFFFFF, OS.TRUE)
