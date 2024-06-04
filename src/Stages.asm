@@ -2984,7 +2984,7 @@ scope Stages {
     db id.CSIEGE                            // 15
     db id.SPIRALM                           // 16       <-- Movement ON
     db id.SMASHVILLE_REMIX                  // 17       <-- Movement ON
-    db id.YOSHI_ISLAND_DL                   // 18
+    db id.YOSHI_ISLAND_DL                   // 18       <-- Hazards ON
     db id.YOSHIS_ISLAND_II                  // 19       <-- Movement ON
     db id.CLANCER                           // 1A       <-- Movement ON
     db id.FOD                               // 1B       <-- Movement ON
@@ -3016,8 +3016,8 @@ scope Stages {
     db id.BATTLEFIELD_DL                    // 35
     db id.RANDOM                            // 36
     // Page 4 - Additional Viable Stages
-    db id.COOLCOOL_REMIX                    // 37
-    db id.CONGO_JUNGLE                      // 38
+    db id.NORFAIR                           // 37       <-- Hazards OFF
+    db id.CONGO_JUNGLE                      // 38       <-- Hazards OFF
     db id.TOH                               // 39
     db id.RAINBOWROAD                       // 3A       <-- Movement OFF
     db id.BOWSERB                           // 3B       <-- Hazards OFF
@@ -3026,7 +3026,7 @@ scope Stages {
     db id.MMADNESS                          // 3E       <-- Hazards OFF
     db id.DRAGONKING                        // 3F
     db id.KITCHEN                           // 40       <-- Movement ON
-    db id.NORFAIR                           // 41       <-- Hazards OFF
+    db id.COOLCOOL_REMIX                    // 41
     db id.META_CRYSTAL                      // 42
     db id.CORNERIACITY                      // 43       <-- Hazards OFF
     db id.TALTAL_REMIX                      // 44       <-- Hazards OFF
@@ -3040,13 +3040,13 @@ scope Stages {
     db id.HCASTLE_O                         // 4B       <-- Hazards OFF
     db id.ZEBES_O                           // 4C       <-- Hazards OFF
     db id.SMBO                              // 4D       <-- Hazards OFF
-    db id.COOLCOOL_DL                       // 4E
+    db id.HOW_TO_PLAY                       // 54/
     db id.YOSHI_ISLAND_O                    // 4F       <-- Hazards OFF
     db id.DREAM_LAND_O                      // 50       <-- Hazards OFF
     db id.SECTOR_Z_O                        // 51       <-- Hazards OFF
     db id.SAFFRON_O                         // 52       <-- Movement OFF
-    db id.NORFAIR_REMIX                     // 53       <-- Hazards OFF
-    db id.HOW_TO_PLAY                       // 54
+    db id.COOLCOOL_DL                       // 53
+    db id.RANDOM                            // 54
     db id.RANDOM                            // 55
     db id.RANDOM                            // 56
     db id.RANDOM                            // 57
@@ -4860,7 +4860,7 @@ scope Stages {
     add_bg_animation(YOSHI_STORY_2)
     add_stage(world1, "World 1-1", -1, {MIDI.id.SMB3OVERWORLD}, {MIDI.id.NSMB}, OS.FALSE, HAZARDS_ON_MOVEMENT_ON, OS.FALSE, OS.TRUE, class.BATTLE, -1, -1, -1, -1, -1, 0x05, 0x05, 0x05, default_blue_shell_rate + 1, default_lightning_rate + 1, default_item_rate, default_item_rate,  MARIO_BROS, Hazards.type.MOVEMENT)
     add_stage(flat_zone_2, "Flat Zone II", {MIDI.id.FLAT_ZONE_2}, {MIDI.id.FLAT_ZONE}, -1, OS.FALSE, HAZARDS_ON_MOVEMENT_ON, OS.FALSE, OS.TRUE, class.BATTLE, -1, -1, -1, -1, -1, 0x05, 0x05, 0x05, default_blue_shell_rate, default_lightning_rate, default_item_rate, default_item_rate,  GAME_AND_WATCH, Hazards.type.BOTH)
-    add_stage(gerudo, "Gerudo Valley", {MIDI.id.GERUDO_VALLEY}, {MIDI.id.OLDGERUDO_VALLEY}, {MIDI.id.OLDGERUDO_VALLEY}, OS.TRUE, HAZARDS_ON_MOVEMENT_ON, OS.TRUE, OS.TRUE, class.BATTLE, -1, -1, -1, -1, -1, 0x05, 0x05, 0x05, 0x03, 0x02, default_item_rate + 2, default_item_rate, ZELDA, Hazards.type.NONE)
+    add_stage(gerudo, "Gerudo Valley", {MIDI.id.GERUDO_VALLEY}, {MIDI.id.OLDGERUDO_VALLEY}, {MIDI.id.OLDERGERUDOVALLEY}, OS.TRUE, HAZARDS_ON_MOVEMENT_ON, OS.TRUE, OS.TRUE, class.BATTLE, -1, -1, -1, -1, -1, 0x05, 0x05, 0x05, 0x03, 0x02, default_item_rate + 2, default_item_rate, ZELDA, Hazards.type.NONE)
     add_stage(yl_btp, "Board the Platforms", -1, {MIDI.id.TARGET_TEST}, {MIDI.id.TARGET_TEST}, OS.FALSE, HAZARDS_ON_MOVEMENT_ON, OS.FALSE, OS.FALSE, class.BTP, 0x00004120, 0x00004258, -1, -1, -1, 0x05, 0x05, 0x05, default_blue_shell_rate, default_lightning_rate, default_item_rate, default_item_rate,  NONE, Hazards.type.NONE)
     add_stage(falco_btp, "Board the Platforms", -1, {MIDI.id.TARGET_TEST}, {MIDI.id.TARGET_TEST}, OS.FALSE, HAZARDS_ON_MOVEMENT_ON, OS.FALSE, OS.FALSE, class.BTP, 0x00004830, 0x00004968, -1, -1, -1, 0x05, 0x05, 0x05, default_blue_shell_rate, default_lightning_rate, default_item_rate, default_item_rate,  NONE, Hazards.type.NONE)
     add_stage(poly_btp, "Board the Platforms", -1, {MIDI.id.TARGET_TEST}, {MIDI.id.TARGET_TEST}, OS.FALSE, HAZARDS_ON_MOVEMENT_ON, OS.FALSE, OS.FALSE, class.BTP, 0x000047E0, 0x00004890, -1, -1, -1, 0x05, 0x05, 0x05, default_blue_shell_rate, default_lightning_rate, default_item_rate, default_item_rate,  NONE, Hazards.type.NONE)
