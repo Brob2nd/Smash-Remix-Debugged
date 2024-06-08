@@ -3102,7 +3102,7 @@ scope SinglePlayerModes: {
     //  Donkey Kong match settings
     dw  0x00000000                      // flag
     db  Character.id.DK                 // Character ID
-    db  Stages.id.CONGO_JUNGLE          // Stage Option 1
+    db  Stages.id.FALLS                 // Stage Option 1
     db  Stages.id.FALLS                 // Stage Option 2
     db  Stages.id.CONGOJ_DL             // Stage Option 3
     dw  SinglePlayer.name_texture.DRM + 0x10    // name texture
