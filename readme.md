@@ -44,6 +44,8 @@ NewoRGBY_255/ Newo Regevoide:  Instrument Design, Musician/Arranger, helper/assi
 
 Halofactory: Creator of the Tap Jump option, programmer for Vanilla Smash Remix.
 
+MrMarioBros222: Fixer or the Sandbag 1P Modes crashes and animations changes.
+
 coffee: Musician/Arranger of the Donkey Kong Jr. Song and part of the Vanilla Smash Remix OST.
 
 B3313 Team and Newsupkaizo55: Creators of B3313, and musicians/composers of the 16 entirely new songs added for the mod
