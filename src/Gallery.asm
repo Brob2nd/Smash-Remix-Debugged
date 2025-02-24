@@ -104,7 +104,7 @@ scope Gallery {
     dw bgm_remix                            // You Are Proud
 
     bgm_mario:
-    dh 23                                   // number of BGM
+    dh 21                                   // number of BGM
     dh BGM.stage.PEACHS_CASTLE
     dh {MIDI.id.SMB3OVERWORLD}
     dh {MIDI.id.EASTON_KINGDOM}
@@ -118,14 +118,12 @@ scope Gallery {
     dh {MIDI.id.COOLCOOLMOUNTAIN}
     dh {MIDI.id.SLIDER}
     dh {MIDI.id.N64}
-    dh {MIDI.id.ALTAQUARIUMLIMBO}
-    dh {MIDI.id.AQUARIUMLIMBO}
-    dh {MIDI.id.ALTAQUARIUMLIMBO2}
     dh {MIDI.id.WING_CAP}
     dh {MIDI.id.NEGATIVE_WING_CAP}
     dh {MIDI.id.METAL_CAP}
     dh {MIDI.id.SMRPG_BATTLE}
     dh {MIDI.id.BEWARE_THE_FORESTS_MUSHROOMS}
+    dh {MIDI.id.OLDBEWARE_THE_FORESTS_MUSHROOMS}
     dh {MIDI.id.PAPER_MARIO_BATTLE}
     dh {MIDI.id.GHOSTGULPING}
 
@@ -687,9 +685,7 @@ scope Gallery {
     add_bgm_to_gallery({MIDI.id.FILESELECT_B3313}, id.MARIO)
     add_bgm_to_gallery({MIDI.id.CRUMBLINGHALLS}, id.MARIO)
     add_bgm_to_gallery({MIDI.id.NEGATIVE_WING_CAP}, id.MARIO)
-    add_bgm_to_gallery({MIDI.id.ALTAQUARIUMLIMBO}, id.MARIO)
-    add_bgm_to_gallery({MIDI.id.AQUARIUMLIMBO}, id.MARIO)
-    add_bgm_to_gallery({MIDI.id.ALTAQUARIUMLIMBO2}, id.MARIO)
+    add_bgm_to_gallery({MIDI.id.OLDBEWARE_THE_FORESTS_MUSHROOMS}, id.MARIO)
     add_bgm_to_gallery({MIDI.id.BOWSERCHECKEREDMADNESS}, id.BOWSER)
     add_bgm_to_gallery({MIDI.id.CLICKCLOCKWOODS}, id.BANJO)
     add_bgm_to_gallery({MIDI.id.OLDSPIRAL_MOUNTAIN}, id.BANJO)
