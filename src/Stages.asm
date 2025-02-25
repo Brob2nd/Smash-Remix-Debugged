@@ -3045,7 +3045,7 @@ scope Stages {
     db id.SECTOR_Z_O                        // 51       <-- Hazards OFF
     db id.SAFFRON_O                         // 52       <-- Movement OFF
     db id.COOLCOOL_DL                       // 53
-    db id.PIRATELAND                        // 54
+    db id.PIRATE                            // 54
     db id.RANDOM                            // 55
     db id.RANDOM                            // 56
     db id.RANDOM                            // 57
