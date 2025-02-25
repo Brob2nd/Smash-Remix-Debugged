@@ -297,6 +297,13 @@ scope BGM {
         lbu     t2, Gallery.status.active(t2) // t2 = 1 if gallery is active
         bnez    t2, _build_random_list      // branch accordingly (sneak past guard)
         nop
+        // similar check for 'Swap Music' Z-Cancel punishment (FIX THIS LATER, will break when adding more punishments)
+        li      t2, Toggles.entry_punish_on_failed_z_cancel
+        lw      t2, 0x0004(t2)              // a2 = selected punishment (11 if SWAP MUSIC)
+        sltiu   t2, t2, 0x000B              // a2 = 0 only if Swap Music
+        beqz    t2, _build_random_list      // if random music punishment selected, continue
+        nop
+
         Toggles.guard(Toggles.entry_random_music, 0x00000000)
 
         _build_random_list:
@@ -343,6 +350,12 @@ scope BGM {
         li      t0, Pause.dpad_song_cycle_timer   // t0 = dpad_song_cycle_timer
         lw      t0, 0x0000(t0)              // t0 = 0 if true
         beqz    t0, _end                    // if we are doing pause dpad music randomization, skip to end
+        nop
+        // similar check for Swap Music Z-Cancel punishment (FIX THIS LATER, will break when adding more punishments)
+        li      t0, Toggles.entry_punish_on_failed_z_cancel
+        lw      t0, 0x0004(t0)              // a2 = selected punishment (11 if SWAP MUSIC)
+        sltiu   t0, t0, 0x000B              // a2 = 0 only if Swap Music
+        beqz    t0, _end                    // if random music punishment selected, continue
         nop
         li      t0, Gallery.status          // t0 = gallery status
         lbu     t0, Gallery.status.active(t0) // t0 = 1 if gallery is active

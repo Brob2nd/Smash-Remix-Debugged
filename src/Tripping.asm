@@ -168,11 +168,17 @@ scope Tripping {
 
         // a2 is player struct
         // t6, v0, v1 are safe to edit
+        li      t6, Toggles.entry_punish_on_failed_z_cancel
+        lw      t6, 0x0004(t6)              // a2 = entry_tripping (10 if ON)
+        addiu   v0, r0, 0x000A              // ~
+        beq     t6, v0, _continue           // if trip punishment selected, continue
+
         li      t6, Toggles.entry_tripping
         lw      t6, 0x0004(t6)              // t6 = entry_tripping (0 if OFF, 1 if LOW, 2 if HIGH, 3 if "BRAWL")
         beqz    t6, _return                 // if tripping disabled, return normally
         nop
 
+        _continue:
         lbu     v0, 0x000D(a2)              // v0 = player index (0 - 3)
         li      t6, tripping.player_trip_flag
         addu    t6, t6, v0                  // t6 = address of trip flag for this player
