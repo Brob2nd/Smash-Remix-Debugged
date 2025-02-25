@@ -2940,8 +2940,9 @@ scope Stages {
     db id.MEMENTOS                          // 64
     db id.SHOWDOWN                          // 65
     db id.FLAT_ZONE_2                       // 66
-    db id.FRAYS_STAGE_NIGHT                 // 67                 // 68
-    db id.HRC                               // 69
+    db id.FRAYS_STAGE_NIGHT                 // 67
+    db id.RANDOM                            // 68
+    db id.RANDOM                            // 69
     db id.RANDOM                            // 6A
     db id.RANDOM                            // 6B
     db id.RANDOM                            // 6C
@@ -4934,7 +4935,7 @@ scope Stages {
     add_bg_animation(SECTOR_Z_REMIX)
     add_position_array(SECTOR_Z_REMIX, -3328, 0, 2048)
     add_stage(mute, "Mute City", {MIDI.id.MUTE_CITY}, {MIDI.id.FIRE_FIELD}, {MIDI.id.MACHRIDER}, OS.FALSE, HAZARDS_ON_MOVEMENT_ON, OS.TRUE, OS.TRUE, class.BATTLE, -1, -1, -1, -1, -1, 0x05, 0x05, 0x05, default_blue_shell_rate, default_lightning_rate, default_item_rate, default_item_rate,  FZERO, Hazards.type.BOTH)
-    add_stage(hrc, "Home Run Contest", -1, {MIDI.id.TARGET_TEST}, {MIDI.id.TARGET_TEST}, OS.FALSE, HAZARDS_ON_MOVEMENT_ON, OS.FALSE, OS.FALSE, class.RTTF, -1, -1, -1, -1, -1, 0x05, 0x05, 0x05, default_blue_shell_rate, default_lightning_rate, default_item_rate, default_item_rate,  REMIX, Hazards.type.NONE)
+    add_stage(hrc, "Home Run Contest", -1, {MIDI.id.TARGET_TEST}, {MIDI.id.TARGET_TEST}, OS.FALSE, HAZARDS_ON_MOVEMENT_ON, OS.FALSE, OS.FALSE, class.RTTF, -1, -1, -1, id.DUEL_ZONE, variant_type.REMIX, 0x05, 0x05, 0x05, default_blue_shell_rate, default_lightning_rate, default_item_rate, default_item_rate,  REMIX, Hazards.type.NONE)
     add_stage(mk_remix, "Mushroom Kingdom SR", -1, {MIDI.id.SMB3OVERWORLD}, {MIDI.id.NSMB}, OS.FALSE, HAZARDS_ON_MOVEMENT_ON, OS.FALSE, OS.TRUE, class.BATTLE, -1, -1, -1, id.MUSHROOM_KINGDOM, variant_type.REMIX, 0x05, 0x05, 0x05, default_blue_shell_rate + 1, default_lightning_rate + 1, default_item_rate, default_item_rate,  MARIO_BROS, Hazards.type.HAZARDS)
     add_stage(ghz, "Green Hill Zone", {MIDI.id.GREEN_HILL_ZONE}, {MIDI.id.EMERALDHILL}, {MIDI.id.CHEMICAL_PLANT}, OS.TRUE, HAZARDS_ON_MOVEMENT_ON, OS.TRUE, OS.TRUE, class.BATTLE, -1, -1, -1, -1, -1, 0x05, 0x05, 0x05, default_blue_shell_rate, default_lightning_rate, default_item_rate, default_item_rate,  SONIC, Hazards.type.MOVEMENT)
     add_bg_animation(GHZ)
