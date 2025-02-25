@@ -2940,8 +2940,7 @@ scope Stages {
     db id.MEMENTOS                          // 64
     db id.SHOWDOWN                          // 65
     db id.FLAT_ZONE_2                       // 66
-    db id.FRAYS_STAGE_NIGHT                 // 67
-    db id.SMASHVILLE_REMIX                  // 68
+    db id.FRAYS_STAGE_NIGHT                 // 67                 // 68
     db id.HRC                               // 69
     db id.RANDOM                            // 6A
     db id.RANDOM                            // 6B
@@ -3046,7 +3045,7 @@ scope Stages {
     db id.SECTOR_Z_O                        // 51       <-- Hazards OFF
     db id.SAFFRON_O                         // 52       <-- Movement OFF
     db id.COOLCOOL_DL                       // 53
-    db id.RANDOM                            // 54
+    db id.PIRATELAND                        // 54
     db id.RANDOM                            // 55
     db id.RANDOM                            // 56
     db id.RANDOM                            // 57
@@ -4936,7 +4935,7 @@ scope Stages {
     add_position_array(SECTOR_Z_REMIX, -3328, 0, 2048)
     add_stage(mute, "Mute City", {MIDI.id.MUTE_CITY}, {MIDI.id.FIRE_FIELD}, {MIDI.id.MACHRIDER}, OS.FALSE, HAZARDS_ON_MOVEMENT_ON, OS.TRUE, OS.TRUE, class.BATTLE, -1, -1, -1, -1, -1, 0x05, 0x05, 0x05, default_blue_shell_rate, default_lightning_rate, default_item_rate, default_item_rate,  FZERO, Hazards.type.BOTH)
     add_stage(hrc, "Home Run Contest", -1, {MIDI.id.TARGET_TEST}, {MIDI.id.TARGET_TEST}, OS.FALSE, HAZARDS_ON_MOVEMENT_ON, OS.FALSE, OS.FALSE, class.RTTF, -1, -1, -1, -1, -1, 0x05, 0x05, 0x05, default_blue_shell_rate, default_lightning_rate, default_item_rate, default_item_rate,  REMIX, Hazards.type.NONE)
-    add_stage(mk_remix, "Mushroom Kingdom II", -1, {MIDI.id.SMB3OVERWORLD}, {MIDI.id.NSMB}, OS.FALSE, HAZARDS_ON_MOVEMENT_ON, OS.FALSE, OS.TRUE, class.BATTLE, -1, -1, -1, id.MUSHROOM_KINGDOM, variant_type.REMIX, 0x05, 0x05, 0x05, default_blue_shell_rate + 1, default_lightning_rate + 1, default_item_rate, default_item_rate,  MARIO_BROS, Hazards.type.HAZARDS)
+    add_stage(mk_remix, "Mushroom Kingdom SR", -1, {MIDI.id.SMB3OVERWORLD}, {MIDI.id.NSMB}, OS.FALSE, HAZARDS_ON_MOVEMENT_ON, OS.FALSE, OS.TRUE, class.BATTLE, -1, -1, -1, id.MUSHROOM_KINGDOM, variant_type.REMIX, 0x05, 0x05, 0x05, default_blue_shell_rate + 1, default_lightning_rate + 1, default_item_rate, default_item_rate,  MARIO_BROS, Hazards.type.HAZARDS)
     add_stage(ghz, "Green Hill Zone", {MIDI.id.GREEN_HILL_ZONE}, {MIDI.id.EMERALDHILL}, {MIDI.id.CHEMICAL_PLANT}, OS.TRUE, HAZARDS_ON_MOVEMENT_ON, OS.TRUE, OS.TRUE, class.BATTLE, -1, -1, -1, -1, -1, 0x05, 0x05, 0x05, default_blue_shell_rate, default_lightning_rate, default_item_rate, default_item_rate,  SONIC, Hazards.type.MOVEMENT)
     add_bg_animation(GHZ)
     add_stage(subcon, "Subcon", {MIDI.id.SMB2OVERWORLD}, {MIDI.id.SMB2_MEDLEY}, {MIDI.id.SMB2BOSS}, OS.FALSE, HAZARDS_ON_MOVEMENT_ON, OS.FALSE, OS.TRUE, class.BATTLE, -1, -1, -1, -1, -1, 0x05, 0x05, 0x05, default_blue_shell_rate + 1, default_lightning_rate + 1, default_item_rate, default_item_rate,  MARIO_BROS, Hazards.type.MOVEMENT)
@@ -4982,7 +4981,7 @@ scope Stages {
     add_stage(yoshis_island_melee, "Dinosaur Land", {MIDI.id.SMW_ATHLETIC}, {MIDI.id.SMW_TITLECREDITS}, {MIDI.id.FORTRESS_BOSS}, OS.FALSE, HAZARDS_ON_MOVEMENT_ON, OS.TRUE, OS.TRUE, class.BATTLE, -1, -1, -1, -1, -1, 0x05, 0x05, 0x05, default_blue_shell_rate, default_lightning_rate, default_item_rate, default_item_rate, YOSHI, Hazards.type.MOVEMENT)
     add_stage(banjo_btt, "Break the Targets", -1, {MIDI.id.TARGET_TEST}, {MIDI.id.TARGET_TEST}, OS.FALSE, HAZARDS_ON_MOVEMENT_ON, OS.FALSE, OS.FALSE, class.BTT, 0x00005300, 0x00005970, 0x00005B80, -1, -1, 0x05, 0x05, 0x05, default_blue_shell_rate, default_lightning_rate, default_item_rate, default_item_rate,  NONE, Hazards.type.NONE)
     add_stage(spawned_fear, "Spawned Fear", {MIDI.id.DOOM1}, {MIDI.id.RUNNING_FROM_EVIL}, {MIDI.id.GRABBAG}, OS.FALSE, HAZARDS_ON_MOVEMENT_ON, OS.TRUE, OS.TRUE, class.BATTLE, -1, -1, -1, -1, -1, 0x05, 0x05, 0x05, default_blue_shell_rate, default_lightning_rate, default_item_rate, default_item_rate, DOOM, Hazards.type.BOTH)
-    add_stage(smashville_remix, "Town and City", {MIDI.id.ANIMAL_CROSSING}, {MIDI.id.KK_RIDER}, {MIDI.id.7AM}, OS.TRUE, HAZARDS_ON_MOVEMENT_ON, OS.TRUE, OS.TRUE, class.BATTLE, -1, -1, -1, -1, -1, 0x05, 0x05, 0x05, default_blue_shell_rate, default_lightning_rate, default_item_rate, default_item_rate,  ANIMAL_CROSSING, Hazards.type.MOVEMENT)
+    add_stage(smashville_remix, "Smashville Remix", {MIDI.id.ANIMAL_CROSSING}, {MIDI.id.KK_RIDER}, {MIDI.id.7AM}, OS.TRUE, HAZARDS_ON_MOVEMENT_ON, OS.TRUE, OS.TRUE, class.BATTLE, -1, -1, -1, id.SMASHVILLE2, variant_type.REMIX, 0x05, 0x05, 0x05, default_blue_shell_rate, default_lightning_rate, default_item_rate, default_item_rate,  ANIMAL_CROSSING, Hazards.type.MOVEMENT)
     add_stage(btp_banjo, "Board the Platforms", -1, {MIDI.id.TARGET_TEST}, {MIDI.id.TARGET_TEST}, OS.FALSE, HAZARDS_ON_MOVEMENT_ON, OS.FALSE, OS.FALSE, class.BTP, 0x00007050, 0x00007188, -1, -1, -1, 0x05, 0x05, 0x05, default_blue_shell_rate, default_lightning_rate, default_item_rate, default_item_rate,  NONE, Hazards.type.NONE)
     add_bg_animation(SMASHVILLE_REMIX)
     add_stage(pokefloats, "Poke Floats", {MIDI.id.POKEFLOATS}, {MIDI.id.BATTLE_GOLD_SILVER}, {MIDI.id.GOLDENROD_CITY}, OS.FALSE, HAZARDS_ON_MOVEMENT_ON, OS.TRUE, OS.TRUE, class.BATTLE, -1, -1, -1, -1, -1, 0x05, 0x05, 0x05, default_blue_shell_rate, default_lightning_rate, default_item_rate, default_item_rate, POKEMON, Hazards.type.MOVEMENT)
