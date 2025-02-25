@@ -2436,14 +2436,14 @@ scope Character {
         db  id.METAL;   db  id.NMARIO;   db  id.JMARIO; db  id.NONE        // 0x00 - MARIO
         db  id.PEPPY;   db  id.NFOX;     db  id.JFOX;   db  id.NONE        // 0x01 - FOX
         db  id.GDONKEY; db  id.NDONKEY;  db  id.JDK;    db  id.NONE        // 0x02 - DONKEY
-        db  id.SANDBAG; db  id.NSAMUS;   db  id.JSAMUS; db  id.ESAMUS      // 0x03 - SAMUS
+        db  id.NONE;    db  id.NSAMUS;   db  id.JSAMUS; db  id.ESAMUS      // 0x03 - SAMUS
         db  id.MLUIGI;  db  id.NLUIGI;   db  id.JLUIGI; db  id.NONE        // 0x04 - LUIGI
         db  id.BOSS;    db  id.NLINK;    db  id.JLINK;  db  id.ELINK       // 0x05 - LINK
         db  id.NONE;    db  id.NYOSHI;   db  id.JYOSHI; db  id.NONE        // 0x06 - YOSHI
         db  id.NONE;    db  id.NCAPTAIN; db  id.JFALCON;db  id.NONE        // 0x07 - CAPTAIN
         db  id.PIANO;   db  id.NKIRBY;   db  id.JKIRBY; db  id.NONE        // 0x08 - KIRBY
         db  id.NONE;    db  id.NPIKACHU; db  id.JPIKA;  db  id.EPIKA       // 0x09 - PIKACHU
-        db  id.NONE;    db  id.NJIGGLY;  db  id.JPUFF;  db  id.EPUFF       // 0x0A - JIGGLY
+        db  id.SANDBAG; db  id.NJIGGLY;  db  id.JPUFF;  db  id.EPUFF       // 0x0A - JIGGLY
         db  id.NONE;    db  id.NNESS;    db  id.JNESS;  db  id.NONE        // 0x0B - NESS
         db  id.NONE;    db  id.NONE;     db  id.NONE;   db  id.NONE        // 0x0C - BOSS
         db  id.NONE;    db  id.NONE;     db  id.NONE;   db  id.NONE        // 0x0D - METAL

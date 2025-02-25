@@ -14,7 +14,7 @@ scope Sandbag {
     Character.edit_action_parameters(SANDBAG, Action.Revive1,                 File.SANDBAG_DOWN_BOUNCE_D,           -1,                         -1)
     Character.edit_action_parameters(SANDBAG, Action.Revive2,                 File.SANDBAG_DOWN_STAND_D,            -1,                         -1)
     Character.edit_action_parameters(SANDBAG, Action.ReviveWait,              File.SANDBAG_IDLE,                    -1,                         -1)
-    Character.edit_action_parameters(SANDBAG, Action.Idle,                    File.SANDBAG_IDLE,                    0x800000000,                         -1)
+    Character.edit_action_parameters(SANDBAG, Action.Idle,                    File.SANDBAG_IDLE,                    0x800000000,                -1)
     Character.edit_action_parameters(SANDBAG, Action.Fall,                    File.SANDBAG_FALL,                    -1,                         -1)
     Character.edit_action_parameters(SANDBAG, Action.FallAerial,              File.SANDBAG_FALL,                    -1,                         -1)
     Character.edit_action_parameters(SANDBAG, Action.Teeter,                  File.SANDBAG_IDLE,                    0x800000000,                -1)
@@ -140,6 +140,10 @@ scope Sandbag {
         dw 0 //dw string_0x0ED
         dw 0 //dw string_0x0EE
     }
+
+    Character.table_patch_start(variant_original, Character.id.SANDBAG, 0x4)
+    dw      Character.id.JIGGLY // set Jigglypuff as original character (not Falcon, who Sandbag is a clone of)
+    OS.patch_end()
 
     // Set action strings
     Character.table_patch_start(action_string, Character.id.SANDBAG, 0x4)

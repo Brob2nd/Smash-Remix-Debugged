@@ -4110,6 +4110,7 @@ scope CharacterSelect {
         constant MLUIGI(0x2A88 + 0x10)
         constant EBI(0x2B60 + 0x10)
         constant DRAGONKING(0x2C38 + 0x10)
+        constant SANDBAG(0x2D10 + 0x10)
     }
 
     // @ Description
@@ -4183,6 +4184,9 @@ scope CharacterSelect {
         lli     t2, Character.id.DRAGONKING
         beql    a1, t2, _draw_icon          // If DRAGONKING, then draw DRAGONKING stock icon
         addiu   a1, at, VARIANT_ICON_OFFSET.DRAGONKING // a1 = DRAGONKING footer struct
+        lli     t2, Character.id.SANDBAG
+        beql    a1, t2, _draw_icon          // If SANDBAG, then draw SANDBAG stock icon
+        addiu   a1, at, VARIANT_ICON_OFFSET.SANDBAG // a1 = SANDBAG footer struct
         lli     t2, Character.id.BOSS
         bne     a1, t2, _gdk                // If not Master Hand, then skip... otherwise, draw Master Hand stock icon
         addiu   a1, at, VARIANT_ICON_OFFSET.MASTER_HAND // a1 = Master Hand footer struct
@@ -5549,7 +5553,7 @@ scope CharacterSelect {
     add_to_css(Character.id.MTWO,   FGM.announcer.names.MEWTWO,         1.50,         0x00010004, POKEMON,      name_texture.MEWTWO,         portrait_offsets.MTWO,           -1)
     add_to_css(Character.id.MARTH,  FGM.announcer.names.MARTH,          1.50,         0x00010004, FIRE_EMBLEM,  name_texture.MARTH,          portrait_offsets.MARTH,          -1)
     add_to_css(Character.id.SONIC,  FGM.announcer.names.SONIC,        	1.50,         0x00010004, SONIC,        name_texture.SONIC,          portrait_offsets.SONIC,          -1)
-    add_to_css(Character.id.SANDBAG,FGM.announcer.names.FALCO,          1.50,         0x00010001, SMASH,        name_texture.JPUFF,          portrait_offsets.SANDBAG,        -1)
+    add_to_css(Character.id.SANDBAG,FGM.announcer.names.FALCO,          1.50,         0x00010001, SMASH,        name_texture.JPUFF,          portrait_offsets.SANDBAG,        17)
     add_to_css(Character.id.SSONIC, FGM.announcer.names.SSONIC,        	1.50,         0x00010004, SONIC,        name_texture.SSONIC,         portrait_offsets.SSONIC,         9)
     add_to_css(Character.id.SHEIK,  FGM.announcer.names.SHEIK,          1.50,         0x00010001, ZELDA,        name_texture.SHEIK,          portrait_offsets.SHEIK,          -1)
     add_to_css(Character.id.MARINA, FGM.announcer.names.MARINA,        	1.50,         0x00010004, MISCHIEF_MAKERS,  name_texture.MARINA,     portrait_offsets.MARINA,         -1)
