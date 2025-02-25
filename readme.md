@@ -25,7 +25,7 @@ A4: It's the same as the normal version, except it removes the Old, Older and Be
 
 Q5: Can i use this mod for my tournament?
 
-A5: Yes, you can! That's why there's an extended Tournament SSS in the mod! It's optional tho, meaning that if you want, you can still use vanilla Smash Remix for your tournaments!
+A5: Yes, you can! That's why there's an extended Tournament SSS in the mod! It's optional though, meaning that if you want, you can still use vanilla Smash Remix for your tournaments!
 
 # Modder's FAQ/Q&A
 
@@ -44,7 +44,7 @@ NewoRGBY_255/ Newo Regevoide:  Instrument Design, Musician/Arranger, helper/assi
 
 Halofactory: Creator of the Tap Jump option, programmer for Vanilla Smash Remix.
 
-MrMarioBros222: Fixer or the Sandbag 1P Modes crashes and animations changes.
+MrMarioBros222: Fixer of the Sandbag 1P Modes crashes and animations changes.
 
 coffee: Musician/Arranger of the Donkey Kong Jr. Song and part of the Vanilla Smash Remix OST.
 
