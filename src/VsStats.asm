@@ -368,31 +368,28 @@ scope VsStats {
         mtc1    t0, f0                                   // ~
         cvt.s.w f0, f0                                   // f0 = successful z-cancels, fp
 
-        li      t0, ZCancel.missed_z_cancels             // t0 = successful z cancels
-        lli     t5, {port}                               // ~
+        li      t0, ZCancel.missed_z_cancels             // t0 = missed z cancels
+        lli     t5, {port}                               // t5 = port 1-4
         addiu   t5, t5, -0x0001                          // t5 = port 0-3
         sll     t5, t5, 0x0002                           // t5 = port index * 4
         addu    t0, t0, t5                               // t0 = address of missed z-cancels for this port
         lw      t0, 0x0000(t0)                           // t0 = missed z-cancels for this port
-        mtc1    t0, f4                                   // f4 = t0
-        cvt.s.w f4, f4                                   // convert t0 value to fp
+        mtc1    t0, f4                                   // ~
+        cvt.s.w f4, f4                                   // f4 = missed z-cancels, fp
 
-        add.s   f2, f0, f4                               // f2 = total amount of z-cancel opportunities
-        mtc1    r0, f4
-        c.le.s  f2, f4
+        add.s   f2, f0, f4                               // f2 = total amount of z-cancels (hit+missed)
+        mtc1    r0, f4                                   // ~
+        c.le.s  f2, f4                                   // ~
         nop
-        bc1t    pc()+44
+        bc1t    pc()+32                                  // branch to end if there have been 0 z-cancels in total
         nop
 
         lui     t0, 0x42C8                               // ~
         mtc1    t0, f4                                   // f4 = 100.0
         mul.s   f0, f0, f4                               // f0 = successful z-cancels * 100.0
-        nop
-        div.s   f4, f0, f2                               // f4 = (successful * 100) / (failed + successful)
-        nop
-        cvt.w.s f4, f4                                   // f4 = (word)percent
-        nop
-        swc1    f4, 0x0020(t{port})                      // store percentage of successful z cancels
+        div.s   f4, f0, f2                               // f4 = f0 (successful * 100) / f2 (failed + successful)
+        cvt.w.s f0, f4                                   // f4 = z-cancel success rate as word
+        swc1    f0, 0x0020(t{port})                      // store percentage
     }
 
     // @ Description
