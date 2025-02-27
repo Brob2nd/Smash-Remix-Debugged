@@ -36,7 +36,7 @@ scope VsStats {
     db      0x00
 
     constant TOTAL_PAGES(2)
-    constant PAGE1_GROUP(0x19)  // randomly chosen group, maybe there's a more suitable one?
+    constant PAGE1_GROUP(0x1A)  // randomly chosen group, supports up to 7 pages before running out of space
 
     // @ Description
     // Strings used
