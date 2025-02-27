@@ -4110,7 +4110,6 @@ scope CharacterSelect {
         constant MLUIGI(0x2A88 + 0x10)
         constant EBI(0x2B60 + 0x10)
         constant DRAGONKING(0x2C38 + 0x10)
-        constant SANDBAG(0x2D10 + 0x10)
     }
 
     // @ Description
@@ -4185,8 +4184,8 @@ scope CharacterSelect {
         beql    a1, t2, _draw_icon          // If DRAGONKING, then draw DRAGONKING stock icon
         addiu   a1, at, VARIANT_ICON_OFFSET.DRAGONKING // a1 = DRAGONKING footer struct
         lli     t2, Character.id.SANDBAG
-        beql    a1, t2, _draw_icon          // If SANDBAG, then draw SANDBAG stock icon
-        addiu   a1, at, VARIANT_ICON_OFFSET.SANDBAG // a1 = SANDBAG footer struct
+        beq     a1, t2, _sandbag            // If SANDBAG, then draw SANDBAG stock icon
+        sll     t2, t2, 0x0002              // t2 = SANDBAG * 4 (offset in struct table)
         lli     t2, Character.id.BOSS
         bne     a1, t2, _gdk                // If not Master Hand, then skip... otherwise, draw Master Hand stock icon
         addiu   a1, at, VARIANT_ICON_OFFSET.MASTER_HAND // a1 = Master Hand footer struct
@@ -4198,6 +4197,20 @@ scope CharacterSelect {
         nop
         b       _draw_icon
         nop
+
+        _sandbag:
+        // If here, Sandbag. Loading stock icon from character struct
+        li      t1, 0x80116E10              // t1 = main character struct table
+        addu    t1, t1, t2                  // t1 = pointer to character struct
+        lw      t1, 0x0000(t1)              // t1 = character struct
+        lw      t2, 0x0028(t1)              // t2 = main character file address pointer
+        lw      t2, 0x0000(t2)              // t2 = main character file address
+        beqz    t2, _gdk
+        lw      t1, 0x0060(t1)              // t1 = offset to attribute data
+        addu    t1, t2, t1                  // t1 = attribute data address
+        lw      t1, 0x0340(t1)              // t1 = pointer to stock icon footer address
+        b       _draw_icon
+        lw      a1, 0x0000(t1)              // a1 = stock icon footer address
 
         _gdk:
         // If here, GDK. Loading stock icon from character struct
