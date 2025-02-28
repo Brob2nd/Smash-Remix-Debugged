@@ -173,7 +173,7 @@ scope Gallery {
     dh {MIDI.id.JUNGLEJAPES}
     dh {MIDI.id.SNAKEY_CHANTEY}
     dh {MIDI.id.SKERRIES}
-    DH {MIDI.id.KROOLS_ACID_PUNK}
+    dh {MIDI.id.KROOLS_ACID_PUNK}
     dh {MIDI.id.FOREST_INTERLUDE}
     dh {MIDI.id.STICKERBRUSH_SYMPHONY}
     dh {MIDI.id.DK_RAP}
