@@ -568,6 +568,7 @@ scope MIDI {
     insert_midi(DANGEROUS_GUYS, OS.TRUE, OS.TRUE, "Dangerous Guys", mother3)
     insert_midi(MORAY_TOWERS, OS.TRUE, OS.TRUE, "Splattack!", splatoon)
     insert_midi(DK_JR_STAGE, OS.TRUE, OS.TRUE, "Donkey Kong Jr.", dkjr)
+    insert_midi(4THFLOOR, OS.TRUE, OS.TRUE, "4th Floor", b3313)
     insert_midi(BATTLECYRUS, OS.TRUE, OS.TRUE, "Battle! Cyrus", pokemondp)
     insert_midi(BASSDRIVE, OS.TRUE, OS.TRUE, "BassDrive.mid", smkr)
     insert_midi(CRUMBLINGHALLS, OS.TRUE, OS.TRUE, "Crumbling Castle", b3313)
@@ -587,6 +588,7 @@ scope MIDI {
     insert_midi(MKDSMENU, OS.TRUE, OS.TRUE, "Single-Player Menu (MKDS)", mkds)
     insert_midi(PARALLELLOBBY, OS.TRUE, OS.TRUE, "Pararell Lobby", b3313)
     insert_midi(WETTOWN, OS.TRUE, OS.TRUE, "Wet Dry Paradise/Wet Town", b3313)
+    insert_midi(TOADSTOOLROOM, OS.TRUE, OS.TRUE, "Toadstool's", b3313)
     insert_extra_midi(OLDFALCO_VICTORY)
 
     pushvar origin, base
