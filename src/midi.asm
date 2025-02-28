@@ -156,7 +156,7 @@ scope MIDI {
     add_game(smw, "Super Mario World")
     add_game(sm64, "Super Mario 64")
     add_game(b3313, "B3313")
-    add_game(b3313u, "B3313")
+    add_game(b3313u, "B3313 Unabandoned")
     add_game(sunshine, "Super Mario Sunshine")
     add_game(nsmb, "New Super Mario Bros.")
     add_game(drm, "Dr. Mario")
