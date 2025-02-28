@@ -588,7 +588,7 @@ scope MIDI {
     insert_midi(MKDSMENU, OS.TRUE, OS.TRUE, "Single-Player Menu (MKDS)", mkds)
     insert_midi(PARALLELLOBBY, OS.TRUE, OS.TRUE, "Pararell Lobby", b3313)
     insert_midi(WETTOWN, OS.TRUE, OS.TRUE, "Wet Dry Paradise/Wet Town", b3313)
-    insert_midi(TOADSTOOLROOM, OS.TRUE, OS.TRUE, "Toadstool's", b3313)
+    insert_midi(TOADSTOOLROOM, OS.TRUE, OS.TRUE, "Toadstool's Room", b3313)
     insert_extra_midi(OLDFALCO_VICTORY)
 
     pushvar origin, base
