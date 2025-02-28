@@ -164,7 +164,7 @@ scope Gallery {
     dh {MIDI.id.TALENTSTUDIO}
 
     bgm_dk:
-    dh 12                                   // number of BGM
+    dh 13                                   // number of BGM
     dh BGM.stage.CONGO_JUNGLE
     dh {MIDI.id.DKCTITLE}
     dh {MIDI.id.DK_JR_STAGE}
@@ -173,6 +173,7 @@ scope Gallery {
     dh {MIDI.id.JUNGLEJAPES}
     dh {MIDI.id.SNAKEY_CHANTEY}
     dh {MIDI.id.SKERRIES}
+    DH {MIDI.id.KROOLS_ACID_PUNK}
     dh {MIDI.id.FOREST_INTERLUDE}
     dh {MIDI.id.STICKERBRUSH_SYMPHONY}
     dh {MIDI.id.DK_RAP}
@@ -681,6 +682,7 @@ scope Gallery {
     add_bgm_to_gallery({MIDI.id.DK_JR_STAGE}, id.DK)
     add_bgm_to_gallery({MIDI.id.DK_RAPMELEE}, id.DK)
     add_bgm_to_gallery({MIDI.id.JUNGLEJAPES64}, id.DK)
+    add_bgm_to_gallery({MIDI.id.KROOLS_ACID_PUNK}, id.DK)
     add_bgm_to_gallery({MIDI.id.ITSATRAP_SM64}, id.MARIO)
     add_bgm_to_gallery({MIDI.id.FILESELECT_B3313}, id.MARIO)
     add_bgm_to_gallery({MIDI.id.CRUMBLINGHALLS}, id.MARIO)
