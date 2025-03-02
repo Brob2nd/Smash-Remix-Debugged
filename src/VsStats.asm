@@ -61,6 +61,8 @@ scope VsStats {
     tech_stats:; db "Tech Stats", 0x00
     ledge_stats:; db "Ledge Stats", 0x00
     times_grabbed:; db "Times grabbed", 0x00
+    airdodge_stats:; db "Air Dodge Stats", 0x00
+    times_dodged:; db "Times dodged", 0x00
     dash:; db "-", 0x00
     press_b:; db ": Back", 0x00
     press_r:; db ": Next Page", 0x00
@@ -842,7 +844,7 @@ scope VsStats {
         nop
 
         _combo_stats_on_check:
-        // If combo meter is off, skip to _end and don't draw combo stats section
+        // If combo meter is off, skip to page 2 and don't draw combo stats section
         Toggles.guard(Toggles.entry_combo_meter, _combo_stats_off)
 
         addiu   a2, a2, 5                   // adjust y for cleaner spacing
@@ -882,6 +884,24 @@ scope VsStats {
         addiu   a2, a2, -1                  // adjust y for better underline
         draw_underline(64, 1)
         draw_row(times_grabbed, 0, LedgeTrump.ledges_grabbed, 0x0000, 0x0004, -1, -1, 1)
+
+        b       _air_dodge_on_check
+        nop
+
+        _air_dodge_off:
+        b       _end
+        nop
+
+        _air_dodge_on_check:
+        // If air dodge is off, skip to _end and don't draw air dodge stats
+        Toggles.guard(Toggles.entry_air_dodge, _air_dodge_off)
+
+        addiu   a2, a2, 5                   // adjust y for cleaner spacing
+        draw_header(airdodge_stats, 1)
+        addiu   a2, a2, -1                  // adjust y for better underline
+        draw_underline(86, 1)
+        draw_row(times_dodged, 0, AirDodge.airdodge_count, 0x0000, 0x0004, -1, -1, 1)
+
 
         // Hide stat groups so they aren't visible when first entering results screen
         _end:
@@ -982,6 +1002,11 @@ scope VsStats {
         sw      r0, 0x0008(t8)          // clear p3 count
         sw      r0, 0x000C(t8)          // clear p4 count
         li      t8, LedgeTrump.ledges_grabbed
+        sw      r0, 0x0000(t8)          // clear p1 count
+        sw      r0, 0x0004(t8)          // clear p2 count
+        sw      r0, 0x0008(t8)          // clear p3 count
+        sw      r0, 0x000C(t8)          // clear p4 count
+        li      t8, AirDodge.airdodge_count
         sw      r0, 0x0000(t8)          // clear p1 count
         sw      r0, 0x0004(t8)          // clear p2 count
         sw      r0, 0x0008(t8)          // clear p3 count
