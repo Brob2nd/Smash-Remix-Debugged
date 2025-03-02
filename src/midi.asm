@@ -569,7 +569,7 @@ scope MIDI {
     insert_midi(DK_JR_STAGE, OS.TRUE, OS.TRUE, "Donkey Kong Jr.", dkjr)
     insert_midi(4THFLOOR, OS.TRUE, OS.TRUE, "4th Floor", b3313)
     insert_midi(BATTLECYRUS, OS.TRUE, OS.TRUE, "Battle! Cyrus", pokemondiamond)
-    insert_midi(HUMANSDEMONSAND, OS.TRUE, OS.TRUE, "Battle - Humans, Demons, and...-", smtv)
+    insert_midi(HUMANSDEMONSAND, OS.TRUE, OS.TRUE, "Battle - Humans, Demons, and...", smtv)
     insert_midi(BASSDRIVE, OS.TRUE, OS.TRUE, "BassDrive.mid", smkr)
     insert_midi(CRUMBLINGHALLS, OS.TRUE, OS.TRUE, "Crumbling Castle", b3313)
     insert_midi(DEEPSWIMMING, OS.TRUE, OS.TRUE, "Deep Swimming", b3313)
