@@ -376,17 +376,6 @@ scope ZCancel {
     // @ Description
     // Makes sure egg lay file is present if Cruel Z-Cancel is set to Egg
     scope setup_: {
-        li      t8, ZCancel.missed_z_cancels
-        sw      r0, 0x0000(t8)          // clear p1 count
-        sw      r0, 0x0004(t8)          // clear p2 count
-        sw      r0, 0x0008(t8)          // clear p3 count
-        sw      r0, 0x000C(t8)          // clear p4 count
-        li      t8, ZCancel.successful_z_cancels
-        sw      r0, 0x0000(t8)          // clear p1 count
-        sw      r0, 0x0004(t8)          // clear p2 count
-        sw      r0, 0x0008(t8)          // clear p3 count
-        sw      r0, 0x000C(t8)          // clear p4 count
-
         OS.read_word(Toggles.entry_punish_on_failed_z_cancel + 0x4, t8) // t8 = failed z cancel toggle
         lli     t0, _cruel_z_cancel.CRUEL_Z_CANCEL_MODE.EGG
         beq     t0, t8, _load_egg_file  // if egg, load file

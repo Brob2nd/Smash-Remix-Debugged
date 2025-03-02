@@ -79,6 +79,29 @@ scope LedgeTrump {
 
     }
 
+    scope track_ledge_grabs: {
+        OS.patch_start(0x59E88, 0x800DE688)
+        jal     track_ledge_grabs
+        addiu   t3, r0, 0x0001          // og line 1
+        _return:
+        OS.patch_end()
 
+        li      s1, LedgeTrump.ledges_grabbed
+        lbu     v0, 0x000D(v0)              // v0 = player index (0 - 3)
+        sll     v0, v0, 0x0002              // v0 = player index * 4
+        addu    s1, s1, v0                  // s1 = address of ledge grab count for this player
+        lw      v0, 0x0000(s1)              // v0 = ledge grab count
+        addiu   v0, v0, 0x0001              // increment
+        sw      v0, 0x0000(s1)              // store updated ledge grab count
+
+        j       _return
+        sw      t3, 0x0064(s1)          // og line 2
+    }
+
+    ledges_grabbed:
+    dw  0x00    // p1
+    dw  0x00    // p2
+    dw  0x00    // p3
+    dw  0x00    // p4
 
 }
