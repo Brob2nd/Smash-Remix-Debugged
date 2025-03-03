@@ -981,6 +981,9 @@ scope VsStats {
     }
 
     scope tracker_setup_: {
+        addiu   sp, sp, -0x0010             // allocate stack space
+        sw      ra, 0x0004(sp)              // save ra
+
         li      t8, ZCancel.successful_z_cancels
         sw      r0, 0x0000(t8)          // clear p1 count
         sw      r0, 0x0004(t8)          // clear p2 count
@@ -1011,6 +1014,12 @@ scope VsStats {
         sw      r0, 0x0004(t8)          // clear p2 count
         sw      r0, 0x0008(t8)          // clear p3 count
         sw      r0, 0x000C(t8)          // clear p4 count
+
+        _end:
+        lw      ra, 0x0004(sp)              // restore ra
+        addiu   sp, sp, 0x0010              // deallocate stack space
+        jr      ra
+        nop
     }
 }
 
