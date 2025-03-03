@@ -356,14 +356,11 @@ scope BGM {
         lbu     t2, Gallery.status.active(t2) // t2 = 1 if gallery is active
         bnez    t2, _build_random_list      // branch accordingly (sneak past guard)
         nop
-        // similar check for 'Swap Music' Z-Cancel punishment
-        li      t2, Toggles.entry_punish_on_failed_z_cancel
-        lw      t2, 0x0004(t2)              // a2 = selected punishment (11 if SWAP MUSIC)
-        addiu   t2, t2, -0x000B             // a2 = 0 only if Swap Music
-        beqz    t2, _build_random_list      // branch accordingly (sneak past guard)
+        // check if here from Z-Cancel Swap Music punishment
+        li      t2, ZCancel._cruel_z_cancel._swapping_music
+        lw      t2, 0x0000(t2)              // t0 = 1 if we are here from Swap Music Z-Cancel punishment
+        bnez    t2, _build_random_list      // branch accordingly (sneak past guard)
         nop
-
-        li      t2, Toggles.entry_random_music
         Toggles.guard(Toggles.entry_random_music, 0x00000000)
 
         _build_random_list:
