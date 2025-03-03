@@ -360,9 +360,10 @@ scope BGM {
         li      t2, Toggles.entry_punish_on_failed_z_cancel
         lw      t2, 0x0004(t2)              // a2 = selected punishment (11 if SWAP MUSIC)
         addiu   t2, t2, -0x000B             // a2 = 0 only if Swap Music
-        beqz    t2, _build_random_list      // if random music punishment selected, continue
+        beqz    t2, _build_random_list      // branch accordingly (sneak past guard)
         nop
 
+        li      t2, Toggles.entry_random_music
         Toggles.guard(Toggles.entry_random_music, 0x00000000)
 
         _build_random_list:
@@ -410,15 +411,13 @@ scope BGM {
         lw      t0, 0x0000(t0)              // t0 = 0 if true
         beqz    t0, _end                    // if we are doing pause dpad music randomization, skip to end
         nop
-        // similar check for Swap Music Z-Cancel punishment
-        li      t0, Toggles.entry_punish_on_failed_z_cancel
-        lw      t0, 0x0004(t0)              // a2 = selected punishment (11 if SWAP MUSIC)
-        addiu   t0, t0, -0x000B             // a2 = 0 only if Swap Music
-        beqz    t0, _end                    // if random music punishment selected, continue
-        nop
         li      t0, Gallery.status          // t0 = gallery status
         lbu     t0, Gallery.status.active(t0) // t0 = 1 if gallery is active
         beq     t0, at, _end                // if Gallery mode is enabled, skip to end
+        nop
+        li      t0, ZCancel._cruel_z_cancel._swapping_music
+        lw      t0, 0x0000(t0)              // t0 = 1 if we are here from Swap Music Z-Cancel punishment
+        bnez    t0, _end                    // if currently swapping music, skip to end
         nop
         beqz    v1, _end                    // if there were no valid entries in the random table, then use default bgm_id
         nop

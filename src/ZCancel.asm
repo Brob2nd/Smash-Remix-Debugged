@@ -92,8 +92,13 @@ scope ZCancel {
         OS.save_registers()
 
         // this block loads from the random list using a random int
+        li      t0, ZCancel._cruel_z_cancel._swapping_music
+        addiu   t8, r0, 0x0001              // ~
+        sw      t8, 0x0000(t0)              // set _swapping_music to 1
         jal     BGM.random_music_
         nop
+        li      t0, ZCancel._cruel_z_cancel._swapping_music
+        sw      r0, 0x0000(t0)              // set _swapping_music to 0
         beqz    v1, _swap_music_restore     // if there were no valid entries in the random table, then don't do anything
         nop
         move    a0, v1                      // a0 - range (0, N-1)
@@ -283,6 +288,9 @@ scope ZCancel {
         lw      t9, 0x0028(v1)           // original line 2
 
         _last_known_speed_value:
+        dw 0
+
+        _swapping_music:
         dw 0
     }
 
