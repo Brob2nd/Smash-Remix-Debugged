@@ -573,6 +573,7 @@ scope MIDI {
     insert_midi(BASSDRIVE, OS.TRUE, OS.TRUE, "BassDrive.mid", smkr)
     insert_midi(CRUMBLINGHALLS, OS.TRUE, OS.TRUE, "Crumbling Castle", b3313)
     insert_midi(DEEPSWIMMING, OS.TRUE, OS.TRUE, "Deep Swimming", b3313)
+    insert_midi(DIREDIREVICTORY, OS.TRUE, OS.TRUE, "Dire, Dire Victory", b3313)
     insert_midi(DIREDIRELOSS, OS.TRUE, OS.TRUE, "Dire, Dire Loss/Wiggler's Fortress", b3313)
     insert_midi(DKCOURT, OS.TRUE, OS.TRUE, "Donkey Kong's Court", mariotennis)
     insert_midi(DOWNTOWNCITY, OS.TRUE, OS.TRUE, "Downtown City", b3313)
