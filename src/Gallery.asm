@@ -104,7 +104,7 @@ scope Gallery {
     dw bgm_remix                            // You Are Proud
 
     bgm_mario:
-    dh 25                                   // number of BGM
+    dh 23                                   // number of BGM
     dh BGM.stage.PEACHS_CASTLE
     dh {MIDI.id.SMB3OVERWORLD}
     dh {MIDI.id.EASTON_KINGDOM}
@@ -117,11 +117,9 @@ scope Gallery {
     dh {MIDI.id.CASTLEWALL}
     dh {MIDI.id.4THFLOOR}
     dh {MIDI.id.TOADSTOOLROOM}
-    dh {MIDI.id.PARALLELLOBBY}
     dh {MIDI.id.BOB}
     dh {MIDI.id.COOLCOOLMOUNTAIN}
     dh {MIDI.id.N64}
-    dh {MIDI.id.AQUARIUMLIMBO}
     dh {MIDI.id.SLIDER}
     dh {MIDI.id.WING_CAP}
     dh {MIDI.id.METAL_CAP}
@@ -702,9 +700,18 @@ scope Gallery {
     add_bgm_to_gallery({MIDI.id.METAL_CAP}, id.MARIO)
     add_bgm_to_gallery({MIDI.id.DANGEROUS_GUYS}, id.LUCAS)
     add_bgm_to_gallery({MIDI.id.PIGGYGUYS}, id.LUCAS)
+    add_bgm_to_gallery({MIDI.id.OLDUNFOUNDED_REVENGE}, id.LUCAS)
     add_bgm_to_gallery({MIDI.id.ALL_I_NEEDED_WAS_YOU}, id.NESS)
     add_bgm_to_gallery({MIDI.id.I_BELIEVE_IN_YOU}, id.NESS)
     add_bgm_to_gallery({MIDI.id.BOWSERAIRSHIP}, id.BOWSER)
+    add_bgm_to_gallery({MIDI.id.4THFLOOR}, id.MARIO)
+    add_bgm_to_gallery({MIDI.id.TOADSTOOLROOM}, id.MARIO)
+    add_bgm_to_gallery({MIDI.id.CASTLEWALL}, id.MARIO)
+    add_bgm_to_gallery({MIDI.id.BOWSERROOM}, id.BOWSER)
+    add_bgm_to_gallery({MIDI.id.BOWSERPRISON}, id.BOWSER)
+    add_bgm_to_gallery({MIDI.id.TEMPLE_8BIT}, id.LINK)
+    add_bgm_to_gallery({MIDI.id.DREAMLANDBETA}, id.KIRBY)
+    add_bgm_to_gallery({MIDI.id.SHOWDOWN}, id.KIRBY)
 
     // @ Description
     // Table which holds the 'L' and 'R' sound effects for drumming
