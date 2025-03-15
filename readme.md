@@ -7,7 +7,7 @@ It also adds some extra content, such as the Tap Jump option, New Songs, More St
 
 # FAQ/Q&A
 
-Q1: Does Smash Remix Debugged run on the latest Smash Remix patch?
+Q1: Does Smash Remix Debugged use the latest Smash Remix patch?
 
 A1: Yes, it does!
 
@@ -37,7 +37,8 @@ MetaSSB / Meta Nais: Co-leader of the project, programmer, musician/composer, he
 
 NewoRGBY_255/ Newo Regevoide:  Instrument Design, Musician/Arranger, helper/assistant with composing songs for the mod, Special Thanks.
 
-- Special thanks to the last 2 mentioned for really helping me with Smash Remix Debugged.
+Krix08: Developer, and creator of new features like adding More Stats when the match ends, a BGM/SFX Volume setting or more Failed Z-Cancel punishements, Special Thanks.
+- Special thanks to the last 3 mentioned for really helping me with Smash Remix Debugged.
 
 Halofactory: Creator of the Tap Jump option, programmer for Vanilla Smash Remix.
 
