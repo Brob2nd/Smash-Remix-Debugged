@@ -37,7 +37,7 @@ MetaSSB / Meta Nais: Co-leader of the project, programmer, musician/composer, he
 
 NewoRGBY_255/ Newo Regevoide:  Instrument Design, Musician/Arranger, helper/assistant with composing songs for the mod, Special Thanks.
 
-Krix08: Developer, and creator of new features like adding More Stats when the match ends, a BGM/SFX Volume setting or more Failed Z-Cancel punishements, Special Thanks.
+Krix08: Creator of Extended VS Stats, Music/SFX volume toggles, Sleep/Trip/Swap Music options for Punish Failed Z-Cancel, Special Thanks.
 - Special thanks to the last 3 mentioned for really helping me with Smash Remix Debugged.
 
 Halofactory: Creator of the Tap Jump option, programmer for Vanilla Smash Remix.
