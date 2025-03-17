@@ -35,12 +35,14 @@ Brobgonal Second: Leader of the project, programmer, musician/composer
 
 MetaSSB / Meta Nais: Co-leader of the project, programmer, musician/composer, helper/assistant with programming and composing songs for the mod, Special Thanks.
 
-NewoRGBY_255/ Newo Regevoide:  Instrument Design, Musician/Arranger, helper/assistant with composing songs for the mod, Special Thanks.
+NewoRGBY_255/ Newo Regevoide:  Instrument Design, Musician/Arranger of 'Battle! Cyrus', helper/assistant with composing songs for the mod, Special Thanks.
 
 Krix08: Creator of Extended VS Stats, Music/SFX volume toggles, Sleep/Trip/Swap Music options for Punish Failed Z-Cancel, Special Thanks.
 - Special thanks to the last 3 mentioned for really helping me with Smash Remix Debugged.
 
 Halofactory: Creator of the Tap Jump option, programmer for Vanilla Smash Remix.
+
+Yaruzu: Musician/Arranger of 'Battle - Humans, Demons and...' and 'Lance Battle'
 
 MrMarioBros222: Fixer of the Sandbag 1P Modes crashes and animations changes.
 
