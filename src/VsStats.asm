@@ -720,6 +720,8 @@ scope VsStats {
         addu    a0, a0, a1                               // a0 = PAGE1_GROUP + next page
         jal     Render.toggle_group_display_
         lli     a1, 0x0000                               // a1 = 0 -> turn on this display list
+        jal     FGM.play_                                // play menu toggle sound
+        lli     a0, FGM.menu.SCROLL                      // a0 - fgm_id
 
         _end:
         lw      ra, 0x0004(sp)              // restore registers
