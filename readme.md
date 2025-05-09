@@ -42,9 +42,11 @@ Krix08: Creator of Extended VS Stats, Music/SFX volume toggles, Sleep/Trip/Swap 
 
 Halofactory: Creator of the Tap Jump option, programmer for Vanilla Smash Remix.
 
-Yaruzu: Musician/Arranger of 'Battle - Humans, Demons and...' and 'Lance Battle'
+Yaruzu: Musician/Arranger of 'Battle - Humans, Demons and...', 'Lance Battle' and 'You Will Know Our Names'
 
 MrMarioBros222: Fixer of the Sandbag 1P Modes crashes and animations changes.
+
+MichaelthemanX: Sandbag's Announcer
 
 coffee: Musician/Arranger of the Donkey Kong Jr. Song and part of the Vanilla Smash Remix OST.
 
