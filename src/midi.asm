@@ -240,6 +240,7 @@ scope MIDI {
     add_game(persona5, "Persona 5")
     add_game(fire_emblem, "Fire Emblem")
     add_game(fe_gaiden, "Fire Emblem Gaiden")
+    add_game(xenoblade, "Xenoblade Chronicles")
     add_game(sonic1, "Sonic the Hedgehog")
     add_game(sonic2, "Sonic the Hedgehog 2")
     add_game(soniccd, "Sonic CD")
@@ -587,6 +588,7 @@ scope MIDI {
     insert_midi(PARALLELLOBBY, OS.TRUE, OS.TRUE, "Parallel Lobby", b3313)
     insert_midi(WETTOWN, OS.TRUE, OS.TRUE, "Wet Dry Paradise/Wet Town", b3313)
     insert_midi(TOADSTOOLROOM, OS.TRUE, OS.TRUE, "Toadstool's Room", b3313)
+    insert_midi(YOUWILLKNOWOURNAMES, OS.TRUE, OS.TRUE, "You Will Know Our Names", xenoblade)
     insert_extra_midi(OLDFALCO_VICTORY)
 
     pushvar origin, base
