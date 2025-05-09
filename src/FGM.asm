@@ -1795,6 +1795,7 @@ scope FGM {
             constant NGOEMON(1380)
             constant NBANJO(1381)
             constant EPUFF(1388)
+            constant SANDBAG(1403)
         }
 
         scope css {
