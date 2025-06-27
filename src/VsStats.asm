@@ -31,6 +31,14 @@ scope VsStats {
     db      0x00
 
     // @ Description
+    // Current stat page
+    current_page:
+    db      0x00
+
+    constant TOTAL_PAGES(3)
+    constant PAGE1_GROUP(0x1A)  // randomly chosen group, supports up to 7 pages before running out of space
+
+    // @ Description
     // Strings used
     press_a:; db "Press     for Match Stats", 0x00
     p1:; db "1P", 0x00
@@ -46,8 +54,24 @@ scope VsStats {
     max_combo_hits_vs:; db "Longest Combo VS", 0x00
     max_combo_hits_taken:; db "Max Hits Taken", 0x00
     max_combo_damage_taken:; db "Max Damage Taken", 0x00
+    z_cancel_stats:; db "Z-Cancel Stats", 0x00
+    stat_percent:; db "Success %", 0x00
+    stat_success:; db "Successful", 0x00
+    stat_missed:; db "Missed", 0x00
+    tech_stats:; db "Tech Stats", 0x00
+    ledge_stats:; db "Ledge Stats", 0x00
+    times_grabbed:; db "Times grabbed", 0x00
+    airdodge_stats:; db "Air Dodge Stats", 0x00
+    times_dodged:; db "Times dodged", 0x00
+    special_move_stats:; db "Special Move Stats", 0x00
+    up_special:; db "Up Specials used", 0x00
+    neutral_special:; db "Neutral Specials used", 0x00
+    down_special:; db "Down Specials used", 0x00
+    grab_stats:; db "Grab Stats", 0x00
+    attempted_grabs:; db "Attempted grabs", 0x00
     dash:; db "-", 0x00
     press_b:; db ": Back", 0x00
+    press_r:; db ": Next Page", 0x00
     OS.align(4)
 
     // @ Description
@@ -70,9 +94,11 @@ scope VsStats {
             dw      0x00                                 // 0x0014 = total_damage_taken
             dw      0x00                                 // 0x0018 = total_damage_given
             dw      0x00                                 // 0x001C = highest_damage
+            dw      0x00                                 // 0x0020 = percentage_z_cancel
+            dw      0x00                                 // 0x0024 = percentage_tech
         }
     }
-    constant STATS_STRUCT_SIZE(0x20)
+    constant STATS_STRUCT_SIZE(0x28)
 
     // Create stats structs
     stats_struct(1)
@@ -92,6 +118,8 @@ scope VsStats {
         sw      r0, 0x0014(t2)                           // total_damage_taken = 0
         sw      r0, 0x0018(t2)                           // total_damage_given = 0
         sw      r0, 0x001C(t2)                           // highest_damage = 0
+        sw      r0, 0x0020(t2)                           // percentage_z_cancel = 0
+        sw      r0, 0x0024(t2)                           // percentage_tech = 0
     }
 
     // @ Description
@@ -113,9 +141,11 @@ scope VsStats {
 
     // @ Description
     // This macro draws a line of the given width to act as an underline
-    macro draw_underline(width) {
-        jal     draw_underline_
+    macro draw_underline(width, page) {
         lli     a0, {width}
+        lli     a1, {page}
+        jal     draw_underline_
+        addiu   a1, a1, PAGE1_GROUP
     }
 
     // @ Description
@@ -130,7 +160,6 @@ scope VsStats {
 
         or      s3, r0, a0                  // s3 = width
         lli     a0, 0x1F                    // a0 = room
-        lli     a1, 0x0E                    // a1 = group
         lli     s1, 24                      // s3 = ulx
         or      s2, r0, a2                  // s2 = uly
         lli     s4, 1                       // s4 = height
@@ -151,8 +180,8 @@ scope VsStats {
     // Draws a row with only a label
     // @ Arguments
     // label - address of the string to render
-    macro draw_header(label) {
-        draw_row({label}, 0, 0, 0, 0, -1, -1)
+    macro draw_header(label, page) {
+        draw_row({label}, 0, 0, 0, 0, -1, -1, {page})
     }
 
     // @ Description
@@ -165,13 +194,15 @@ scope VsStats {
     // struct_size - size of the struct
     // port_to_skip - port to skip (0 - 3) when drawing the stats
     // ignore_port - ignore port - don't draw anything when this port is not active
-    macro draw_row(label, indent, table, offset, struct_size, port_to_skip, ignore_port) {
+    macro draw_row(label, indent, table, offset, struct_size, port_to_skip, ignore_port, page) {
         li      t4, {label}                 // t4 = address of label
         lli     t5, {indent}                // t5 = indent
         addiu   t6, r0, {ignore_port}       // t6 = ignore port
         li      a0, {table}                 // a0 = address of table
         addiu   a0, a0, {offset}            // a0 = address of value
         lli     a1, {struct_size}           // a1 = size of struct
+        lli     t7, {page}                  // t7 = page
+        addiu   t7, t7, PAGE1_GROUP         // t7 = group for page
         // a2 = y
         jal     draw_line_
         lli     a3, {port_to_skip}          // a3 = port to skip
@@ -187,6 +218,7 @@ scope VsStats {
     // t4 - label address
     // t5 - indent amount for label
     // t6 - ignore port - don't do anything when this port is not active
+    // t7 - group
     scope draw_line_: {
         li      t0, stats_struct_p1         // t0 = stats_struct_p1 address
         bltz    t6, _begin                  // if no ignore port (-1) then don't test for active port
@@ -209,6 +241,7 @@ scope VsStats {
         sw      a1, 0x0018(sp)              // ~
         sw      a2, 0x001C(sp)              // ~
         sw      a3, 0x0020(sp)              // ~
+        sw      t7, 0x0028(sp)              // save group
 
         lli     t1, 184                     // t1 = start urx
         sw      t1, 0x0010(sp)              // save start urx
@@ -227,7 +260,7 @@ scope VsStats {
         sb      t3, 0x0000(t1)              // save flipped value
 
         lli     a0, 0x1F                    // a0 = room
-        lli     a1, 0x0E                    // a1 = group
+        lw      a1, 0x0028(sp)              // a1 = group
         lli     s1, 23                      // s3 = ulx
         addiu   s2, a2, 0                   // s2 = uly
         lli     s3, 266                     // s3 = width
@@ -238,7 +271,7 @@ scope VsStats {
 
         _draw_header:
         lli     a0, 0x1F                    // a0 = room
-        lli     a1, 0x0E                    // a1 = group
+        lw      a1, 0x0028(sp)              // a1 = group
         or      a2, r0, t4                  // a2 = label string address
         lli     a3, 0x0000                  // a3 = Render.NOOP
         lli     t0, 24                      // t0 = ulx
@@ -265,7 +298,7 @@ scope VsStats {
 
         // draw stat
         lli     a0, 0x1F                    // a0 = room
-        lli     a1, 0x0E                    // a1 = group
+        lw      a1, 0x0028(sp)              // a1 = group
         lw      a2, 0x0014(sp)              // a2 = value address
         lli     a3, 0x0000                  // a3 = Render.NOOP
         lw      t0, 0x0010(sp)              // t0 = urx
@@ -336,6 +369,72 @@ scope VsStats {
         // total damage given:
         lw      t5, 0x0034(t0)                           // t3 = total damage given during match
         sw      t5, 0x0018(t{port})                      // store total damage given
+
+        // z cancel percentage:
+        li      t0, VsStats.successful_z_cancels         // t0 = successful z cancels
+        lli     t5, {port}                               // t5 = port 1-4
+        addiu   t5, t5, -0x0001                          // t5 = port 0-3
+        sll     t5, t5, 0x0002                           // t5 = port index * 4
+        addu    t0, t0, t5                               // t0 = address of successful z-cancels for this port
+        lw      t0, 0x0000(t0)                           // t0 = successful z-cancels for this port
+        mtc1    t0, f0                                   // ~
+        cvt.s.w f0, f0                                   // f0 = successful z-cancels, fp
+
+        li      t0, VsStats.missed_z_cancels             // t0 = missed z cancels
+        lli     t5, {port}                               // t5 = port 1-4
+        addiu   t5, t5, -0x0001                          // t5 = port 0-3
+        sll     t5, t5, 0x0002                           // t5 = port index * 4
+        addu    t0, t0, t5                               // t0 = address of missed z-cancels for this port
+        lw      t0, 0x0000(t0)                           // t0 = missed z-cancels for this port
+        mtc1    t0, f4                                   // ~
+        cvt.s.w f4, f4                                   // f4 = missed z-cancels, fp
+
+        add.s   f2, f0, f4                               // f2 = total amount of z-cancels (hit+missed)
+        mtc1    r0, f4                                   // ~
+        c.le.s  f2, f4                                   // ~
+        nop
+        bc1t    pc()+32                                  // branch to end if there have been 0 z-cancels in total
+        nop
+
+        lui     t0, 0x42C8                               // ~
+        mtc1    t0, f4                                   // f4 = 100.0
+        mul.s   f0, f0, f4                               // f0 = successful z-cancels * 100.0
+        div.s   f4, f0, f2                               // f4 = f0 (successful * 100) / f2 (failed + successful)
+        cvt.w.s f0, f4                                   // f4 = z-cancel success rate as word
+        swc1    f0, 0x0020(t{port})                      // store percentage
+
+        // tech percentage:
+        li      t0, VsStats.successful_techs             // t0 = successful techs
+        lli     t5, {port}                               // t5 = port 1-4
+        addiu   t5, t5, -0x0001                          // t5 = port 0-3
+        sll     t5, t5, 0x0002                           // t5 = port index * 4
+        addu    t0, t0, t5                               // t0 = address of successful techs for this port
+        lw      t0, 0x0000(t0)                           // t0 = successful techs for this port
+        mtc1    t0, f0                                   // ~
+        cvt.s.w f0, f0                                   // f0 = successful techs, fp
+
+        li      t0, VsStats.missed_techs                 // t0 = missed techs
+        lli     t5, {port}                               // t5 = port 1-4
+        addiu   t5, t5, -0x0001                          // t5 = port 0-3
+        sll     t5, t5, 0x0002                           // t5 = port index * 4
+        addu    t0, t0, t5                               // t0 = address of missed techs for this port
+        lw      t0, 0x0000(t0)                           // t0 = missed techs for this port
+        mtc1    t0, f4                                   // ~
+        cvt.s.w f4, f4                                   // f4 = missed techs, fp
+
+        add.s   f2, f0, f4                               // f2 = total amount of techs (hit+missed)
+        mtc1    r0, f4                                   // ~
+        c.le.s  f2, f4                                   // ~
+        nop
+        bc1t    pc()+32                                  // branch to end if there have been 0 techs in total
+        nop
+
+        lui     t0, 0x42C8                               // ~
+        mtc1    t0, f4                                   // f4 = 100.0
+        mul.s   f0, f0, f4                               // f0 = successful techs * 100.0
+        div.s   f4, f0, f2                               // f4 = f0 (successful * 100) / f2 (failed + successful)
+        cvt.w.s f0, f4                                   // f4 = techs success rate as word
+        swc1    f0, 0x0024(t{port})                      // store percentage
     }
 
     // @ Description
@@ -350,6 +449,16 @@ scope VsStats {
         nop
         sw      t3, 0x001C(t0)                           // store new highest damage
         _end_collect_{port}:
+    }
+
+    // @ Description
+    // This macro flips the starting stripe value of the last page to keep a checkerboard pattern on the next
+    macro checkerboard_stripe() {
+        lb      a1, 0x0018(sp)              // a1 = starting value of stripe for last page
+        xori    a1, a1, 0x0001              // 0 -> 1 or 1 -> 0 (flip bool)
+        sb      a1, 0x0018(sp)              // save flipped value to use again next page
+        li      a0, stripe_on               // a0 = stripe_on
+        sb      a1, 0x0000(a0)              // save flipped value for this page
     }
 
     // @ Description
@@ -556,7 +665,14 @@ scope VsStats {
         jal     Render.toggle_group_display_
         lli     a1, 0x0001                               // a1 = 1 -> turn off this display list
 
-        lli     a0, 0x0E                                 // a0 = group of stats menu
+        lli     a0, 0x0E                                 // a0 = group of stats instructions + port headers
+        jal     Render.toggle_group_display_
+        lli     a1, 0x0000                               // a1 = 0 -> turn on this display list
+
+        lli     a0, PAGE1_GROUP                          // a0 = group of stats (page 1)
+        li      a1, current_page                         // ~
+        lb      a1, 0x0000(a1)                           // a1 = current page
+        addu    a0, a0, a1                               // a0 = PAGE1_GROUP + current page
         jal     Render.toggle_group_display_
         lli     a1, 0x0000                               // a1 = 0 -> turn on this display list
 
@@ -576,7 +692,7 @@ scope VsStats {
         lli     a2, Joypad.PRESSED                       // a2 - type
         jal     Joypad.check_buttons_all_                // v0 - bool b_pressed
         nop
-        beqz    v0, _end                                 // if (!b_pressed), end
+        beqz    v0, _check_r                             // if (!b_pressed), check for R button
         nop
 
         // if here, set button press buffer
@@ -599,9 +715,71 @@ scope VsStats {
         jal     Render.toggle_group_display_
         lli     a1, 0x0000                               // a1 = 0 -> turn on this display list
 
-        lli     a0, 0x0E                                 // a0 = group of stats menu
+        lli     a0, 0x0E                                 // a0 = group of stats instructions + port headers
         jal     Render.toggle_group_display_
         lli     a1, 0x0001                               // a1 = 1 -> turn off this display list
+
+        lli     a0, PAGE1_GROUP                          // a0 = group of stats (page 1)
+        lli     a2, TOTAL_PAGES                          // a2 = max amount of pages
+        addiu   a2, a2, PAGE1_GROUP                      // ~
+        addiu   a2, a2, -0x0001                          // a2 = max page + 1st page group - 1
+
+        // Loop to turn off all stat pages
+        _loop_page_off_b:
+        sltu    at, a2, a0                               // at = 0 if next group > TOTAL_PAGES group
+        bnez    at, _end                                 // if all pages turned off, don't loop
+        nop
+        jal     Render.toggle_group_display_
+        lli     a1, 0x0001                               // a1 = 1 -> turn off this display list
+
+        b       _loop_page_off_b
+        addiu   a0, a0, 0x0001                           // increment next group and loop
+
+        // check for r press
+        _check_r:
+        lli     a0, Joypad.R                             // a0 - button_mask
+        lli     a1, 000420                               // a1 - whatever you like!
+        lli     a2, Joypad.PRESSED                       // a2 - type
+        jal     Joypad.check_buttons_all_                // v0 - bool r_pressed
+        nop
+        beqz    v0, _end                                 // if (!r_pressed), end
+        nop
+
+        // If we're here, R has been pressed, so update the current page
+        li      a0, current_page                         // a0 = address of current page
+        lb      a1, 0x0000(a0)                           // ~
+        addiu   a1, a1, 0x0001                           // a1 = current page + 1
+        sltiu   a2, a1, TOTAL_PAGES                      // a2 = 0 only when next page < TOTAL_PAGES
+        beqzl   a2, _loop_setup                          // skip rollover if within bounds
+        sb      r0, 0x0000(a0)                           // rollover if next page > TOTAL_PAGES
+        sb      a1, 0x0000(a0)                           // current page = next page
+
+        _loop_setup:
+        lli     a0, PAGE1_GROUP                          // a0 = group of stats (page 1)
+        lli     a2, TOTAL_PAGES                          // a2 = max amount of pages
+        addiu   a2, a2, PAGE1_GROUP                      // ~
+        addiu   a2, a2, -0x0001                          // a2 = max page + 1st page group - 1
+
+        // Loop to turn off all stat pages
+        _loop_page_off_r:
+        sltu    at, a2, a0                               // at = 0 if next group > TOTAL_PAGES group
+        bnez    at, _enable_next_page                    // if all pages turned off, don't loop
+        nop
+        jal     Render.toggle_group_display_
+        lli     a1, 0x0001                               // a1 = 1 -> turn off this display list
+
+        b       _loop_page_off_r
+        addiu   a0, a0, 0x0001                           // increment next group and loop
+
+        _enable_next_page:
+        lli     a0, PAGE1_GROUP                          // a0 = group of stats (page 1)
+        li      a1, current_page                         // ~
+        lb      a1, 0x0000(a1)                           // a1 = next page
+        addu    a0, a0, a1                               // a0 = PAGE1_GROUP + next page
+        jal     Render.toggle_group_display_
+        lli     a1, 0x0000                               // a1 = 0 -> turn on this display list
+        jal     FGM.play_                                // play menu toggle sound
+        lli     a0, FGM.menu.SCROLL                      // a0 - fgm_id
 
         _end:
         lw      ra, 0x0004(sp)              // restore registers
@@ -662,6 +840,13 @@ scope VsStats {
         addiu   sp, sp,-0x0030              // allocate stack space
         sw      ra, 0x0004(sp)              // save registers
 
+        li      t1, current_page            // t1 = current_page address
+        sb      r0, 0x0000(t1)              // set current_page to 0 (always show first page)
+
+        li      t1, stripe_on               // t1 = stripe_on address
+        lb      t1, 0x0000(t1)              // t1 = stripe_on
+        sb      t1, 0x0018(sp)              // store starting value of stripe_on for checkerboard between pages
+
         li      t1, stats_struct_p1         // t1 = stats_struct_p1 address
         li      t2, stats_struct_p2         // t2 = stats_struct_p2 address
         li      t3, stats_struct_p3         // t3 = stats_struct_p3 address
@@ -699,52 +884,130 @@ scope VsStats {
         Render.draw_string(0x1F, 0x0E, press_b, Render.NOOP, 0x420B0000, 0x417F0000, 0xFFFFFFFF, 0x3F500000, Render.alignment.LEFT, OS.FALSE)
         Render.draw_texture_at_offset(0x1F, 0x0E, Render.file_pointer_1, Render.file_c5_offsets.B, Render.NOOP, 0x41B40000, 0x41600000, 0x00D040FF, 0x003000FF, 0x3F800000)
 
+        // R: Next Page upper left
+        Render.draw_string(0x1F, 0x0E, press_r, Render.NOOP, 0x42AE0000, 0x417F0000, 0xFFFFFFFF, 0x3F500000, Render.alignment.LEFT, OS.FALSE)
+        Render.draw_texture_at_offset(0x1F, 0x0E, Render.file_pointer_1, Render.file_c5_offsets.R, Render.NOOP, 0x428F0000, 0x41700000, 0x848484FF, 0x303030FF, 0x3F700000)
+
         // Player port headers
         jal     draw_port_headers_
         nop
 
+
+        // Page 1
+        _page_1:
         // Draw lines
         lli     a2, 30                      // a2 = start y
-        draw_header(damage_stats)
+        draw_header(damage_stats, 0)
         addiu   a2, a2, -1                  // adjust y for better underline
-        draw_underline(75)
-        draw_header(damage_dealt_to)
-        draw_row(p1, 8, stats_struct_p1, 0x0004, 0x0020, 0, 0)
-        draw_row(p2, 8, stats_struct_p1, 0x0008, 0x0020, 1, 1)
-        draw_row(p3, 8, stats_struct_p1, 0x000C, 0x0020, 2, 2)
-        draw_row(p4, 8, stats_struct_p1, 0x0010, 0x0020, 3, 3)
-        draw_row(total_damage_given, 0, stats_struct_p1, 0x0018, 0x0020, -1, -1)
-        draw_row(total_damage_taken, 0, stats_struct_p1, 0x0014, 0x0020, -1, -1)
-        draw_row(highest_damage, 0, stats_struct_p1, 0x001C, 0x0020, -1, -1)
+        draw_underline(75, 0)
+        draw_header(damage_dealt_to, 0)
+        draw_row(p1, 8, stats_struct_p1, 0x0004, 0x0028, 0, 0, 0)
+        draw_row(p2, 8, stats_struct_p1, 0x0008, 0x0028, 1, 1, 0)
+        draw_row(p3, 8, stats_struct_p1, 0x000C, 0x0028, 2, 2, 0)
+        draw_row(p4, 8, stats_struct_p1, 0x0010, 0x0028, 3, 3, 0)
+        draw_row(total_damage_given, 0, stats_struct_p1, 0x0018, 0x0028, -1, -1, 0)
+        draw_row(total_damage_taken, 0, stats_struct_p1, 0x0014, 0x0028, -1, -1, 0)
+        draw_row(highest_damage, 0, stats_struct_p1, 0x001C, 0x0028, -1, -1, 0)
 
         b       _combo_stats_on_check
         nop
 
         _combo_stats_off:
-        b       _end                        // skip drawing combo stats if combo meter toggle is off
+        b       _page_2                     // skip drawing combo stats if combo meter toggle is off
         nop
 
         _combo_stats_on_check:
-        // If combo meter is off, skip to _end and don't draw combo stats section
+        // If combo meter is off, skip to page 2 and don't draw combo stats section
         Toggles.guard(Toggles.entry_combo_meter, _combo_stats_off)
 
         addiu   a2, a2, 5                   // adjust y for cleaner spacing
-        draw_header(combo_stats)
+        draw_header(combo_stats, 0)
         addiu   a2, a2, -1                  // adjust y for better underline
-        draw_underline(68)
-        draw_header(max_combo_hits_vs)
-        draw_row(p1, 8, ComboMeter.combo_struct_p1, 0x0024, 0x0038, 0, 0)
-        draw_row(p2, 8, ComboMeter.combo_struct_p1, 0x0028, 0x0038, 1, 1)
-        draw_row(p3, 8, ComboMeter.combo_struct_p1, 0x002C, 0x0038, 2, 2)
-        draw_row(p4, 8, ComboMeter.combo_struct_p1, 0x0030, 0x0038, 3, 3)
-        draw_row(max_combo_hits_taken, 0, ComboMeter.combo_struct_p1, 0x0004, 0x0038, -1, -1)
-        draw_row(max_combo_damage_taken, 0, ComboMeter.combo_struct_p1, 0x0008, 0x0038, -1, -1)
+        draw_underline(68, 0)
+        draw_header(max_combo_hits_vs, 0)
+        draw_row(p1, 8, ComboMeter.combo_struct_p1, 0x0024, 0x0038, 0, 0, 0)
+        draw_row(p2, 8, ComboMeter.combo_struct_p1, 0x0028, 0x0038, 1, 1, 0)
+        draw_row(p3, 8, ComboMeter.combo_struct_p1, 0x002C, 0x0038, 2, 2, 0)
+        draw_row(p4, 8, ComboMeter.combo_struct_p1, 0x0030, 0x0038, 3, 3, 0)
+        draw_row(max_combo_hits_taken, 0, ComboMeter.combo_struct_p1, 0x0004, 0x0038, -1, -1, 0)
+        draw_row(max_combo_damage_taken, 0, ComboMeter.combo_struct_p1, 0x0008, 0x0038, -1, -1, 0)
 
+
+        // Page 2
+        _page_2:
+        // Draw lines
+        checkerboard_stripe()               // continue checkerboard stripe pattern between pages
+        lli     a2, 30                      // a2 = start y
+        draw_header(z_cancel_stats, 1)
+        addiu   a2, a2, -1                  // adjust y for better underline
+        draw_underline(80, 1)
+        draw_row(stat_percent, 0, stats_struct_p1, 0x0020, 0x0028, -1, -1, 1)
+        draw_row(stat_success, 8, VsStats.successful_z_cancels, 0x0000, 0x0004, -1, -1, 1)
+        draw_row(stat_missed, 8, VsStats.missed_z_cancels, 0x0000, 0x0004, -1, -1, 1)
+
+        addiu   a2, a2, 5                   // adjust y for cleaner spacing
+        draw_header(tech_stats, 1)
+        addiu   a2, a2, -1                  // adjust y for better underline
+        draw_underline(58, 1)
+        draw_row(stat_percent, 0, stats_struct_p1, 0x0024, 0x0028, -1, -1, 1)
+        draw_row(stat_success, 8, VsStats.successful_techs, 0x0000, 0x0004, -1, -1, 1)
+        draw_row(stat_missed, 8, VsStats.missed_techs, 0x0000, 0x0004, -1, -1, 1)
+
+        addiu   a2, a2, 5                   // adjust y for cleaner spacing
+        draw_header(ledge_stats, 1)
+        addiu   a2, a2, -1                  // adjust y for better underline
+        draw_underline(65, 1)
+        draw_row(times_grabbed, 0, VsStats.ledges_grabbed, 0x0000, 0x0004, -1, -1, 1)
+
+        addiu   a2, a2, 5                   // adjust y for cleaner spacing
+        draw_header(special_move_stats, 1)
+        addiu   a2, a2, -1                  // adjust y for better underline
+        draw_underline(105, 1)
+        draw_row(up_special, 0, VsStats.usp_counter, 0x0000, 0x0004, -1, -1, 1)
+        draw_row(neutral_special, 0, VsStats.nsp_counter, 0x0000, 0x0004, -1, -1, 1)
+        draw_row(down_special, 0, VsStats.dsp_counter, 0x0000, 0x0004, -1, -1, 1)
+
+
+        // Page 3
+        _page_3:
+        // Draw lines
+        checkerboard_stripe()               // continue checkerboard stripe pattern between pages
+        lli     a2, 30                      // a2 = start y
+        draw_header(grab_stats, 2)
+        addiu   a2, a2, -1                  // adjust y for better underline
+        draw_underline(58, 2)
+        draw_row(attempted_grabs, 0, VsStats.grab_counter, 0x0000, 0x0004, -1, -1, 2)
+
+        addiu   a2, a2, 5                   // adjust y for cleaner spacing
+        draw_header(airdodge_stats, 2)
+        addiu   a2, a2, -1                  // adjust y for better underline
+        draw_underline(86, 2)
+        draw_row(times_dodged, 0, VsStats.airdodge_counter, 0x0000, 0x0004, -1, -1, 2)
+
+
+        // Hide stat groups so they aren't visible when first entering results screen
         _end:
-        lli     a0, 0x0E                    // a0 = group of menu stats
+        lli     a0, 0x0E                    // a0 = group of stats instructions + port headers
         jal     Render.toggle_group_display_
         lli     a1, 0x0001                  // a1 = 1 -> turn off this display list
 
+        lli     a0, PAGE1_GROUP             // a0 = group of stats (page 1)
+        lli     a2, TOTAL_PAGES             // a2 = max amount of pages
+        addiu   a2, a2, PAGE1_GROUP         // ~
+        addiu   a2, a2, -0x0001             // a2 = max page + 1st page group - 1
+
+        // Loop to turn off all stat pages
+        _loop_page_off:
+        sltu    at, a2, a0                  // at = 0 if next group > TOTAL_PAGES group
+        bnez    at, _loop_page_end          // if all pages turned off, don't loop
+        nop
+        jal     Render.toggle_group_display_
+        lli     a1, 0x0001                  // a1 = 1 -> turn off this display list
+
+        b       _loop_page_off
+        addiu   a0, a0, 0x0001              // increment next group and loop
+
+        _loop_page_end:
         lw      ra, 0x0004(sp)              // restore registers
         addiu   sp, sp, 0x0030              // deallocate stack space
 
@@ -798,6 +1061,149 @@ scope VsStats {
         jr      ra
         nop
     }
+
+    scope tracker_setup_: {
+        addiu   sp, sp, -0x0010             // allocate stack space
+        sw      ra, 0x0004(sp)              // save ra
+
+        li      t8, VsStats.successful_z_cancels
+        sw      r0, 0x0000(t8)              // clear p1 count
+        sw      r0, 0x0004(t8)              // clear p2 count
+        sw      r0, 0x0008(t8)              // clear p3 count
+        sw      r0, 0x000C(t8)              // clear p4 count
+        li      t8, VsStats.missed_z_cancels
+        sw      r0, 0x0000(t8)              // clear p1 count
+        sw      r0, 0x0004(t8)              // clear p2 count
+        sw      r0, 0x0008(t8)              // clear p3 count
+        sw      r0, 0x000C(t8)              // clear p4 count
+        li      t8, VsStats.successful_techs
+        sw      r0, 0x0000(t8)              // clear p1 count
+        sw      r0, 0x0004(t8)              // clear p2 count
+        sw      r0, 0x0008(t8)              // clear p3 count
+        sw      r0, 0x000C(t8)              // clear p4 count
+        li      t8, VsStats.missed_techs
+        sw      r0, 0x0000(t8)              // clear p1 count
+        sw      r0, 0x0004(t8)              // clear p2 count
+        sw      r0, 0x0008(t8)              // clear p3 count
+        sw      r0, 0x000C(t8)              // clear p4 count
+        li      t8, VsStats.ledges_grabbed
+        sw      r0, 0x0000(t8)              // clear p1 count
+        sw      r0, 0x0004(t8)              // clear p2 count
+        sw      r0, 0x0008(t8)              // clear p3 count
+        sw      r0, 0x000C(t8)              // clear p4 count
+        li      t8, VsStats.airdodge_counter
+        sw      r0, 0x0000(t8)              // clear p1 count
+        sw      r0, 0x0004(t8)              // clear p2 count
+        sw      r0, 0x0008(t8)              // clear p3 count
+        sw      r0, 0x000C(t8)              // clear p4 count
+        li      t8, VsStats.usp_counter
+        sw      r0, 0x0000(t8)              // clear p1 count
+        sw      r0, 0x0004(t8)              // clear p2 count
+        sw      r0, 0x0008(t8)              // clear p3 count
+        sw      r0, 0x000C(t8)              // clear p4 count
+        li      t8, VsStats.nsp_counter
+        sw      r0, 0x0000(t8)              // clear p1 count
+        sw      r0, 0x0004(t8)              // clear p2 count
+        sw      r0, 0x0008(t8)              // clear p3 count
+        sw      r0, 0x000C(t8)              // clear p4 count
+        li      t8, VsStats.dsp_counter
+        sw      r0, 0x0000(t8)              // clear p1 count
+        sw      r0, 0x0004(t8)              // clear p2 count
+        sw      r0, 0x0008(t8)              // clear p3 count
+        sw      r0, 0x000C(t8)              // clear p4 count
+        li      t8, VsStats.grab_counter
+        sw      r0, 0x0000(t8)              // clear p1 count
+        sw      r0, 0x0004(t8)              // clear p2 count
+        sw      r0, 0x0008(t8)              // clear p3 count
+        sw      r0, 0x000C(t8)              // clear p4 count
+
+        _end:
+        lw      ra, 0x0004(sp)              // restore ra
+        addiu   sp, sp, 0x0010              // deallocate stack space
+        jr      ra
+        nop
+    }
+
+    scope count_grabs: {
+        OS.patch_start(0xC4600, 0x80149BC0)
+        j   count_grabs
+        nop
+        _return:
+        OS.patch_end()
+
+        li      a2, VsStats.grab_counter
+        lbu     a1, 0x000D(s0)          // a1 = player index (0 - 3)
+        sll     a1, a1, 0x0002          // a1 = player index * 4
+        addu    a2, a2, a1              // a2 = address of grab count for this player
+        lw      a1, 0x0000(a2)          // a1 = grab count
+        addiu   a1, a1, 0x0001          // increment
+        sw      a1, 0x0000(a2)          // store updated grab count
+
+        addiu   a1, r0, 0x00A6  // original line 1
+        j   _return
+        addiu   a2, r0, 0x0000  // original line 2
+    }
+
+
+    missed_z_cancels:
+    dw  0x00 // p1
+    dw  0x00 // p2
+    dw  0x00 // p3
+    dw  0x00 // p4
+
+    successful_z_cancels:
+    dw  0x00 // p1
+    dw  0x00 // p2
+    dw  0x00 // p3
+    dw  0x00 // p4
+
+    successful_techs:
+    dw  0x00 // p1
+    dw  0x00 // p2
+    dw  0x00 // p3
+    dw  0x00 // p4
+
+    missed_techs:
+    dw  0x00 // p1
+    dw  0x00 // p2
+    dw  0x00 // p3
+    dw  0x00 // p4
+
+    ledges_grabbed:
+    dw  0x00 // p1
+    dw  0x00 // p2
+    dw  0x00 // p3
+    dw  0x00 // p4
+
+    airdodge_counter:
+    dw  0x00 // p1
+    dw  0x00 // p2
+    dw  0x00 // p3
+    dw  0x00 // p4
+
+    usp_counter:
+    dw  0x00 // p1
+    dw  0x00 // p2
+    dw  0x00 // p3
+    dw  0x00 // p4
+
+    nsp_counter:
+    dw  0x00 // p1
+    dw  0x00 // p2
+    dw  0x00 // p3
+    dw  0x00 // p4
+
+    dsp_counter:
+    dw  0x00 // p1
+    dw  0x00 // p2
+    dw  0x00 // p3
+    dw  0x00 // p4
+
+    grab_counter:
+    dw  0x00 // p1
+    dw  0x00 // p2
+    dw  0x00 // p3
+    dw  0x00 // p4
 }
 
 } // __VSSTATS__

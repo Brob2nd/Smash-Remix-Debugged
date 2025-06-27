@@ -1404,6 +1404,8 @@ scope Character {
             sll     t7, t6, 0x2             // original line 3
             addu    t9, t9, t7              // original line 4
             lw      t9, LOWER(t9)           // original line 5 (modified)
+            jal     increment_special_counter
+            addiu   at, r0, increment_special_counter.NSP
         }
 
         // @ Description
@@ -1423,6 +1425,8 @@ scope Character {
             sll     t6, t5, 0x2             // original line 3
             addu    t9, t9, t6              // original line 4
             lw      t9, LOWER(t9)           // original line 5 (modified)
+            jal     increment_special_counter
+            addiu   at, r0, increment_special_counter.NSP
         }
 
         // @ Description
@@ -1442,6 +1446,8 @@ scope Character {
             sll     t3, t2, 0x2             // original line 3
             addu    t9, t9, t3              // original line 4
             lw      t9, LOWER(t9)           // original line 5 (modified)
+            jal     increment_special_counter
+            addiu   at, r0, increment_special_counter.USP
         }
 
         // @ Description
@@ -1461,6 +1467,8 @@ scope Character {
             sll     t8, t7, 0x2             // original line 3
             addu    t9, t9, t8              // original line 4
             lw      t9, LOWER(t9)           // original line 5 (modified)
+            jal     increment_special_counter
+            addiu   at, r0, increment_special_counter.DSP
         }
 
         // @ Description
@@ -1480,6 +1488,8 @@ scope Character {
             sll     t7, t6, 0x2             // original line 3
             addu    t9, t9, t7              // original line 4
             lw      t9, LOWER(t9)           // original line 5 (modified)
+            jal     increment_special_counter
+            addiu   at, r0, increment_special_counter.NSP
         }
 
         // @ Description
@@ -1499,6 +1509,8 @@ scope Character {
             sll     t6, t5, 0x2             // original line 3
             addu    t9, t9, t6              // original line 4
             lw      t9, LOWER(t9)           // original line 5 (modified)
+            jal     increment_special_counter
+            addiu   at, r0, increment_special_counter.NSP
         }
 
         // @ Description
@@ -1517,6 +1529,8 @@ scope Character {
             sll     t3, t2, 0x2             // original line 2
             addu    t9, t9, t3              // original line 3
             lw      t9, LOWER(t9)           // original line 4 (modified)
+            jal     increment_special_counter
+            addiu   at, r0, increment_special_counter.USP
         }
 
         // @ Description
@@ -1535,6 +1549,8 @@ scope Character {
             sll     t4, t3, 0x2             // original line 2
             addu    t9, t9, t4              // original line 3
             lw      t9, LOWER(t9)           // original line 4 (modified)
+            jal     increment_special_counter
+            addiu   at, r0, increment_special_counter.DSP
         }
 
         // @ Description
@@ -3260,6 +3276,42 @@ scope Character {
         bne     t8, t9, _loop               // loop if t8 != last hitbox struct
         addiu   t8, t8, 0x00C4              // t8 = next hitbox struct
         // v0 = collision flags for all active hitboxes
+        jr      ra                          // return
+        nop
+    }
+
+    // @ Description
+    // Increment a corresponding Vs Stats counter whenever a player uses a special move.
+    // @ Arguments
+    // at - special used by player (USP/NSP/DSP)
+    // a0 - player object
+    scope increment_special_counter: {
+        constant USP(0x0)
+        constant NSP(0x1)
+        constant DSP(0x2)
+
+        addiu   sp, sp, -0x0018             // allocate stack space
+        sw      ra, 0x0014(sp)              // store ra
+        sw      t0, 0x0010(sp)              // store t0
+
+        li      t0, VsStats.usp_counter     // t0 = starting address of special counters
+        sll     at, at, 0x0004              // at = which special to update * 4
+        addu    at, t0, at                  // at = special counter to update
+
+        lw      t0, 0x0084(a0)              // t0 = player struct
+        lbu     t0, 0x000D(t0)              // t0 = player index (0 - 3)
+        sll     t0, t0, 0x0002              // t0 = player index * 4
+        addu    at, at, t0                  // at = address of special count for this player
+        lw      t0, 0x0000(at)              // t0 = special count
+        addiu   t0, t0, 0x0001              // increment
+        sw      t0, 0x0000(at)              // store updated special count
+
+        lw      t0, 0x0010(sp)              // load t0
+        jalr    ra, t9                      // original line 1
+        nop                                 // original line 2
+
+        lw      ra, 0x0014(sp)              // load ra
+        addiu   sp, sp, 0x0018              // deallocate stack space
         jr      ra                          // return
         nop
     }
