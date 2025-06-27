@@ -744,6 +744,14 @@ scope Toggles {
         _exit_super_menu:
         jal     save_                       // save toggles
         nop
+
+        lli     a0, 0x0000                  // a0 = unknown, set to 0
+        jal     BGM.change_vol_             // update BGM volume
+        lli     a1, 0x7800                  // a1 = max volume
+
+        jal     FGM.change_vol_             // update FGM volume
+        lli     a0, 0x7800                  // a0 = max volume
+
         // check if we got here by using the 'L' shortcut, and retrieve current_screen if so
         li      t3, shortcut_stored_screens    // t3 = shortcut_stored_screens
         lbu     a0, 0x0000(t3)                 // a0 = 0 if we didn't use 'L' shortcut
@@ -1561,6 +1569,18 @@ scope Toggles {
     light:; db "LIGHT", 0x00
     OS.align(4)
 
+    string_table_volume:
+    dw num_1
+    dw num_2
+    dw num_3
+    dw num_4
+    dw num_5
+    dw num_6
+    dw num_7
+    dw num_8
+    dw num_9
+    dw num_10
+
     // @ Description
     // Pokemon Stadium Announcer strings
     announcer_mode_pokemon:; db "STADIUM", 0x00
@@ -2141,6 +2161,37 @@ scope Toggles {
         nop
     }
 
+    // @ Description
+    // Run BGM volume change to update volume
+    scope update_bgm_volume: {
+        addiu   sp, sp,-0x0020              // allocate stack space
+        sw      ra, 0x0008(sp)              // save registers
+
+        lli     a1, 0x7800                  // a1 = max volume
+        jal     BGM.change_vol_             // update BGM volume with toggle value
+        lli     a0, 0x0000                  // a0 = unknown, set to 0
+
+        lw      ra, 0x0008(sp)              // ~
+        addiu   sp, sp, 0x0020              // deallocate stack space
+        jr      ra
+        nop
+    }
+
+    // @ Description
+    // Run FGM volume change to update volume
+    scope update_fgm_volume: {
+        addiu   sp, sp,-0x0020              // allocate stack space
+        sw      ra, 0x0008(sp)              // save registers
+
+        jal     FGM.change_vol_             // update FGM volume with toggle value
+        lli     a0, 0x7800                  // a0 = max volume
+
+        lw      ra, 0x0008(sp)              // ~
+        addiu   sp, sp, 0x0020              // deallocate stack space
+        jr      ra
+        nop
+    }
+
     string_table_gallery:
     dw mario
     dw dk
@@ -2308,7 +2359,9 @@ scope Toggles {
     entry_dpad_css_control:;            entry_bool("Dpad CSS Cursor Control", OS.FALSE, OS.FALSE, OS.FALSE, OS.FALSE, entry_pk_thunder_reflect_crash_fix)
     entry_pk_thunder_reflect_crash_fix:;entry_bool("PK Thunder Reflect Crash Fix", OS.TRUE, OS.TRUE, OS.TRUE, OS.TRUE, entry_flash_guard)
     entry_flash_guard:;                 entry_bool("Flash Guard", OS.FALSE, OS.FALSE, OS.FALSE, OS.FALSE, entry_screenshake)
-    entry_screenshake:;                 entry("Screenshake", Menu.type.INT, OS.FALSE, OS.FALSE, OS.FALSE, OS.FALSE, 0, 2, OS.NULL, string_table_screenshake, OS.NULL, OS.NULL)
+    entry_screenshake:;                 entry("Screenshake", Menu.type.INT, OS.FALSE, OS.FALSE, OS.FALSE, OS.FALSE, 0, 2, OS.NULL, string_table_screenshake, OS.NULL, entry_bgm_volume)
+    entry_bgm_volume:;                  entry("BGM Volume", Menu.type.INT, 9, 9, 9, 9, 0, 9, update_bgm_volume, string_table_volume, OS.NULL, entry_fgm_volume)
+    entry_fgm_volume:;                  entry("SFX Volume", Menu.type.INT, 9, 9, 9, 9, 0, 9, update_fgm_volume, string_table_volume, OS.NULL, OS.NULL)
 
     evaluate num_remix_toggles(num_toggles)
     evaluate remix_toggles_block_size(block_size)
