@@ -1762,7 +1762,13 @@ scope SinglePlayerModes: {
         ori     a1, r0, Stages.id.NPC
         beql    t6, a1, _update_bgm
         addiu   a1, r0, {MIDI.id.DANGEROUS_FOE}     // PSI Rockers
+        ori     a1, r0, Stages.id.OSOHE
+        beql    t6, a1, _update_bgm
+        addiu   a1, r0, {MIDI.id.DANGEROUS_FOE}     // PSI Rockers
         ori     a1, r0, Stages.id.POKEMON_STADIUM_2
+        beql    t6, a1, _update_bgm
+        addiu   a1, r0, {MIDI.id.PIKA_CUP}     // Pocket Monsters
+        ori     a1, r0, Stages.id.POKEMON_STADIUM
         beql    t6, a1, _update_bgm
         addiu   a1, r0, {MIDI.id.PIKA_CUP}     // Pocket Monsters
         ori     a1, r0, Stages.id.GYM_LEADER_CASTLE
@@ -3242,8 +3248,8 @@ scope SinglePlayerModes: {
     dw  0x00000000                      // flag
     db  Character.id.NESS               // Character ID
     db  Stages.id.ONETT                 // Stage Option 1
-    db  Stages.id.NPC                 // Stage Option 2
-    db  Stages.id.OSOHE                   // Stage Option 3
+    db  Stages.id.NPC                   // Stage Option 2
+    db  Stages.id.OSOHE                 // Stage Option 3
     dw  SinglePlayer.name_texture.DRM + 0x10    // name texture
     dw  0x000002E6                      // Announcer Call
     dw  0x00006F80                      // Model Scale

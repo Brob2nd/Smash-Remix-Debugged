@@ -1834,6 +1834,7 @@ scope FGM {
     add_sound(sounds/misc/dne_remit, SAMPLE_RATE_16000, FGM_TYPE_VOICE, 0, -1)
     add_sound_advanced(TimerBackfireEnd, sounds/misc/dne_remit, sounds/misc/timer_fgm_microcode, 0x12, sounds/misc/timer_sfx_microcode, 0xD, OS.FALSE, 0, 0, 0, OS.FALSE)  // note: the sfx_microcode here is the generic sfx microcode that gets used by the VOICE type fgm
     add_fgm(DEATH, Crash/sounds/DEATH, 0x11, 0x498, -1, -1, -1) // note: the sfx_id here and the length in the microcode are hard coded based on Crash WOAH
+    add_sound(Sandbag/sounds/ANNOUNCER, SAMPLE_RATE_16000, FGM_TYPE_VOICE, 40, -1)
 
     // This is always last
     write_sounds()
@@ -1999,6 +2000,7 @@ scope FGM {
             constant PEACH(1432)
             constant LANKY(1497)
             constant EPIKA(1459)
+            constant SANDBAG(1544)
         }
 
         scope css {
