@@ -133,7 +133,7 @@ scope Gallery {
     dh {MIDI.id.FREEZE}
 
     bgm_luigi:
-    dh 10                                  // number of BGM
+    dh 11                                  // number of BGM
     dh {MIDI.id.SMB2_MEDLEY}
     dh {MIDI.id.SNES_RAINBOW}
     dh {MIDI.id.RACEWAYS}
@@ -141,6 +141,7 @@ scope Gallery {
     dh {MIDI.id.FRAPPE_SNOWLAND}
     dh {MIDI.id.RAINBOWROAD}
     dh {MIDI.id.MK64_CREDITS}
+    dh {MIDI.id.WALUIGI_PINBALL}
     dh {MIDI.id.PIRATELAND}
     dh {MIDI.id.WIDE_UNDERWATER}
     dh {MIDI.id.STATUS}
@@ -196,9 +197,10 @@ scope Gallery {
     dh {MIDI.id.MAJORA_MIDBOSS}
 
     bgm_sheik:
-    dh 2                                    // number of BGM
+    dh 3                                    // number of BGM
     dh {MIDI.id.BRAWL_OOT}
     dh {MIDI.id.GERUDO_VALLEY}
+    dh {MIDI.id.GODDESSBALLAD}
 
     bgm_samus:
     dh 3                                    // number of BGM
@@ -313,17 +315,23 @@ scope Gallery {
     dh {MIDI.id.MURASAKI}
 
     bgm_wario:
-    dh 2                                    // number of BGM
+    dh 6                                    // number of BGM
+    dh {MIDI.id.STONECARVING_CITY}
     dh {MIDI.id.WL2_PERFECT}
     dh {MIDI.id.KITCHEN_ISLAND}
+    dh {MIDI.id.STARRING_WARIO}
+    dh {MIDI.id.WARIOWARE}
+    dh {MIDI.id.ASHLEYS_THEME}
 
     bgm_conker:
-    dh 5                                    // number of BGM
+    dh 7                                    // number of BGM
     dh {MIDI.id.CONKER_THE_KING}
     dh {MIDI.id.WINDY}
     dh {MIDI.id.SLOPRANO}
     dh {MIDI.id.OLE}
     dh {MIDI.id.ROCKSOLID}
+    dh {MIDI.id.CRESCENT_ISLAND}
+    dh {MIDI.id.WIZPIG}
 
     bgm_marth:
     dh 3                                    // number of BGM
@@ -332,7 +340,7 @@ scope Gallery {
     dh {MIDI.id.HYRULE_TEMPLE}
 
     bgm_sonic:
-    dh 13                                   // number of BGM
+    dh 14                                   // number of BGM
     dh {MIDI.id.GREEN_HILL_ZONE}
     dh {MIDI.id.EMERALDHILL}
     dh {MIDI.id.CHEMICAL_PLANT}
@@ -346,6 +354,7 @@ scope Gallery {
     dh {MIDI.id.GIANTWING}
     dh {MIDI.id.EVERYTHING}
     dh {MIDI.id.LIVE_AND_LEARN}
+    dh {MIDI.id.OPEN_YOUR_HEART}
 
     bgm_marina:
     dh 3                                    // number of BGM
@@ -365,7 +374,7 @@ scope Gallery {
     dh {MIDI.id.KAI_HIGHWAY}
 
     bgm_banjo:
-    dh 8                                    // number of BGM
+    dh 10                                   // number of BGM
     dh {MIDI.id.BANJO_MAIN}
     dh {MIDI.id.SPIRAL_MOUNTAIN}
     dh {MIDI.id.TREASURE_TROVE_COVE}
@@ -374,6 +383,8 @@ scope Gallery {
     dh {MIDI.id.MRPATCH}
     dh {MIDI.id.VS_KLUNGO}
     dh {MIDI.id.OLDKINGCOAL}
+    dh {MIDI.id.FROSTY_VILLAGE}
+    dh {MIDI.id.DKR_BOSS}
 
     bgm_crash:
     dh 6                                    // number of BGM
@@ -388,6 +399,7 @@ scope Gallery {
     dh 7                                    // number of BGM
     dh {MIDI.id.SM64STAFF}
     dh {MIDI.id.FILESELECT_SM64}
+    dh {MIDI.id.ITSATRAP_SM64}
     dh {MIDI.id.BOB}
     dh {MIDI.id.COOLCOOLMOUNTAIN}
     dh {MIDI.id.SLIDER}
