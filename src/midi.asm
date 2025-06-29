@@ -474,7 +474,7 @@ scope MIDI {
     insert_midi(GB_MEDLEY, OS.TRUE, OS.TRUE, "Game Boy Medley", ssbr, 113)
     insert_midi(BUBBLY, OS.TRUE, OS.TRUE, "Bubbly Clouds", kirbydreamland, 39)
     insert_midi(ROADTOCERULEANCITY, OS.TRUE, OS.TRUE, "Road to Cerulean City", pokemonred, 222)
-    insert_midi(LEVEL1_WARIO, OS.TRUE, OS.TRUE, "Stage 1", warioland, 245)
+    insert_midi(LEVEL1_WARIO, OS.TRUE, OS.TRUE, "Stage 1 (Wario Land)", warioland, 245)
     insert_midi(MABE, OS.TRUE, OS.TRUE, "Mabe Village", awakening, 156)
     insert_midi(REST, OS.TRUE, OS.TRUE, "Rest Area", ssbr, 218)
     insert_midi(FE_MEDLEY, OS.TRUE, OS.TRUE, "Fire Emblem Medley", fire_emblem, 96)
