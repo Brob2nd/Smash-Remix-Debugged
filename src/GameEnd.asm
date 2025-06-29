@@ -117,7 +117,7 @@ scope GameEnd {
         bne     a2, v0, _success
         nop
         jal     FGM.play_                   // play "Sonic CD Time Travel" easter egg
-        lli     a0, 0x609                   // ~
+        lli     a0, 0x513                   // ~
         b       _success                    // restart
         nop
 
