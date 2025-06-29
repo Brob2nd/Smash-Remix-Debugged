@@ -399,6 +399,11 @@ scope BGM {
         lbu     t2, Gallery.status.active(t2) // t2 = 1 if gallery is active
         bnez    t2, _build_random_list      // branch accordingly (sneak past guard)
         nop
+        // check if here from Z-Cancel Swap Music punishment
+        li      t2, ZCancel._cruel_z_cancel._swapping_music
+        lw      t2, 0x0000(t2)              // t0 = 1 if we are here from Swap Music Z-Cancel punishment
+        bnez    t2, _build_random_list      // branch accordingly (sneak past guard)
+        nop
         Toggles.guard(Toggles.entry_random_music, 0x00000000)
 
         _build_random_list:
@@ -451,6 +456,10 @@ scope BGM {
         li      t0, Gallery.status          // t0 = gallery status
         lbu     t0, Gallery.status.active(t0) // t0 = 1 if gallery is active
         bnez    t0, _end                    // if Gallery mode is enabled, skip to end
+        nop
+        li      t0, ZCancel._cruel_z_cancel._swapping_music
+        lw      t0, 0x0000(t0)              // t0 = 1 if we are here from Swap Music Z-Cancel punishment
+        bnez    t0, _end                    // if currently swapping music, skip to end
         nop
         beqz    v1, _end                    // if there were no valid entries in the random table, then use default bgm_id
         nop
