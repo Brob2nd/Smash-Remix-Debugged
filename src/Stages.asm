@@ -531,6 +531,7 @@ scope Stages {
         constant REMIX4(0x06)
         constant REMIX5(0x07)
         constant REMIX6(0x08)
+        constant REMIX7(0x09)
     }
 
     constant ICON_WIDTH(40)
@@ -1790,6 +1791,7 @@ scope Stages {
         dw layout_remix     // remix 4
         dw layout_remix     // remix 5
         dw layout_remix     // remix 6
+        dw layout_remix     // remix 7
     }
 
     // @ Arguments
