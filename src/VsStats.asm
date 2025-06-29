@@ -975,8 +975,19 @@ scope VsStats {
         lli     a2, 30                      // a2 = start y
         draw_header(grab_stats, 2)
         addiu   a2, a2, -1                  // adjust y for better underline
-        draw_underline(58, 2)
+        draw_underline(57, 2)
         draw_row(attempted_grabs, 0, VsStats.grab_counter, 0x0000, 0x0004, -1, -1, 2)
+
+        b       _air_dodge_on_check
+        nop
+
+        _air_dodge_off:
+        b       _end
+        nop
+
+        _air_dodge_on_check:
+        // If air dodge is off, skip to _end and don't draw air dodge stats
+        Toggles.guard(Toggles.entry_air_dodge, _air_dodge_off)
 
         addiu   a2, a2, 5                   // adjust y for cleaner spacing
         draw_header(airdodge_stats, 2)
