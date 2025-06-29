@@ -684,6 +684,7 @@ scope MIDI {
     insert_midi(SONIC_R, OS.TRUE, OS.TRUE, "Options (Sonic R)", sonicR, 195)
     insert_midi(GREENGARDEN, OS.TRUE, OS.TRUE, "Green Garden", bomberman, 129)
     insert_midi(BLUE_RESORT, OS.TRUE, OS.TRUE, "Blue Resort", bomberman, 27)
+    insert_extra_midi(OLD_FALCO_VICTORY)
 
     pushvar origin, base
 
