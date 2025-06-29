@@ -93,6 +93,11 @@ scope Sandbag {
     // Shield colors for costume matching
     Character.set_costume_shield_colors(SANDBAG, WHITE, WHITE, WHITE, WHITE, WHITE, WHITE, NA, NA)
 
+    // Set Remix 1P ending music
+    Character.table_patch_start(remix_1p_end_bgm, Character.id.SANDBAG, 0x2)
+    dh {MIDI.id.CREDITS_BRAWL}
+    OS.patch_end()
+
     // @ Description
     // Sandbag's extra actions
     scope Action {
