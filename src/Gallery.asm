@@ -128,7 +128,7 @@ scope Gallery {
     dh {MIDI.id.SMW_ATHLETIC}
     dh {MIDI.id.SMRPG_BATTLE}
     dh {MIDI.id.BEWARE_THE_FORESTS_MUSHROOMS}
-    dh {MIDI.id.OLDBEWARE_THE_FORESTS_MUSHROOMS}    
+    dh {MIDI.id.OLD_BEWARE_THE_FORESTS_MUSHROOMS}    
     dh {MIDI.id.PAPER_MARIO_BATTLE}
     dh {MIDI.id.GHOSTGULPING}
     dh {MIDI.id.FREEZE}
@@ -179,7 +179,7 @@ scope Gallery {
     dh {MIDI.id.FOREST_INTERLUDE}
     dh {MIDI.id.STICKERBRUSH_SYMPHONY}
     dh {MIDI.id.DK_RAP}
-    dh {MIDI.id.DK_RAPMELEE}
+    dh {MIDI.id.DK_RAP_MELEE}
 
     bgm_link:
     dh 5                                    // number of BGM
@@ -247,7 +247,7 @@ scope Gallery {
     bgm_dedede:
     dh 9                                    // number of BGM
     dh {MIDI.id.DEDEDE}
-    DH {MIDI.id.MASKEDDEDEDE}
+    dh {MIDI.id.MASKEDDEDEDE}
     dh {MIDI.id.NIGHTMARE}
     dh {MIDI.id.FOD}
     dh {MIDI.id.HILLTOPCHASE}
@@ -324,7 +324,7 @@ scope Gallery {
     dh 10                                   // number of BGM
     dh {MIDI.id.TAZMILY}
     dh {MIDI.id.UNFOUNDED_REVENGE}
-    dh {MIDI.id.OLDUNFOUNDED_REVENGE}
+    dh {MIDI.id.OLD_UNFOUNDED_REVENGE}
     dh {MIDI.id.DCMC}
     dh {MIDI.id.PORKY_MEDLEY}
     dh {MIDI.id.SAMBA_DE_COMBO}
@@ -397,7 +397,7 @@ scope Gallery {
     bgm_banjo:
     dh 12                                   // number of BGM
     dh {MIDI.id.BANJO_MAIN}
-    dh {MIDI.id.OLDSPIRAL_MOUNTAIN}
+    dh {MIDI.id.OLD_SPIRAL_MOUNTAIN}
     dh {MIDI.id.SPIRAL_MOUNTAIN}
     dh {MIDI.id.TREASURE_TROVE_COVE}
     dh {MIDI.id.MADMONSTER}
@@ -455,10 +455,10 @@ scope Gallery {
     dh 6                                    // number of BGM
     dh {MIDI.id.ORANGSPRINT}
     dh {MIDI.id.MADMAZEMAUL}
-    DH {MIDI.id.JUNGLEJAPES64}
+    dh {MIDI.id.JUNGLEJAPES64}
     dh {MIDI.id.JUNGLEJAPES}
     dh {MIDI.id.DK_RAP}
-    DH {MIDI.id.DK_RAP_MELEE}
+    dh {MIDI.id.DK_RAP_MELEE}
 
     bgm_dking:
     dh 6                                    // number of BGM
@@ -809,20 +809,20 @@ scope Gallery {
     add_bgm_to_gallery({MIDI.id.FIRE_FIELD}, id.FALCON)
     add_bgm_to_gallery({MIDI.id.JUNGLEJAPES64}, id.LANKY)
     add_bgm_to_gallery({MIDI.id.DK_JR_STAGE}, id.DK)
-    add_bgm_to_gallery({MIDI.id.DK_RAPMELEE}, id.DK)
-    add_bgm_to_gallery({MIDI.id.DK_RAPMELEE}, id.LANKY)
+    add_bgm_to_gallery({MIDI.id.DK_RAP_MELEE}, id.DK)
+    add_bgm_to_gallery({MIDI.id.DK_RAP_MELEE}, id.LANKY)
     add_bgm_to_gallery({MIDI.id.KROOLS_ACID_PUNK}, id.DK)
     add_bgm_to_gallery({MIDI.id.ITSATRAP_SM64}, id.PEACH)
     add_bgm_to_gallery({MIDI.id.FILESELECT_B3313}, id.PEACH)
     add_bgm_to_gallery({MIDI.id.CRUMBLINGHALLS}, id.PEACH)
-    add_bgm_to_gallery({MIDI.id.OLDBEWARE_THE_FORESTS_MUSHROOMS}, id.MARIO)
+    add_bgm_to_gallery({MIDI.id.OLD_BEWARE_THE_FORESTS_MUSHROOMS}, id.MARIO)
     add_bgm_to_gallery({MIDI.id.CLICKCLOCKWOODS}, id.BANJO)
-    add_bgm_to_gallery({MIDI.id.OLDSPIRAL_MOUNTAIN}, id.BANJO)
+    add_bgm_to_gallery({MIDI.id.OLD_SPIRAL_MOUNTAIN}, id.BANJO)
     add_bgm_to_gallery({MIDI.id.HORROR_MANOR}, id.WARIO)
     add_bgm_to_gallery({MIDI.id.METAL_CAP}, id.PEACH)
     add_bgm_to_gallery({MIDI.id.DANGEROUS_GUYS}, id.LUCAS)
     add_bgm_to_gallery({MIDI.id.PIGGYGUYS}, id.LUCAS)
-    add_bgm_to_gallery({MIDI.id.OLDUNFOUNDED_REVENGE}, id.LUCAS)
+    add_bgm_to_gallery({MIDI.id.OLD_UNFOUNDED_REVENGE}, id.LUCAS)
     add_bgm_to_gallery({MIDI.id.ALL_I_NEEDED_WAS_YOU}, id.NESS)
     add_bgm_to_gallery({MIDI.id.I_BELIEVE_IN_YOU}, id.NESS)
     add_bgm_to_gallery({MIDI.id.BOWSERAIRSHIP}, id.BOWSER)
