@@ -3097,23 +3097,23 @@ scope Stages {
     db id.BATTLEFIELD_DL                    // 35
     db id.RANDOM                            // 36
     // Page 4 - Additional Viable Stages
-    db id.RAIDBLUE                          // 37       
-    db id.PIRATE                            // 38       <-- Hazards OFF
-    db id.TOH                               // 39
-    db id.RAINBOWROAD                       // 3A       <-- Movement OFF
-    db id.BOWSERB                           // 3B       <-- Hazards OFF
-    db id.DUEL_ZONE                         // 3C
-    db id.YOSHI_ISLAND_O                    // 3D       <-- Hazards ON
+    db id.TOH                               // 37       
+    db id.MMADNESS                          // 38       <-- Hazards OFF
+    db id.RAINBOWROAD                       // 39       <-- Movement OFF
+    db id.RAIDBLUE                          // 3A
+    db id.COOLCOOL_DL                       // 3B
+    db id.META_CRYSTAL                      // 3C
+    db id.YOSHI_ISLAND_O                    // 3D
     db id.DREAM_LAND_O                      // 3E       <-- Hazards ON
-    db id.MMADNESS                          // 3F       <-- Hazards OFF
+    db id.EDO                               // 3F       <-- Hazards ON
     db id.SAFFRON_O                         // 40
-    db id.KITCHEN                           // 41       <-- Movement ON
-    db id.META_CRYSTAL                      // 42
-    db id.COOLCOOL_DL                       // 43
+    db id.DUEL_ZONE                         // 41
+    db id.KITCHEN                           // 42       <-- Movement ON
+    db id.DRAGONKING                        // 43
     db id.TALTAL_REMIX                      // 44       <-- Hazards OFF
-    db id.DRAGONKING                        // 45
-    db id.TIME_TWISTER                      // 46       <-- Movement OFF
-    db id.EDO                               // 47
+    db id.BOWSERB                           // 45       <-- Hazards OFF
+    db id.PIRATE                            // 46       <-- Hazards OFF
+    db id.TIME_TWISTER                      // 47       <-- Movement OFF
     db id.RANDOM                            // 48
     OS.align(4)
 
