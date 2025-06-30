@@ -3108,8 +3108,8 @@ scope Stages {
     db id.MMADNESS                          // 3F       <-- Hazards OFF
     db id.SAFFRON_O                         // 40
     db id.KITCHEN                           // 41       <-- Movement ON
-    db id.COOLCOOL_DL                       // 42
-    db id.META_CRYSTAL                      // 43
+    db id.META_CRYSTAL                      // 42
+    db id.COOLCOOL_DL                       // 43
     db id.TALTAL_REMIX                      // 44       <-- Hazards OFF
     db id.DRAGONKING                        // 45
     db id.TIME_TWISTER                      // 46       <-- Movement OFF
