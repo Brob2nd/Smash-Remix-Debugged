@@ -69,6 +69,9 @@ scope VsStats {
     down_special:; db "Down Specials used", 0x00
     grab_stats:; db "Grab Stats", 0x00
     attempted_grabs:; db "Attempted grabs", 0x00
+    attempted_throws:; db "Attempted throws", 0x00
+    throw_forward:; db "Forwards", 0x00
+    throw_backward:; db "Backwards", 0x00
     dash:; db "-", 0x00
     press_b:; db ": Back", 0x00
     press_r:; db ": Next Page", 0x00
@@ -120,6 +123,41 @@ scope VsStats {
         sw      r0, 0x001C(t2)                           // highest_damage = 0
         sw      r0, 0x0020(t2)                           // percentage_z_cancel = 0
         sw      r0, 0x0024(t2)                           // percentage_tech = 0
+    }
+
+    // @ Description
+    // This macro creates a new stat counter
+    macro new_tracker(name) {
+        {name}: {
+            dw  0x00 // p1
+            dw  0x00 // p2
+            dw  0x00 // p3
+            dw  0x00 // p4
+        }
+    }
+
+    new_tracker(missed_z_cancels)
+    new_tracker(successful_z_cancels)
+    new_tracker(successful_techs)
+    new_tracker(missed_techs)
+    new_tracker(ledges_grabbed)
+    new_tracker(airdodge_counter)
+    new_tracker(usp_counter)
+    new_tracker(nsp_counter)
+    new_tracker(dsp_counter)
+    new_tracker(grab_counter)
+    new_tracker(throw_counter)
+    new_tracker(throwf_counter)
+    new_tracker(throwb_counter)
+
+    // @ Description
+    // This macro clears a stat counter
+    macro clear_tracker(name) {
+        li      t8, VsStats.{name}
+        sw      r0, 0x0000(t8)              // clear p1 count
+        sw      r0, 0x0004(t8)              // clear p2 count
+        sw      r0, 0x0008(t8)              // clear p3 count
+        sw      r0, 0x000C(t8)              // clear p4 count
     }
 
     // @ Description
@@ -977,6 +1015,9 @@ scope VsStats {
         addiu   a2, a2, -1                  // adjust y for better underline
         draw_underline(57, 2)
         draw_row(attempted_grabs, 0, VsStats.grab_counter, 0x0000, 0x0004, -1, -1, 2)
+        draw_row(attempted_throws, 0, VsStats.throw_counter, 0x0000, 0x0004, -1, -1, 2)
+        draw_row(throw_forward, 8, VsStats.throwf_counter, 0x0000, 0x0004, -1, -1, 2)
+        draw_row(throw_backward, 8, VsStats.throwb_counter, 0x0000, 0x0004, -1, -1, 2)
 
         b       _air_dodge_on_check
         nop
@@ -1077,56 +1118,19 @@ scope VsStats {
         addiu   sp, sp, -0x0010             // allocate stack space
         sw      ra, 0x0004(sp)              // save ra
 
-        li      t8, VsStats.successful_z_cancels
-        sw      r0, 0x0000(t8)              // clear p1 count
-        sw      r0, 0x0004(t8)              // clear p2 count
-        sw      r0, 0x0008(t8)              // clear p3 count
-        sw      r0, 0x000C(t8)              // clear p4 count
-        li      t8, VsStats.missed_z_cancels
-        sw      r0, 0x0000(t8)              // clear p1 count
-        sw      r0, 0x0004(t8)              // clear p2 count
-        sw      r0, 0x0008(t8)              // clear p3 count
-        sw      r0, 0x000C(t8)              // clear p4 count
-        li      t8, VsStats.successful_techs
-        sw      r0, 0x0000(t8)              // clear p1 count
-        sw      r0, 0x0004(t8)              // clear p2 count
-        sw      r0, 0x0008(t8)              // clear p3 count
-        sw      r0, 0x000C(t8)              // clear p4 count
-        li      t8, VsStats.missed_techs
-        sw      r0, 0x0000(t8)              // clear p1 count
-        sw      r0, 0x0004(t8)              // clear p2 count
-        sw      r0, 0x0008(t8)              // clear p3 count
-        sw      r0, 0x000C(t8)              // clear p4 count
-        li      t8, VsStats.ledges_grabbed
-        sw      r0, 0x0000(t8)              // clear p1 count
-        sw      r0, 0x0004(t8)              // clear p2 count
-        sw      r0, 0x0008(t8)              // clear p3 count
-        sw      r0, 0x000C(t8)              // clear p4 count
-        li      t8, VsStats.airdodge_counter
-        sw      r0, 0x0000(t8)              // clear p1 count
-        sw      r0, 0x0004(t8)              // clear p2 count
-        sw      r0, 0x0008(t8)              // clear p3 count
-        sw      r0, 0x000C(t8)              // clear p4 count
-        li      t8, VsStats.usp_counter
-        sw      r0, 0x0000(t8)              // clear p1 count
-        sw      r0, 0x0004(t8)              // clear p2 count
-        sw      r0, 0x0008(t8)              // clear p3 count
-        sw      r0, 0x000C(t8)              // clear p4 count
-        li      t8, VsStats.nsp_counter
-        sw      r0, 0x0000(t8)              // clear p1 count
-        sw      r0, 0x0004(t8)              // clear p2 count
-        sw      r0, 0x0008(t8)              // clear p3 count
-        sw      r0, 0x000C(t8)              // clear p4 count
-        li      t8, VsStats.dsp_counter
-        sw      r0, 0x0000(t8)              // clear p1 count
-        sw      r0, 0x0004(t8)              // clear p2 count
-        sw      r0, 0x0008(t8)              // clear p3 count
-        sw      r0, 0x000C(t8)              // clear p4 count
-        li      t8, VsStats.grab_counter
-        sw      r0, 0x0000(t8)              // clear p1 count
-        sw      r0, 0x0004(t8)              // clear p2 count
-        sw      r0, 0x0008(t8)              // clear p3 count
-        sw      r0, 0x000C(t8)              // clear p4 count
+        clear_tracker(missed_z_cancels)
+        clear_tracker(successful_z_cancels)
+        clear_tracker(successful_techs)
+        clear_tracker(missed_techs)
+        clear_tracker(ledges_grabbed)
+        clear_tracker(airdodge_counter)
+        clear_tracker(usp_counter)
+        clear_tracker(nsp_counter)
+        clear_tracker(dsp_counter)
+        clear_tracker(grab_counter)
+        clear_tracker(throw_counter)
+        clear_tracker(throwf_counter)
+        clear_tracker(throwb_counter)
 
         _end:
         lw      ra, 0x0004(sp)              // restore ra
@@ -1135,6 +1139,9 @@ scope VsStats {
         nop
     }
 
+
+    // @ Description
+    // Increment grab counter whenever someone starts a grab
     scope count_grabs: {
         OS.patch_start(0xC4600, 0x80149BC0)
         j   count_grabs
@@ -1143,78 +1150,70 @@ scope VsStats {
         OS.patch_end()
 
         li      a2, VsStats.grab_counter
-        lbu     a1, 0x000D(s0)          // a1 = player index (0 - 3)
-        sll     a1, a1, 0x0002          // a1 = player index * 4
-        addu    a2, a2, a1              // a2 = address of grab count for this player
-        lw      a1, 0x0000(a2)          // a1 = grab count
-        addiu   a1, a1, 0x0001          // increment
-        sw      a1, 0x0000(a2)          // store updated grab count
+        lbu     a1, 0x000D(s0)              // a1 = player index (0 - 3)
+        sll     a1, a1, 0x0002              // a1 = player index * 4
+        addu    a2, a2, a1                  // a2 = address of grab count for this player
+        lw      a1, 0x0000(a2)              // a1 = grab count
+        addiu   a1, a1, 0x0001              // increment
+        sw      a1, 0x0000(a2)              // store updated grab count
 
-        addiu   a1, r0, 0x00A6  // original line 1
-        j   _return
-        addiu   a2, r0, 0x0000  // original line 2
+        addiu   a1, r0, 0x00A6              // original line 1
+        j       _return
+        addiu   a2, r0, 0x0000              // original line 2
     }
 
 
-    missed_z_cancels:
-    dw  0x00 // p1
-    dw  0x00 // p2
-    dw  0x00 // p3
-    dw  0x00 // p4
+    // @ Description
+    // Increment throw counters when someone starts a throw
+    scope count_throws: {
+        addiu   sp, sp, -0x0014             // allocate stack space
+        sw      ra, 0x0004(sp)              // save ra
+        sw      t0, 0x0008(sp)              // save t0
+        sw      t2, 0x000C(sp)              // save t2
 
-    successful_z_cancels:
-    dw  0x00 // p1
-    dw  0x00 // p2
-    dw  0x00 // p3
-    dw  0x00 // p4
+        // s0 = player struct
+        // t9 = status id
+        
+        addiu   t0, r0, Action.KIRBY.ForwardThrow
+        beq     t9, t0, _forward            // branch if forward throw
+        addiu   t0, r0, Action.ThrowF       // ~
+        beq     t9, t0, _forward            // branch if forward throw
+        addiu   t0, r0, Action.ThrowB       // ~
+        bne     t9, t0, _end                // return if status id not a throw
+        nop
 
-    successful_techs:
-    dw  0x00 // p1
-    dw  0x00 // p2
-    dw  0x00 // p3
-    dw  0x00 // p4
+        li      t2, VsStats.throwb_counter
+        b       _increment
+        nop
 
-    missed_techs:
-    dw  0x00 // p1
-    dw  0x00 // p2
-    dw  0x00 // p3
-    dw  0x00 // p4
+        _forward:
+        li      t2, VsStats.throwf_counter
 
-    ledges_grabbed:
-    dw  0x00 // p1
-    dw  0x00 // p2
-    dw  0x00 // p3
-    dw  0x00 // p4
+        _increment:
+        lbu     t0, 0x000D(s0)              // t0 = player index (0 - 3)
+        sll     t0, t0, 0x0002              // t0 = player index * 4
+        addu    t2, t2, t0                  // t2 = address of directional throw count for this player
+        lw      t0, 0x0000(t2)              // t0 = directional throw count
+        addiu   t0, t0, 0x0001              // increment
+        sw      t0, 0x0000(t2)              // store updated directional throw count
 
-    airdodge_counter:
-    dw  0x00 // p1
-    dw  0x00 // p2
-    dw  0x00 // p3
-    dw  0x00 // p4
+        li      t2, VsStats.throw_counter
+        lbu     t0, 0x000D(s0)              // t0 = player index (0 - 3)
+        sll     t0, t0, 0x0002              // t0 = player index * 4
+        addu    t2, t2, t0                  // t2 = address of throw count for this player
+        lw      t0, 0x0000(t2)              // t0 = throw count
+        addiu   t0, t0, 0x0001              // increment
+        sw      t0, 0x0000(t2)              // store updated throw count
 
-    usp_counter:
-    dw  0x00 // p1
-    dw  0x00 // p2
-    dw  0x00 // p3
-    dw  0x00 // p4
+        _end:
+        lw      t2, 0x000C(sp)              // restore t2
+        lw      t0, 0x0008(sp)              // restore t0
+        lw      ra, 0x0004(sp)              // restore ra
+        addiu   sp, sp, 0x0014              // deallocate stack space
+        jr      ra
+        nop
+    }
 
-    nsp_counter:
-    dw  0x00 // p1
-    dw  0x00 // p2
-    dw  0x00 // p3
-    dw  0x00 // p4
-
-    dsp_counter:
-    dw  0x00 // p1
-    dw  0x00 // p2
-    dw  0x00 // p3
-    dw  0x00 // p4
-
-    grab_counter:
-    dw  0x00 // p1
-    dw  0x00 // p2
-    dw  0x00 // p3
-    dw  0x00 // p4
 }
 
 } // __VSSTATS__
