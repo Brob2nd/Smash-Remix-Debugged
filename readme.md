@@ -1,3 +1,57 @@
+# Smash Remix Debugged
+*A Smash Remix Mod Made by Brobgonal Second*
+
+Smash Remix Debugged is a mod for the Super Smash Bros. 64 mod, Smash Remix, this mod's purpose is to work as a template for future Smash Remix mods, adding things like inaccessible features now being accessible, such as Sandbag, some stages and certain inaccessible songs (such as the Game Boy Land ones, All-star Rest Area, SMB2 Boss or Menu music) now being able to play in all stages.
+
+It also adds some extra content, such as the Tap Jump option, Extended VS Match Stats, Z Cancel Guide, Volume settings, New Songs, More songs for some stages and 4 Tournament Stage Pages with a list of viable stages for Tourney, and more.
+
+# FAQ/Q&A
+
+Q1: Does Smash Remix Debugged use the latest Smash Remix patch?
+
+A1: Yes, it does!
+
+Q2: Does the mod modify/change or delete anything from Vanilla Smash Remix?
+
+A2: No! the mod has all content already available on Vanilla Smash Remix!
+
+Q3: Does the mod add new characters, stages, items, songs, or game modes?
+
+A3: Technically, no, the only "new" character and stage added is Sandbag (Boss character for Jigglypuff) and Home-run Contest (now an Alt for Duel Zone) respectively, it doesn't add any new items or game modes, however, it does add new songs! 20 from those new songs are songs that previously at least once were in a Smash Remix version, but they were removed, 3 of them are straight up scrapped songs that never appeared in any Smash Remix version, meaning they never saw the light of day and 20 of them are entirely new songs made for the mod, giving a total of 43 new songs!
+
+Q4: Can i use this mod for my tournament?
+
+A4: Yes, you can! That's why there's an extended Tournament SSS in the mod! It's optional though, meaning that if you want, you can still use vanilla Smash Remix for your tournaments!
+
+# Modder's FAQ/Q&A
+
+Q1/Q2: Does the mod run on the latest 'original.z64' file/I need to port all of my work imported to the previous original.z64 to the new one?
+
+A1/A2: Yes, it does! The mod itself is based/build of the latest original.z64 file (and also from the latest Smash Remix patch) meaning that if you ported something to the 1.5.2 original.z64, you don't have any need of having to re-import it to the "new" one.
+
+# Credits
+
+Brobgonal Second: Leader of the project, programmer, musician/composer
+
+MetaSSB / Meta Nais: Co-leader of the project, programmer, musician/composer, helper/assistant with programming and composing songs for the mod, Special Thanks.
+
+NewoRGBY_255/ Newo Regevoide:  Instrument Design, Musician/Arranger of 'Battle! Cyrus', helper/assistant with composing songs for the mod, Special Thanks.
+
+Krix08: Creator of Extended VS Stats, Music/SFX volume toggles, Sleep/Trip/Swap Music options for Punish Failed Z-Cancel, Special Thanks.
+- Special thanks to the last 3 mentioned for really helping me with Smash Remix Debugged.
+
+Halofactory: Creator of the Tap Jump option, programmer for Vanilla Smash Remix.
+
+Yaruzu: Musician/Arranger of 'Battle - Humans, Demons and...', 'Lance Battle' and 'You Will Know Our Names'
+
+MrMarioBros222: Fixer of the Sandbag 1P Modes crashes and animations changes.
+
+MichaelthemanX: Sandbag's Announcer
+
+coffee: Musician/Arranger of the Donkey Kong Jr. Song and part of the Vanilla Smash Remix OST.
+
+B3313 Team and Newsupkaizo55: Creators of B3313, and musicians/composers of the 14 new songs added for the mod
+
 # Smash Remix
 *A Super Smash Bros. 64 Mod Organized by The_Smashfather*
 
