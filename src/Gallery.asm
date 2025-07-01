@@ -419,7 +419,7 @@ scope Gallery {
     dh {MIDI.id.FUTUREFRENZY}
 
     bgm_peach:
-    dh 15                                   // number of BGM
+    dh 14                                   // number of BGM
     dh {MIDI.id.SM64STAFF}
     dh {MIDI.id.FILESELECT_SM64}
     dh {MIDI.id.ITSATRAP_SM64}
@@ -430,7 +430,6 @@ scope Gallery {
     dh {MIDI.id.TOADSTOOLROOM}
     dh {MIDI.id.BOB}
     dh {MIDI.id.N64}
-    dh {MIDI.id.WETTOWN}
     dh {MIDI.id.COOLCOOLMOUNTAIN}
     dh {MIDI.id.SLIDER}
     dh {MIDI.id.WING_CAP}
