@@ -404,19 +404,22 @@ scope Gallery {
     dh {MIDI.id.CLICKCLOCKWOODS}
     dh {MIDI.id.BK_FINALBATTLE}
     dh {MIDI.id.VS_KLUNGO}
-    dh {MIDI.id.MRPATCH}
     dh {MIDI.id.OLDKINGCOAL}
+    dh {MIDI.id.MRPATCH}
     dh {MIDI.id.FROSTY_VILLAGE}
     dh {MIDI.id.DKR_BOSS}
 
     bgm_crash:
-    dh 6                                    // number of BGM
+    dh 9                                    // number of BGM
     dh {MIDI.id.CRASH3}
     dh {MIDI.id.NSANITYBEACH}
     dh {MIDI.id.HOGWILD}
     dh {MIDI.id.SNOWGO}
     dh {MIDI.id.CORTEX}
     dh {MIDI.id.FUTUREFRENZY}
+    dh {MIDI.id.CTR_MENU}
+    dh {MIDI.id.CRASHBASH_LOADING}
+    dh {MIDI.id.CRASHBONUS}
 
     bgm_peach:
     dh 14                                   // number of BGM
