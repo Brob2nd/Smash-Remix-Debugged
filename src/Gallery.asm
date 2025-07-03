@@ -463,13 +463,15 @@ scope Gallery {
     dh {MIDI.id.DK_RAP_MELEE}
 
     bgm_dking:
-    dh 6                                    // number of BGM
+    dh 8                                    // number of BGM
     dh {MIDI.id.DRAGONKING}
     dh {MIDI.id.FIRST_DESTINATION}
     dh {MIDI.id.MULTIMAN}
+    dh {MIDI.id.MULTIMAN2}
     dh {MIDI.id.METAL_BATTLE}
     dh {MIDI.id.TABUU}
     dh {MIDI.id.FD_BRAWL}
+    dh {MIDI.id.CRUEL}
 
     bgm_remix:
     dh 11                                   // number of BGM
@@ -836,6 +838,8 @@ scope Gallery {
     add_bgm_to_gallery({MIDI.id.TEMPLE_8BIT}, id.LINK)
     add_bgm_to_gallery({MIDI.id.DREAMLANDBETA}, id.DEDEDE)
     add_bgm_to_gallery({MIDI.id.SHOWDOWN}, id.KIRBY)
+    add_bgm_to_gallery({MIDI.id.MULTIMAN2}, id.DKING)
+    add_bgm_to_gallery({MIDI.id.CRUEL}, id.DKING)
 
     // @ Description
     // Table which holds the 'L' and 'R' sound effects for drumming
@@ -843,25 +847,26 @@ scope Gallery {
 
     dh  0x020, 0x01F                     // Kicks
     dh  0x11F, 0x033                     // Stomp / Fan smack
-    dh  0x117, 0x038                     // POW block / Koopa shell
-    dh  0x03D, 0x02F                     // Gun shoot / Bumper
+    dh  0x117, 0x038                     // POW Block / Koopa shell
+    dh  0x03D, 0x02F                     // Gun Shoot / Bumper
     dh  0x2C6, 0x2C7                     // Dr Mario Pills
     dh  0x59C, 0x59B                     // Peach Golf Club / Racket
     dh  0x567, 0x568                     // Meow / Woof
-    dh  0x0EE, 0x0F7                     // Samus shot / bomb
+    dh  0x0EE, 0x0F7                     // Samus Shot / bomb
     dh  0x0D9, 0x1B0                     // Mario Jump / BLJ
     dh  0x569, 0x56A                     // "D K"
     dh  0x180, 0x181                     // Kirby "Falcon Punch!"
     dh  0x256, 0x257                     // Yoshi
     dh  0x230, 0x234                     // Jigglypuff
     dh  0x5CD, 0x5CC                     // F-Zero Announcer "1" / "2"
+    dh  0x5CB, 0x5CE                     // F-Zero Announcer "3" / "GO"
     dh  0x52B, 0x52C                     // Kazooie Fair
     dh  0x5A1, 0x583                     // Crash Bounce / Spin
     dh  0x523, 0x556                     // Ebi "Cha" / Camera
     dh  0x5F8, 0x5F9                     // Lanky "Hip" / "Hup"
     dh  0x547, 0x549                     // DKing Hurt
 
-    constant DRUM_KIT_ENTRY_COUNT(19)    // update this when we add sound effects
+    constant DRUM_KIT_ENTRY_COUNT(20)    // update this when we add sound effects
 
     drum_kit_index:
     dw  0
