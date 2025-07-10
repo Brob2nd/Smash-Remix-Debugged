@@ -718,7 +718,7 @@ scope MIDI {
     insert_midi(NBA_JAM_TEAMSEL, OS.TRUE, OS.TRUE, "Team Select", nbajam, 309)
     insert_midi(NORFAIRMELEE, OS.TRUE, OS.TRUE, "Brinstar Depths (Melee)", metroid, 47)
     insert_midi(OLDTOWEROFHEAVEN, OS.TRUE, OS.TRUE, "Luna Ascension", toh, 191)
-    insert_midi(OLD_BEWARE_THE_FORESTS_MUSHROOMS, OS.TRUE, OS.TRUE, "Beware the Forest's Mushrooms (SMRPG)", smrpg, 30)
+    insert_midi(OLD_BEWARE_THE_FORESTS_MUSHROOMS, OS.TRUE, OS.TRUE, "Beware the Forest's Mushrooms (OG)", smrpg, 30)
     insert_midi(MASKEDDEDEDE, OS.TRUE, OS.TRUE, "Masked Dedede's Theme", kirbytripledx, 202)
     insert_midi(FORTUNA, OS.TRUE, OS.TRUE, "Fortuna", starfox0, 129)
     insert_midi(ROUTE209, OS.TRUE, OS.TRUE, "Route 209", pokemondiamond, 267)
