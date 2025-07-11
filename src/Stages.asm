@@ -4424,7 +4424,7 @@ scope Stages {
     // 0x0004 - Rare BGM_ID 2
     alternate_music_table:
     constant alternate_music_table_origin(origin())
-    fill 8 * (id.MAX_STAGE_ID + 1), 0xFF
+    fill 9 * (id.MAX_STAGE_ID + 1), 0xFF
 
     // @ Description
     // Holds stage IDs for each stage's variants:
@@ -4438,13 +4438,14 @@ scope Stages {
     // 0x0005 - Remix 4 variant stage_id
     // 0x0006 - Remix 5 variant stage_id
     // 0x0007 - Remix 6 variant stage_id
+    // 0x0008 - Remix 7 variant stage_id
     variant_table:
     constant variant_table_origin(origin())
-    fill 8 * (id.MAX_STAGE_ID + 1), 0xFF
+    fill 9 * (id.MAX_STAGE_ID + 1), 0xFF
 
     // Helps set vanilla stages as remix variants
     macro set_remix_variant(main_stage_id, variant_stage_id) {
-        OS.patch_start(variant_table_origin + (8 * id.{main_stage_id}) + 2, variant_table + (8 * id.{main_stage_id}) + 2)
+        OS.patch_start(variant_table_origin + (9 * id.{main_stage_id}) + 2, variant_table + (9 * id.{main_stage_id}) + 2)
         db id.{variant_stage_id}
         OS.patch_end()
     }
