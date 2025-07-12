@@ -4445,7 +4445,7 @@ scope Stages {
 
     // Helps set vanilla stages as remix variants
     macro set_remix_variant(main_stage_id, variant_stage_id) {
-        OS.patch_start(variant_table_origin + (9 * id.{main_stage_id}) + 2, variant_table + (9 * id.{main_stage_id}) + 2)
+        OS.patch_start(variant_table_origin + (8 * id.{main_stage_id}) + 2, variant_table + (8 * id.{main_stage_id}) + 2)
         db id.{variant_stage_id}
         OS.patch_end()
     }
