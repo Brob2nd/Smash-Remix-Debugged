@@ -2937,7 +2937,7 @@ scope SinglePlayerModes: {
     db  Character.id.YLINK              // Character ID
     db  Stages.id.DEKU_TREE             // Stage Option 1
     db  Stages.id.TALTAL                // Stage Option 2
-    db  Stages.id.DEKU_TREE             // Stage Option 3
+    db  Stages.id.TALTAL_REMIX          // Stage Option 3
     dw  SinglePlayer.name_texture.YLINK + 0x10    // name texture
     dw  0x000002E5                      // Announcer Call
     dw  0x00006F80                      // Model Scale
@@ -2946,9 +2946,9 @@ scope SinglePlayerModes: {
     // Wolf match settings
     dw  0x00000000                      // flag
     db  Character.id.WOLF               // Character ID
-    db  Stages.id.VENOM             // Stage Option 1
-    db  Stages.id.SECTOR_Z_DL                 // Stage Option 2
-    db  Stages.id.CORNERIA2           // Stage Option 3
+    db  Stages.id.VENOM                 // Stage Option 1
+    db  Stages.id.SECTOR_Z_DL           // Stage Option 2
+    db  Stages.id.CORNERIA2             // Stage Option 3
     dw  SinglePlayer.name_texture.WOLF + 0x10    // name texture
     dw  0x000003AA                      // Announcer Call
     dw  0x00006F80                      // Model Scale
@@ -2967,11 +2967,11 @@ scope SinglePlayerModes: {
 
     // Bowser match settings
     bowser_match_setting:
-    dw  0x00000000                        // flag
-    db  Character.id.BOWSER                // Character ID
-    db  Stages.id.BOWSERS_KEEP            // Stage Option 1
-    db  Stages.id.BOWSERB                // Stage Option 2
-    db  Stages.id.BOWSERS_KEEP            // Stage Option 3
+    dw  0x00000000                      // flag
+    db  Character.id.BOWSER             // Character ID
+    db  Stages.id.BOWSERS_KEEP          // Stage Option 1
+    db  Stages.id.BOWSERB               // Stage Option 2
+    db  Stages.id.BOWSERS_KEEP          // Stage Option 3
     dw  SinglePlayer.name_texture.BOWSER + 0x10    // name texture
     dw  0x00000372                      // Announcer Call
     dw  0x00006F80                      // Model Scale
@@ -3073,11 +3073,11 @@ scope SinglePlayerModes: {
 
     //  Falco match settings
     falco_match_setting:
-    dw  0x00000000                       // flag
-    db  Character.id.FALCO               // Character ID
-    db  Stages.id.CORNERIA2              // Stage Option 1
-    db  Stages.id.VENOM                  // Stage Option 2
-    db  Stages.id.DISCOVERY_FALLS        // Stage Option 3
+    dw  0x00000000                      // flag
+    db  Character.id.FALCO              // Character ID
+    db  Stages.id.CORNERIA2             // Stage Option 1
+    db  Stages.id.VENOM                 // Stage Option 2
+    db  Stages.id.DISCOVERY_FALLS       // Stage Option 3
     dw  SinglePlayer.name_texture.FALCO + 0x10    // name texture
     dw  0x000002D6                      // Announcer Call
     dw  0x00006F80                      // Model Scale
@@ -3101,7 +3101,7 @@ scope SinglePlayerModes: {
     db  Character.id.CRASH              // Character ID
     db  Stages.id.TIME_TWISTER          // Stage Option 1
     db  Stages.id.SNOW_GO               // Stage Option 2
-    db  Stages.id.TIME_TWISTER          // Stage Option 3
+    db  Stages.id.FUTURE_FRENZY         // Stage Option 3
     dw  0x0000C3E0 + 0x10               // name texture
     dw  0x0000057B                      // Announcer Call
     dw  0x00006F80                      // Model Scale
@@ -3128,18 +3128,18 @@ scope SinglePlayerModes: {
     db  Character.id.MARIO              // Character ID
     db  Stages.id.MUDA                  // Stage Option 1
     db  Stages.id.GOOMBA_ROAD           // Stage Option 2
-    db  Stages.id.COOLCOOL_REMIX           // Stage Option 3
+    db  Stages.id.COOLCOOL_REMIX        // Stage Option 3
     dw  SinglePlayer.name_texture.DRM + 0x10    // name texture
     dw  0x000002E6                      // Announcer Call
     dw  0x00006F80                      // Model Scale
     dw  0x00014FC0                      // Progress Icon
 
     //  Fox match settings
-    dw  0x00000000                       // flag
-    db  Character.id.FOX                 // Character ID
-    db  Stages.id.CORNERIA2              // Stage Option 1
-    db  Stages.id.VENOM                  // Stage Option 2
-    db  Stages.id.DISCOVERY_FALLS        // Stage Option 3
+    dw  0x00000000                      // flag
+    db  Character.id.FOX                // Character ID
+    db  Stages.id.CORNERIA2             // Stage Option 1
+    db  Stages.id.VENOM                 // Stage Option 2
+    db  Stages.id.DISCOVERY_FALLS       // Stage Option 3
     dw  SinglePlayer.name_texture.DRM + 0x10    // name texture
     dw  0x000002E6                      // Announcer Call
     dw  0x00006F80                      // Model Scale
@@ -3149,7 +3149,7 @@ scope SinglePlayerModes: {
     dw  0x00000000                      // flag
     db  Character.id.DK                 // Character ID
     db  Stages.id.FALLS                 // Stage Option 1
-    db  Stages.id.FALLS                 // Stage Option 2
+    db  Stages.id.CONGOJ_DL             // Stage Option 2
     db  Stages.id.FALLS                 // Stage Option 3
     dw  SinglePlayer.name_texture.DRM + 0x10    // name texture
     dw  0x000002E6                      // Announcer Call
@@ -3160,7 +3160,7 @@ scope SinglePlayerModes: {
     dw  0x00000000                      // flag
     db  Character.id.SAMUS              // Character ID
     db  Stages.id.ZLANDING              // Stage Option 1
-    db  Stages.id.ZLANDING              // Stage Option 2
+    db  Stages.id.ZLANDING_DL           // Stage Option 2
     db  Stages.id.NORFAIR               // Stage Option 3
     dw  SinglePlayer.name_texture.DRM + 0x10    // name texture
     dw  0x000002E6                      // Announcer Call
@@ -3183,7 +3183,7 @@ scope SinglePlayerModes: {
     db  Character.id.LINK               // Character ID
     db  Stages.id.DEKU_TREE             // Stage Option 1
     db  Stages.id.TALTAL                // Stage Option 2
-    db  Stages.id.DEKU_TREE             // Stage Option 3
+    db  Stages.id.DEKU_TREE_DL          // Stage Option 3
     dw  SinglePlayer.name_texture.DRM + 0x10    // name texture
     dw  0x000002E6                      // Announcer Call
     dw  0x00006F80                      // Model Scale
@@ -3192,7 +3192,7 @@ scope SinglePlayerModes: {
     //  Yoshi match settings
     dw  0x00000000                      // flag
     db  Character.id.YOSHI              // Character ID
-    db  Stages.id.YOSHI_STORY_2         // Stage Option 1
+    db  Stages.id.YOSHI_ISLAND_DL       // Stage Option 1
     db  Stages.id.YOSHI_STORY_2         // Stage Option 2
     db  Stages.id.YOSHIS_ISLAND_II      // Stage Option 3
     dw  SinglePlayer.name_texture.DRM + 0x10    // name texture
@@ -3204,8 +3204,8 @@ scope SinglePlayerModes: {
     dw  0x00000000                      // flag
     db  Character.id.CAPTAIN            // Character ID
     db  Stages.id.MUTE                  // Stage Option 1
-    db  Stages.id.MUTE                  // Stage Option 2
-    db  Stages.id.MUTE                  // Stage Option 3
+    db  Stages.id.MUTE_DL               // Stage Option 2
+    db  Stages.id.BLUE                  // Stage Option 3
     dw  SinglePlayer.name_texture.DRM + 0x10    // name texture
     dw  0x000002E6                      // Announcer Call
     dw  0x00006F80                      // Model Scale
@@ -3216,7 +3216,7 @@ scope SinglePlayerModes: {
     db  Character.id.KIRBY              // Character ID
     db  Stages.id.DREAM_LAND            // Stage Option 1
     db  Stages.id.FOD                   // Stage Option 2
-    db  Stages.id.FOD                   // Stage Option 3
+    db  Stages.id.WINTER_DL             // Stage Option 3
     dw  SinglePlayer.name_texture.DRM + 0x10    // name texture
     dw  0x000002E6                      // Announcer Call
     dw  0x00006F80                      // Model Scale
@@ -3275,7 +3275,7 @@ scope SinglePlayerModes: {
     db  Character.id.DSAMUS             // Character ID
     db  Stages.id.NORFAIR               // Stage Option 1
     db  Stages.id.ZLANDING              // Stage Option 2
-    db  Stages.id.NORFAIR               // Stage Option 3
+    db  Stages.id.ZLANDING_DL           // Stage Option 3
     dw  SinglePlayer.name_texture.DSAMUS + 0x10    // name texture
     dw  0x000002EC                      // Announcer Call
     dw  0x00006F80                      // Model Scale
