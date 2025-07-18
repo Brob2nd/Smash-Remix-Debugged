@@ -17,7 +17,7 @@ A2: No! the mod has all content already available on Vanilla Smash Remix!
 
 Q3: Does the mod add new characters, stages, items, songs, or game modes?
 
-A3: Technically, no, the only "new" character and stage added is Sandbag (Boss character for Jigglypuff) and Home-run Contest (now an Alt for Duel Zone) respectively, it doesn't add any new items or game modes, however, it does add new songs! 20 from those new songs are songs that previously at least once were in a Smash Remix version, but they were removed, 3 of them are straight up scrapped songs that never appeared in any Smash Remix version, meaning they never saw the light of day and 20 of them are entirely new songs made for the mod, giving a total of 43 new songs!
+A3: Technically, no, the only added character is Sandbag, and the only added stages are "Home-Run Contest", "Soccer" and "Time Twister (SSS)" (variants for "Duel Zone", "Smashketball" and "Time Twister") which were stages that were already in the game, just not normally accessible, but now they are, it also doesn't add any new items or game modes, however, it does add some new songs!
 
 Q4: Can i use this mod for my tournament?
 
@@ -40,6 +40,8 @@ NewoRGBY_255/ Newo Regevoide:  Instrument Design, Musician/Arranger of 'Battle! 
 Krix08: Creator of Extended VS Stats, Music/SFX volume toggles, Z Cancel Guide and Sleep/Trip/Swap Music options for Punish Failed Z-Cancel, Special Thanks.
 - Special thanks to the last 3 mentioned for really helping me with Smash Remix Debugged.
 
+Jilly Jane: Project Galleon's Overdriven and Distortion Guitar Fix
+
 Halofactory: Creator of the Tap Jump option, programmer for Vanilla Smash Remix.
 
 Yaruzu: Musician/Arranger of 'Battle - Humans, Demons and...', 'Lance Battle' and 'You Will Know Our Names'
@@ -48,7 +50,9 @@ MrMarioBros222: Fixer of the Sandbag 1P Modes crashes and animations changes.
 
 MichaelthemanX: Sandbag's Announcer
 
-coffee: Musician/Arranger of the Donkey Kong Jr. Song and part of the Vanilla Smash Remix OST.
+Daniel Welch: Arranger of "Masked Dedede" and "Fortuna", Part of the Smash Remix music team.
+
+coffee: Musician/Arranger of the Donkey Kong Jr. Song and Part of the Smash Remix music team.
 
 B3313 Team and Newsupkaizo55: Creators of B3313, and musicians/composers of the 14 new songs added for the mod
 
