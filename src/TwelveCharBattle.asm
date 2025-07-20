@@ -76,7 +76,7 @@ scope TwelveCharBattle {
     // @ Description
     // CHARACTER SELECT SCREEN LAYOUT
     constant NUM_SLOTS(24)
-    constant NUM_PRESETS(4)
+    constant NUM_PRESETS(5)
     scope layout {
         scope u {
             // row 1
@@ -194,35 +194,35 @@ scope TwelveCharBattle {
             define slot_23(NPIKACHU)
             define slot_24(NJIGGLY)
         }
-        // scope pr {
-            // // row 1
-            // define slot_1(NDRM)
-            // define slot_2(GND)
-            // define slot_3(YLINK)
-            // define slot_4(FALCO)
-            // define slot_5(NDRM)
-            // define slot_6(GND)
-            // define slot_7(YLINK)
-            // define slot_8(FALCO)
-            // // row 2
-            // define slot_9(DSAMUS)
-            // define slot_10(NWARIO)
-            // define slot_11(NLUCAS)
-            // define slot_12(NBOWSER)
-            // define slot_13(DSAMUS)
-            // define slot_14(NWARIO)
-            // define slot_15(NLUCAS)
-            // define slot_16(NBOWSER)
-            // // row 3
-            // define slot_17(NWOLF)
-            // define slot_18(CONKER)
-            // define slot_19(MTWO)
-            // define slot_20(MARTH)
-            // define slot_21(NWOLF)
-            // define slot_22(CONKER)
-            // define slot_23(MTWO)
-            // define slot_24(MARTH)
-        // }
+        scope pr {
+            // row 1
+            define slot_1(NDRM)
+            define slot_2(NGND)
+            define slot_3(NYLINK)
+            define slot_4(NFALCO)
+            define slot_5(NDRM)
+            define slot_6(NGND)
+            define slot_7(NYLINK)
+            define slot_8(NFALCO)
+            // row 2
+            define slot_9(NDSAMUS)
+            define slot_10(NWARIO)
+            define slot_11(NLUCAS)
+            define slot_12(NBOWSER)
+            define slot_13(NDSAMUS)
+            define slot_14(NWARIO)
+            define slot_15(NLUCAS)
+            define slot_16(NBOWSER)
+            // row 3
+            define slot_17(NWOLF)
+            define slot_18(NCONKER)
+            define slot_19(NMTWO)
+            define slot_20(NMARTH)
+            define slot_21(NWOLF)
+            define slot_22(NCONKER)
+            define slot_23(NMTWO)
+            define slot_24(NMARTH)
+        }
     }
 
     // @ Description
@@ -316,7 +316,7 @@ scope TwelveCharBattle {
     create_portrait_tables(j)       // create japanese character set tables
     create_portrait_tables(pv)      // create polygon vanilla character set tables
     create_portrait_tables(r)       // create remix character set tables
-    // create_portrait_tables(pr)      // create polygon remix character set tables
+    create_portrait_tables(pr)      // create polygon remix character set tables
     create_portrait_tables(p1, u)   // create p1's custom character set tables
     create_portrait_tables(p2, u)   // create p2's custom character set tables
 
@@ -324,9 +324,9 @@ scope TwelveCharBattle {
     // id table     // portrait offset table     // portrait id table     // custom preset cycle index
     dw id_table_u;  dw portrait_offset_table_u;  dw portrait_id_table_u;  dw 0x0
     dw id_table_j;  dw portrait_offset_table_j;  dw portrait_id_table_j;  dw 0x0
-    dw id_table_pv;  dw portrait_offset_table_pv;  dw portrait_id_table_pv;  dw 0x0
+    dw id_table_pv; dw portrait_offset_table_pv; dw portrait_id_table_pv; dw 0x0
     dw id_table_r;  dw portrait_offset_table_r;  dw portrait_id_table_r;  dw 0x0
-    // dw id_table_pr;  dw portrait_offset_table_pr;  dw portrait_id_table_pr;  dw 0x0
+    dw id_table_pr; dw portrait_offset_table_pr; dw portrait_id_table_pr; dw 0x0
     dw id_table_p1; dw portrait_offset_table_p1; dw portrait_id_table_p1; dw 0x0
     dw id_table_p2; dw portrait_offset_table_p2; dw portrait_id_table_p2; dw 0x0
 
@@ -4917,7 +4917,7 @@ scope TwelveCharBattle {
     string_character_set_japanese:; String.insert("Japanese")
     string_character_set_polygon_vanilla:; String.insert("Polygon")
     string_character_set_remix:; String.insert("Remix")
-    // string_character_set_polygon_remix:; String.insert("Polygon R")
+    string_character_set_polygon_remix:; String.insert("P. Remix")
     string_character_set_custom:; String.insert("Custom")
     string_best_character:; String.insert("Best Character")
     string_tkos:; String.insert("TKOs")
@@ -4945,7 +4945,7 @@ scope TwelveCharBattle {
     dw string_character_set_japanese
     dw string_character_set_polygon_vanilla
     dw string_character_set_remix
-    // dw string_character_set_polygon_remix
+    dw string_character_set_polygon_remix
     dw string_character_set_custom
 
     // @ Description
