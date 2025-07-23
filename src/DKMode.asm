@@ -31,10 +31,6 @@ scope DKMode {
         _dk_mode_on:
         li      t7, Character.fighter_DK_mode.table
         lw      t6, 0x0008(s8)      // t6 = character id
-        addiu   s3, r0, 0xC         // s3 = Master Hand
-        beq     t6, s3, _normal     // skip if Master Hand
-        addiu   s3, r0, Character.id.SANDBAG // s3 = Sandbag
-        beq     t6, s3, _normal     // skip if Sandbag
         sll     t6, t6, 2           // t6 = offset in table
         addu    s3, t7, t6          // s3 = entry in table
         lw      t6, 0x0000(s3)

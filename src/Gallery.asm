@@ -360,7 +360,7 @@ scope Gallery {
     dh {MIDI.id.HYRULE_TEMPLE}
 
     bgm_sonic:
-    dh 15                                   // number of BGM
+    dh 16                                   // number of BGM
     dh {MIDI.id.GREEN_HILL_ZONE}
     dh {MIDI.id.OLD_GREEN_HILL_ZONE}
     dh {MIDI.id.EMERALDHILL}
@@ -374,6 +374,7 @@ scope Gallery {
     dh {MIDI.id.FLYINGBATTERY}
     dh {MIDI.id.GIANTWING}
     dh {MIDI.id.EVERYTHING}
+    dh {MIDI.id.SONIC_R}
     dh {MIDI.id.LIVE_AND_LEARN}
     dh {MIDI.id.OPEN_YOUR_HEART}
 
@@ -842,6 +843,7 @@ scope Gallery {
     add_bgm_to_gallery({MIDI.id.MULTIMAN2}, id.DKING)
     add_bgm_to_gallery({MIDI.id.CRUEL}, id.DKING)
     add_bgm_to_gallery({MIDI.id.OLD_GREEN_HILL_ZONE}, id.SONIC)
+    add_bgm_to_gallery({MIDI.id.SONIC_R}, id.SONIC)
 
     // @ Description
     // Table which holds the 'L' and 'R' sound effects for drumming

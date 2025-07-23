@@ -1826,7 +1826,7 @@ scope TwelveCharBattle {
         beql    t4, t5, _end_vs             // if 12cb mode, use custom image
         lli     t9, 0x2048                  // t9 = offset to "12-Char. Battle" image
         lli     t5, VsRemixMenu.mode.TAG_TEAM
-        beql    t4, t5, _end_vs             // if Squard Strike mode, use custom image
+        beql    t4, t5, _end_vs             // if Squad Strike mode, use custom image
         lli     t9, 0x2738                  // t9 = offset to "Tag Team" image
         lli     t5, VsRemixMenu.mode.KOTH
         beql    t4, t5, _end_vs             // if King of the Hill mode, use custom image
@@ -1853,7 +1853,7 @@ scope TwelveCharBattle {
         beql    t1, t5, _12cb_results       // if 12cb mode, use custom image
         lli     t8, 0x2048                  // t8 = offset to "12-Char. Battle" image
         lli     t5, VsRemixMenu.mode.TAG_TEAM
-        beql    t1, t5, _end_results        // if Squard Strike mode, use custom image
+        beql    t1, t5, _end_results        // if Squad Strike mode, use custom image
         lli     t8, 0x2738                  // t8 = offset to "Tag Team" image
         lli     t5, VsRemixMenu.mode.KOTH
         beql    t1, t5, _end_results        // if King of the Hill mode, use custom image
