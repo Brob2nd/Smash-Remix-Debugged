@@ -50,9 +50,13 @@ MrMarioBros222: Fixer of the Sandbag 1P Modes crashes and animations changes.
 
 MichaelthemanX: Sandbag's Announcer
 
+Loogi, Krix08 and Arrowshoes: Sandbag's Crowd Chant
+
 Daniel Welch: Arranger of "Masked Dedede" and "Fortuna", Part of the Smash Remix music team.
 
-coffee: Musician/Arranger of the Donkey Kong Jr. Song and Part of the Smash Remix music team.
+Not Music/Pun4472: Arranger of the "Multiplayer Battle (Bomberman DS)" Song and Part of the Smash Remix music team.
+
+coffee: Arranger of the "Donkey Kong Jr." Song and Part of the Smash Remix music team.
 
 B3313 Team and Newsupkaizo55: Creators of B3313, and musicians/composers of the 14 new songs added for the mod
 
