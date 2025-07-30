@@ -5,6 +5,37 @@ Smash Remix Debugged is a mod for the Super Smash Bros. 64 mod, Smash Remix, thi
 
 It also adds some extra content, such as the Tap Jump option, Extended VS Match Stats, Z Cancel Guide, Volume settings, New Songs, More songs for some stages and 4 Tournament Stage Pages with a list of viable stages for Tourney, and more.
 
+# How to Play Smash Remix Debugged Online on Project64KSE
+Follow the steps on this tutorial on smash64.online, then on your Project64KSE folder, go to cfg, then open the pj64.rdb file, then go to the bottom line, and copy/paste this:
+
+Smash Remix Debugged 1.3.0b's Info:
+- [97977976-856EF35E-C:45]
+- Counter Factor=1
+- Culling=1
+- Good Name=SmashRemixDebugged1.3.0b
+- Internal Name=SmashRemix
+- RDRAM Size=8
+- SMM-Cache=0
+- SMM-FUNC=0
+- SMM-TLB=0
+- Status=Compatible
+- Use TLB=No
+- ViRefresh=2200`
+
+Smash Remix Debugged 1.3.0b (PAL)'s Info:
+- `[824C77B0-63EC3300-C:45]
+- Counter Factor=1
+- Culling=1
+- Good Name=SmashRemixDebugged1.3.0b (PAL60)
+- Internal Name=SmashRemix
+- RDRAM Size=8
+- SMM-Cache=0
+- SMM-FUNC=0
+- SMM-TLB=0
+- Status=Compatible
+- Use TLB=No
+- ViRefresh=2200`
+
 # FAQ/Q&A
 
 Q1: Does Smash Remix Debugged use the latest Smash Remix patch?
