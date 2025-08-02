@@ -20,7 +20,7 @@ Smash Remix Debugged 1.3.0b's Info:
 - SMM-TLB=0
 - Status=Compatible
 - Use TLB=No
-- ViRefresh=2200`
+- ViRefresh=2200
 
 Smash Remix Debugged 1.3.0b (PAL)'s Info:
 - `[824C77B0-63EC3300-C:45]
@@ -34,7 +34,7 @@ Smash Remix Debugged 1.3.0b (PAL)'s Info:
 - SMM-TLB=0
 - Status=Compatible
 - Use TLB=No
-- ViRefresh=2200`
+- ViRefresh=2200
 
 # FAQ/Q&A
 
