@@ -2997,6 +2997,7 @@ scope Toggles {
     include "/music/profiles/positivevibes.asm"
     include "/music/profiles/slappers.asm"
     include "/music/profiles/freshjams.asm"
+    include "/music/profiles/medleys.asm"
     include "/music/profiles/staff.asm"
 
     // Include stage profiles here

@@ -300,8 +300,9 @@ scope Gallery {
     dh {MIDI.id.KANTO_WILD_BATTLE}
 
     bgm_falcon:
-    dh 7                                    // number of BGM
+    dh 8                                    // number of BGM
     dh {MIDI.id.MUTE_CITY}
+    dh {MIDI.id.OLD_MUTE_CITY}
     dh {MIDI.id.BIG_BLUE}
     dh {MIDI.id.FZERO_MEDLEY}
     dh {MIDI.id.FZEROX_MEDLEY}
@@ -424,8 +425,9 @@ scope Gallery {
     dh {MIDI.id.CRASHBONUS}
 
     bgm_peach:
-    dh 14                                   // number of BGM
+    dh 17                                   // number of BGM
     dh {MIDI.id.SM64STAFF}
+    dh {MIDI.id.DIREDIREVICTORY}
     dh {MIDI.id.FILESELECT_SM64}
     dh {MIDI.id.ITSATRAP_SM64}
     dh {MIDI.id.FILESELECT_B3313}
@@ -435,6 +437,8 @@ scope Gallery {
     dh {MIDI.id.TOADSTOOLROOM}
     dh {MIDI.id.BOB}
     dh {MIDI.id.N64}
+    dh {MIDI.id.DEEPSWIMMING}
+    dh {MIDI.id.DIREDIRELOSS}
     dh {MIDI.id.COOLCOOLMOUNTAIN}
     dh {MIDI.id.SLIDER}
     dh {MIDI.id.WING_CAP}
@@ -844,6 +848,9 @@ scope Gallery {
     add_bgm_to_gallery({MIDI.id.CRUEL}, id.DKING)
     add_bgm_to_gallery({MIDI.id.OLD_GREEN_HILL_ZONE}, id.SONIC)
     add_bgm_to_gallery({MIDI.id.SONIC_R}, id.SONIC)
+    add_bgm_to_gallery({MIDI.id.OLD_MUTE_CITY}, id.FALCON)
+    add_bgm_to_gallery({MIDI.id.DEEPSWIMMING}, id.PEACH)
+    add_bgm_to_gallery({MIDI.id.DIREDIRELOSS}, id.PEACH)
 
     // @ Description
     // Table which holds the 'L' and 'R' sound effects for drumming
