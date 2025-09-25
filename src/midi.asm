@@ -738,6 +738,7 @@ scope MIDI {
     insert_midi(DIREDIREVICTORY, OS.TRUE, OS.TRUE, "Dire, Dire Victory", b3313, 88)
     insert_midi(DKCOURT, OS.TRUE, OS.TRUE, "Donkey Kong's Court", mariotennis, 94)
     insert_midi(DOWNTOWNCITY, OS.TRUE, OS.TRUE, "Downtown City", b3313, 96)
+    insert_midi(EFORT, OS.TRUE, OS.TRUE, "Eternal Fort", b3313, 96)
     insert_midi(FILESELECT_B3313, OS.TRUE, OS.TRUE, "File Select (B3313)", b3313, 116)
     insert_midi(GRIMGREENFOREST, OS.TRUE, OS.TRUE, "Grim Green Forest", b3313, 160)
     insert_midi(BOWSERAIRSHIP, OS.TRUE, OS.TRUE, "Negative Aura Koopa's Road", b3313, 225)
@@ -1803,6 +1804,8 @@ scope MIDI {
     add_master_volume_override({MIDI.id.TREASURE_TROVE_COVE}, 95)
     add_master_volume_override({MIDI.id.GREENGARDEN}, 105)
     add_master_volume_override({MIDI.id.BLUE_RESORT}, 127)
+    add_master_volume_override({MIDI.id.BOWSERROOM}, 127)
+    add_master_volume_override({MIDI.id.EFORT}, 127)
 }
 
 } // __MIDI__
