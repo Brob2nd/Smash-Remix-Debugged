@@ -2579,9 +2579,9 @@ scope Toggles {
             if ({id} == Stages.id.TIME_TWISTER_SSS) {
                 evaluate default_toggled(OS.FALSE)
             }
-            
+
             evaluate stage_toggle_{Stages.STAGE_{id}_NAME}(num_toggles - {first_stage_toggle})
-            entry_bool({Stages.STAGE_{id}_TITLE}, OS.TRUE, {Stages.STAGE_{id}_TE}, {Stages.STAGE_{id}_NE}, OS.TRUE, {next})
+            entry_bool({Stages.STAGE_{id}_TITLE}, {default_toggled}, {Stages.STAGE_{id}_TE}, {Stages.STAGE_{id}_NE}, {default_toggled}, {next})
         }
         evaluate n({n}+1)
     }
