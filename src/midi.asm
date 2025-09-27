@@ -747,8 +747,8 @@ scope MIDI {
     insert_midi(LANCEBATTLE, OS.TRUE, OS.TRUE, "Lance Battle", stadium2, 186)
     insert_midi(MKDSMENU, OS.TRUE, OS.TRUE, "Single-Player Menu (MKDS)", mkds, 281)
     insert_midi(PARALLELLOBBY, OS.TRUE, OS.TRUE, "Parallel Lobby", b3313, 243)
-    insert_midi(WETTOWN, OS.TRUE, OS.TRUE, "Wet Dry Paradise/Wet Town", b3313, 351)
     insert_midi(TOADSTOOLROOM, OS.TRUE, OS.TRUE, "Toadstool's Room", b3313, 324)
+    insert_midi(WETTOWN, OS.TRUE, OS.TRUE, "Wet Dry Paradise/Wet Town", b3313, 351)
     insert_midi(YOUWILLKNOWOURNAMES, OS.TRUE, OS.TRUE, "You Will Know Our Names", xenoblade, 361)
     insert_extra_midi(OLD_FALCO_VICTORY)
 
