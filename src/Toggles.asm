@@ -2570,6 +2570,16 @@ scope Toggles {
                 evaluate m({n}+1)
                 evaluate next(entry_random_stage_{m})
             }
+
+            evaluate default_toggled(OS.TRUE)
+            if ({id} == Stages.id.HRC) {
+                evaluate default_toggled(OS.FALSE)
+            }
+             evaluate default_toggled(OS.TRUE)
+            if ({id} == Stages.id.TIME_TWISTER_SSS) {
+                evaluate default_toggled(OS.FALSE)
+            }
+            
             evaluate stage_toggle_{Stages.STAGE_{id}_NAME}(num_toggles - {first_stage_toggle})
             entry_bool({Stages.STAGE_{id}_TITLE}, OS.TRUE, {Stages.STAGE_{id}_TE}, {Stages.STAGE_{id}_NE}, OS.TRUE, {next})
         }
