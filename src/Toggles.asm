@@ -2575,7 +2575,6 @@ scope Toggles {
             if ({id} == Stages.id.HRC) {
                 evaluate default_toggled(OS.FALSE)
             }
-            evaluate default_toggled(OS.TRUE)
             if ({id} == Stages.id.TIME_TWISTER_SSS) {
                 evaluate default_toggled(OS.FALSE)
             }
