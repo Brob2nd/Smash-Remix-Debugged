@@ -118,10 +118,11 @@ scope Gallery {
     dw bgm_remix                            // You Are Proud
 
     bgm_mario:
-    dh 13                                   // number of BGM
+    dh 14                                   // number of BGM
     dh BGM.stage.PEACHS_CASTLE
     dh BGM.stage.MUSHROOM_KINGDOM
     dh {MIDI.id.UNDERGROUND}
+    dh {MIDI.id.UNDERGROUND_HURRY}
     dh {MIDI.id.SMB3OVERWORLD}
     dh {MIDI.id.EASTON_KINGDOM}
     dh {MIDI.id.SMW_TITLECREDITS}
@@ -851,6 +852,7 @@ scope Gallery {
     add_bgm_to_gallery({MIDI.id.OLD_MUTE_CITY}, id.FALCON)
     add_bgm_to_gallery({MIDI.id.DEEPSWIMMING}, id.PEACH)
     add_bgm_to_gallery({MIDI.id.DIREDIRELOSS}, id.PEACH)
+    add_bgm_to_gallery({MIDI.id.UNDERGROUND_HURRY}, id.LUIGI)
 
     // @ Description
     // Table which holds the 'L' and 'R' sound effects for drumming
