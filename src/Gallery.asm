@@ -169,14 +169,15 @@ scope Gallery {
     dh {MIDI.id.TALENTSTUDIO}
 
     bgm_dk:
-    dh 11                                   // number of BGM
+    dh 12                                   // number of BGM
     dh BGM.stage.CONGO_JUNGLE
     dh {MIDI.id.DK_MEDLEY}
     dh {MIDI.id.DKCTITLE}
     dh {MIDI.id.DK_JR_STAGE}
+    dh {MIDI.id.KROOLS_ACID_PUNK}
+    dh {MIDI.id.SKERRIES}
     dh {MIDI.id.GANGPLANK}
     dh {MIDI.id.SNAKEY_CHANTEY}
-    dh {MIDI.id.KROOLS_ACID_PUNK}
     dh {MIDI.id.FOREST_INTERLUDE}
     dh {MIDI.id.STICKERBRUSH_SYMPHONY}
     dh {MIDI.id.DK_RAP}
