@@ -2176,7 +2176,7 @@ scope Stages {
         nop
 
         _end_update:
-                // resetting all ban values (table and icon)
+        // resetting all ban values (table and icon)
         // need to make this a subroutine (used below)
         li      t0, bans_table              // t0 = pointer to bans_table
         sd      r0, 0x0000(t0)              // setting bans 1-8 as 0 to reset
