@@ -5103,7 +5103,7 @@ scope CharacterSelect {
         lw      t2, 0x0028(t1)              // t2 = main character file address pointer
         lw      t2, 0x0000(t2)              // t2 = main character file address
         beqz    t2, _gdk
-        lw      t1, 0x0060(t1)              // t1 = offset to attribute dataAdd commentMore actions
+        lw      t1, 0x0060(t1)              // t1 = offset to attribute data
         addu    t1, t2, t1                  // t1 = attribute data address
         lw      t1, 0x0340(t1)              // t1 = pointer to stock icon footer address
         b       _draw_icon
