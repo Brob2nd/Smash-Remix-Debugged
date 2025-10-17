@@ -1768,9 +1768,6 @@ scope SinglePlayerModes: {
         ori     a1, r0, Stages.id.POKEMON_STADIUM_2
         beql    t6, a1, _update_bgm
         addiu   a1, r0, {MIDI.id.PIKA_CUP}     // Pocket Monsters
-        ori     a1, r0, Stages.id.POKEMON_STADIUM
-        beql    t6, a1, _update_bgm
-        addiu   a1, r0, {MIDI.id.PIKA_CUP}     // Pocket Monsters
         ori     a1, r0, Stages.id.GYM_LEADER_CASTLE
         beql    t6, a1, _update_bgm
         addiu   a1, r0, {MIDI.id.PIKA_CUP}     // Pocket Monsters

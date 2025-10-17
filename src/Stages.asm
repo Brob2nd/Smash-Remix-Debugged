@@ -1798,7 +1798,7 @@ scope Stages {
         addiu   a0, r0, 0x0002               // a0 = 2 (lighter blue)
 
         color_cursor:
-                // checking if banned
+        // checking if banned
         jal     get_index_                  // v0 = index
         nop
         li      t0, bans_table              // checking if in bans_table
@@ -2750,7 +2750,7 @@ scope Stages {
         or      t1, r0, v0                  // t1 = v0
         li      t0, row                     // t0 = ROW address
         sb      t1, 0x0000(t0)              // update row
-        
+
         // checking if banned
         li      t3, bans_table              // t3 = bans_table pointer to see if banned
         lli     t4, NUM_COLUMNS             // t4 = NUM_COLUMNS
@@ -3293,7 +3293,7 @@ scope Stages {
         lui     t0, 0x3F38                  // t0 = x scale
         lw      t1, 0x0074(v0)              // t1 = image struct
         sw      t0, 0x0018(t1)              // set x scale
-        
+
         // Shown when tournament layout for ban indicator
         Render.draw_string_pointer(2, 0xB, layout_pointer, Render.update_live_string_, 0x437C0000, 0x43470000, 0xFFFFFFFF, 0x3F400000, Render.alignment.RIGHT)
         Render.draw_texture_at_offset(2, 0xB, Render.file_pointer_3, 0x0688, Render.NOOP, 0x43720000, 0x43468000, 0xC0CC00FF, 0x000000FF, 0x3F400000)
