@@ -9,32 +9,35 @@ It also adds some extra content, such as the Tap Jump option, Extended VS Match 
 Follow the steps on this tutorial on smash64.online, then on your Project64KSE folder, go to cfg, then open the pj64.rdb file, then go to the bottom line, and copy/paste this:
 
 Smash Remix Debugged 1.3.0b's Info:
-- [97977976-856EF35E-C:45]
-- Counter Factor=1
-- Culling=1
-- Good Name=SmashRemixDebugged1.3.0b
-- Internal Name=SmashRemix
-- RDRAM Size=8
-- SMM-Cache=0
-- SMM-FUNC=0
-- SMM-TLB=0
-- Status=Compatible
-- Use TLB=No
-- ViRefresh=2200
-
+```
+[97977976-856EF35E-C:45]
+Counter Factor=1
+Culling=1
+Good Name=SmashRemixDebugged1.3.0b
+Internal Name=SmashRemix
+RDRAM Size=8
+SMM-Cache=0
+SMM-FUNC=0
+SMM-TLB=0
+Status=Compatible
+Use TLB=No
+ViRefresh=2200
+```
 Smash Remix Debugged 1.3.0b (PAL)'s Info:
-- `[824C77B0-63EC3300-C:45]
-- Counter Factor=1
-- Culling=1
-- Good Name=SmashRemixDebugged1.3.0b (PAL60)
-- Internal Name=SmashRemix
-- RDRAM Size=8
-- SMM-Cache=0
-- SMM-FUNC=0
-- SMM-TLB=0
-- Status=Compatible
-- Use TLB=No
-- ViRefresh=2200
+```
+[824C77B0-63EC3300-C:45]
+Counter Factor=1
+Culling=1
+Good Name=SmashRemixDebugged1.3.0b (PAL60)
+Internal Name=SmashRemix
+RDRAM Size=8
+SMM-Cache=0
+SMM-FUNC=0
+SMM-TLB=0
+Status=Compatible
+Use TLB=No
+ViRefresh=2200
+```
 
 # FAQ/Q&A
 
