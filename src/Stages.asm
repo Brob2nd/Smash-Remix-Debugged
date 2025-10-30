@@ -2183,7 +2183,7 @@ scope Stages {
         sw      r0, 0x0004(t0)              // setting bans 5-8 as 0 to reset
         sw      r0, 0x0008(t0)              // setting bans 9-12 as 0 to reset
         sw      r0, 0x000C(t0)              // setting bans 13-16 as 0 to reset
-        sw      r0, 0x0010(t0)              // setting bans 17,18 as 0 to reset
+        sh      r0, 0x0010(t0)              // setting bans 17,18 as 0 to reset
 
         // t4 = MAX_BANS * 4, (to go through ban_icon pointers)
         li      t3, 4                       // t3 = 4
@@ -2195,8 +2195,9 @@ scope Stages {
 
         _reset_ban_icon_e:
         lw      t1, 0x0000(t0)              // t1 = ban icon
-        sw      0xFF, 0x0030(t1)            // Set X Position
-        sw      0xFF, 0x0034(t1)            // Set Y Position
+        lli     at, 0x00FF                  // at = 0xFF
+        sw      at, 0x0030(t1)              // Set X Position
+        sw      at, 0x0034(t1)              // Set Y Position
         addiu   t0, t0, 4                   // incrementing to next ban_icon
         addiu   t3, t3, 4
         blt     t3, t4, _reset_ban_icon_e   // if t3 <= MAX_BANS, make more ban icons
@@ -2341,9 +2342,9 @@ scope Stages {
         // removing icon
         li      t0, ban_icon                // t0 = pointer to ban_icon
         addu    t0, t0, t3                  // t3 is the offset so we unban the right stage
-        lw      t1, 0x0000(t0)              // t1 = ban icon
-        sw      0xFF, 0x0030(t1)            // Set X Position
-        sw      0xFF, 0x0034(t1)            // Set Y Position
+        lli     at, 0x00FF                  // at = 0xFF
+        sw      at, 0x0030(t1)              // Set X Position
+        sw      at, 0x0034(t1)              // Set Y Position
         b       _end
         nop
 
@@ -2358,7 +2359,7 @@ scope Stages {
         or      t1, t1, t2                  // seeing if any are banned
         lw      t2, 0x000C(t0)              // loading ban stages 13-16 
         or      t1, t1, t2                  // seeing if any are banned
-        lw      t2, 0x0010(t0)              // loading ban stages 17,18 
+        lh      t2, 0x0010(t0)              // loading ban stages 17,18
         or      t1, t1, t2                  // seeing if any are banned
         beqz    t1, _end                    // t1 = 0, no stages are banned so end
         nop
@@ -2375,7 +2376,7 @@ scope Stages {
         sw      r0, 0x0004(t0)              // setting bans 5-8 as 0 to reset
         sw      r0, 0x0008(t0)              // setting bans 9-12 as 0 to reset
         sw      r0, 0x000C(t0)              // setting bans 13-16 as 0 to reset
-        sw      r0, 0x0010(t0)              // setting bans 17,18 as 0 to reset
+        sh      r0, 0x0010(t0)              // setting bans 17,18 as 0 to reset
 
         // t3 = MAX_BANS * 4, (for dw pointers in ban_icon)
         li      t3, 4                       // t3 = 4
@@ -2388,8 +2389,9 @@ scope Stages {
         // resetting ban icons
         _reset_ban_icon:
         lw      t1, 0x0000(t0)              // t1 = ban icon object
-        sw      0xFF, 0x0030(t1)            // Set X Position
-        sw      0xFF, 0x0034(t1)            // Set Y Position
+        lli     at, 0x00FF                  // at = 0xFF
+        sw      at, 0x0030(t1)              // Set X Position
+        sw      at, 0x0034(t1)              // Set Y Position
         addiu   t0, t0, 4                   // incrementing to next ban_icon
         addiu   t3, t3, 4
         blt     t3, t4, _reset_ban_icon     // if t3 <= MAX_BANS, reset more ban icons
@@ -3282,7 +3284,7 @@ scope Stages {
         sw      r0, 0x0004(t0)              // setting bans 5-8 as 0 to reset
         sw      r0, 0x0008(t0)              // setting bans 9-12 as 0 to reset
         sw      r0, 0x000C(t0)              // setting bans 13-16 as 0 to reset
-        sw      r0, 0x0010(t0)              // setting bans 17,18 as 0 to reset
+        sh      r0, 0x0010(t0)              // setting bans 17,18 as 0 to reset
 
         Render.draw_string(2, 0xD, string_hazards, Render.NOOP, 0x43780000, 0x43350000, 0xFFFFFFFF, 0x3F400000, Render.alignment.RIGHT)
         Render.draw_string_pointer(2, 0xD, hazards_onoff, Render.update_live_string_, 0x437C0000, 0x43350000, 0xFFFFFFFF, 0x3F400000, Render.alignment.LEFT)
