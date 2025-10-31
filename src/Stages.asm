@@ -2423,8 +2423,8 @@ scope Stages {
         li      t0, bans_table              // t0 = pointer to bans_table
         li      t1, -1                      // t1 = -1 (banned)
         sh      t1, 0x0006(t0)              // banning stage 7,8
-        sw      r0, 0x0008(t0)              // setting bans 9-12 as 0 to reset
-        sw      r0, 0x000C(t0)              // setting bans 13-16 as 0 to reset
+        sw      t1, 0x0008(t0)              // banning stages 9-12
+        sw      t1, 0x000C(t0)              // banning stages 13-16
         sb      t1, 0x0010(t0)              // banning stage 17
 
         // t8 = Y, setting up for first row to ban
