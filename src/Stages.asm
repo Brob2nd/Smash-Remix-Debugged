@@ -2342,6 +2342,7 @@ scope Stages {
         // removing icon
         li      t0, ban_icon                // t0 = pointer to ban_icon
         addu    t0, t0, t3                  // t3 is the offset so we unban the right stage
+        lw      t1, 0x0000(t0)              // t1 = ban icon
         lli     at, 0x00FF                  // at = 0xFF
         sw      at, 0x0030(t1)              // Set X Position
         sw      at, 0x0034(t1)              // Set Y Position
