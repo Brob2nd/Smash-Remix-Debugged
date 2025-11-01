@@ -2246,20 +2246,20 @@ scope Stages {
         bnez    v0, _ban_reset              // if pressed, reset bans
         nop
 
-        // checking for C-Up press to ban non legal stages
+        // checking for C-Up release to ban non legal stages
         li      a0, Joypad.CU               // a0 - C-Up button mask 
-        li      a2, Joypad.PRESSED          // a2 - type
-        jal     Joypad.check_buttons_all_   // v0 = C-Up pressed
+        li      a2, Joypad.RELEASED         // a2 - type
+        jal     Joypad.check_buttons_all_   // v0 = C-Up released
         nop
-        bnez    v0, _non_legal_ban          // if pressed, ban non legal stages
+        bnez    v0, _non_legal_ban          // if released, ban non legal stages
         nop
         
-        // checking for C-Down press to ban stage
+        // checking for C-Down release to ban stage
         li      a0, Joypad.CD               // a0 - C-Down button mask 
-        li      a2, Joypad.PRESSED          // a2 - type
-        jal     Joypad.check_buttons_all_   // v0 = C-Down pressed
+        li      a2, Joypad.RELEASED         // a2 - type
+        jal     Joypad.check_buttons_all_   // v0 = C-Down released
         nop
-        beqz    v0, _end                    // if not pressed, skip
+        beqz    v0, _end                    // if not released, skip
         nop
 
         // checking if on RANDOM stage, don't ban if so
