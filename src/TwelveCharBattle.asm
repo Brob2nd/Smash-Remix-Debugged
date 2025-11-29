@@ -4219,8 +4219,10 @@ scope TwelveCharBattle {
         bne     t2, t0, _loop_randomize     // get a different ID if not a Bonus character
         nop
         // safety check (not all 'SPECIAL' characters are 'Bonus')
-        lli     t0, Character.id.METAL
+        lli     t0, Character.id.BOSS
         beq     v0, t0, _loop_randomize     // if this character, get a different ID
+        lli     t0, Character.id.METAL
+        beq     v0, t0, _loop_randomize     // "
         lli     t0, Character.id.GDONKEY
         beq     v0, t0, _loop_randomize     // "
         lli     t0, Character.id.GBOWSER

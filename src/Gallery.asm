@@ -135,9 +135,10 @@ scope Gallery {
     dh {MIDI.id.FREEZE}
 
     bgm_luigi:
-    dh 11                                  // number of BGM
+    dh 12                                  // number of BGM
     dh {MIDI.id.SMB2_MEDLEY}
     dh {MIDI.id.SNES_RAINBOW}
+    dh {MIDI.id.BASSDRIVE}
     dh {MIDI.id.RACEWAYS}
     dh {MIDI.id.TOADS_TURNPIKE}
     dh {MIDI.id.FRAPPE_SNOWLAND}
@@ -184,7 +185,7 @@ scope Gallery {
     dh {MIDI.id.DK_RAP_MELEE}
 
     bgm_link:
-    dh 5                                    // number of BGM
+    dh 4                                    // number of BGM
     dh BGM.stage.HYRULE_CASTLE
     dh {MIDI.id.HYRULE_TEMPLE}
     dh {MIDI.id.FINALTEMPLE}
@@ -854,6 +855,12 @@ scope Gallery {
     add_bgm_to_gallery({MIDI.id.DEEPSWIMMING}, id.PEACH)
     add_bgm_to_gallery({MIDI.id.DIREDIRELOSS}, id.PEACH)
     add_bgm_to_gallery({MIDI.id.UNDERGROUND_HURRY}, id.LUIGI)
+    add_bgm_to_gallery({MIDI.id.DANGEROUS_GUYS}, id.LUCAS)
+    add_bgm_to_gallery({MIDI.id.SONIC_R}, id.SONIC)
+    add_bgm_to_gallery({MIDI.id.CASTLEWALL}, id.PEACH)
+    add_bgm_to_gallery({MIDI.id.JUNGLEJAPES64}, id.LANKY)
+    add_bgm_to_gallery({MIDI.id.BASSDRIVE}, id.LUIGI)
+    add_bgm_to_gallery({MIDI.id.MASKEDDEDEDE}, id.DEDEDE)
 
     // @ Description
     // Table which holds the 'L' and 'R' sound effects for drumming

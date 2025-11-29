@@ -1841,7 +1841,6 @@ scope Stages {
         dw layout_remix     // remix 4
         dw layout_remix     // remix 5
         dw layout_remix     // remix 6
-        dw layout_remix     // remix 7
     }
 
     // @ Arguments
@@ -4871,10 +4870,9 @@ scope Stages {
     // 0x0005 - Remix 4 variant stage_id
     // 0x0006 - Remix 5 variant stage_id
     // 0x0007 - Remix 6 variant stage_id
-    // 0x0008 - Remix 7 variant stage_id
     variant_table:
     constant variant_table_origin(origin())
-    fill 9 * (id.MAX_STAGE_ID + 1), 0xFF
+    fill 8 * (id.MAX_STAGE_ID + 1), 0xFF
 
     // Helps set vanilla stages as remix variants
     macro set_remix_variant(main_stage_id, variant_stage_id) {
