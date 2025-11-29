@@ -3001,7 +3001,6 @@ scope Toggles {
     // Include music profiles here
     include "/music/profiles/vanilla.asm"
     include "/music/profiles/classics.asm"
-    include "/music/profiles/classicsdebugged.asm"
     include "/music/profiles/intobattle.asm"
     include "/music/profiles/positivevibes.asm"
     include "/music/profiles/slappers.asm"
