@@ -1,9 +1,9 @@
 # Smash Remix Debugged
 *A Smash Remix Mod Made by Brobgonal Second*
 
-Smash Remix Debugged is a mod for the Super Smash Bros. 64 mod, Smash Remix, this mod's purpose is to work as a template for future Smash Remix mods, adding things like inaccessible features now being accessible, such as Sandbag, some inaccessible stages (like Soccer or Home-Run Contest) and songs (such as Menu music, for example) now being able to play in all stages.
+Smash Remix Debugged is a mod for the Super Smash Bros. 64 mod, Smash Remix, this mod's purpose is to work as a template for future Smash Remix mods, adding things like new features (mentioned below) or inaccessible stuff now being accessible (like Sandbag and some inaccessible stages and songs now being accessible).
 
-It also adds some extra content, such as the Tap Jump option, Extended VS Match Stats, Z Cancel Guide, Volume settings, New Songs, More songs for some stages and 4 Tournament Stage Pages with a list of viable stages for Tourney, and more.
+It also adds some extra content, such as the Tap Jump option, Extended VS Match Stats, Z Cancel Guide, Stage Bans (like in Project M/+), Volume settings, More songs for some stages and 4 Tournament Stage Pages with a list of viable stages for Tourney, and more.
 
 # How to Play Smash Remix Debugged Online on Project64KSE
 Follow the steps on this tutorial on smash64.online, then on your Project64KSE folder, go to cfg, then open the pj64.rdb file, then go to the bottom line, and copy/paste this:
@@ -51,7 +51,7 @@ A2: No! the mod has all content already available on Vanilla Smash Remix!
 
 Q3: Does the mod add new characters, stages, items, songs, or game modes?
 
-A3: Technically, no, the only added character is Sandbag, and the only added stages are "Home-Run Contest", "Soccer" and "Time Twister (SSS)" (variants for "Duel Zone", "Smashketball" and "Time Twister") which were stages that were already in the game, just not normally accessible, but now they are, it also doesn't add any new items or game modes, however, it does add some new songs!
+A3: Technically, no, the only added character is Sandbag, and the only added stages are "Home-Run Contest", "Soccer" and "Time Twister (SSS)" (variants for "Duel Zone", "Smashketball" and "Time Twister") which were stages that were already in the game, just not normally accessible, but now they are, same for some songs, it also doesn't add any new items or game modes, however.
 
 Q4: Can i use this mod for my tournament?
 
@@ -149,12 +149,12 @@ Computer controlled players have received a variety of improvements.
 #### Toggle Names: _Combo Meter_, _1v1 Combo Meter Swap_
 
 ### Expanded Character Select Screen
-- The character select screen is now expanded to 30 slots including 16 custom characters.
+- The character select screen is now expanded to 30 slots including 18 custom characters.
 - Metal Mario, Giant DK, and polygon versions of the original cast are available via d-pad up or down.
 - Japanese versions of the original cast are available via d-pad left.
 - European versions of some of the original cast are available via d-pad right.
-- Giga Bowser, Mad Piano, Super Sonic, Peppy, Slippy, Metal Luigi, Ebisumaru, and Dragon King are available via d-pad up.
-- Polygon versions of some of the remix cast are available via d-pad down.
+- Giga Bowser, Mad Piano, Super Sonic and Metal Luigi are available via d-pad up.
+- Polygon versions of the remix cast are available via d-pad down.
 
 ### Character Select Debug Menu
 A menu for modifying certain character attributes is available on each panel.
@@ -286,7 +286,7 @@ A menu for modifying certain character attributes is available on each panel.
 
 ### 12-Character Battle Mode
 - New VS mode for easily tracking 12cbs.
-- Features 4 preset character sets (Default, Japanese, Polygon, Remix) and allows for a custom character set per player.
+- Features 5 preset character sets (Default, Japanese, Polygon, Remix, Polygon Remix) and allows for a custom character set per player.
 - Best character for each player is tracked as the number of TKOs the opposing player experiences against your character.
 - Only ports 1 and 2 work with this mode.
 
