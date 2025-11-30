@@ -61,7 +61,7 @@ A4: Yes, you can! That's why there's a new 4th tourney stage page in the mod! It
 
 Q1/Q2: Does the mod run on the latest 'original.z64' file/I need to port all of my work imported to the previous original.z64 to the new one?
 
-A1/A2: Yes, it does! The mod itself is based/build of the latest original.z64 file (and also from the latest Smash Remix patch) meaning that if you ported, added or changed something to the original.z64 to the , you don't have any need of having to re-import it to the "new" one.
+A1/A2: Yes, it does! The mod itself is based/build of the latest original.z64 file (and also from the latest Smash Remix patch) meaning that if you ported, added or changed something to the original.z64, you won't have any worries of having to re-import it to the "new" one.
 
 # Credits
 
