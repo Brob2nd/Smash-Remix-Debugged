@@ -8,12 +8,12 @@ It also adds some extra content, such as the Tap Jump option, Extended VS Match 
 # How to Play Smash Remix Debugged Online on Project64KSE
 Follow the steps on this tutorial on smash64.online, then on your Project64KSE folder, go to cfg, then open the pj64.rdb file, then go to the bottom line, and copy/paste this:
 
-Smash Remix Debugged 1.3.0b's Info:
+Smash Remix Debugged 1.3.1's Info:
 ```
-[97977976-856EF35E-C:45]
+[9772E7D8-867FB872-C:45]
 Counter Factor=1
 Culling=1
-Good Name=SmashRemixDebugged1.3.0b
+Good Name=SmashRemixDebugged1.3.1
 Internal Name=SmashRemix
 RDRAM Size=8
 SMM-Cache=0
@@ -23,12 +23,12 @@ Status=Compatible
 Use TLB=No
 ViRefresh=2200
 ```
-Smash Remix Debugged 1.3.0b (PAL)'s Info:
+Smash Remix Debugged 1.3.1 (PAL)'s Info:
 ```
-[824C77B0-63EC3300-C:45]
+[8218B6F4-3240B3B1-C:50]
 Counter Factor=1
 Culling=1
-Good Name=SmashRemixDebugged1.3.0b (PAL60)
+Good Name=SmashRemixDebugged1.3.1 (PAL60)
 Internal Name=SmashRemix
 RDRAM Size=8
 SMM-Cache=0
@@ -67,32 +67,26 @@ A1/A2: Yes, it does! The mod itself is based/build of the latest original.z64 fi
 
 Brobgonal Second: Leader of the project, programmer, musician/composer
 
-MetaSSB / Meta Nais: Co-leader of the project, programmer, musician/composer, helper/assistant with programming and composing songs for the mod, Special Thanks.
+MetaSSB / Meta Nais: Co-leader of the project, programmer, helper/assistant with programming, Special Thanks.
 
-NewoRGBY_255/ Newo Regevoide:  Instrument Design, Musician/Arranger of 'Battle! Cyrus', helper/assistant with composing songs for the mod, Special Thanks.
+NewoRGBY_255/ Newo Regevoide:  Instrument Design, helper/assistant with composing songs for the mod, Special Thanks.
 
 Krix08: Creator of Extended VS Stats, Music/SFX volume toggles, Z Cancel Guide and Sleep/Trip/Swap Music options for Punish Failed Z-Cancel, Special Thanks.
 - Special thanks to the last 3 mentioned for really helping me with Smash Remix Debugged.
 
-Jilly Jane: Project Galleon's Overdriven and Distortion Guitar Fix
+Jilly Jane: Project Galleon's Piano and Overdriven/Distortion Guitar Fix.
 
 Halofactory: Creator of the Tap Jump option, programmer for Vanilla Smash Remix.
 
-Yaruzu: Musician/Arranger of 'Battle - Humans, Demons and...', 'Lance Battle' and 'You Will Know Our Names'
+FASTLIKERAT: Creator of the Stage Bans feature.
 
 MrMarioBros222: Fixer of the Sandbag 1P Modes crashes and animations changes.
 
-MichaelthemanX: Sandbag's Announcer
+MichaelthemanX: Sandbag's Announcer.
 
 Loogi, Krix08 and Arrowshoes: Sandbag's Crowd Chant
 
-Daniel Welch: Arranger of "Masked Dedede" and "Fortuna", Part of the Smash Remix music team.
-
-Not Music/Pun4472: Arranger of the "Multiplayer Battle (Bomberman DS)" Song and Part of the Smash Remix music team.
-
 coffee: Arranger of the "Donkey Kong Jr." Song and Part of the Smash Remix music team.
-
-B3313 Team and Newsupkaizo55: Creators of B3313, and musicians/composers of the 14 new songs added for the mod
 
 # Smash Remix
 *A Super Smash Bros. 64 Mod Organized by The_Smashfather*
