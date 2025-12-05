@@ -4227,6 +4227,8 @@ scope TwelveCharBattle {
         beq     v0, t0, _loop_randomize     // "
         lli     t0, Character.id.GBOWSER
         beq     v0, t0, _loop_randomize     // "
+        lli     t0, Character.id.SANDBAG
+        beq     v0, t0, _loop_randomize
         lli     t0, Character.id.SSONIC
         beq     v0, t0, _loop_randomize     // "
         lli     t0, Character.id.MLUIGI
