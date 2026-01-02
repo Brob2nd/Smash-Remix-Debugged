@@ -1520,7 +1520,7 @@ scope Training {
 
     // @ Description
     // Runs every frame to update Z-Cancel Guide's port indicator colour
-    scope _port_indicator_update: {
+    scope port_indicator_update_: {
         addiu   sp, sp,-0x0020              // allocate stack space
         sw      ra, 0x0004(sp)              // ~
         sw      at, 0x0008(sp)              // store at
@@ -1608,7 +1608,8 @@ scope Training {
         _update_colour:
         li      t0, z_cancel_object         // t0 = address of z cancel object
         lw      t0, 0x0004(t0)              // t0 = port indicator object
-        sw      at, 0x0040(t0)              // store updated port indicator colour
+        bnezl   t0, _end                    // if port indicator object exists..
+        sw      at, 0x0040(t0)              // ..store updated port indicator colour
 
         _end:
         lw      at, 0x0008(sp)              // restore at
@@ -1690,7 +1691,7 @@ scope Training {
         Render.draw_rectangle(0x16, 0xB, 245, 39, 4, 10, 0x202020FF, OS.FALSE) // port indicator
         li      s1, z_cancel_object         // s1 = address of z_cancel_object
         sw      v0, 0x0004(s1)              // z_cancel_object tint bar = v0, the return value of Render.draw_rectangle_
-        Render.register_routine(_port_indicator_update)
+        Render.register_routine(port_indicator_update_)
 
         Render.draw_rectangle(0x16, 0xB, 88, 41, 162, 6, 0x202020FF, OS.FALSE) // bar background
 
@@ -1874,7 +1875,7 @@ scope Training {
         jal     Render.toggle_group_display_
         lli     a0, 0x0017                  // a0 = action & frame group
 
-        li      t0, _port_indicator_update.variables
+        li      t0, port_indicator_update_.variables
         sw      r0, 0x0000(t0)              // reset port indicator variables
 
         // Ensure BGM volume is correct level.
@@ -2184,7 +2185,7 @@ scope Training {
         // if we're here, a player has just landed from an aerial
         lbu     t8, 0x0006(t9)              // t8 = player index (0 - 3)
         sll     t8, t8, 0x0005              // t8 = player index * 32
-        li      t7, _port_indicator_update.variables
+        li      t7, port_indicator_update_.variables
         li      t0, _port_branches          // ~
         addu    t0, t0, t8                  // t0 = branch address for this index
         jr      t0                          // branch to corresponding player type check
@@ -2226,6 +2227,7 @@ scope Training {
         // if we're here, the player is human, so we should update the frame marker
         li      t8, z_cancel_object         // t8 = address of z cancel objects
         lw      t6, 0x0000(t8)              // t6 = frame marker object
+        beqz    t6, _z_cancel_guide_end     // branch to end if no frame marker object
         lw      t5, 0x0004(t8)              // t5 = port indicator object
 
         lw      t0, 0x0000(t9)              // t0 = tics since last Z press
