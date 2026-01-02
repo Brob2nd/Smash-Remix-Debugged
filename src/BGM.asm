@@ -29,7 +29,7 @@ scope BGM {
     // @ Arguments
     // a0 - unknown, set to 0
     // a1 - volume, max = 30720 (0x7800)
-    constant constant set_volume_(0x80020B38)
+    constant set_volume_(0x80020B38)
 
     // @ Description
     // Edits function 0x80020B38 (Set BGM Volume) to take into account the master BGM volume toggle
