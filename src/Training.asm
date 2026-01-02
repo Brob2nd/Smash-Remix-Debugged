@@ -3924,11 +3924,7 @@ scope Training {
     entry_port_x:
     Menu.entry("Port:", Menu.type.INT, 1, 1, 4, OS.NULL, OS.NULL, OS.NULL, OS.NULL, tail_p1)
 
-    string_training_mode:; String.insert("Training Mode")
-
-
     string_table_music:
-    dw       string_training_mode
     dw       Toggles.entry_random_music_bonus + 0x28
     dw       Toggles.entry_random_music_congo_jungle + 0x28
     dw       Toggles.entry_random_music_credits + 0x28
@@ -3944,6 +3940,7 @@ scope Training {
     dw       Toggles.entry_random_music_planet_zebes + 0x28
     dw       Toggles.entry_random_music_saffron_city + 0x28
     dw       Toggles.entry_random_music_sector_z + 0x28
+    dw       Toggles.entry_random_music_training_mode + 0x28
     dw       Toggles.entry_random_music_yoshis_island + 0x28
     evaluate total(17)
     evaluate n(0x2F)
@@ -3958,7 +3955,6 @@ scope Training {
     }
 
     bgm_table:
-    dh      BGM.special.TRAINING
     dh      BGM.menu.BONUS
     dh      BGM.stage.CONGO_JUNGLE
     dh      BGM.menu.CREDITS
@@ -3974,6 +3970,7 @@ scope Training {
     dh      BGM.stage.PLANET_ZEBES
     dh      BGM.stage.SAFFRON_CITY
     dh      BGM.stage.SECTOR_Z
+    dh      BGM.special.TRAINING
     dh      BGM.stage.YOSHIS_ISLAND
     evaluate n(0x2F)
     while {n} < MIDI.midi_count {
@@ -4066,7 +4063,7 @@ scope Training {
 
     entry_shield_break_mode:; Menu.entry("Shield Break Mode:", Menu.type.INT, 0, 0, 2, OS.NULL, OS.NULL, string_table_shield_break, OS.NULL, entry_oos_option)
     entry_oos_option:; Menu.entry("OOS Action:", Menu.type.INT, 0, 0, OOS_MAX, OS.NULL, OS.NULL, string_table_oos_options, OS.NULL, entry_music)
-    entry_music:; Menu.entry("Music:", Menu.type.INT, 0, 0, {total} - 1, play_bgm_, OS.NULL, string_table_music, OS.NULL, entry_bg)
+    entry_music:; Menu.entry("Music:", Menu.type.INT, 15, 0, {total} - 1, play_bgm_, OS.NULL, string_table_music, OS.NULL, entry_bg)
     entry_bg:; Menu.entry_bool("Stage Background:", OS.FALSE, entry_tech_behavior)
     entry_tech_behavior:; Menu.entry("CPU Teching:", Menu.type.INT, 0, 0, TECH_MAX, OS.NULL, OS.NULL, string_table_tech_options, OS.NULL, entry_di_type)
     entry_di_type:; Menu.entry("CPU DI Type:", Menu.type.INT, 0, 0, DI_TYPE_MAX, OS.NULL, OS.NULL, string_table_di_type_options, OS.NULL, entry_di_strength)

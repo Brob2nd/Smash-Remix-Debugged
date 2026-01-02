@@ -410,6 +410,7 @@ scope BGM {
         add_to_list(Toggles.entry_random_music_data, menu.DATA)
         add_to_list(Toggles.entry_random_music_bonus, menu.BONUS)
         add_to_list(Toggles.entry_random_music_credits, menu.CREDITS)
+        add_to_list(Toggles.entry_random_music_training_mode, special.TRAINING)
 
         // Add custom MIDIs
         define n(0x2F)
@@ -1211,7 +1212,7 @@ scope BGM {
     dw MIDI.game_{MIDI.GAME_ssb}_title,            Toggles.entry_random_music_credits + 0x28
     dw 0x0,                                        0x0                                                    // Secret
     dw 0x0,                                        0x0                                                    // Hidden Character
-    dw MIDI.game_{MIDI.GAME_ssb}_title,            Training.string_training_mode
+    dw MIDI.game_{MIDI.GAME_ssb}_title,            Toggles.entry_random_music_training_mode + 0x28
     dw MIDI.game_{MIDI.GAME_ssb}_title,            Toggles.entry_random_music_data + 0x28
     dw 0x0,                                        0x0                                                    // Main
     dw 0x0,                                        0x0                                                    // Hammer
