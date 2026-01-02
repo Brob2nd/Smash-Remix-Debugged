@@ -3256,8 +3256,8 @@ scope Training {
     string_ngoemon:; char_Px11:; db "Poly Goemon", 0x00
     string_nconker:; char_Px0A:; db "Poly Conker", 0x00
     string_nbanjo:; char_Px12:; db "Poly Banjo", 0x00
-    string_ncrash:; char_Px13:; db "Poly Peach", 0x00
     string_npeach:; char_Px14:; db "Poly Crash", 0x00
+    string_ncrash:; char_Px13:; db "Poly Peach", 0x00
     string_gdk:; char_0x1A:; db "Giant DK", 0x00
     //char_0x1B:; db "NONE", 0x00
     //char_0x1C:; db "NONE", 0x00
