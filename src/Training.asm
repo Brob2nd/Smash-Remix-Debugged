@@ -3224,7 +3224,7 @@ scope Training {
     string_pikachu:; char_0x09:; db "Pikachu", 0x00
     string_jigglypuff:; char_0x0A:; db "Jigglypuff", 0x00
     string_ness:; char_0x0B:; db "Ness", 0x00
-    //string_boss:; char_0x0C:; db "Master Hand", 0x00
+    string_boss:; char_0x0C:; db "Master Hand", 0x00
     string_metal:; char_0x0D:; db "Metal Mario", 0x00
     string_nmario:; char_0x0E:; db "Poly Mario", 0x00
     string_nfox:; char_0x0F:; db "Poly Fox", 0x00
@@ -3379,6 +3379,7 @@ scope Training {
     dw char_0x3D            // SUPER SONIC
 
     dw char_0x3C            // SANDBAG
+    dw char_0x0C            // MASTER HAND
     dw char_0x0E            // POLYGON MARIO
     dw char_0x0F            // POLYGON FOX
     dw char_0x10            // POLYGON DK
@@ -3498,6 +3499,7 @@ scope Training {
         register_character_id(GBOWSER);
         register_character_id(SSONIC);
         register_character_id(SANDBAG);
+        register_character_id(BOSS);
         register_character_id(NMARIO);
         register_character_id(NFOX);
         register_character_id(NDONKEY);
@@ -3601,6 +3603,7 @@ scope Training {
     db Character.id.SSONIC
 
     db Character.id.SANDBAG
+    db Character.id.BOSS
     db Character.id.NMARIO
     db Character.id.NFOX
     db Character.id.NDONKEY
@@ -3647,7 +3650,7 @@ scope Training {
     db id.PIKACHU
     db id.JIGGLYPUFF
     db id.NESS
-    db Character.id.BOSS         // Not used
+    db id.BOSS
     db id.METAL
     db id.NMARIO
     db id.NFOX
