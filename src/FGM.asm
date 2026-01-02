@@ -182,13 +182,13 @@ scope FGM {
     }
 
     // @ Description
-    // Changes FGM volume
+    // Sets FGM volume
     // @ Arguments
     // a0 - volume, max = 30720 (0x7800)
-    constant change_vol_(0x80020E64)
+    constant set_volume_(0x80020E64)
 
     // @ Description
-    // Edits function 0x80020E64 (Set FGM Volume) to take into account the master SFX volume
+    // Edits function 0x80020E64 (Set FGM Volume) to take into account the master SFX volume toggle
     // a0 - volume, max = 30720 (0x7800)
     scope master_fgm_volume: {
         OS.patch_start(0x21A64, 0x80020E64)
@@ -203,8 +203,9 @@ scope FGM {
         OS.patch_end()
 
         li      at, Toggles.entry_fgm_volume    // at = address of master SFX volume
-        lw      at, 0x0004(at)                  // ~
-        addiu   at, at, 0x0001                  // at = master SFX volume (1 to 10)
+        lw      at, 0x0004(at)                  // at = master SFX volume (0 to 10)
+        beqzl   at, _srl                        // branch if volume is 0
+        or      a1, r0, r0                      // a1 = 0
         mtc1    at, f4                          // ~
         cvt.s.w f4, f4                          // f4 = master SFX volume fp
         lui     at, 0x4120                      // ~
@@ -212,12 +213,12 @@ scope FGM {
         div.s   f2, f4, f0                      // f2 = (master SFX volume / 10.0)
         mtc1    a0, f0                          // ~
         cvt.s.w f0, f0                          // f0 = new volume fp
-        mul.s   f0, f0, f2                      // f0 = new volume * (master SFX volume / 10.0)
-        cvt.w.s f4, f0                          // f4 = (word)f4
+        mul.s   f0, f0, f2                      // f0 = new volume * f2 (master SFX volume / 10.0)
+        cvt.w.s f4, f0                          // f4 = (word)f0
         mfc1    a0, f4                          // a0 = updated volume
 
         sltiu   at, a0, 0x7801                  // original line 2
-        //bnez    at, 0x80020E80                // original line 4 (need to 'j' instead of 'b')
+        //bnez    at, 0x80020E80                // original line 4 (need to update branch address)
         bnez    at, _srl                        // original line 4, modified
         or      a1, a0, r0                      // original line 5
         //b       0x80020E88                    // original line 6 (need to 'j' instead of 'b')

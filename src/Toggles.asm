@@ -746,11 +746,11 @@ scope Toggles {
         nop
 
         lli     a0, 0x0000                  // a0 = unknown, set to 0
-        jal     BGM.change_vol_             // update BGM volume
-        lli     a1, 0x7800                  // a1 = max volume
+        jal     BGM.set_volume_             // update BGM volume
+        lli     a1, 0x7800                  // a1 = volume
 
-        jal     FGM.change_vol_             // update FGM volume
-        lli     a0, 0x7800                  // a0 = max volume
+        jal     FGM.set_volume_             // update FGM volume
+        lli     a0, 0x7800                  // a0 = volume
 
         // check if we got here by using the 'L' shortcut, and retrieve current_screen if so
         li      t3, shortcut_stored_screens    // t3 = shortcut_stored_screens
@@ -793,6 +793,12 @@ scope Toggles {
         lw      t1, 0x0010(v0)              // t1 = a_function routine
         li      t2, play_menu_music_        // t2 = play_menu_music_
         beql    t1, t2, pc() + 8            // if on the menu music entry, display Play legend
+        lli     t3, 0x0000                  // t3 = display on
+        li      t2, update_bgm_volume       // t2 = update_bgm_volume
+        beql    t1, t2, pc() + 8            // if on this entry, display Play legend
+        lli     t3, 0x0000                  // t3 = display on
+        li      t2, update_fgm_volume       // t2 = update_fgm_volume
+        beql    t1, t2, pc() + 8            // if on this entry, display Play legend
         lli     t3, 0x0000                  // t3 = display on
         li      t2, preview_bgm_            // t2 = preview_bgm_
         beql    t1, t2, pc() + 8            // if on a track entry, display Play legend
@@ -1575,18 +1581,6 @@ scope Toggles {
     light:; db "LIGHT", 0x00
     OS.align(4)
 
-    string_table_volume:
-    dw num_1
-    dw num_2
-    dw num_3
-    dw num_4
-    dw num_5
-    dw num_6
-    dw num_7
-    dw num_8
-    dw num_9
-    dw num_10
-
     // @ Description
     // Pokemon Stadium Announcer strings
     announcer_mode_pokemon:; db "STADIUM", 0x00
@@ -1713,6 +1707,24 @@ scope Toggles {
     dw sw_fast
     dw sw_backfire
     dw sw_backfire_no
+
+    // @ Description
+    // BGM/SFX Volume strings
+    num_0:; db "0", 0x00
+    OS.align(4)
+
+    string_table_volume:
+    dw num_0
+    dw num_1
+    dw num_2
+    dw num_3
+    dw num_4
+    dw num_5
+    dw num_6
+    dw num_7
+    dw num_8
+    dw num_9
+    dw num_10
 
     // @ Description
     // Press 'A' Handler for 'default_cpu_level' menu item
@@ -2177,34 +2189,49 @@ scope Toggles {
     }
 
     // @ Description
-    // Run BGM volume change to update volume
+    // Update BGM volume when 'A' is pressed
     scope update_bgm_volume: {
         addiu   sp, sp,-0x0020              // allocate stack space
         sw      ra, 0x0008(sp)              // save registers
 
-        lli     a1, 0x7800                  // a1 = max volume
-        jal     BGM.change_vol_             // update BGM volume with toggle value
         lli     a0, 0x0000                  // a0 = unknown, set to 0
+        jal     BGM.set_volume_             // update BGM volume
+        lli     a1, 0x7800                  // a1 = volume
 
-        lw      ra, 0x0008(sp)              // ~
-        addiu   sp, sp, 0x0020              // deallocate stack space
-        jr      ra
+        li      a0, Toggles.entry_play_music
+        lw      a0, 0x0004(a0)              // a0 = 0 if music is toggled off
+        beqz    a0, _end                    // branch accordingly
         nop
+        li      a0, BGM.safe_id             // a0 = address of safe bgm_id
+        lw      a0, 0x0000(a0)              // a0 = current bgm_id (-1 if not playing)
+        addiu   a0, a0, 1                   // a0 = 0 if not playing
+        bnez    a0, _end                    // branch accordingly
+        nop
+        // reset music if no music was playing
+        jal     play_menu_music_            // reset menu music
+        lli     v0, 0x0000                  // forces a reset
+
+        _end:
+        lw      ra, 0x0008(sp)              // restore registers
+        jr      ra
+        addiu   sp, sp, 0x0020              // deallocate stack space
     }
 
     // @ Description
-    // Run FGM volume change to update volume
+    // Update FGM volume when 'A' is pressed
     scope update_fgm_volume: {
         addiu   sp, sp,-0x0020              // allocate stack space
         sw      ra, 0x0008(sp)              // save registers
 
-        jal     FGM.change_vol_             // update FGM volume with toggle value
-        lli     a0, 0x7800                  // a0 = max volume
+        jal     FGM.set_volume_             // update FGM volume
+        lli     a0, 0x7800                  // a0 = volume
 
-        lw      ra, 0x0008(sp)              // ~
-        addiu   sp, sp, 0x0020              // deallocate stack space
+        jal     FGM.play_                   // play test sound
+        lli     a0, 0x020                   // a0 - fgm_id
+
+        lw      ra, 0x0008(sp)              // restore registers
         jr      ra
-        nop
+        addiu   sp, sp, 0x0020              // deallocate stack space
     }
 
     string_table_gallery:
@@ -2374,9 +2401,7 @@ scope Toggles {
     entry_dpad_css_control:;            entry_bool("Dpad CSS Cursor Control", OS.FALSE, OS.FALSE, OS.FALSE, OS.FALSE, entry_pk_thunder_reflect_crash_fix)
     entry_pk_thunder_reflect_crash_fix:;entry_bool("PK Thunder Reflect Crash Fix", OS.TRUE, OS.TRUE, OS.TRUE, OS.TRUE, entry_flash_guard)
     entry_flash_guard:;                 entry_bool("Flash Guard", OS.FALSE, OS.FALSE, OS.FALSE, OS.FALSE, entry_screenshake)
-    entry_screenshake:;                 entry("Screenshake", Menu.type.INT, OS.FALSE, OS.FALSE, OS.FALSE, OS.FALSE, 0, 2, OS.NULL, string_table_screenshake, OS.NULL, entry_bgm_volume)
-    entry_bgm_volume:;                  entry("BGM Volume", Menu.type.INT, 9, 9, 9, 9, 0, 9, update_bgm_volume, string_table_volume, OS.NULL, entry_fgm_volume)
-    entry_fgm_volume:;                  entry("SFX Volume", Menu.type.INT, 9, 9, 9, 9, 0, 9, update_fgm_volume, string_table_volume, OS.NULL, OS.NULL)
+    entry_screenshake:;                 entry("Screenshake", Menu.type.INT, OS.FALSE, OS.FALSE, OS.FALSE, OS.FALSE, 0, 2, OS.NULL, string_table_screenshake, OS.NULL, OS.NULL)
 
     evaluate num_remix_toggles(num_toggles)
     evaluate remix_toggles_block_size(block_size)
@@ -2428,7 +2453,9 @@ scope Toggles {
     entry_random_music:;                    entry_bool("Random Music", OS.FALSE, OS.FALSE, OS.TRUE, OS.FALSE, entry_preserve_salty_song)
     entry_preserve_salty_song:;             entry_bool("Salty Runback Preserves Song", OS.FALSE, OS.FALSE, OS.FALSE, OS.FALSE, entry_menu_music)
     entry_menu_music:;                      entry("Menu Music", Menu.type.INT, 0, 0, 1, 0, 0, menu_music.MAX_VALUE, play_menu_music_, string_table_menu_music, OS.NULL, entry_show_music_title)
-    entry_show_music_title:;                entry_bool("Music Title at Match Start", OS.TRUE, OS.FALSE, OS.TRUE, OS.TRUE, entry_load_profile_music)
+    entry_show_music_title:;                entry_bool("Music Title at Match Start", OS.TRUE, OS.FALSE, OS.TRUE, OS.TRUE, entry_bgm_volume)
+    entry_bgm_volume:;                      entry("BGM Volume", Menu.type.INT, 10, 10, 10, 10, 0, 10, update_bgm_volume, string_table_volume, OS.NULL, entry_fgm_volume)
+    entry_fgm_volume:;                      entry("SFX  Volume", Menu.type.INT, 10, 10, 10, 10, 0, 10, update_fgm_volume, string_table_volume, OS.NULL, entry_load_profile_music)
     evaluate LOAD_PROFILE_MUSIC_ENTRY_ORIGIN(origin())
     entry_load_profile_music:;              entry("Load Profile:", Menu.type.INT, 0, 0, 0, 0, 0, 0, load_sub_profile_, num_toggles, string_table_music_profile, OS.NULL, entry_random_music_title)
     entry_random_music_title:;              Menu.entry_title("Random Music Toggles:", toggle_all_, entry_random_music_bonus)

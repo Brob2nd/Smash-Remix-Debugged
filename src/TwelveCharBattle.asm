@@ -76,7 +76,7 @@ scope TwelveCharBattle {
     // @ Description
     // CHARACTER SELECT SCREEN LAYOUT
     constant NUM_SLOTS(24)
-    constant NUM_PRESETS(5)
+    constant NUM_PRESETS(6)
     scope layout {
         scope u {
             // row 1
@@ -135,6 +135,35 @@ scope TwelveCharBattle {
             define slot_22(JFOX)
             define slot_23(JPIKA)
             define slot_24(JPUFF)
+        }
+        scope e {
+            // row 1
+            define slot_1(LUIGI)
+            define slot_2(MARIO)
+            define slot_3(DONKEY)
+            define slot_4(ELINK)
+            define slot_5(LUIGI)
+            define slot_6(MARIO)
+            define slot_7(DONKEY)
+            define slot_8(ELINK)
+            // row 2
+            define slot_9(ESAMUS)
+            define slot_10(CAPTAIN)
+            define slot_11(NESS)
+            define slot_12(YOSHI)
+            define slot_13(ESAMUS)
+            define slot_14(CAPTAIN)
+            define slot_15(NESS)
+            define slot_16(YOSHI)
+            // row 3
+            define slot_17(KIRBY)
+            define slot_18(FOX)
+            define slot_19(EPIKA)
+            define slot_20(EPUFF)
+            define slot_21(KIRBY)
+            define slot_22(FOX)
+            define slot_23(EPIKA)
+            define slot_24(EPUFF)
         }
         scope r {
             // row 1
@@ -314,6 +343,7 @@ scope TwelveCharBattle {
 
     create_portrait_tables(u)       // create vanilla character set tables
     create_portrait_tables(j)       // create japanese character set tables
+    create_portrait_tables(e)       // create european character set tables
     create_portrait_tables(pv)      // create polygon vanilla character set tables
     create_portrait_tables(r)       // create remix character set tables
     create_portrait_tables(pr)      // create polygon remix character set tables
@@ -324,6 +354,7 @@ scope TwelveCharBattle {
     // id table     // portrait offset table     // portrait id table     // custom preset cycle index
     dw id_table_u;  dw portrait_offset_table_u;  dw portrait_id_table_u;  dw 0x0
     dw id_table_j;  dw portrait_offset_table_j;  dw portrait_id_table_j;  dw 0x0
+    dw id_table_e;  dw portrait_offset_table_e;  dw portrait_id_table_e;  dw 0x0
     dw id_table_pv; dw portrait_offset_table_pv; dw portrait_id_table_pv; dw 0x0
     dw id_table_r;  dw portrait_offset_table_r;  dw portrait_id_table_r;  dw 0x0
     dw id_table_pr; dw portrait_offset_table_pr; dw portrait_id_table_pr; dw 0x0
@@ -4919,6 +4950,7 @@ scope TwelveCharBattle {
     string_character_set:;  String.insert("Character Set")
     string_character_set_default:; String.insert("Default")
     string_character_set_japanese:; String.insert("Japanese")
+    string_character_set_european:; String.insert("European")
     string_character_set_polygon_vanilla:; String.insert("Polygon")
     string_character_set_remix:; String.insert("Remix")
     string_character_set_polygon_remix:; String.insert("P. Remix")
@@ -4947,6 +4979,7 @@ scope TwelveCharBattle {
     character_set_string_table:
     dw string_character_set_default
     dw string_character_set_japanese
+    dw string_character_set_european
     dw string_character_set_polygon_vanilla
     dw string_character_set_remix
     dw string_character_set_polygon_remix
