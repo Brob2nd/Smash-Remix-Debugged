@@ -794,6 +794,7 @@ scope Gallery {
     dh  0x11F, 0x033                     // Stomp / Fan smack
     dh  0x117, 0x038                     // POW Block / Koopa shell
     dh  0x03D, 0x02F                     // Gun Shoot / Bumper
+    dh  0x529, 0x52A                     // Cloaking Device
     dh  0x2C6, 0x2C7                     // Dr Mario Pills
     dh  0x59C, 0x59B                     // Peach Golf Club / Racket
     dh  0x567, 0x568                     // Meow / Woof
@@ -811,7 +812,7 @@ scope Gallery {
     dh  0x5F8, 0x5F9                     // Lanky "Hip" / "Hup"
     dh  0x547, 0x549                     // DKing Hurt
 
-    constant DRUM_KIT_ENTRY_COUNT(20)    // update this when we add sound effects
+    constant DRUM_KIT_ENTRY_COUNT(21)    // update this when we add sound effects
 
     drum_kit_index:
     dw  0
