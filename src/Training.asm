@@ -1695,17 +1695,41 @@ scope Training {
 
         Render.draw_rectangle(0x16, 0xB, 88, 41, 162, 6, 0x202020FF, OS.FALSE) // bar background
 
-        define n(0)
-        while ({n} < 25) {
-            if (25 - {n}) > 11 {
-                evaluate rect_colour(0xFB4523FF) // red
-            } else {
-                evaluate rect_colour(0x4BFF3EFF) // green
-            }
+        // draw frame blocks
+        lli     s1, 239                     // s1 = starting ulx
+        lli     s7, 0                       // s7 = frame block count
 
-            Render.draw_rectangle(0x16, 0xB, 95 + (6 * {n}), 42, 4, 4, {rect_colour}, OS.FALSE) // draw frame blocks
-            evaluate n({n} + 1)
-        }
+        _zcg_frame_block_loop:
+        li      t9, Toggles.entry_z_cancel_opts
+        lw      t9, 0x0004(t9)              // t9 = 0 for DEFAULT, 1 for Disabled, 2 for Melee, 3 for Auto, 4 for Glide
+        lli     t0, 0x0002                  // t0 = 2 (Melee)
+        beql    t0, t9, _zcg_frame_block_color // branch if Melee
+        lli     t0, 7                       // t0 = melee cancel window (7 frames)
+
+        lli     t0, 11                      // t0 = default cancel window (11 frames)
+
+        _zcg_frame_block_color:
+        sltu    t9, s7, t0                  // t9 = 0 if frame block > cancel window
+        lui     s5, 0xFB45                  // ~
+        beqzl   t9, _zcg_frame_block_draw   // branch if frame block > cancel window
+        ori     s5, s5, 0x23FF              // s5 = color (red)
+
+        li      s5, 0x4BFF3EFF              // s5 = color (green)
+
+        // based on Render.draw_rectangle() macro
+        _zcg_frame_block_draw:
+        lli     a0, 0x16                    // a0 = room
+        lli     a1, 0xB                     // a1 = group
+        lli     s2, 42                      // s2 = uly
+        lli     s3, 4                       // s3 = width
+        lli     s4, 4                       // s4 = height
+        jal     Render.draw_rectangle_
+        lli     s6, OS.FALSE                // s6 = enable_alpha
+
+        addiu   s7, s7, 1                   // frame block count++
+        sltiu   t9, s7, 25                  // t9 = 1 if not finished looping
+        bnezl   t9, _zcg_frame_block_loop   // branch if less than 25 frame blocks drawn
+        addiu   s1, s1, -6                  // s1 = previous ulx - 6
 
         Render.draw_rectangle(0x16, 0xB, 89, 43, 4, 2, 0x909090FF, OS.FALSE) // left-most thin grey block
         Render.draw_rectangle(0x16, 0xB, 245, 43, 4, 2, 0x909090FF, OS.FALSE) // right-most thin grey block
