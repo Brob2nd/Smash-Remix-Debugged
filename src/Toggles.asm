@@ -3041,6 +3041,8 @@ scope Toggles {
     include "/stages/profiles/competitive.asm"
     include "/stages/profiles/vanilla.asm"
     include "/stages/profiles/dreamlandonly.asm"
+    include "/stages/profiles/omegaonly.asm"
+    include "/stages/profiles/no_dl.asm"
     include "/stages/profiles/no_omega.asm"
     include "/stages/profiles/no_variant.asm"
     include "/stages/profiles/staff.asm"
