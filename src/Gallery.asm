@@ -795,6 +795,8 @@ scope Gallery {
     dh  0x117, 0x038                     // POW Block / Koopa shell
     dh  0x03D, 0x02F                     // Gun Shoot / Bumper
     dh  0x529, 0x52A                     // Cloaking Device
+    dh  0x559, 0x55A                     // P-Wing Pick-Up / End
+    dh  0x558, 0x55B                     // P-Wing Jump / Ending
     dh  0x2C6, 0x2C7                     // Dr Mario Pills
     dh  0x59C, 0x59B                     // Peach Golf Club / Racket
     dh  0x567, 0x568                     // Meow / Woof
@@ -807,12 +809,13 @@ scope Gallery {
     dh  0x5CD, 0x5CC                     // F-Zero Announcer "1" / "2"
     dh  0x5CB, 0x5CE                     // F-Zero Announcer "3" / "GO"
     dh  0x52B, 0x52C                     // Kazooie Fair
+    dh  0x52E, 0x52F                     // Beak Buster
     dh  0x5A1, 0x583                     // Crash Bounce / Spin
     dh  0x523, 0x556                     // Ebi "Cha" / Camera
     dh  0x5F8, 0x5F9                     // Lanky "Hip" / "Hup"
     dh  0x547, 0x549                     // DKing Hurt
 
-    constant DRUM_KIT_ENTRY_COUNT(21)    // update this when we add sound effects
+    constant DRUM_KIT_ENTRY_COUNT(24)    // update this when we add sound effects
 
     drum_kit_index:
     dw  0
