@@ -99,30 +99,4 @@ scope WallTeching {
         addiu   at, r0, 0x0001
     }
 
-    scope track_failed_tech: {
-        OS.patch_start(0xBF114, 0x801446D4)
-        jal     track_failed_tech
-        nop
-        _return:
-        OS.patch_end()
-
-        beqz    at, _branch                 // original line 1, modified
-        nop
-
-        _end:
-        j       _return
-        nop
-
-        _branch:
-        li      at, VsStats.missed_techs
-        lw      t8, 0x0084(a0)              // t8 = player struct
-        lbu     t8, 0x000D(t8)              // t8 = player index (0 - 3)
-        sll     t8, t8, 0x0002              // t8 = player index * 4
-        addu    at, at, t8                  // at = address of missed techs for this player
-        lw      t8, 0x0000(at)              // t8 = missed tech count
-        addiu   t8, t8, 0x0001              // increment
-        j       0x801446EC                  // jump to end of routine
-        sw      t8, 0x0000(at)              // store updated tech count
-    }
-
 }

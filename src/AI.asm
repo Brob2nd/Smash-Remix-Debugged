@@ -592,11 +592,17 @@ scope AI {
         nop
 
         _fail:
-        move    a0, s0                      // a0 - player object
         jal     tech_fail_                  // don't tech
-        nop
+        move    a0, s0                      // a0 - player object
+
+        li      t0, VsStats.missed_techs
+        lbu     t2, 0x000D(s1)              // t2 = player index (0 - 3)
+        sll     t2, t2, 0x0002              // t2 = player index * 4
+        addu    t0, t0, t2                  // t0 = address of missed techs for this player
+        lw      t2, 0x0000(t0)              // t2 = missed tech count
+        addiu   t2, t2, 0x0001              // increment
         b       _end
-        nop
+        sw      t2, 0x0000(t0)              // store updated tech count
 
         _original:
         jal     tech_roll_og_               // original line 1
@@ -607,7 +613,7 @@ scope AI {
         move    a0, s0                      // original line 6
         bnezl   v0, _end                    // original line 7
         nop                                 // original line 8
-        jal     tech_fail_                  // original line 9
+        jal     _fail                       // original line 9, modified
         move    a0, s0                      // original line 10
         nop                                 // original line 11
 
