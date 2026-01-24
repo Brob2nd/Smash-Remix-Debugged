@@ -19,11 +19,13 @@ scope Walljump {
     // @ Description
     // check wall hook
     scope checkwall: {
-        // // // // // OS.patch_start(0xBAD40, 0x80140300)
-        // // // // // j       checkwall
-        // // // // // nop
+        OS.patch_start(0xBAD40, 0x80140300)
+        j       checkwall
+        nop
         checkwall_return:
-        // // // // // OS.patch_end()
+        OS.patch_end()
+
+        OS.read_word(Toggles.entry_walljump + 0x4, at) // at = toggle value
         // struct in a0, a2
 
         lw      t2, 0x0064(t1)              // original line 1
@@ -42,13 +44,13 @@ scope Walljump {
         // Jiggs and DDD don't crash but nothing happens
         // Marina works, surpringly
         // TODO this will need to be tweaked and handled cleaner
-        // // lbu     t0, 0x000B(a0)              // load character id
-        // // ori     t1, r0, 0x0006              // load yoshi's id
-        // // beq     t0, t1, end                 // if character is yoshi, skip
-        // // nop
-        // // sltiu   t0, t0, 0x000A              // flag 1 if character id < A
-        // // beqz    t0, end                     // if character id < A, skip
-        // // nop
+        lbu     t0, 0x000B(a0)              // load character id
+        ori     t1, r0, 0x0006              // load yoshi's id
+        beq     t0, t1, end                 // if character is yoshi, skip
+        nop
+        sltiu   t0, t0, 0x000A              // flag 1 if character id < A
+        beqz    t0, end                     // if character id < A, skip
+        nop
         lbu     t0, 0x00CF(a0)              // load wall collision byte
         ori     t1, r0, 0x0001              // load left wall value
         and     t2, t0, t1                  // branch logic
@@ -81,11 +83,11 @@ scope Walljump {
     // @ Description
     // walljump action hook
     scope walljumpaction: {
-        // // // // // OS.patch_start(0xBA804, 0x8013FDC4)
-        // // // // // j       walljumpaction
-        // // // // // nop
+        OS.patch_start(0xBA804, 0x8013FDC4)
+        j       walljumpaction
+        nop
         walljumpaction_return:
-        // // // // // OS.patch_end()
+        OS.patch_end()
 
         // struct in s0, action in a1
 
@@ -123,11 +125,11 @@ scope Walljump {
     // @ Description
     // walljump momentum hook
     scope wj_momentum: {
-        // // // // // OS.patch_start(0xBA900, 0x8013FEC0)
-        // // // // // j       wj_momentum
-        // // // // // nop
+        OS.patch_start(0xBA900, 0x8013FEC0)
+        j       wj_momentum
+        nop
         wj_momentum_return:
-        // // // // // OS.patch_end()
+        OS.patch_end()
 
         //struct in s0, x momentum offset = 0x0048, y = 0x004C
 
@@ -177,11 +179,11 @@ scope Walljump {
     // @ Description
     // walljump flag hook
     scope wj_jumpflag: {
-        // // // // // OS.patch_start(0xBA910, 0x8013FED0)
-        // // // // // j       wj_jumpflag
-        // // // // // nop
+        OS.patch_start(0xBA910, 0x8013FED0)
+        j       wj_jumpflag
+        nop
         wj_jumpflag_return:
-        // // // // // OS.patch_end()
+        OS.patch_end()
 
         ori     t9, t8, 0x0080              // original line 1
         addiu   sp, sp,-0x000C              // store t0 and t1
