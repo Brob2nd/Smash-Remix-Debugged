@@ -25,7 +25,7 @@ scope Walljump {
         checkwall_return:
         OS.patch_end()
 
-        OS.read_word(Toggles.entry_walljump + 0x4, at) // at = toggle value
+        Toggles.read(entry_walljump, at) // at = toggle
         // struct in a0, a2
 
         lw      t2, 0x0064(t1)              // original line 1
@@ -149,7 +149,7 @@ scope Walljump {
         addiu   t0, t0, 0x0004              // offset struct pointer to table
         lbu     t2, 0x000B(s0)              // load character id
         // can force Mario ID (for testing) X,Y momentum will always be his
-        // // addiu   t2, r0, 0
+        addiu   t2, r0, 0
         sll     t1, t2, 0x3                 // get table offset
         addu    t0, t0, t1                  // add offset to pointer
 

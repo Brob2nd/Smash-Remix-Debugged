@@ -1770,7 +1770,7 @@ scope Toggles {
         sw      t0, 0x000C(sp)              // ~
         sw      ra, 0x0010(sp)              // save registers
 
-        // 0 if off, 1 if '7% Damage', 2 if 'Lava Floor', 3 if 'Shield-Break', 4 if 'Instant K.O.', 5 if 'Force Taunt', 6 if 'Bury', 7 if 'Laugh Track', 8 if 'Egg', 9 if 'Sleep', 10 if 'Trip', 11 if 'Swap Music' 12 if 'Random'
+        // 0 if off, 1 if '7% Damage', 2 if 'Lava Floor', 3 if 'Shield-Break', 4 if 'Instant K.O.', 5 if 'Force Taunt', 6 if 'Bury', 7 if 'Laugh Track', 8 if 'Egg', 9 if 'Sleep', 10 if 'Trip', 11 if 'Swap Music', 12 if 'Random'.
         li      t0, Toggles.entry_punish_on_failed_z_cancel
         lw      t0, 0x0004(t0)
         addiu   a0, r0, 1                   // a0 = (7% damage)
@@ -2436,7 +2436,7 @@ scope Toggles {
     entry_game_speed:;                  entry("Game Speed", Menu.type.INT, 0, 0, 0, 0, 0, 12, OS.NULL, string_table_speed, OS.NULL, entry_special_zoom)
     entry_special_zoom:;                entry("Special Zoom (BETA)", Menu.type.INT, 0, 0, 0, 0, 0, 2, OS.NULL, string_table_special_zoom, OS.NULL, entry_blastzone_warp)
     entry_blastzone_warp:;              entry("BlastZone Warp (BETA)", Menu.type.INT, 0, 0, 0, 0, 0, 3, OS.NULL, string_table_blast_zone, OS.NULL, entry_walljump)
-    entry_walljump:;                    entry_bool("Walljump (BETA)", OS.FALSE, OS.FALSE, OS.FALSE, OS.FALSE, entry_single_button_mode)
+    entry_walljump:;                    entry_bool("Wall Jumping (BETA)", OS.FALSE, OS.FALSE, OS.FALSE, OS.FALSE, entry_single_button_mode)
     entry_single_button_mode:;          entry("Single Button Mode", Menu.type.INT, 0, 0, 0, 0, 0, 6, OS.NULL, string_table_single_button_mode, OS.NULL, entry_item_dropping)
     entry_item_dropping:;               entry_bool("All Items R Drop (Aerial)", OS.FALSE, OS.FALSE, OS.FALSE, OS.FALSE, entry_move_staling)
     entry_move_staling:;                entry("Move Staling", Menu.type.INT, 0, 0, 0, 0, 0, 6, OS.NULL, string_table_move_staling, OS.NULL, entry_stopwatch_behaviour)
