@@ -357,8 +357,8 @@ scope Gallery {
     dh {MIDI.id.GIANTWING}
     dh {MIDI.id.EVERYTHING}
     dh {MIDI.id.SONIC_R}
-    dh {MIDI.id.LIVE_AND_LEARN}
     dh {MIDI.id.OPEN_YOUR_HEART}
+    dh {MIDI.id.LIVE_AND_LEARN}
 
     bgm_marina:
     dh 3                                    // number of BGM
@@ -447,7 +447,7 @@ scope Gallery {
     dh {MIDI.id.FD_BRAWL}
 
     bgm_remix:
-    dh 11                                   // number of BGM
+    dh 12                                   // number of BGM
     dh BGM.menu.CREDITS
     dh BGM.stage.META_CRYSTAL
     dh BGM.stage.FINAL_DESTINATION
@@ -456,6 +456,7 @@ scope Gallery {
     dh BGM.menu.RESULTS
     dh BGM.menu.DATA
     dh BGM.stage.HOW_TO_PLAY
+    dh BGM.special.TRAINING
     dh {MIDI.id.CREDITS_BRAWL}
     dh {MIDI.id.GALLERY}
     dh {MIDI.id.TARGET_TEST}
