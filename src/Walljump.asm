@@ -48,29 +48,49 @@ scope Walljump {
         // Marina works, surpringly
         // TODO this will need to be tweaked and handled cleaner
         lbu     t0, 0x000B(a0)              // load character id
-        ori     t1, r0, 0x0006              // load yoshi's id
-        ori     t1, r0, 0x0008              // load kirby's id
-        ori     t1, r0, 0x000A              // load jigglypuff's id
-        ori     t1, r0, 0x000B              // load ness's id
-        ori     t1, r0, 0x0014              // load polygon yoshi's id
-        ori     t1, r0, 0x0016              // load polygon kirby's id
-        ori     t1, r0, 0x0018              // load polygon jigglypuff's id
-        ori     t1, r0, 0x0019              // load polygon ness's id
-        ori     t1, r0, 0x0025              // load japanese ness's id
-        ori     t1, r0, 0x0026              // load lucas's id
-        ori     t1, r0, 0x002E              // load purin's id
-        ori     t1, r0, 0x002F              // load pummeluff's id
-        ori     t1, r0, 0x0030              // load japenese kirby's id
-        ori     t1, r0, 0x0031              // load japenese yoshi's id
-        ori     t1, r0, 0x0039              // load mewtwo's id
-        ori     t1, r0, 0x0040              // load king dedede's id
-        ori     t1, r0, 0x0049              // load peach's id
+        ori     t1, r0, Character.id.YOSHI  // load yoshi's id
+        beq     t0, t1, end                 // skip if this character
+        ori     t1, r0, Character.id.KIRBY  // load kirby's id
+        beq     t0, t1, end                 // skip if this character
+        ori     t1, r0, Character.id.PUFF   // load jigglypuff's id
+        beq     t0, t1, end                 // skip if this character
+        ori     t1, r0, Character.id.NESS   // load ness's id
+        beq     t0, t1, end                 // skip if this character
+        ori     t1, r0, Character.id.NYOSHI // load polygon yoshi's id
+        beq     t0, t1, end                 // skip if this character
+        ori     t1, r0, Character.id.NKIRBY // load polygon kirby's id
+        beq     t0, t1, end                 // skip if this character
+        ori     t1, r0, Character.id.NPUFF  // load polygon jigglypuff's id
+        beq     t0, t1, end                 // skip if this character
+        ori     t1, r0, Character.id.NNESS  // load polygon ness's id
+        beq     t0, t1, end                 // skip if this character
+        ori     t1, r0, Character.id.JNESS  // load japanese ness's id
+        beq     t0, t1, end                 // skip if this character
+        ori     t1, r0, Character.id.LUCAS  // load lucas's id
+        beq     t0, t1, end                 // skip if this character
+        ori     t1, r0, Character.id.JPUFF  // load purin's id
+        beq     t0, t1, end                 // skip if this character
+        ori     t1, r0, Character.id.EPUFF  // load pummeluff's id
+        beq     t0, t1, end                 // skip if this character
+        ori     t1, r0, Character.id.JKIRBY // load japenese kirby's id
+        beq     t0, t1, end                 // skip if this character
+        ori     t1, r0, Character.id.JYOSHI // load japenese yoshi's id
+        beq     t0, t1, end                 // skip if this character
+        ori     t1, r0, Character.id.MTWO   // load mewtwo's id
+        beq     t0, t1, end                 // skip if this character
+        ori     t1, r0, Character.id.DEDEDE // load king dedede's id
+        beq     t0, t1, end                 // skip if this character
+        ori     t1, r0, Character.id.PEACH  // load peach's id
+        beq     t0, t1, end                 // skip if this character
         // since Remix Polygon Characters ids get updated with every added Remix non-polygon character, the next ids need to be updated too and incremented by 1
-        ori     t1, r0, 0x004E              // load polygon lucas's id
-        ori     t1, r0, 0x0059              // load polygon mewtwo's id
-        ori     t1, r0, 0x005A              // load polygon king dedede's id
-        ori     t1, r0, 0x005F              // load polygon peach's id
-        beq     t0, t1, end                 // if character is one of the above, skip
+        ori     t1, r0, Character.id.NLUCAS // load polygon lucas's id
+        beq     t0, t1, end                 // skip if this character
+        ori     t1, r0, Character.id.NMTWO  // load polygon mewtwo's id
+        beq     t0, t1, end                 // skip if this character
+        ori     t1, r0, Character.id.NDEDEDE // load polygon king dedede's id
+        beq     t0, t1, end                 // skip if this character
+        ori     t1, r0, Character.id.NPEACH // load polygon peach's id
+        beq     t0, t1, end                 // skip if this character
         nop
         // sltiu   t0, t0, 0x000B              // flag 1 if character id < A
         // beqz    t0, end                     // if character id < A, skip
