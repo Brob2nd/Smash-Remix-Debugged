@@ -24,8 +24,6 @@ scope Walljump {
         nop
         checkwall_return:
         OS.patch_end()
-
-        Toggles.read(entry_walljump, at) // at = toggle
         // struct in a0, a2
 
         lw      t2, 0x0064(t1)              // original line 1
@@ -35,6 +33,11 @@ scope Walljump {
         sw      t0, 0x0004(sp)
         sw      t1, 0x0008(sp)
         sw      t2, 0x000C(sp)
+
+        Toggles.read(entry_walljump, t0)    // t0 = toggle
+        beqzl   t0, end                     // end if not enabled
+        nop
+
         lhu     t0, 0x0026(a0)              // load current action value
         ori     t1, r0, 0x003A              // load special fall value
         beq     t0, t1, end                 // if character is in special fall, skip
@@ -116,6 +119,11 @@ scope Walljump {
         sw      t0, 0x0004(sp)
         sw      t1, 0x0008(sp)
         sw      t2, 0x000C(sp)
+
+        Toggles.read(entry_walljump, t0)    // t0 = toggle
+        beqzl   t0, end                     // end if not enabled
+        nop
+
         li      t0, walljumpstruct          // load struct pointer
         lbu     t1, 0x000D(s0)              // load player port
         addu    t1, t0, t1                  // add player port to struct pointer
@@ -161,6 +169,11 @@ scope Walljump {
         sw      t1, 0x0008(sp)
         sw      t2, 0x000C(sp)
         sw      t3, 0x0010(sp)
+
+        Toggles.read(entry_walljump, t0)    // t0 = toggle
+        beqzl   t0, end                     // end if not enabled
+        nop
+
         li      t0, walljumpstruct          // load struct pointer
         lbu     t1, 0x000D(s0)              // load player port
         addu    t1, t0, t1                  // add player port to struct pointer
@@ -210,6 +223,11 @@ scope Walljump {
         addiu   sp, sp,-0x000C              // store t0 and t1
         sw      t0, 0x0004(sp)
         sw      t1, 0x0008(sp)
+
+        Toggles.read(entry_walljump, t0)    // t0 = toggle
+        beqzl   t0, end + 4                 // end if not enabled
+        sb      t5, 0x0148(s0)              // original line 2 (update jump value)
+
         li      t0, walljumpstruct          // load struct pointer
         lbu     t1, 0x000D(s0)              // load player port
         addu    t1, t0, t1                  // add player port to struct pointer
