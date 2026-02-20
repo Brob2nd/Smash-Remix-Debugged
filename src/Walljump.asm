@@ -46,11 +46,32 @@ scope Walljump {
         // TODO this will need to be tweaked and handled cleaner
         lbu     t0, 0x000B(a0)              // load character id
         ori     t1, r0, 0x0006              // load yoshi's id
-        beq     t0, t1, end                 // if character is yoshi, skip
+        ori     t1, r0, 0x0008              // load kirby's id
+        ori     t1, r0, 0x000A              // load jigglypuff's id
+        ori     t1, r0, 0x000B              // load ness's id
+        ori     t1, r0, 0x0014              // load polygon yoshi's id
+        ori     t1, r0, 0x0016              // load polygon kirby's id
+        ori     t1, r0, 0x0018              // load polygon jigglypuff's id
+        ori     t1, r0, 0x0019              // load polygon ness's id
+        ori     t1, r0, 0x0025              // load japanese ness's id
+        ori     t1, r0, 0x0026              // load lucas's id
+        ori     t1, r0, 0x002E              // load purin's id
+        ori     t1, r0, 0x002F              // load pummeluff's id
+        ori     t1, r0, 0x0030              // load japenese kirby's id
+        ori     t1, r0, 0x0031              // load japenese yoshi's id
+        ori     t1, r0, 0x0039              // load mewtwo's id
+        ori     t1, r0, 0x0040              // load king dedede's id
+        ori     t1, r0, 0x0049              // load peach's id
+        // since Remix Polygon Characters ids get updated with every added Remix non-polygon character, the next ids need to be updated too and incremented by 1
+        ori     t1, r0, 0x004E              // load polygon lucas's id
+        ori     t1, r0, 0x0059              // load polygon mewtwo's id
+        ori     t1, r0, 0x005A              // load polygon king dedede's id
+        ori     t1, r0, 0x005F              // load polygon peach's id
+        beq     t0, t1, end                 // if character is one of the above, skip
         nop
-        sltiu   t0, t0, 0x000A              // flag 1 if character id < A
-        beqz    t0, end                     // if character id < A, skip
-        nop
+        // sltiu   t0, t0, 0x000B              // flag 1 if character id < A
+        // beqz    t0, end                     // if character id < A, skip
+        // nop
         lbu     t0, 0x00CF(a0)              // load wall collision byte
         ori     t1, r0, 0x0001              // load left wall value
         and     t2, t0, t1                  // branch logic
@@ -232,5 +253,13 @@ scope Walljump {
     dw  0x00000000
     dw  0x42480000                          // rat
     dw  0x428C0000
+    dw  0x00000000                          // puff
+    dw  0x00000000
+    dw  0x00000000                          // ness
+    dw  0x00000000
+    dw  0x42180000                          // mh
+    dw  0x42A00000
+    dw  0x420C0000                          // metal mario
+    dw  0x42960000
 }
 } // __WALLJUMP__
