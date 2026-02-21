@@ -343,6 +343,12 @@ scope Character {
         dw      costume_shield_color.{parent} // default to parent
         OS.patch_end()
 
+        // set rare death fgm to null
+        table_patch_start(rare_death_fgm, id.{name}, 0x4)
+        dh      0x2B7   // FGM id (null)
+        dh      0       // 0 chance
+        OS.patch_end()
+
         // Handle Polygons
         if {variant_type} == variant_type.POLYGON {
             // Set Kirby hat_id to none
@@ -1404,8 +1410,6 @@ scope Character {
             sll     t7, t6, 0x2             // original line 3
             addu    t9, t9, t7              // original line 4
             lw      t9, LOWER(t9)           // original line 5 (modified)
-            jal     increment_special_counter
-            addiu   at, r0, increment_special_counter.NSP
         }
 
         // @ Description
@@ -1425,8 +1429,6 @@ scope Character {
             sll     t6, t5, 0x2             // original line 3
             addu    t9, t9, t6              // original line 4
             lw      t9, LOWER(t9)           // original line 5 (modified)
-            jal     increment_special_counter
-            addiu   at, r0, increment_special_counter.NSP
         }
 
         // @ Description
@@ -1446,8 +1448,6 @@ scope Character {
             sll     t3, t2, 0x2             // original line 3
             addu    t9, t9, t3              // original line 4
             lw      t9, LOWER(t9)           // original line 5 (modified)
-            jal     increment_special_counter
-            addiu   at, r0, increment_special_counter.USP
         }
 
         // @ Description
@@ -1467,8 +1467,6 @@ scope Character {
             sll     t8, t7, 0x2             // original line 3
             addu    t9, t9, t8              // original line 4
             lw      t9, LOWER(t9)           // original line 5 (modified)
-            jal     increment_special_counter
-            addiu   at, r0, increment_special_counter.DSP
         }
 
         // @ Description
@@ -1488,8 +1486,6 @@ scope Character {
             sll     t7, t6, 0x2             // original line 3
             addu    t9, t9, t7              // original line 4
             lw      t9, LOWER(t9)           // original line 5 (modified)
-            jal     increment_special_counter
-            addiu   at, r0, increment_special_counter.NSP
         }
 
         // @ Description
@@ -1509,8 +1505,6 @@ scope Character {
             sll     t6, t5, 0x2             // original line 3
             addu    t9, t9, t6              // original line 4
             lw      t9, LOWER(t9)           // original line 5 (modified)
-            jal     increment_special_counter
-            addiu   at, r0, increment_special_counter.NSP
         }
 
         // @ Description
@@ -1529,8 +1523,6 @@ scope Character {
             sll     t3, t2, 0x2             // original line 2
             addu    t9, t9, t3              // original line 3
             lw      t9, LOWER(t9)           // original line 4 (modified)
-            jal     increment_special_counter
-            addiu   at, r0, increment_special_counter.USP
         }
 
         // @ Description
@@ -1549,8 +1541,6 @@ scope Character {
             sll     t4, t3, 0x2             // original line 2
             addu    t9, t9, t4              // original line 3
             lw      t9, LOWER(t9)           // original line 4 (modified)
-            jal     increment_special_counter
-            addiu   at, r0, increment_special_counter.DSP
         }
 
         // @ Description
@@ -3281,39 +3271,78 @@ scope Character {
     }
 
     // @ Description
-    // Increment a corresponding Vs Stats counter whenever a player uses a special move.
-    // @ Arguments
-    // at - special used by player (USP/NSP/DSP)
-    // a0 - player object
-    scope increment_special_counter: {
-        constant USP(0x0)
-        constant NSP(0x1)
-        constant DSP(0x2)
+    // This table contains FGM id's and 1/X chances for character rare death sounds
+    // 0x2B7 = NULL FGM ID, used for anyone without a rare death fgm
+    scope rare_death_fgm {
+        OS.align(16)
+        table:
+        constant TABLE_ORIGIN(origin())
+        // FGM id       // Chance
+        dh 0x02B7;      dh OS.NULL            // 0x00 - MARIO
+        dh 0x02B7;      dh OS.NULL            // 0x01 - FOX
+        dh 0x02B7;      dh OS.NULL            // 0x02 - DONKEY
+        dh 0x02B7;      dh OS.NULL            // 0x03 - SAMUS
+        dh 0x02B7;      dh OS.NULL            // 0x04 - LUIGI
+        dh 0x02B7;      dh OS.NULL            // 0x05 - LINK
+        dh 0x02B7;      dh OS.NULL            // 0x06 - YOSHI
+        dh 0x02B7;      dh OS.NULL            // 0x07 - CAPTAIN
+        dh 0x02B7;      dh OS.NULL            // 0x08 - KIRBY
+        dh 0x02B7;      dh OS.NULL            // 0x09 - PIKACHU
+        dh 0x02B7;      dh OS.NULL            // 0x0A - JIGGLY
+        dh 0x02B7;      dh OS.NULL            // 0x0B - NESS
+        dh 0x02B7;      dh OS.NULL            // 0x0C - BOSS
+        dh 0x02B7;      dh OS.NULL            // 0x0D - METAL
+        dh 0x02B7;      dh OS.NULL            // 0x0E - NMARIO
+        dh 0x02B7;      dh OS.NULL            // 0x0F - NFOX
+        dh 0x02B7;      dh OS.NULL            // 0x10 - NDONKEY
+        dh 0x02B7;      dh OS.NULL            // 0x11 - NSAMUS
+        dh 0x02B7;      dh OS.NULL            // 0x12 - NLUIGI
+        dh 0x02B7;      dh OS.NULL            // 0x13 - NLINK
+        dh 0x02B7;      dh OS.NULL            // 0x14 - NYOSHI
+        dh 0x02B7;      dh OS.NULL            // 0x15 - NCAPTAIN
+        dh 0x02B7;      dh OS.NULL            // 0x16 - NKIRBY
+        dh 0x02B7;      dh OS.NULL            // 0x17 - NPIKACHU
+        dh 0x02B7;      dh OS.NULL            // 0x18 - NJIGGLY
+        dh 0x02B7;      dh OS.NULL            // 0x19 - NNESS
+        dh 0x02B7;      dh OS.NULL            // 0x1A - GDONKEY
+        // pad table for new characters
+        fill table + (NUM_CHARACTERS * 4) - pc()
 
-        addiu   sp, sp, -0x0018             // allocate stack space
-        sw      ra, 0x0014(sp)              // store ra
-        sw      t0, 0x0010(sp)              // store t0
+        // @ Description
+        // Modifies function ftCommonDeadInitStatusVars to use a character's rare death sound by chance if set
+        scope check_rare_death_fgm: {
+            OS.patch_start(0xB6BCC, 0x8013C18C)
+            j       check_rare_death_fgm
+            nop
+            _return:
+            OS.patch_end()
+            // s0 = player struct
 
-        li      t0, VsStats.usp_counter     // t0 = starting address of special counters
-        sll     at, at, 0x0004              // at = which special to update * 4
-        addu    at, t0, at                  // at = special counter to update
+            lw      t0, 0x09C8(s0)          // t0 = character attributes
+            lw      at, 0x0008(s0)          // at = character id
+            sll     at, at, 0x0002          // at = character id * 4
+            li      t2, rare_death_fgm.table
+            addu    t2, t2, at              // t2 = address of rare death FGM entry for this character
+            lhu     at, 0x0000(t2)          // at = rare death FGM id
+            addiu   a0, r0, 0x02B7          // a0 = NULL fgm id
+            beql    at, a0, _end            // branch if no rare death FGM
+            lhu     a0, 0x00B4(t0)          // a0 = regular death FGM id
 
-        lw      t0, 0x0084(a0)              // t0 = player struct
-        lbu     t0, 0x000D(t0)              // t0 = player index (0 - 3)
-        sll     t0, t0, 0x0002              // t0 = player index * 4
-        addu    at, at, t0                  // at = address of special count for this player
-        lw      t0, 0x0000(at)              // t0 = special count
-        addiu   t0, t0, 0x0001              // increment
-        sw      t0, 0x0000(at)              // store updated special count
+            // if we're here, then the character has a rare death FGM
+            jal     Global.get_random_int_
+            lhu     a0, 0x0002(t2)          // a0 = rare death FGM chance
+            bnezl   v0, _end                // if not 0, play regular FGM
+            lhu     a0, 0x00B4(t0)          // a0 = regular death FGM id
 
-        lw      t0, 0x0010(sp)              // load t0
-        jalr    ra, t9                      // original line 1
-        nop                                 // original line 2
+            // if we're here, that means the random number == 0, so play rare death FGM instead
+            lhu     a0, 0x0000(t2)          // a0 = rare death FGM id
 
-        lw      ra, 0x0014(sp)              // load ra
-        addiu   sp, sp, 0x0018              // deallocate stack space
-        jr      ra                          // return
-        nop
+            _end:
+            jal     0x8013BC60              // original line 1
+            nop
+            j       _return
+            nop
+        }
     }
 
     ///////////////////////////////////////////////////////////////////////////////////////////////

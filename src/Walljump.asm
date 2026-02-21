@@ -82,7 +82,7 @@ scope Walljump {
         beq     t0, t1, end                 // skip if this character
         ori     t1, r0, Character.id.PEACH  // load peach's id
         beq     t0, t1, end                 // skip if this character
-        // since Remix Polygon Characters ids get updated with every added Remix non-polygon character, the next ids need to be updated too and incremented by 1
+        // Remix Polygon Characters
         ori     t1, r0, Character.id.NLUCAS // load polygon lucas's id
         beq     t0, t1, end                 // skip if this character
         ori     t1, r0, Character.id.NMTWO  // load polygon mewtwo's id

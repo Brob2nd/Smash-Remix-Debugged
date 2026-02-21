@@ -161,6 +161,74 @@ scope VsStats {
     }
 
     // @ Description
+    // Increment a special move tracker whenever a fighter uses a special move.
+    // @ Arguments
+    // at - special used by player (USP/NSP/DSP)
+    // a0 - player object
+    scope increment_special_tracker: {
+        constant USP(0x00)
+        constant NSP(0x10)
+        constant DSP(0x20)
+
+        // Aerial USP
+        OS.patch_start(0xCB9C8, 0x80150F88)
+        jal increment_special_tracker
+        addiu   at, r0, USP
+        OS.patch_end()
+
+        // Aerial NSP
+        OS.patch_start(0xCBA78, 0x80151038)
+        jal increment_special_tracker
+        addiu   at, r0, NSP
+        OS.patch_end()
+
+        // Aerial DSP
+        OS.patch_start(0xCBA0C, 0x80150FCC)
+        jal increment_special_tracker
+        addiu   at, r0, DSP
+        OS.patch_end()
+
+        // Grounded USP
+        OS.patch_start(0xCBBF4, 0x801511B4)
+        jal increment_special_tracker
+        addiu   at, r0, USP
+        OS.patch_end()
+
+        // Grounded NSP
+        OS.patch_start(0xCBB74, 0x80151134)
+        jal increment_special_tracker
+        addiu   at, r0, NSP
+        OS.patch_end()
+
+        // Grounded DSP
+        OS.patch_start(0xCBC78, 0x80151238)
+        jal increment_special_tracker
+        addiu   at, r0, DSP
+        OS.patch_end()
+
+        addiu   sp, sp, -0x0018             // allocate stack space
+        sw      ra, 0x0014(sp)              // store ra
+        sw      t0, 0x0010(sp)              // store t0
+
+        li      t0, VsStats.usp_counter     // t0 = starting address of special counters
+        addu    at, t0, at                  // at = offset for special to update
+        lw      t0, 0x0084(a0)              // t0 = player struct
+        lbu     t0, 0x000D(t0)              // t0 = player index (0 - 3)
+        sll     t0, t0, 0x0002              // t0 = player index * 4
+        addu    at, at, t0                  // at = address of special count for this player
+        lw      t0, 0x0000(at)              // t0 = special count
+        addiu   t0, t0, 0x0001              // increment
+        sw      t0, 0x0000(at)              // store updated special count
+
+        jalr    ra, t9                      // original line 1
+        lw      t0, 0x0010(sp)              // load t0
+
+        lw      ra, 0x0014(sp)              // load ra
+        jr      ra                          // return
+        addiu   sp, sp, 0x0018              // deallocate stack space
+    }
+
+    // @ Description
     // This macro checks if the given port is a man/cpu and increments player count
     // accordingly. It then stores if the player is active in the stats struct.
     macro port_check(port, next) {
@@ -1173,7 +1241,7 @@ scope VsStats {
 
         // s0 = player struct
         // t9 = status id
-        
+
         addiu   t0, r0, Action.KIRBY.ForwardThrow
         beq     t9, t0, _forward            // branch if forward throw
         addiu   t0, r0, Action.ThrowF       // ~
