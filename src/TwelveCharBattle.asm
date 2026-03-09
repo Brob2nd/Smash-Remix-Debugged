@@ -77,7 +77,7 @@ scope TwelveCharBattle {
     // @ Description
     // CHARACTER SELECT SCREEN LAYOUT
     constant NUM_SLOTS(24)
-    constant NUM_PRESETS(4)
+    constant NUM_PRESETS(7)
     scope layout {
         scope u {
             // row 1
@@ -137,6 +137,35 @@ scope TwelveCharBattle {
             define slot_23(JPIKA)
             define slot_24(JPUFF)
         }
+        scope e {
+            // row 1
+            define slot_1(LUIGI)
+            define slot_2(MARIO)
+            define slot_3(DONKEY)
+            define slot_4(ELINK)
+            define slot_5(LUIGI)
+            define slot_6(MARIO)
+            define slot_7(DONKEY)
+            define slot_8(ELINK)
+            // row 2
+            define slot_9(ESAMUS)
+            define slot_10(CAPTAIN)
+            define slot_11(NESS)
+            define slot_12(YOSHI)
+            define slot_13(ESAMUS)
+            define slot_14(CAPTAIN)
+            define slot_15(NESS)
+            define slot_16(YOSHI)
+            // row 3
+            define slot_17(KIRBY)
+            define slot_18(FOX)
+            define slot_19(EPIKA)
+            define slot_20(EPUFF)
+            define slot_21(KIRBY)
+            define slot_22(FOX)
+            define slot_23(EPIKA)
+            define slot_24(EPUFF)
+        }
         scope r {
             // row 1
             define slot_1(DRM)
@@ -195,35 +224,64 @@ scope TwelveCharBattle {
             define slot_23(NPIKACHU)
             define slot_24(NJIGGLY)
         }
-        // scope pr {
-            // // row 1
-            // define slot_1(NDRM)
-            // define slot_2(GND)
-            // define slot_3(YLINK)
-            // define slot_4(FALCO)
-            // define slot_5(NDRM)
-            // define slot_6(GND)
-            // define slot_7(YLINK)
-            // define slot_8(FALCO)
-            // // row 2
-            // define slot_9(DSAMUS)
-            // define slot_10(NWARIO)
-            // define slot_11(NLUCAS)
-            // define slot_12(NBOWSER)
-            // define slot_13(DSAMUS)
-            // define slot_14(NWARIO)
-            // define slot_15(NLUCAS)
-            // define slot_16(NBOWSER)
-            // // row 3
-            // define slot_17(NWOLF)
-            // define slot_18(CONKER)
-            // define slot_19(MTWO)
-            // define slot_20(MARTH)
-            // define slot_21(NWOLF)
-            // define slot_22(CONKER)
-            // define slot_23(MTWO)
-            // define slot_24(MARTH)
-        // }
+        scope pr {
+            // row 1
+            define slot_1(NDRM)
+            define slot_2(NGND)
+            define slot_3(NYLINK)
+            define slot_4(NFALCO)
+            define slot_5(NDRM)
+            define slot_6(NGND)
+            define slot_7(NYLINK)
+            define slot_8(NFALCO)
+            // row 2
+            define slot_9(NDSAMUS)
+            define slot_10(NWARIO)
+            define slot_11(NLUCAS)
+            define slot_12(NBOWSER)
+            define slot_13(NDSAMUS)
+            define slot_14(NWARIO)
+            define slot_15(NLUCAS)
+            define slot_16(NBOWSER)
+            // row 3
+            define slot_17(NWOLF)
+            define slot_18(NCONKER)
+            define slot_19(NMTWO)
+            define slot_20(NMARTH)
+            define slot_21(NWOLF)
+            define slot_22(NCONKER)
+            define slot_23(NMTWO)
+            define slot_24(NMARTH)
+        }
+        scope rd {
+            // row 1
+            define slot_1(PLACEHOLDER)
+            define slot_2(PLACEHOLDER)
+            define slot_3(PLACEHOLDER)
+            define slot_4(PLACEHOLDER)
+            define slot_5(PLACEHOLDER)
+            define slot_6(PLACEHOLDER)
+            define slot_7(PLACEHOLDER)
+            define slot_8(PLACEHOLDER)
+            // row 2
+            define slot_9(PLACEHOLDER)
+            define slot_10(PLACEHOLDER)
+            define slot_11(PLACEHOLDER)
+            define slot_12(PLACEHOLDER)
+            define slot_13(PLACEHOLDER)
+            define slot_14(PLACEHOLDER)
+            define slot_15(PLACEHOLDER)
+            define slot_16(PLACEHOLDER)
+            // row 3
+            define slot_17(PLACEHOLDER)
+            define slot_18(PLACEHOLDER)
+            define slot_19(PLACEHOLDER)
+            define slot_20(PLACEHOLDER)
+            define slot_21(PLACEHOLDER)
+            define slot_22(PLACEHOLDER)
+            define slot_23(PLACEHOLDER)
+            define slot_24(PLACEHOLDER)
+        }
     }
 
     // @ Description
@@ -315,9 +373,11 @@ scope TwelveCharBattle {
 
     create_portrait_tables(u)       // create vanilla character set tables
     create_portrait_tables(j)       // create japanese character set tables
+    create_portrait_tables(e)       // create european character set tables
     create_portrait_tables(pv)      // create polygon vanilla character set tables
     create_portrait_tables(r)       // create remix character set tables
-    // create_portrait_tables(pr)      // create polygon remix character set tables
+    create_portrait_tables(pr)      // create polygon remix character set tables
+    create_portrait_tables(rd)      // create random character set tables
     create_portrait_tables(p1, u)   // create p1's custom character set tables
     create_portrait_tables(p2, u)   // create p2's custom character set tables
 
@@ -325,9 +385,11 @@ scope TwelveCharBattle {
     // id table     // portrait offset table     // portrait id table     // custom preset cycle index
     dw id_table_u;  dw portrait_offset_table_u;  dw portrait_id_table_u;  dw 0x0
     dw id_table_j;  dw portrait_offset_table_j;  dw portrait_id_table_j;  dw 0x0
-    dw id_table_pv;  dw portrait_offset_table_pv;  dw portrait_id_table_pv;  dw 0x0
+    dw id_table_e;  dw portrait_offset_table_e;  dw portrait_id_table_e;  dw 0x0
+    dw id_table_pv; dw portrait_offset_table_pv; dw portrait_id_table_pv; dw 0x0
     dw id_table_r;  dw portrait_offset_table_r;  dw portrait_id_table_r;  dw 0x0
-    // dw id_table_pr;  dw portrait_offset_table_pr;  dw portrait_id_table_pr;  dw 0x0
+    dw id_table_pr; dw portrait_offset_table_pr; dw portrait_id_table_pr; dw 0x0
+    dw id_table_rd; dw portrait_offset_table_rd; dw portrait_id_table_rd; dw 0x0
     dw id_table_p1; dw portrait_offset_table_p1; dw portrait_id_table_p1; dw 0x0
     dw id_table_p2; dw portrait_offset_table_p2; dw portrait_id_table_p2; dw 0x0
 
@@ -4266,14 +4328,6 @@ scope TwelveCharBattle {
         addu    t6, t6, t7                  // t6 = address of updated_character_id
         lbu     t6, 0x0000(t6)              // t6 = updated character_id
 
-        lli     t7, Character.id.SANDBAG
-        bne     t6, t7, _valid_char_id      // if not Sandbag, we can keep going
-        nop
-
-        lw      t0, 0x0048(sp)              // t0 = character set index
-        b       _do_update                  // skip Sandbag
-        sll     t3, t3, 0x0001              // t3 = -2 or +2
-
         _valid_char_id:
         beqz    t3, _update_all             // if updating all portraits, use different logic
         nop
@@ -4471,10 +4525,6 @@ scope TwelveCharBattle {
         jal     Global.get_random_int_safe_ // v0 = random character_id
         lli     a0, Character.NUM_CHARACTERS
 
-        lli     t0, Character.id.BOSS
-        beq     v0, t0, _roll               // if Master Hand, get a different ID
-        lli     t0, Character.id.SANDBAG
-        beq     v0, t0, _roll               // if Sandbag, get a different ID
         // lli     t0, Character.id.PLACEHOLDER
         // beq     v0, t0, _roll               // if invalid, get a different ID
         lli     t0, Character.id.NONE
@@ -4506,11 +4556,16 @@ scope TwelveCharBattle {
         bne     t2, t0, _roll               // get a different ID if not a Bonus character
         nop
         // safety check (not all 'SPECIAL' characters are 'Bonus')
-        lli     t0, Character.id.METAL
+
+        lli     t0, Character.id.BOSS
         beq     v0, t0, _roll               // if this character, get a different ID
+        lli     t0, Character.id.METAL
+        beq     v0, t0, _roll               // "
         lli     t0, Character.id.GDONKEY
         beq     v0, t0, _roll               // "
         lli     t0, Character.id.GBOWSER
+        beq     v0, t0, _roll               // "
+        lli     t0, Character.id.SANDBAG
         beq     v0, t0, _roll               // "
         lli     t0, Character.id.SSONIC
         beq     v0, t0, _roll               // "
@@ -5223,9 +5278,11 @@ scope TwelveCharBattle {
     string_character_set:;  String.insert("Character Set")
     string_character_set_default:; String.insert("Default")
     string_character_set_japanese:; String.insert("Japanese")
+    string_character_set_european:; String.insert("European")
     string_character_set_polygon_vanilla:; String.insert("Polygon")
     string_character_set_remix:; String.insert("Remix")
-    // string_character_set_polygon_remix:; String.insert("Polygon R")
+    string_character_set_polygon_remix:; String.insert("P. Remix")
+    string_character_set_polygon_random:; String.insert("Random")
     string_character_set_custom:; String.insert("Custom")
     string_best_character:; String.insert("Best Character")
     string_tkos:; String.insert("TKOs")
@@ -5252,9 +5309,10 @@ scope TwelveCharBattle {
     character_set_string_table:
     dw string_character_set_default
     dw string_character_set_japanese
+    dw string_character_set_european
     dw string_character_set_polygon_vanilla
     dw string_character_set_remix
-    // dw string_character_set_polygon_remix
+    dw string_character_set_polygon_remix
     dw string_character_set_custom
 
     // @ Description

@@ -19,11 +19,11 @@ scope Walljump {
     // @ Description
     // check wall hook
     scope checkwall: {
-        // // // // // OS.patch_start(0xBAD40, 0x80140300)
-        // // // // // j       checkwall
-        // // // // // nop
+        OS.patch_start(0xBAD40, 0x80140300)
+        j       checkwall
+        nop
         checkwall_return:
-        // // // // // OS.patch_end()
+        OS.patch_end()
         // struct in a0, a2
 
         lw      t2, 0x0064(t1)              // original line 1
@@ -33,6 +33,11 @@ scope Walljump {
         sw      t0, 0x0004(sp)
         sw      t1, 0x0008(sp)
         sw      t2, 0x000C(sp)
+
+        Toggles.read(entry_walljump, t0)    // t0 = toggle
+        beqzl   t0, end                     // end if not enabled
+        nop
+
         lhu     t0, 0x0026(a0)              // load current action value
         ori     t1, r0, 0x003A              // load special fall value
         beq     t0, t1, end                 // if character is in special fall, skip
@@ -42,23 +47,71 @@ scope Walljump {
         // Jiggs and DDD don't crash but nothing happens
         // Marina works, surpringly
         // TODO this will need to be tweaked and handled cleaner
-        // // lbu     t0, 0x000B(a0)              // load character id
-        // // ori     t1, r0, 0x0006              // load yoshi's id
-        // // beq     t0, t1, end                 // if character is yoshi, skip
-        // // nop
-        // // sltiu   t0, t0, 0x000A              // flag 1 if character id < A
-        // // beqz    t0, end                     // if character id < A, skip
-        // // nop
+        lbu     t0, 0x000B(a0)              // load character id
+        ori     t1, r0, Character.id.YOSHI
+        beq     t0, t1, end                 // skip if Yoshi
+        ori     t1, r0, Character.id.KIRBY
+        beq     t0, t1, end                 // skip if Kirby
+        ori     t1, r0, Character.id.PUFF
+        beq     t0, t1, end                 // skip if Jigglypuff
+        ori     t1, r0, Character.id.NESS
+        beq     t0, t1, end                 // skip if Ness
+        ori     t1, r0, Character.id.NYOSHI
+        beq     t0, t1, end                 // skip if Polygon Yoshi
+        ori     t1, r0, Character.id.NKIRBY
+        beq     t0, t1, end                 // skip if Polygon Kirby
+        ori     t1, r0, Character.id.NPUFF
+        beq     t0, t1, end                 // skip if Polygon Jigglypuff
+        ori     t1, r0, Character.id.NNESS
+        beq     t0, t1, end                 // skip if Polygon Ness
+        ori     t1, r0, Character.id.JYOSHI
+        beq     t0, t1, end                 // skip if JP Yoshi
+        ori     t1, r0, Character.id.JKIRBY
+        beq     t0, t1, end                 // skip if JP Kirby
+        ori     t1, r0, Character.id.JNESS
+        beq     t0, t1, end                 // skip if JP Ness
+        ori     t1, r0, Character.id.JPUFF
+        beq     t0, t1, end                 // skip if JP Jigglypuff
+        ori     t1, r0, Character.id.EPUFF
+        beq     t0, t1, end                 // skip if EU Jigglypuff
+        ori     t1, r0, Character.id.LUCAS
+        beq     t0, t1, end                 // skip if Lucas
+        ori     t1, r0, Character.id.MTWO
+        beq     t0, t1, end                 // skip if Mewtwo
+        ori     t1, r0, Character.id.DEDEDE
+        beq     t0, t1, end                 // skip if Dedede
+        ori     t1, r0, Character.id.PEACH
+        beq     t0, t1, end                 // skip if Peach
+        // Remix Polygon Characters
+        ori     t1, r0, Character.id.NLUCAS
+        beq     t0, t1, end                 // skip if Polygon Lucas
+        ori     t1, r0, Character.id.NMTWO
+        beq     t0, t1, end                 // skip if Polygon Mewtwo
+        ori     t1, r0, Character.id.NDEDEDE
+        beq     t0, t1, end                 // skip if Polygon Dedede
+        ori     t1, r0, Character.id.NPEACH
+        beq     t0, t1, end                 // skip if Polygon Peach
+        nop
+        // sltiu   t0, t0, 0x000A              // flag 1 if character id < A
+        // beqz    t0, end                     // if character id < A, skip
+        // nop
         lbu     t0, 0x00CF(a0)              // load wall collision byte
         ori     t1, r0, 0x0001              // load left wall value
         and     t2, t0, t1                  // branch logic
-        beq     t2, t1, continue
+        beq     t2, t1, check_facing
         nop
         ori     t1, r0, 0x0020              // load right wall value
         and     t2, t0, t1                  // branch logic
-        beq     t0, t1, continue
+        beq     t0, t1, check_facing
         nop
         b       end                         // if wall collision is not detected, skip
+        nop
+
+        check_facing:
+        lw      t2, 0x0044(a0)              // load player facing direction
+        slti    t2, t2, 0x0001              // t2 = 1 if facing left, else 0
+        sltiu   t0, t0, 0x0020              // t0 = 1 if left wall, else 0
+        beql    t2, t0, end                 // branch if facing away from wall
         nop
 
         continue:
@@ -81,11 +134,11 @@ scope Walljump {
     // @ Description
     // walljump action hook
     scope walljumpaction: {
-        // // // // // OS.patch_start(0xBA804, 0x8013FDC4)
-        // // // // // j       walljumpaction
-        // // // // // nop
+        OS.patch_start(0xBA804, 0x8013FDC4)
+        j       walljumpaction
+        nop
         walljumpaction_return:
-        // // // // // OS.patch_end()
+        OS.patch_end()
 
         // struct in s0, action in a1
 
@@ -93,6 +146,11 @@ scope Walljump {
         sw      t0, 0x0004(sp)
         sw      t1, 0x0008(sp)
         sw      t2, 0x000C(sp)
+
+        Toggles.read(entry_walljump, t0)    // t0 = toggle
+        beqzl   t0, end                     // end if not enabled
+        nop
+
         li      t0, walljumpstruct          // load struct pointer
         lbu     t1, 0x000D(s0)              // load player port
         addu    t1, t0, t1                  // add player port to struct pointer
@@ -123,11 +181,11 @@ scope Walljump {
     // @ Description
     // walljump momentum hook
     scope wj_momentum: {
-        // // // // // OS.patch_start(0xBA900, 0x8013FEC0)
-        // // // // // j       wj_momentum
-        // // // // // nop
+        OS.patch_start(0xBA900, 0x8013FEC0)
+        j       wj_momentum
+        nop
         wj_momentum_return:
-        // // // // // OS.patch_end()
+        OS.patch_end()
 
         //struct in s0, x momentum offset = 0x0048, y = 0x004C
 
@@ -138,6 +196,11 @@ scope Walljump {
         sw      t1, 0x0008(sp)
         sw      t2, 0x000C(sp)
         sw      t3, 0x0010(sp)
+
+        Toggles.read(entry_walljump, t0)    // t0 = toggle
+        beqzl   t0, end                     // end if not enabled
+        nop
+
         li      t0, walljumpstruct          // load struct pointer
         lbu     t1, 0x000D(s0)              // load player port
         addu    t1, t0, t1                  // add player port to struct pointer
@@ -147,7 +210,7 @@ scope Walljump {
         addiu   t0, t0, 0x0004              // offset struct pointer to table
         lbu     t2, 0x000B(s0)              // load character id
         // can force Mario ID (for testing) X,Y momentum will always be his
-        // // addiu   t2, r0, 0
+        addiu   t2, r0, 0
         sll     t1, t2, 0x3                 // get table offset
         addu    t0, t0, t1                  // add offset to pointer
 
@@ -177,16 +240,21 @@ scope Walljump {
     // @ Description
     // walljump flag hook
     scope wj_jumpflag: {
-        // // // // // OS.patch_start(0xBA910, 0x8013FED0)
-        // // // // // j       wj_jumpflag
-        // // // // // nop
+        OS.patch_start(0xBA910, 0x8013FED0)
+        j       wj_jumpflag
+        nop
         wj_jumpflag_return:
-        // // // // // OS.patch_end()
+        OS.patch_end()
 
         ori     t9, t8, 0x0080              // original line 1
         addiu   sp, sp,-0x000C              // store t0 and t1
         sw      t0, 0x0004(sp)
         sw      t1, 0x0008(sp)
+
+        Toggles.read(entry_walljump, t0)    // t0 = toggle
+        beqzl   t0, end + 4                 // end if not enabled
+        sb      t5, 0x0148(s0)              // original line 2 (update jump value)
+
         li      t0, walljumpstruct          // load struct pointer
         lbu     t1, 0x000D(s0)              // load player port
         addu    t1, t0, t1                  // add player port to struct pointer
@@ -230,5 +298,13 @@ scope Walljump {
     dw  0x00000000
     dw  0x42480000                          // rat
     dw  0x428C0000
+    dw  0x00000000                          // puff
+    dw  0x00000000
+    dw  0x00000000                          // ness
+    dw  0x00000000
+    dw  0x42180000                          // mh
+    dw  0x42A00000
+    dw  0x420C0000                          // metal mario
+    dw  0x42960000
 }
 } // __WALLJUMP__

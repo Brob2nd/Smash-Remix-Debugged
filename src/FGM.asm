@@ -1527,7 +1527,7 @@ scope FGM {
     add_sound(Goemon/sounds/STUN_INITIAL, SAMPLE_RATE_16000, FGM_TYPE_VOICE, 0, -1)
     add_sound(Goemon/sounds/LETS_GO, SAMPLE_RATE_16000, FGM_TYPE_VOICE, 0, -1)
     add_sound(Piano/sounds/CHANT, SAMPLE_RATE_16000, FGM_TYPE_CHANT, 0, 312)
-    add_sound(Ganondorf/sounds/PLACEHOLDER, SAMPLE_RATE_16000, FGM_TYPE_VOICE, 0, -1) // UNUSED, REPLACE WITH ADD_SOUND OR ADD_SOUND_AVANCED
+    add_sound(Sandbag/sounds/ANNOUNCER, SAMPLE_RATE_16000, FGM_TYPE_VOICE, 40, -1)
     add_sound(YoungLink/sounds/STUN, SAMPLE_RATE_16000, FGM_TYPE_VOICE, 0, -1)
     add_sound(Peppy/sounds/ATTACK_1, SAMPLE_RATE_16000, FGM_TYPE_VOICE, 0, -1)
     add_sound(Peppy/sounds/ATTACK_2, SAMPLE_RATE_16000, FGM_TYPE_VOICE, 0, -1)
@@ -1590,7 +1590,7 @@ scope FGM {
     add_sound(Banjo/sounds/ATTACK_2, SAMPLE_RATE_16000, FGM_TYPE_VOICE, 0, -1)
     add_sound(Banjo/sounds/ATTACK_3, SAMPLE_RATE_16000, FGM_TYPE_VOICE, 0, -1)
     add_sound(Banjo/sounds/ANNOUNCER, SAMPLE_RATE_16000, FGM_TYPE_VOICE, 40, -1)
-    add_sound(Ganondorf/sounds/PLACEHOLDER, SAMPLE_RATE_16000, FGM_TYPE_VOICE, 0, -1) // UNUSED, REPLACE WITH ADD_SOUND OR ADD_SOUND_AVANCED
+    add_sound(sounds/misc/cdtime_travel, SAMPLE_RATE_16000, FGM_TYPE_VOICE, 0, -1)
     add_sound(Banjo/sounds/SHIELD_BREAK, SAMPLE_RATE_16000, FGM_TYPE_VOICE, 0, -1)
     add_sound(MLuigi/sounds/ANNOUNCER, SAMPLE_RATE_16000, FGM_TYPE_VOICE, 40, -1)
     add_sound(Ebi/sounds/ANNOUNCER, SAMPLE_RATE_16000, FGM_TYPE_VOICE, 40, -1)
@@ -1632,7 +1632,7 @@ scope FGM {
     add_sound(Banjo/sounds/CROWD_CHANT, SAMPLE_RATE_16000, FGM_TYPE_CHANT, 0, 420)
     add_sound(Banjo/sounds/KAZOOIE_USMASH, SAMPLE_RATE_16000, FGM_TYPE_VOICE, 0, -1)
     add_sound(Goemon/sounds/SLEEP, SAMPLE_RATE_16000, FGM_TYPE_SLEEP, 0, 0x150)
-    add_sound(Ganondorf/sounds/PLACEHOLDER, SAMPLE_RATE_16000, FGM_TYPE_VOICE, 0, -1) // UNUSED, REPLACE WITH ADD_SOUND OR ADD_SOUND_AVANCED
+    add_sound(Sandbag/sounds/CHANT, SAMPLE_RATE_16000, FGM_TYPE_CHANT, 0, 318)
     add_sound(Ganondorf/sounds/PLACEHOLDER, SAMPLE_RATE_16000, FGM_TYPE_VOICE, 0, -1) // UNUSED, REPLACE WITH ADD_SOUND OR ADD_SOUND_AVANCED
     add_sound(Banjo/sounds/KAZOOIE_DSMASH, SAMPLE_RATE_16000, FGM_TYPE_VOICE, 0, -1)
     add_sound(Banjo/sounds/YUH_OH, SAMPLE_RATE_16000, FGM_TYPE_VOICE, 0, -1)
@@ -2001,6 +2001,7 @@ scope FGM {
             constant PEACH(1432)
             constant LANKY(1497)
             constant EPIKA(1459)
+            constant SANDBAG(1236)
         }
 
         scope css {

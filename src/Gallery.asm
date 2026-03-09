@@ -118,10 +118,11 @@ scope Gallery {
     dw bgm_remix                            // You Are Proud
 
     bgm_mario:
-    dh 12                                   // number of BGM
+    dh 13                                   // number of BGM
     dh BGM.stage.PEACHS_CASTLE
     dh BGM.stage.MUSHROOM_KINGDOM
     dh {MIDI.id.UNDERGROUND}
+    dh {MIDI.id.UNDERGROUND_HURRY}
     dh {MIDI.id.SMB3OVERWORLD}
     dh {MIDI.id.EASTON_KINGDOM}
     dh {MIDI.id.SMW_TITLECREDITS}
@@ -133,7 +134,7 @@ scope Gallery {
     dh {MIDI.id.FREEZE}
 
     bgm_luigi:
-    dh 10                                  // number of BGM
+    dh 11                                  // number of BGM
     dh {MIDI.id.SMB2_MEDLEY}
     dh {MIDI.id.SNES_RAINBOW}
     dh {MIDI.id.RACEWAYS}
@@ -141,6 +142,7 @@ scope Gallery {
     dh {MIDI.id.FRAPPE_SNOWLAND}
     dh {MIDI.id.RAINBOWROAD}
     dh {MIDI.id.MK64_CREDITS}
+    dh {MIDI.id.WALUIGI_PINBALL}
     dh {MIDI.id.PIRATELAND}
     dh {MIDI.id.WIDE_UNDERWATER}
     dh {MIDI.id.STATUS}
@@ -163,10 +165,11 @@ scope Gallery {
     dh {MIDI.id.TALENTSTUDIO}
 
     bgm_dk:
-    dh 8                                    // number of BGM
+    dh 9                                   // number of BGM
     dh BGM.stage.CONGO_JUNGLE
     dh {MIDI.id.DK_MEDLEY}
     dh {MIDI.id.DKCTITLE}
+    dh {MIDI.id.SKERRIES}
     dh {MIDI.id.GANGPLANK}
     dh {MIDI.id.SNAKEY_CHANTEY}
     dh {MIDI.id.FOREST_INTERLUDE}
@@ -196,9 +199,10 @@ scope Gallery {
     dh {MIDI.id.MAJORA_MIDBOSS}
 
     bgm_sheik:
-    dh 2                                    // number of BGM
+    dh 3                                    // number of BGM
     dh {MIDI.id.BRAWL_OOT}
     dh {MIDI.id.GERUDO_VALLEY}
+    dh {MIDI.id.GODDESSBALLAD}
 
     bgm_samus:
     dh 3                                    // number of BGM
@@ -223,7 +227,7 @@ scope Gallery {
     dh {MIDI.id.YOSHI_GOLF}
 
     bgm_kirby:
-    dh 7                                    // number of BGM
+    dh 8                                    // number of BGM
     dh BGM.stage.DREAM_LAND
     dh {MIDI.id.GREEN_GREENS}
     dh {MIDI.id.BUTTER_BUILDING}
@@ -231,6 +235,7 @@ scope Gallery {
     dh {MIDI.id.THEATER}
     dh {MIDI.id.POP_STAR}
     dh {MIDI.id.BUMPERCROPBUMP}
+    dh {MIDI.id.NUTTY_NOON}
 
     bgm_dedede:
     dh 7                                    // number of BGM
@@ -313,17 +318,23 @@ scope Gallery {
     dh {MIDI.id.MURASAKI}
 
     bgm_wario:
-    dh 2                                    // number of BGM
+    dh 6                                    // number of BGM
+    dh {MIDI.id.STONECARVING_CITY}
     dh {MIDI.id.WL2_PERFECT}
     dh {MIDI.id.KITCHEN_ISLAND}
+    dh {MIDI.id.STARRING_WARIO}
+    dh {MIDI.id.WARIOWARE}
+    dh {MIDI.id.ASHLEYS_THEME}
 
     bgm_conker:
-    dh 5                                    // number of BGM
+    dh 7                                    // number of BGM
     dh {MIDI.id.CONKER_THE_KING}
     dh {MIDI.id.WINDY}
     dh {MIDI.id.SLOPRANO}
     dh {MIDI.id.OLE}
     dh {MIDI.id.ROCKSOLID}
+    dh {MIDI.id.CRESCENT_ISLAND}
+    dh {MIDI.id.WIZPIG}
 
     bgm_marth:
     dh 3                                    // number of BGM
@@ -332,7 +343,7 @@ scope Gallery {
     dh {MIDI.id.HYRULE_TEMPLE}
 
     bgm_sonic:
-    dh 13                                   // number of BGM
+    dh 15                                   // number of BGM
     dh {MIDI.id.GREEN_HILL_ZONE}
     dh {MIDI.id.EMERALDHILL}
     dh {MIDI.id.CHEMICAL_PLANT}
@@ -345,6 +356,8 @@ scope Gallery {
     dh {MIDI.id.FLYINGBATTERY}
     dh {MIDI.id.GIANTWING}
     dh {MIDI.id.EVERYTHING}
+    dh {MIDI.id.SONIC_R}
+    dh {MIDI.id.OPEN_YOUR_HEART}
     dh {MIDI.id.LIVE_AND_LEARN}
 
     bgm_marina:
@@ -361,37 +374,44 @@ scope Gallery {
     dh {MIDI.id.THE_ALOOF_SOLDIER}
 
     bgm_ebi:
-    dh 1                                    // number of BGM
+    dh 2                                    // number of BGM
     dh {MIDI.id.KAI_HIGHWAY}
+    dh {MIDI.id.TRAVELING}
 
     bgm_banjo:
-    dh 8                                    // number of BGM
+    dh 10                                   // number of BGM
     dh {MIDI.id.BANJO_MAIN}
     dh {MIDI.id.SPIRAL_MOUNTAIN}
     dh {MIDI.id.TREASURE_TROVE_COVE}
     dh {MIDI.id.MADMONSTER}
     dh {MIDI.id.BK_FINALBATTLE}
-    dh {MIDI.id.MRPATCH}
     dh {MIDI.id.VS_KLUNGO}
     dh {MIDI.id.OLDKINGCOAL}
+    dh {MIDI.id.MRPATCH}
+    dh {MIDI.id.FROSTY_VILLAGE}
+    dh {MIDI.id.DKR_BOSS}
 
     bgm_crash:
-    dh 6                                    // number of BGM
+    dh 9                                    // number of BGM
     dh {MIDI.id.CRASH3}
     dh {MIDI.id.NSANITYBEACH}
     dh {MIDI.id.HOGWILD}
     dh {MIDI.id.SNOWGO}
     dh {MIDI.id.CORTEX}
     dh {MIDI.id.FUTUREFRENZY}
+    dh {MIDI.id.CTR_MENU}
+    dh {MIDI.id.CRASHBASH_LOADING}
+    dh {MIDI.id.CRASHBONUS}
 
     bgm_peach:
-    dh 7                                    // number of BGM
+    dh 8                                    // number of BGM
     dh {MIDI.id.SM64STAFF}
     dh {MIDI.id.FILESELECT_SM64}
+    dh {MIDI.id.ITSATRAP_SM64}
     dh {MIDI.id.BOB}
+    dh {MIDI.id.N64}
     dh {MIDI.id.COOLCOOLMOUNTAIN}
     dh {MIDI.id.SLIDER}
-    dh {MIDI.id.N64}
     dh {MIDI.id.WING_CAP}
 
     bgm_roy:
@@ -417,16 +437,17 @@ scope Gallery {
     dh {MIDI.id.DK_RAP}
 
     bgm_dking:
-    dh 6                                    // number of BGM
+    dh 7                                    // number of BGM
     dh {MIDI.id.DRAGONKING}
     dh {MIDI.id.FIRST_DESTINATION}
     dh {MIDI.id.MULTIMAN}
+    dh {MIDI.id.MULTIMAN2}
     dh {MIDI.id.METAL_BATTLE}
     dh {MIDI.id.TABUU}
     dh {MIDI.id.FD_BRAWL}
 
     bgm_remix:
-    dh 11                                   // number of BGM
+    dh 12                                   // number of BGM
     dh BGM.menu.CREDITS
     dh BGM.stage.META_CRYSTAL
     dh BGM.stage.FINAL_DESTINATION
@@ -435,6 +456,7 @@ scope Gallery {
     dh BGM.menu.RESULTS
     dh BGM.menu.DATA
     dh BGM.stage.HOW_TO_PLAY
+    dh BGM.special.TRAINING
     dh {MIDI.id.CREDITS_BRAWL}
     dh {MIDI.id.GALLERY}
     dh {MIDI.id.TARGET_TEST}
@@ -761,6 +783,9 @@ scope Gallery {
     add_bgm_to_gallery({MIDI.id.METAL_BATTLE}, id.DKING)
     add_bgm_to_gallery({MIDI.id.TABUU}, id.DKING)
     add_bgm_to_gallery({MIDI.id.FD_BRAWL}, id.DKING)
+    add_bgm_to_gallery({MIDI.id.MULTIMAN2}, id.DKING)
+    add_bgm_to_gallery({MIDI.id.SONIC_R}, id.SONIC)
+    add_bgm_to_gallery({MIDI.id.UNDERGROUND_HURRY}, id.LUIGI)
 
     // @ Description
     // Table which holds the 'L' and 'R' sound effects for drumming
@@ -768,25 +793,30 @@ scope Gallery {
 
     dh  0x020, 0x01F                     // Kicks
     dh  0x11F, 0x033                     // Stomp / Fan smack
-    dh  0x117, 0x038                     // POW block / Koopa shell
-    dh  0x03D, 0x02F                     // Gun shoot / Bumper
+    dh  0x117, 0x038                     // POW Block / Koopa shell
+    dh  0x03D, 0x02F                     // Gun Shoot / Bumper
+    dh  0x529, 0x52A                     // Cloaking Device
+    dh  0x559, 0x55A                     // P-Wing Pick-Up / End
+    dh  0x558, 0x55B                     // P-Wing Jump / Ending
     dh  0x2C6, 0x2C7                     // Dr Mario Pills
     dh  0x59C, 0x59B                     // Peach Golf Club / Racket
     dh  0x567, 0x568                     // Meow / Woof
-    dh  0x0EE, 0x0F7                     // Samus shot / bomb
+    dh  0x0EE, 0x0F7                     // Samus Shot / Bomb
     dh  0x0D9, 0x1B0                     // Mario Jump / BLJ
     dh  0x569, 0x56A                     // "D K"
     dh  0x180, 0x181                     // Kirby "Falcon Punch!"
     dh  0x256, 0x257                     // Yoshi
     dh  0x230, 0x234                     // Jigglypuff
-    // dh  0x5CD, 0x5CC                  // F-Zero Announcer "1" / "2"
+    dh  0x5CD, 0x5CC                     // F-Zero Announcer "1" / "2"
+    dh  0x5CB, 0x5CE                     // F-Zero Announcer "3" / "GO"
     dh  0x52B, 0x52C                     // Kazooie Fair
+    dh  0x52E, 0x52F                     // Beak Buster
     dh  0x5A1, 0x583                     // Crash Bounce / Spin
     dh  0x523, 0x556                     // Ebi "Cha" / Camera
     dh  0x5F8, 0x5F9                     // Lanky "Hip" / "Hup"
     dh  0x547, 0x549                     // DKing Hurt
 
-    constant DRUM_KIT_ENTRY_COUNT(18)    // update this when we add sound effects
+    constant DRUM_KIT_ENTRY_COUNT(24)    // update this when we add sound effects
 
     drum_kit_index:
     dw  0

@@ -1194,6 +1194,7 @@ scope Toggles {
     egg:; db "Egg", 0x00
     sleep:; db "Sleep", 0x00
     trip:; db "Trip", 0x00
+    swap_music:; db "Swap Music", 0x00
     _random:; db "Random", 0x00
     OS.align(4)
 
@@ -1209,6 +1210,7 @@ scope Toggles {
     dw egg
     dw sleep
     dw trip
+    dw swap_music
     dw _random
 
     // @ Description
@@ -1778,7 +1780,7 @@ scope Toggles {
         sw      t0, 0x000C(sp)              // ~
         sw      ra, 0x0010(sp)              // save registers
 
-        // 0 if off, 1 if '7% Damage', 2 if 'Lava Floor', 3 if 'Shield-Break', 4 if 'Instant K.O.', 5 if 'Force Taunt', 6 if 'Bury', 7 if 'Laugh Track', 8 if 'Egg', 9 if 'Sleep', 10 if 'Trip', 11 if 'Random'
+        // 0 if off, 1 if '7% Damage', 2 if 'Lava Floor', 3 if 'Shield-Break', 4 if 'Instant K.O.', 5 if 'Force Taunt', 6 if 'Bury', 7 if 'Laugh Track', 8 if 'Egg', 9 if 'Sleep', 10 if 'Trip', 11 if 'Swap Music', 12 if 'Random'.
         li      t0, Toggles.entry_punish_on_failed_z_cancel
         lw      t0, 0x0004(t0)
         addiu   a0, r0, 1                   // a0 = (7% damage)
@@ -1811,6 +1813,9 @@ scope Toggles {
         addiu   a0, r0, 10                  // a0 = (Trip)
         beql    a0, t0, _play
         lli     a0, 0x456                   // a0 - fgm_id
+        addiu   a0, r0, 11                  // a0 = (Swap Music)
+        beql    a0, t0, _play
+        lli     a0, 0x529                   // a0 - fgm_id
         lli     a0, ZCancel._cruel_z_cancel.CRUEL_Z_CANCEL_MODE.RANDOM
         beql    a0, t0, _play
         lli     a0, 0x3A                    // a0 - fgm_id
@@ -2424,7 +2429,7 @@ scope Toggles {
     entry_momentum_slide:;              entry_bool("Momentum Slide", OS.FALSE, OS.FALSE, OS.FALSE, OS.TRUE, entry_shieldstun)
     entry_shieldstun:;                  entry("Shield Stun", Menu.type.INT, 0, 0, 0, 1, 0, 4, OS.NULL, string_table_shieldstun, OS.NULL, entry_z_cancel_opts)
     entry_z_cancel_opts:;               entry("Z-Cancel", Menu.type.INT, OS.FALSE, OS.FALSE, OS.FALSE, OS.FALSE, 0, 4, OS.NULL, string_table_z_cancel_opts, OS.NULL, entry_punish_on_failed_z_cancel)
-    entry_punish_on_failed_z_cancel:;   entry("Punish Failed Z-Cancel", Menu.type.INT, OS.FALSE, OS.FALSE, OS.FALSE, OS.FALSE, 0, 11, punish_fgm_, string_table_failed_z_cancel, OS.NULL, entry_improved_ai)
+    entry_punish_on_failed_z_cancel:;   entry("Punish Failed Z-Cancel", Menu.type.INT, OS.FALSE, OS.FALSE, OS.FALSE, OS.FALSE, 0, 12, punish_fgm_, string_table_failed_z_cancel, OS.NULL, entry_improved_ai)
     entry_improved_ai:;                 entry_bool("Improved AI", OS.TRUE, OS.FALSE, OS.TRUE, OS.TRUE, entry_tripping)
     entry_tripping:;                    entry("Tripping", Menu.type.INT, 0, 0, 0, 0, 0, 3, OS.NULL, string_table_tripping, OS.NULL, entry_rage)
     entry_rage:;                        entry("Rage", Menu.type.INT, 0, 0, 0, 0, 0, 4, OS.NULL, string_table_rage, OS.NULL, entry_footstool)
@@ -2442,7 +2447,8 @@ scope Toggles {
     entry_item_containers:;             entry("Item Containers", Menu.type.INT, 0, 0, 0, 0, 0, 3, OS.NULL, string_table_item_containers, OS.NULL, entry_game_speed)
     entry_game_speed:;                  entry("Game Speed", Menu.type.INT, 0, 0, 0, 0, 0, 12, OS.NULL, string_table_speed, OS.NULL, entry_special_zoom)
     entry_special_zoom:;                entry("Special Zoom (BETA)", Menu.type.INT, 0, 0, 0, 0, 0, 2, OS.NULL, string_table_special_zoom, OS.NULL, entry_blastzone_warp)
-    entry_blastzone_warp:;              entry("BlastZone Warp (BETA)", Menu.type.INT, 0, 0, 0, 0, 0, 3, OS.NULL, string_table_blast_zone, OS.NULL, entry_single_button_mode)
+    entry_blastzone_warp:;              entry("BlastZone Warp (BETA)", Menu.type.INT, 0, 0, 0, 0, 0, 3, OS.NULL, string_table_blast_zone, OS.NULL, entry_walljump)
+    entry_walljump:;                    entry_bool("Wall Jumping (BETA)", OS.FALSE, OS.FALSE, OS.FALSE, OS.FALSE, entry_single_button_mode)
     entry_single_button_mode:;          entry("Single Button Mode", Menu.type.INT, 0, 0, 0, 0, 0, 6, OS.NULL, string_table_single_button_mode, OS.NULL, entry_item_dropping)
     entry_item_dropping:;               entry_bool("All Items R Drop (Aerial)", OS.FALSE, OS.FALSE, OS.FALSE, OS.FALSE, entry_move_staling)
     entry_move_staling:;                entry("Move Staling", Menu.type.INT, 0, 0, 0, 0, 0, 6, OS.NULL, string_table_move_staling, OS.NULL, entry_stopwatch_behaviour)
@@ -2481,7 +2487,8 @@ scope Toggles {
     entry_random_music_peachs_castle:;      entry_bool_with_a("Peach's Castle", OS.TRUE, OS.TRUE, OS.TRUE, OS.TRUE, preview_bgm_, BGM.stage.PEACHS_CASTLE, entry_random_music_planet_zebes)
     entry_random_music_planet_zebes:;       entry_bool_with_a("Planet Zebes", OS.TRUE, OS.TRUE, OS.TRUE, OS.TRUE, preview_bgm_, BGM.stage.PLANET_ZEBES, entry_random_music_saffron_city)
     entry_random_music_saffron_city:;       entry_bool_with_a("Saffron City", OS.TRUE, OS.TRUE, OS.TRUE, OS.TRUE, preview_bgm_, BGM.stage.SAFFRON_CITY, entry_random_music_sector_z)
-    entry_random_music_sector_z:;           entry_bool_with_a("Sector Z", OS.TRUE, OS.TRUE, OS.TRUE, OS.TRUE, preview_bgm_, BGM.stage.SECTOR_Z, entry_random_music_yoshis_island)
+    entry_random_music_sector_z:;           entry_bool_with_a("Sector Z", OS.TRUE, OS.TRUE, OS.TRUE, OS.TRUE, preview_bgm_, BGM.stage.SECTOR_Z, entry_random_music_training_mode)
+    entry_random_music_training_mode:;      entry_bool_with_a("Training Mode", OS.TRUE, OS.TRUE, OS.TRUE, OS.TRUE, preview_bgm_, BGM.special.TRAINING, entry_random_music_yoshis_island)
     entry_random_music_yoshis_island:;      entry_bool_with_a("Yoshi's Island", OS.TRUE, OS.TRUE, OS.TRUE, OS.TRUE, preview_bgm_, BGM.stage.YOSHIS_ISLAND, entry_random_music_first_custom)
 
     entry_random_music_first_custom:
@@ -2604,8 +2611,17 @@ scope Toggles {
                 evaluate m({n}+1)
                 evaluate next(entry_random_stage_{m})
             }
+
+            evaluate default_toggled(OS.TRUE)
+            if ({id} == Stages.id.HRC) {
+                evaluate default_toggled(OS.FALSE)
+            }
+            if ({id} == Stages.id.TIME_TWISTER_SSS) {
+                evaluate default_toggled(OS.FALSE)
+            }
+
             evaluate stage_toggle_{Stages.STAGE_{id}_NAME}(num_toggles - {first_stage_toggle})
-            entry_bool({Stages.STAGE_{id}_TITLE}, OS.TRUE, {Stages.STAGE_{id}_TE}, {Stages.STAGE_{id}_NE}, OS.TRUE, {next})
+            entry_bool({Stages.STAGE_{id}_TITLE}, {default_toggled}, {Stages.STAGE_{id}_TE}, {Stages.STAGE_{id}_NE}, {default_toggled}, {next})
         }
         evaluate n({n}+1)
     }
@@ -2940,7 +2956,8 @@ scope Toggles {
     evaluate music_toggle_PLANET_ZEBES(12)
     evaluate music_toggle_SAFFRON_CITY(13)
     evaluate music_toggle_SECTOR_Z(14)
-    evaluate music_toggle_YOSHIS_ISLAND(15)
+    evaluate music_toggle_TRAINING_MODE(15)
+    evaluate music_toggle_YOSHIS_ISLAND(16)
 
     // @ Description
     // Adds a track to a music profile
@@ -3030,12 +3047,15 @@ scope Toggles {
     include "/music/profiles/positivevibes.asm"
     include "/music/profiles/slappers.asm"
     include "/music/profiles/freshjams.asm"
+    include "/music/profiles/medleys.asm"
     include "/music/profiles/staff.asm"
 
     // Include stage profiles here
     include "/stages/profiles/competitive.asm"
     include "/stages/profiles/vanilla.asm"
     include "/stages/profiles/dreamlandonly.asm"
+    include "/stages/profiles/omegaonly.asm"
+    include "/stages/profiles/no_dl.asm"
     include "/stages/profiles/no_omega.asm"
     include "/stages/profiles/no_variant.asm"
     include "/stages/profiles/staff.asm"

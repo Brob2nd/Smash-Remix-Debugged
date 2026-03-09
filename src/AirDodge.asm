@@ -180,6 +180,18 @@
             // if here, air dodge
             jal     air_dodge_initial_
             nop
+
+            
+            // update air dodge counter
+            li      at, VsStats.airdodge_counter
+            lw      t0, 0x0084(a0)              // t0 = player struct
+            lbu     t0, 0x000D(t0)              // t0 = player index (0 - 3)
+            sll     t0, t0, 0x0002              // t0 = player index * 4
+            addu    at, at, t0                  // at = address of successful techs for this player
+            lw      t0, 0x0000(at)              // t0 = successful tech count
+            addiu   t0, t0, 0x0001              // increment
+            sw      t0, 0x0000(at)              // store updated tech count
+
             j       _end_2
             lw      ra, 0x001C(sp)          // load ra
 
@@ -187,6 +199,16 @@
             // check if they can even air dash
             jal     air_dash_initial_
             nop
+
+            // update air dodge counter
+            li      at, VsStats.airdodge_counter
+            lw      t0, 0x0084(a0)              // t0 = player struct
+            lbu     t0, 0x000D(t0)              // t0 = player index (0 - 3)
+            sll     t0, t0, 0x0002              // t0 = player index * 4
+            addu    at, at, t0                  // at = address of successful techs for this player
+            lw      t0, 0x0000(at)              // t0 = successful tech count
+            addiu   t0, t0, 0x0001              // increment
+            sw      t0, 0x0000(at)              // store updated tech count
 
             _end:
             lw      ra, 0x001C(sp)          // ~

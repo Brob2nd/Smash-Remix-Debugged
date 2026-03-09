@@ -1,6 +1,6 @@
 // Random.asm
 
-// This file contains file inclusions, action edits, and assembly for Sheik.
+// This file contains file inclusions, action edits, and assembly for Random.
 
 scope Random {
     // Insert Moveset files

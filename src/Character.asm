@@ -343,6 +343,12 @@ scope Character {
         dw      costume_shield_color.{parent} // default to parent
         OS.patch_end()
 
+        // set rare death fgm to null
+        table_patch_start(rare_death_fgm, id.{name}, 0x4)
+        dh      0x2B7   // FGM id (null)
+        dh      0       // 0 chance
+        OS.patch_end()
+
         // Handle Polygons
         if {variant_type} == variant_type.POLYGON {
             // Set Kirby hat_id to none
@@ -3343,6 +3349,81 @@ scope Character {
         nop
     }
 
+    // @ Description
+    // This table contains FGM id's and 1/X chances for character rare death sounds
+    // 0x2B7 = NULL FGM ID, used for anyone without a rare death fgm
+    scope rare_death_fgm {
+        OS.align(16)
+        table:
+        constant TABLE_ORIGIN(origin())
+        // FGM id       // Chance
+        dh 0x02B7;      dh OS.NULL            // 0x00 - MARIO
+        dh 0x02B7;      dh OS.NULL            // 0x01 - FOX
+        dh 0x02B7;      dh OS.NULL            // 0x02 - DONKEY
+        dh 0x02B7;      dh OS.NULL            // 0x03 - SAMUS
+        dh 0x02B7;      dh OS.NULL            // 0x04 - LUIGI
+        dh 0x02B7;      dh OS.NULL            // 0x05 - LINK
+        dh 0x02B7;      dh OS.NULL            // 0x06 - YOSHI
+        dh 0x02B7;      dh OS.NULL            // 0x07 - CAPTAIN
+        dh 0x02B7;      dh OS.NULL            // 0x08 - KIRBY
+        dh 0x02B7;      dh OS.NULL            // 0x09 - PIKACHU
+        dh 0x02B7;      dh OS.NULL            // 0x0A - JIGGLY
+        dh 0x02B7;      dh OS.NULL            // 0x0B - NESS
+        dh 0x02B7;      dh OS.NULL            // 0x0C - BOSS
+        dh 0x02B7;      dh OS.NULL            // 0x0D - METAL
+        dh 0x02B7;      dh OS.NULL            // 0x0E - NMARIO
+        dh 0x02B7;      dh OS.NULL            // 0x0F - NFOX
+        dh 0x02B7;      dh OS.NULL            // 0x10 - NDONKEY
+        dh 0x02B7;      dh OS.NULL            // 0x11 - NSAMUS
+        dh 0x02B7;      dh OS.NULL            // 0x12 - NLUIGI
+        dh 0x02B7;      dh OS.NULL            // 0x13 - NLINK
+        dh 0x02B7;      dh OS.NULL            // 0x14 - NYOSHI
+        dh 0x02B7;      dh OS.NULL            // 0x15 - NCAPTAIN
+        dh 0x02B7;      dh OS.NULL            // 0x16 - NKIRBY
+        dh 0x02B7;      dh OS.NULL            // 0x17 - NPIKACHU
+        dh 0x02B7;      dh OS.NULL            // 0x18 - NJIGGLY
+        dh 0x02B7;      dh OS.NULL            // 0x19 - NNESS
+        dh 0x02B7;      dh OS.NULL            // 0x1A - GDONKEY
+        // pad table for new characters
+        fill table + (NUM_CHARACTERS * 4) - pc()
+
+        // @ Description
+        // Modifies function ftCommonDeadInitStatusVars to use a character's rare death sound by chance if set
+        scope check_rare_death_fgm: {
+            OS.patch_start(0xB6BCC, 0x8013C18C)
+            j       check_rare_death_fgm
+            nop
+            _return:
+            OS.patch_end()
+            // s0 = player struct
+
+            lw      t0, 0x09C8(s0)          // t0 = character attributes
+            lw      at, 0x0008(s0)          // at = character id
+            sll     at, at, 0x0002          // at = character id * 4
+            li      t2, rare_death_fgm.table
+            addu    t2, t2, at              // t2 = address of rare death FGM entry for this character
+            lhu     at, 0x0000(t2)          // at = rare death FGM id
+            addiu   a0, r0, 0x02B7          // a0 = NULL fgm id
+            beql    at, a0, _end            // branch if no rare death FGM
+            lhu     a0, 0x00B4(t0)          // a0 = regular death FGM id
+
+            // if we're here, then the character has a rare death FGM
+            jal     Global.get_random_int_
+            lhu     a0, 0x0002(t2)          // a0 = rare death FGM chance
+            bnezl   v0, _end                // if not 0, play regular FGM
+            lhu     a0, 0x00B4(t0)          // a0 = regular death FGM id
+
+            // if we're here, that means the random number == 0, so play rare death FGM instead
+            lhu     a0, 0x0000(t2)          // a0 = rare death FGM id
+
+            _end:
+            jal     0x8013BC60              // original line 1
+            nop
+            j       _return
+            nop
+        }
+    }
+
     ///////////////////////////////////////////////////////////////////////////////////////////////
     /////////////////////////////////////// ADD CHARACTERS ////////////////////////////////////////
     ///////////////////////////////////////////////////////////////////////////////////////////////
@@ -3736,7 +3817,7 @@ scope Character {
     // 0x3B - SONIC
     define_character(SONIC, FOX, File.SONIC_MAIN, 0x0D0, 0, File.SONIC_CHARACTER, File.SONIC_SHIELD_POSE, File.SONIC_SPRING_HITBOX, File.CSONIC_MAIN, File.SONIC_ENTRY, File.SONIC_SPRING_GRAPHIC, 0x58C, 18, OS.TRUE, OS.TRUE, Stages.id.BTT_SONIC, Stages.id.BTP_SONIC, Stages.id.BTT_WARIO, Stages.id.BTP_DS, sound_type.U, variant_type.NA)
     // 0x3C - SANDBAG
-    define_character(SANDBAG, CAPTAIN, File.SANDBAG_MAIN, 0x0EB, 0, 0x14C, 0x14E, 0, 0x15E, 0x14D, 0, 0x488, 0x0, OS.TRUE, OS.FALSE, Stages.id.BTT_FALCON, Stages.id.BTP_FALCON, Stages.id.BTT_GND, Stages.id.BTP_GND, sound_type.U, variant_type.SPECIAL)
+    define_character(SANDBAG, CAPTAIN, File.SANDBAG_MAIN, 0x0EB, 0, 0x14C, 0x14E, 0, 0x15E, 0x14D, 0, 0x488, 0x0, OS.TRUE, OS.FALSE, Stages.id.BTT_STG1, Stages.id.BTP_POLY, Stages.id.BTT_STG1, Stages.id.BTP_POLY, sound_type.U, variant_type.SPECIAL)
     // 0x3D - SUPER SONIC
     define_character(SSONIC, FOX, File.SSONIC_MAIN, 0x0D0, 0, File.SSONIC_CHARACTER, File.SONIC_SHIELD_POSE, File.SONIC_SPRING_HITBOX, File.SSONIC_EMERALDS, File.SONIC_ENTRY, File.SONIC_SPRING_GRAPHIC, 0x58C, 24, OS.TRUE, OS.TRUE, Stages.id.BTT_SONIC, Stages.id.BTP_SONIC, Stages.id.BTT_WARIO, Stages.id.BTP_DS, sound_type.U, variant_type.SPECIAL)
     // 0x3E - SHEIK
@@ -3773,46 +3854,47 @@ scope Character {
     // ADD NEW CHARACTERS HERE
 
     // REMIX POLYGONS
-    // NWARIO
+    // 0x4D - NWARIO
     define_character(NWARIO, MARIO, File.NWARIO_MAIN, 0x0CA, 0, File.NWARIO_CHARACTER, 0x12A, 0x0CC, 0x164, 0x129, 0, 0x2B0, 2, OS.FALSE, OS.FALSE, Stages.id.BTT_STG1, Stages.id.BTP_POLY, Stages.id.BTT_STG1, Stages.id.BTP_POLY, sound_type.U, variant_type.POLYGON)
-    // NLUCAS
+    // 0x4E - NLUCAS
     define_character(NLUCAS, NESS, File.NLUCAS_MAIN, 0x0EE, 0, File.NLUCAS_CHARACTER, 0x150, 0x160, File.LUCAS_PKFIRE, 0x151, 0, 0x308, 0x0, OS.TRUE, OS.FALSE, Stages.id.BTT_STG1, Stages.id.BTP_POLY, Stages.id.BTT_STG1, Stages.id.BTP_POLY, sound_type.U, variant_type.POLYGON)
-    // NBOWSER
+    // 0x4F - NBOWSER
     define_character(NBOWSER, YOSHI, File.NBOWSER_MAIN, 0x0F6, 0, File.NBOWSER_CHARACTER, File.BOWSER_SHIELD_POSE, 0, File.BOWSER_CLOWN_COPTER, 0x153, 0, 0x2D0, 0x0, OS.TRUE, OS.FALSE, Stages.id.BTT_STG1, Stages.id.BTP_POLY, Stages.id.BTT_STG1, Stages.id.BTP_POLY, sound_type.U, variant_type.POLYGON)
-    // NWOLF
+    // 0x50 - NWOLF
     define_character(NWOLF, FOX, File.NWOLF_MAIN, 0x0D0, 0, File.NWOLF_CHARACTER, File.WOLF_SHIELD_POSE,  File.WOLF_PROJECTILE_HITBOX, File.WOLF_REFLECTOR, File.WOLFEN, File.WOLF_PROJECTILE_GRAPHIC, 0x2BC, 0x0, OS.TRUE, OS.FALSE, Stages.id.BTT_STG1, Stages.id.BTP_POLY, Stages.id.BTT_STG1, Stages.id.BTP_POLY, sound_type.U, variant_type.POLYGON)
-    // NDRM
+    // 0x51 - NDRM
     define_character(NDRM, MARIO, File.NDRM_MAIN, 0x0CA, 0, File.NDRM_CHARACTER, 0x12A, File.DRM_PROJECTILE_DATA, 0x164, File.DRM_PROJECTILE_GRAPHIC, 0, 0x2B0, 0x0, OS.TRUE, OS.FALSE, Stages.id.BTT_STG1, Stages.id.BTP_POLY, Stages.id.BTT_STG1, Stages.id.BTP_POLY, sound_type.U, variant_type.POLYGON)
-    // NSONIC
+    // 0x52 - NSONIC
     define_character(NSONIC, FOX, File.NSONIC_MAIN, 0x0D0, 0, File.NSONIC_CHARACTER, File.SONIC_SHIELD_POSE, File.SONIC_SPRING_HITBOX, File.CSONIC_MAIN, File.SONIC_ENTRY, File.SONIC_SPRING_GRAPHIC, 0x30C, 18, OS.TRUE, OS.FALSE, Stages.id.BTT_STG1, Stages.id.BTP_POLY, Stages.id.BTT_STG1, Stages.id.BTP_POLY, sound_type.U, variant_type.POLYGON)
-    // NSHEIK
+    // 0x53 - NSHEIK
     define_character(NSHEIK, CAPTAIN, File.NSHEIK_MAIN, 0x0EB, 0, File.NSHEIK_CHARACTER, File.SHEIK_SHIELD_POSE, 0, 0x15E, 0x14D, 0, 0x2B4, 0x5, OS.TRUE, OS.FALSE, Stages.id.BTT_STG1, Stages.id.BTP_POLY, Stages.id.BTT_STG1, Stages.id.BTP_POLY, sound_type.U, variant_type.POLYGON)
-    // NMARINA
+    // 0x54 - NMARINA
     define_character(NMARINA, CAPTAIN, File.NMARINA_MAIN, 0x0EB, 0, File.NMARINA_CHARACTER, File.MARINA_SHIELD_POSE, 0, 0x15E, 0, 0, 0x2B8, 30, OS.TRUE, OS.FALSE, Stages.id.BTT_STG1, Stages.id.BTP_POLY, Stages.id.BTT_STG1, Stages.id.BTP_POLY, sound_type.U, variant_type.POLYGON)
-    // NFALCO
+    // 0x55 - NFALCO
     define_character(NFALCO, FOX, File.NFALCO_MAIN, 0x0D0, 0, File.NFALCO_CHARACTER, 0x13A, 0x0D2, 0x15A, 0x0A1, 0x013C, 0x2BC, 0x0, OS.TRUE, OS.FALSE, Stages.id.BTT_STG1, Stages.id.BTP_POLY, Stages.id.BTT_STG1, Stages.id.BTP_POLY, sound_type.U, variant_type.POLYGON)
-    // NGND
+    // 0x56 - NGND
     define_character(NGND, CAPTAIN, File.NGND_MAIN, 0x0EB, 0, File.NGND_CHARACTER, 0x14E, 0, File.GND_ENTRY_KICK, File.GND_PUNCH_GRAPHIC, 0, 0x32C, 0x5, OS.TRUE, OS.FALSE, Stages.id.BTT_STG1, Stages.id.BTP_POLY, Stages.id.BTT_STG1, Stages.id.BTP_POLY, sound_type.U, variant_type.POLYGON)
-    // NDSAMUS
+    // 0x57 - NDSAMUS
     define_character(NDSAMUS, SAMUS, File.NDSAMUS_MAIN, 0x0D8, 0, 0x135, 0x142, 0x15D, File.DSAMUS_SECONDARY, 0, 0, 0x3D4, 0x0, OS.TRUE, OS.FALSE, Stages.id.BTT_STG1, Stages.id.BTP_POLY, Stages.id.BTT_STG1, Stages.id.BTP_POLY, sound_type.U, variant_type.POLYGON)
-    // NMARTH
+    // 0x58 - NMARTH
     define_character(NMARTH, CAPTAIN, File.NMARTH_MAIN, 0x0EB, 0, File.NMARTH_CHARACTER, File.MARTH_SHIELD, 0, 0x15E, 0, 0, 0x2CC, 8, OS.FALSE, OS.FALSE, Stages.id.BTT_STG1, Stages.id.BTP_POLY, Stages.id.BTT_STG1, Stages.id.BTP_POLY, sound_type.U, variant_type.POLYGON)
-    // NMTWO
+    // 0x59 - NMTWO
     define_character(NMTWO, YOSHI, File.NMTWO_MAIN, 0x0F6, 0, File.NMTWO_CHARACTER, File.MTWO_SHIELD_POSE, 0, File.MTWO_USMASH_GRAPHIC, 0, 0, 0x2D4, 6, OS.FALSE, OS.FALSE, Stages.id.BTT_STG1, Stages.id.BTP_POLY, Stages.id.BTT_STG1, Stages.id.BTP_POLY, sound_type.U, variant_type.POLYGON)
-    // NDEDEDE
+    // 0x5A - NDEDEDE
     define_character(NDEDEDE, CAPTAIN, File.NDEDEDE_MAIN, 0x0EB, 0, File.NDEDEDE_CHARACTER, File.DEDEDE_SHIELD_POSE, 0, 0, 0, 0, 0x2B4, 0x16, OS.TRUE, OS.FALSE, Stages.id.BTT_STG1, Stages.id.BTP_POLY, Stages.id.BTT_STG1, Stages.id.BTP_POLY, sound_type.U, variant_type.POLYGON)
-    // NYLINK
+    // 0x5B - NYLINK
     define_character(NYLINK, LINK, File.NYLINK_MAIN, 0x0E0, 0, File.NYLINK_CHARACTER, 0x147, File.YLINK_BOOMERANG_HITBOX, File.YLINK_SPECIAL_GRAPHIC, 0x145, 0, 0x2F0, 0, OS.TRUE, OS.FALSE, Stages.id.BTT_STG1, Stages.id.BTP_POLY, Stages.id.BTT_STG1, Stages.id.BTP_POLY, sound_type.U, variant_type.POLYGON)
-    // NGOEMON
+    // 0x5C - NGOEMON
     define_character(NGOEMON, MARIO, File.NGOEMON_MAIN, 0x0CA, 0, File.NGOEMON_CHARACTER,File.GOEMON_SHIELD_POSE, File.GOEMON_RYO_HITBOX, File.GOEMON_CLOUD_INFO, File.GOEMON_RYO_GRAPHIC, File.GOEMON_ENTRY_GFX, 0x3F0, 30, OS.TRUE, OS.FALSE, Stages.id.BTT_STG1, Stages.id.BTP_POLY, Stages.id.BTT_STG1, Stages.id.BTP_POLY, sound_type.U, variant_type.POLYGON)
-    // NCONKER
+    // 0x5D - NCONKER
     define_character(NCONKER, FOX, File.NCONKER_MAIN, 0x0D0, 0, File.NCONKER_CHARACTER, File.CONKER_SHIELD_POSE, File.CONKER_NUT_PROJECTILE_HITBOX, File.CONKER_GRENADE_PROJECTILE_HITBOX, File.GREGS_HAND, File.CONKER_NUT_PROJECTILE_GRAPHIC, 0x3FC, 6, OS.TRUE, OS.FALSE, Stages.id.BTT_STG1, Stages.id.BTP_POLY, Stages.id.BTT_STG1, Stages.id.BTP_POLY, sound_type.U, variant_type.POLYGON)
-    // NBANJO
+    // 0x5E - NBANJO
     define_character(NBANJO, CAPTAIN, File.NBANJO_MAIN, 0x0EB, 0, File.NBANJO_CHARACTER, File.BANJO_SHIELD_POSE, 0, 0x15E, File.BANJO_ENTRY_EFFECTS, File.KAZOOIE_EGG_INFO, 0x4A8, 0x5, OS.TRUE, OS.FALSE, Stages.id.BTT_STG1, Stages.id.BTP_POLY, Stages.id.BTT_STG1, Stages.id.BTP_POLY, sound_type.U, variant_type.POLYGON)
-    // NPEACH
+    // 0x5F - NPEACH
     define_character(NPEACH, FOX, File.NPEACH_MAIN, 0x0D0, 0, File.NPEACH_CHARACTER, File.PEACH_SHIELD_POSE, 0x0D2, File.PEACH_TURNIP_INFO, 0x0A1, 0x013C, 0x428, 0x0, OS.FALSE, OS.FALSE, Stages.id.BTT_STG1, Stages.id.BTP_POLY, Stages.id.BTT_STG1, Stages.id.BTP_POLY, sound_type.U, variant_type.POLYGON)
-    // NCRASH
+    // 0x60 - NCRASH
     define_character(NCRASH, MARIO, File.NCRASH_MAIN, 0x0CA, 0, File.NCRASH_CHARACTER, File.CRASH_SHIELD_POSE, 0x0CC,  File.CRASH_SPIN_GFX, File.CRASH_ENTRY, 0, 0x2C0, 9, OS.FALSE, OS.FALSE, Stages.id.BTT_STG1, Stages.id.BTP_POLY, Stages.id.BTT_STG1, Stages.id.BTP_POLY, sound_type.U, variant_type.POLYGON)
+    // Remix Polygon Characters ids get updated with every added Remix non-polygon character, these get automatically updated too and incremented by 1
 
     print "========================================================================== \n"
     print "# Remix Fighters = "; print "0x"; OS.print_hex(NUM_REMIX_FIGHTERS); print " \n";

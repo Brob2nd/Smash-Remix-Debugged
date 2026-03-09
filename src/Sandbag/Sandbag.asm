@@ -1,6 +1,6 @@
 // Sandbag.asm
 
-// This file contains file inclusions, action edits, and assembly for Sheik.
+// This file contains file inclusions, action edits, and assembly for Sandbag.
 
 scope Sandbag {
     // Insert Moveset files
@@ -14,7 +14,7 @@ scope Sandbag {
     Character.edit_action_parameters(SANDBAG, Action.Revive1,                 File.SANDBAG_DOWN_BOUNCE_D,           -1,                         -1)
     Character.edit_action_parameters(SANDBAG, Action.Revive2,                 File.SANDBAG_DOWN_STAND_D,            -1,                         -1)
     Character.edit_action_parameters(SANDBAG, Action.ReviveWait,              File.SANDBAG_IDLE,                    -1,                         -1)
-    Character.edit_action_parameters(SANDBAG, Action.Idle,                    File.SANDBAG_IDLE,                    0x800000000,                         -1)
+    Character.edit_action_parameters(SANDBAG, Action.Idle,                    File.SANDBAG_IDLE,                    0x800000000,                -1)
     Character.edit_action_parameters(SANDBAG, Action.Fall,                    File.SANDBAG_FALL,                    -1,                         -1)
     Character.edit_action_parameters(SANDBAG, Action.FallAerial,              File.SANDBAG_FALL,                    -1,                         -1)
     Character.edit_action_parameters(SANDBAG, Action.Teeter,                  File.SANDBAG_IDLE,                    0x800000000,                -1)
@@ -74,24 +74,27 @@ scope Sandbag {
     Character.edit_action_parameters(SANDBAG, Action.Taunt,                   -1,                                   0x80000000,                 -1)
 
     // Modify Actions            // Action              // Staling ID    // Main ASM          // Interrupt/Other ASM          // Movement/Physics ASM         // Collision ASM
-
     Character.edit_action(SANDBAG, 0xE0,                0x01,            0x00000000,          0x8013E070,                     0x800D8BB4,                     0x800DDEE8)
 
     // Modify Menu Action Parameters             // Action      // Animation                // Moveset Data             // Flags
-
     Character.edit_menu_action_parameters(SANDBAG, 0x0,           File.SANDBAG_IDLE,       0x80000000,                   -1)
     Character.edit_menu_action_parameters(SANDBAG, 0x1,           File.SANDBAG_IDLE,       0x80000000,                   -1)
     Character.edit_menu_action_parameters(SANDBAG, 0x2,           File.SANDBAG_IDLE,       0x80000000,                   -1)
     Character.edit_menu_action_parameters(SANDBAG, 0x3,           File.SANDBAG_IDLE,       0x80000000,                   -1)
     Character.edit_menu_action_parameters(SANDBAG, 0x4,           File.SANDBAG_IDLE,       0x80000000,                   -1)
     Character.edit_menu_action_parameters(SANDBAG, 0x5,           File.SANDBAG_IDLE,       0x80000000,                   -1)
-    Character.edit_menu_action_parameters(SANDBAG, 0x9,           File.SANDBAG_IDLE,       0x80000000,                   -1)
-    Character.edit_menu_action_parameters(SANDBAG, 0xA,           File.SANDBAG_IDLE,       0x80000000,                   -1)
-    Character.edit_menu_action_parameters(SANDBAG, 0xD,           File.SANDBAG_IDLE,       0x80000000,                   -1)
-    Character.edit_menu_action_parameters(SANDBAG, 0xE,           File.SANDBAG_IDLE,       0x80000000,                   -1)
+    Character.edit_menu_action_parameters(SANDBAG, 0x9,           -1,                      0x80000000,                   -1)
+    Character.edit_menu_action_parameters(SANDBAG, 0xA,           -1,                      0x80000000,                   -1)
+    Character.edit_menu_action_parameters(SANDBAG, 0xD,           -1,                      0x80000000,                   -1)
+    Character.edit_menu_action_parameters(SANDBAG, 0xE,           -1,                      0x80000000,                   -1)
 
     // Shield colors for costume matching
     Character.set_costume_shield_colors(SANDBAG, WHITE, WHITE, WHITE, WHITE, WHITE, WHITE, NA, NA)
+
+    // Set crowd chant FGM.
+    Character.table_patch_start(crowd_chant_fgm, Character.id.SANDBAG, 0x2)
+    dh  0x53D
+    OS.patch_end()
 
     // Set Remix 1P ending music
     Character.table_patch_start(remix_1p_end_bgm, Character.id.SANDBAG, 0x2)

@@ -302,9 +302,9 @@ include "src/DrLuigi/DrLuigi.asm"
 // LANKY
 include "src/Lanky/LankySpecial.asm"
 include "src/Lanky/Lanky.asm"
-// NPeach
+// NPEACH
 include "src/NPeach/NPeach.asm"
-// NCrash
+// NCRASH
 include "src/NCrash/NCrash.asm"
 
 // KIRBY

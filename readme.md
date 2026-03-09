@@ -1,3 +1,93 @@
+# Smash Remix Debugged
+*A Smash Remix Mod Made by Brob2nd*
+
+Smash Remix Debugged is a mod for the Super Smash Bros. 64 mod, Smash Remix, this mod's purpose is to work as a template for future Smash Remix mods, adding things like new features (mentioned below) or inaccessible stuff now being accessible (like Sandbag and some inaccessible stages and songs now being accessible).
+
+It also adds some extra content, such as the Tap Jump and Walljump gameplay options, Extended VS Match Stats, Z Cancel Guide, Stage Bans (like in Project M/+), Volume settings, 4 Tournament Stage Pages with a list of viable stages for Tourney, and more.
+
+# How to Play Smash Remix Debugged Online on Project64KSE
+Follow the steps on this tutorial on smash64.online, then on your Project64KSE folder, go to cfg, then open the pj64.rdb file, then go to the bottom line, and copy/paste this:
+
+Smash Remix Debugged 1.3.1b's Info:
+```
+[B627A539-D921CFB6-C:45]
+Counter Factor=1
+Culling=1
+Good Name=SmashRemixDebugged1.3.1b
+Internal Name=SmashRemix
+RDRAM Size=8
+SMM-Cache=0
+SMM-FUNC=0
+SMM-TLB=0
+Status=Compatible
+Use TLB=No
+ViRefresh=2200
+```
+Smash Remix Debugged 1.3.1 (PAL)'s Info:
+```
+[A43DF506-DBF0EB09-C:50]
+Counter Factor=1
+Culling=1
+Good Name=SmashRemixDebugged1.3.1b (PAL60)
+Internal Name=SmashRemix
+RDRAM Size=8
+SMM-Cache=0
+SMM-FUNC=0
+SMM-TLB=0
+Status=Compatible
+Use TLB=No
+ViRefresh=2200
+```
+
+# FAQ/Q&A
+
+Q1: Does Smash Remix Debugged use the latest Smash Remix patch?
+
+A1: Yes, it does!
+
+Q2: Does the mod modify/change or delete anything from Vanilla Smash Remix?
+
+A2: No! the mod has all content already available on Vanilla Smash Remix!
+
+Q3: Does the mod add new characters, stages, items, songs, or game modes?
+
+A3: Technically, no, the only added character is Sandbag, and the only added stages are "Home-Run Contest", "Soccer" and "Time Twister (SSS)" (variants for "Duel Zone", "Smashketball" and "Time Twister") which were stages that were already in the game, just not normally accessible, but now they are, same for some songs, it also doesn't add any new items or game modes, however.
+
+Q4: Can i use this mod for my tournament?
+
+A4: Yes, you can! That's why there's a new 4th tourney stage page in the mod! It's optional though, meaning that if you want, you can still use vanilla Smash Remix for your tournaments!
+
+# Modder's FAQ/Q&A
+
+Q1/Q2: Does the mod run on the latest 'original.z64' file/I need to port all of my work imported to the previous original.z64 to the new one?
+
+A1/A2: Yes, it does! The mod itself is based/build of the latest original.z64 file (and also from the latest Smash Remix patch) meaning that if you ported, added or changed something to the original.z64, you won't have any worries of having to re-import it to the "new" one.
+
+# Credits
+
+Brob2nd: Leader of the project, programmer.
+
+MetaSSB / Meta Nais: Co-leader of the project, programmer, helper/assistant with programming, Special Thanks.
+
+NewoRGBY_255/ Newo Regevoide:  Instrument Design, helper/assistant with composing songs for the mod, Special Thanks.
+
+Krix08: Creator of Extended VS Stats, Music/SFX volume toggles, Z Cancel Guide and Sleep/Trip/Swap Music options for Punish Failed Z-Cancel, Special Thanks.
+- Special thanks to the last 3 mentioned for really helping me with Smash Remix Debugged.
+
+Jilly Jane: Instrument Design, Project Galleon's Piano and Overdriven/Distortion Guitar Fix.
+
+Halofactory: Creator of the Tap Jump option.
+
+FASTLIKERAT: Creator of the Stage Bans feature.
+
+kathy: Creator of the Walljump gameplay option.
+
+MrMarioBros222: Fixer of the Sandbag 1P Modes crashes and animations changes.
+
+MichaelthemanX: Sandbag's Announcer.
+
+Loogi, Krix08 and Arrowshoes: Sandbag's Crowd Chant.
+
 # Smash Remix
 *A Super Smash Bros. 64 Mod Organized by The_Smashfather*
 
@@ -53,7 +143,7 @@ Computer controlled players have received a variety of improvements.
 #### Toggle Names: _Combo Meter_, _1v1 Combo Meter Swap_
 
 ### Expanded Character Select Screen
-- The character select screen is now expanded to 30 slots including 16 custom characters.
+- The character select screen is now expanded to 30 slots including 18 custom characters.
 - Metal Mario, Giant DK, and polygon versions of the original cast are available via d-pad up or down.
 - Japanese versions of the original cast are available via d-pad left.
 - European versions of some of the original cast are available via d-pad right.
