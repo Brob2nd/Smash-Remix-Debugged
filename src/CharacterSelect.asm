@@ -2031,9 +2031,6 @@ scope CharacterSelect {
         lli     a0, Character.id.NONE       // a0 = NONE
         beql    a0, s0, _loop               // if char_id = NONE, skip
         addiu   s0, s0, 0x0001              // increment index
-        lli     a0, Character.id.SANDBAG    // a0 = SANDBAG
-        beql    a0, s0, _loop               // if char_id = SANDBAG, skip
-        addiu   s0, s0, 0x0001              // increment index
 
         li      a0, alt_malloc_table
         sll     at, s0, 0x0002              // at = offset to alt malloc size

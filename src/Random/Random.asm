@@ -60,13 +60,13 @@ scope Random {
     OS.patch_end()
 
     // @ Description
-    // Sandbag's extra actions
+    // Random's extra actions
     scope Action {
         //constant Jab3(0x0DC)
         //constant JabLoopStart(0x0DD)
         //constant JabLoop(0x0DE)
         //constant JabLoopEnd(0x0DF)
-        // constant HeadStand(0x0E0)
+        //constant HeadStand(0x0E0)
         //constant AppearAir(0x0E1)
         //constant BlueFalcon1(0x0E2)
         //constant BlueFalcon2(0x0E3)
