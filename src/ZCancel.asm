@@ -281,43 +281,9 @@ scope ZCancel {
         b       _end                     // branch to end
         lw      t9, 0x0028(v1)           // original line 2
 
-        _trip:
-        lbu     at, 0x000D(v1)              // at = player index (0 - 3)
-        li      a1, Tripping.tripping.player_trip_flag
-        addu    a1, a1, at                  // a1 = address of trip flag for this player
-        sb      at, 0x0000(a1)              // at = clear trip flag (just in case)
-
-        addiu   a1, r0, 0x0008              // a1 = 8 frames (note: hitstun needs to be higher value than 'action frame' count)
-        sh      a1, 0x0B1A(v1)              // a1 = put player in hitstun
-
-        addiu   a1, r0, Action.DamageLow3   // a1 = DamageLow3 action (0x02D)
-        or      a2, r0, r0                  // a2(starting frame) = 0
-        lui     a3, 0x3F80                  // a3(frame speed multiplier) = 1.0
-        jal     0x800E6F24                  // change action
-        sw      r0, 0x0010(sp)              // argument 4 = 0
-
-        // play sound effect
-        jal     FGM.play_                   // play sfx
-        lli     a0, 0x0456                  // tripstart
-
-        lw      v1, 0x001C(sp)              // restore player struct
-        lbu     at, 0x000D(v1)              // at = player index (0 - 3)
-        li      t0, Tripping.tripping.player_trip_flag
-        addu    t0, t0, at                  // t0 = address of trip flag for this player
-        addiu   at, r0, 0x0001
-        sb      at, 0x0000(t0)              // at = update trip flag (true)
-
-        j       0x80150AF0 + 0x4            // and skip to end
-        lw      ra, 0x0014(sp)
-
-        _sleep:
-        jal     0x801499A4               // set fighter status to sleep
-        nop
-        j       0x80150AF0 + 0x4         // and skip to end
-        lw      ra, 0x0014(sp)
-
         _last_known_speed_value:
         dw 0
+
         _swapping_music:
         dw 0
     }
