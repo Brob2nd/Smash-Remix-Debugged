@@ -35,7 +35,7 @@ scope VsStats {
     current_page:
     db      0x00
 
-    constant TOTAL_PAGES(2)     // Drawing to pages 8 and above will crash.
+    constant TOTAL_PAGES(3)     // Drawing to pages 8 and above will crash.
     constant PAGE1_GROUP(0x1A)
 
     variable NUM_TRACKERS(0)
@@ -63,10 +63,17 @@ scope VsStats {
     tech_stats:; db "Tech Stats", 0x00
     ledge_stats:; db "Ledge Stats", 0x00
     times_grabbed:; db "Times grabbed", 0x00
+    airdodge_stats:; db "Air Dodge Stats", 0x00
+    times_dodged:; db "Times dodged", 0x00
     special_move_stats:; db "Special Move Stats", 0x00
     up_special:; db "Up Specials used", 0x00
     neutral_special:; db "Neutral Specials used", 0x00
     down_special:; db "Down Specials used", 0x00
+    grab_stats:; db "Grab Stats", 0x00
+    attempted_grabs:; db "Attempted grabs", 0x00
+    attempted_throws:; db "Attempted throws", 0x00
+    throw_forward:; db "Forwards", 0x00
+    throw_backward:; db "Backwards", 0x00
     dash:; db "-", 0x00
     press_b:; db ": Back", 0x00
     press_r:; db ": Next Page", 0x00
@@ -153,9 +160,14 @@ scope VsStats {
     stat_tracker(tech_miss_tracker)
     stat_tracker(tech_percent_tracker)
     stat_tracker(ledge_grab_tracker)
+    stat_tracker(airdodge_counter)
     stat_tracker(usp_tracker)
     stat_tracker(nsp_tracker)
     stat_tracker(dsp_tracker)
+    stat_tracker(grab_tracker)
+    stat_tracker(throw_tracker)
+    stat_tracker(throwf_tracker)
+    stat_tracker(throwb_tracker)
 
     // @ Description
     // Calculate the percentage of a stat tracker for the given port
@@ -1039,6 +1051,38 @@ scope VsStats {
         draw_row(neutral_special, 0, VsStats.nsp_tracker, 0x0000, 0x0004, -1, -1, 1)
         draw_row(down_special, 0, VsStats.dsp_tracker, 0x0000, 0x0004, -1, -1, 1)
 
+
+        // Page 3
+        _page_3:
+        // Draw lines
+        lli     a2, 30                      // a2 = start y
+        draw_header(grab_stats, 2)
+        addiu   a2, a2, -1                  // adjust y for better underline
+        draw_underline(57, 2)
+        draw_row(attempted_grabs, 0, VsStats.grab_tracker, 0x0000, 0x0004, -1, -1, 2)
+        draw_row(attempted_throws, 0, VsStats.throw_tracker, 0x0000, 0x0004, -1, -1, 2)
+        draw_row(throw_forward, 8, VsStats.throwf_tracker, 0x0000, 0x0004, -1, -1, 2)
+        draw_row(throw_backward, 8, VsStats.throwb_tracker, 0x0000, 0x0004, -1, -1, 2)
+
+        b       _air_dodge_on_check
+        nop
+
+        _air_dodge_off:
+        b       _end
+        nop
+
+        _air_dodge_on_check:
+        // If air dodge is off, skip to _end and don't draw air dodge stats
+        Toggles.guard(Toggles.entry_air_dodge, _air_dodge_off)
+
+        addiu   a2, a2, 5                   // adjust y for cleaner spacing
+        draw_header(airdodge_stats, 2)
+        addiu   a2, a2, -1                  // adjust y for better underline
+        draw_underline(86, 2)
+        draw_row(times_dodged, 0, VsStats.airdodge_counter, 0x0000, 0x0004, -1, -1, 2)
+
+
+        // Hide stat groups so they aren't visible when first entering results screen
         _end:
         lli     a0, 0x0E                    // a0 = group of menu stats
         jal     Render.toggle_group_display_
@@ -1131,6 +1175,80 @@ scope VsStats {
         jr      ra
         addiu   sp, sp, 0x0010              // deallocate stack space
     }
+    // @ Description
+    // Increment grab counter whenever someone starts a grab
+    scope count_grabs: {
+        OS.patch_start(0xC4600, 0x80149BC0)
+        j   count_grabs
+        nop
+        _return:
+        OS.patch_end()
+
+        li      a2, VsStats.grab_tracker
+        lbu     a1, 0x000D(s0)              // a1 = player index (0 - 3)
+        sll     a1, a1, 0x0002              // a1 = player index * 4
+        addu    a2, a2, a1                  // a2 = address of grab count for this player
+        lw      a1, 0x0000(a2)              // a1 = grab count
+        addiu   a1, a1, 0x0001              // increment
+        sw      a1, 0x0000(a2)              // store updated grab count
+
+        addiu   a1, r0, 0x00A6              // original line 1
+        j       _return
+        addiu   a2, r0, 0x0000              // original line 2
+    }
+
+
+    // @ Description
+    // Increment throw counters when someone starts a throw
+    scope count_throws: {
+        addiu   sp, sp, -0x0014             // allocate stack space
+        sw      ra, 0x0004(sp)              // save ra
+        sw      t0, 0x0008(sp)              // save t0
+        sw      t2, 0x000C(sp)              // save t2
+
+        // s0 = player struct
+        // t9 = status id
+
+        addiu   t0, r0, Action.KIRBY.ForwardThrow
+        beq     t9, t0, _forward            // branch if forward throw
+        addiu   t0, r0, Action.ThrowF       // ~
+        beq     t9, t0, _forward            // branch if forward throw
+        addiu   t0, r0, Action.ThrowB       // ~
+        bne     t9, t0, _end                // return if status id not a throw
+        nop
+
+        li      t2, VsStats.throwb_tracker
+        b       _increment
+        nop
+
+        _forward:
+        li      t2, VsStats.throwf_tracker
+
+        _increment:
+        lbu     t0, 0x000D(s0)              // t0 = player index (0 - 3)
+        sll     t0, t0, 0x0002              // t0 = player index * 4
+        addu    t2, t2, t0                  // t2 = address of directional throw count for this player
+        lw      t0, 0x0000(t2)              // t0 = directional throw count
+        addiu   t0, t0, 0x0001              // increment
+        sw      t0, 0x0000(t2)              // store updated directional throw count
+
+        li      t2, VsStats.throw_tracker
+        lbu     t0, 0x000D(s0)              // t0 = player index (0 - 3)
+        sll     t0, t0, 0x0002              // t0 = player index * 4
+        addu    t2, t2, t0                  // t2 = address of throw count for this player
+        lw      t0, 0x0000(t2)              // t0 = throw count
+        addiu   t0, t0, 0x0001              // increment
+        sw      t0, 0x0000(t2)              // store updated throw count
+
+        _end:
+        lw      t2, 0x000C(sp)              // restore t2
+        lw      t0, 0x0008(sp)              // restore t0
+        lw      ra, 0x0004(sp)              // restore ra
+        addiu   sp, sp, 0x0014              // deallocate stack space
+        jr      ra
+        nop
+    }
+
 }
 
 } // __VSSTATS__
