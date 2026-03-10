@@ -253,35 +253,6 @@ scope TwelveCharBattle {
             define slot_23(NMTWO)
             define slot_24(NMARTH)
         }
-        scope rd {
-            // row 1
-            define slot_1(PLACEHOLDER)
-            define slot_2(PLACEHOLDER)
-            define slot_3(PLACEHOLDER)
-            define slot_4(PLACEHOLDER)
-            define slot_5(PLACEHOLDER)
-            define slot_6(PLACEHOLDER)
-            define slot_7(PLACEHOLDER)
-            define slot_8(PLACEHOLDER)
-            // row 2
-            define slot_9(PLACEHOLDER)
-            define slot_10(PLACEHOLDER)
-            define slot_11(PLACEHOLDER)
-            define slot_12(PLACEHOLDER)
-            define slot_13(PLACEHOLDER)
-            define slot_14(PLACEHOLDER)
-            define slot_15(PLACEHOLDER)
-            define slot_16(PLACEHOLDER)
-            // row 3
-            define slot_17(PLACEHOLDER)
-            define slot_18(PLACEHOLDER)
-            define slot_19(PLACEHOLDER)
-            define slot_20(PLACEHOLDER)
-            define slot_21(PLACEHOLDER)
-            define slot_22(PLACEHOLDER)
-            define slot_23(PLACEHOLDER)
-            define slot_24(PLACEHOLDER)
-        }
     }
 
     // @ Description
@@ -377,7 +348,6 @@ scope TwelveCharBattle {
     create_portrait_tables(pv)      // create polygon vanilla character set tables
     create_portrait_tables(r)       // create remix character set tables
     create_portrait_tables(pr)      // create polygon remix character set tables
-    create_portrait_tables(rd)      // create random character set tables
     create_portrait_tables(p1, u)   // create p1's custom character set tables
     create_portrait_tables(p2, u)   // create p2's custom character set tables
 
@@ -389,7 +359,6 @@ scope TwelveCharBattle {
     dw id_table_pv; dw portrait_offset_table_pv; dw portrait_id_table_pv; dw 0x0
     dw id_table_r;  dw portrait_offset_table_r;  dw portrait_id_table_r;  dw 0x0
     dw id_table_pr; dw portrait_offset_table_pr; dw portrait_id_table_pr; dw 0x0
-    dw id_table_rd; dw portrait_offset_table_rd; dw portrait_id_table_rd; dw 0x0
     dw id_table_p1; dw portrait_offset_table_p1; dw portrait_id_table_p1; dw 0x0
     dw id_table_p2; dw portrait_offset_table_p2; dw portrait_id_table_p2; dw 0x0
 
@@ -5282,7 +5251,6 @@ scope TwelveCharBattle {
     string_character_set_polygon_vanilla:; String.insert("Polygon")
     string_character_set_remix:; String.insert("Remix")
     string_character_set_polygon_remix:; String.insert("P. Remix")
-    string_character_set_polygon_random:; String.insert("Random")
     string_character_set_custom:; String.insert("Custom")
     string_best_character:; String.insert("Best Character")
     string_tkos:; String.insert("TKOs")
