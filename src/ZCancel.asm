@@ -129,42 +129,6 @@ scope ZCancel {
         b       _end                     // branch to end
         lw      t9, 0x0028(v1)           // original line 2
 
-        _trip:
-        lbu     at, 0x000D(v1)              // at = player index (0 - 3)
-        li      a1, Tripping.tripping.player_trip_flag
-        addu    a1, a1, at                  // a1 = address of trip flag for this player
-        sb      at, 0x0000(a1)              // at = clear trip flag (just in case)
-
-        addiu   a1, r0, 0x0008              // a1 = 8 frames (note: hitstun needs to be higher value than 'action frame' count)
-        sh      a1, 0x0B1A(v1)              // a1 = put player in hitstun
-
-        addiu   a1, r0, Action.DamageLow3   // a1 = DamageLow3 action (0x02D)
-        or      a2, r0, r0                  // a2(starting frame) = 0
-        lui     a3, 0x3F80                  // a3(frame speed multiplier) = 1.0
-        jal     0x800E6F24                  // change action
-        sw      r0, 0x0010(sp)              // argument 4 = 0
-
-        // play sound effect
-        lli     a0, 0x0456                  // tripstart
-        jal     FGM.play_                   // play sfx
-        nop
-
-        lw      v1, 0x001C(sp)              // restore player struct
-        lbu     at, 0x000D(v1)              // at = player index (0 - 3)
-        li      t0, Tripping.tripping.player_trip_flag
-        addu    t0, t0, at                  // t0 = address of trip flag for this player
-        addiu   at, r0, 0x0001
-        sb      at, 0x0000(t0)              // at = update trip flag (true)
-
-        j       0x80150AF0 + 0x4         // and skip to end
-        lw      ra, 0x0014(sp)
-
-        _sleep:
-        jal     0x801499A4               // set fighter status to sleep
-        nop
-        j       0x80150AF0 + 0x4         // and skip to end
-        lw      ra, 0x0014(sp)
-
         _on:
         lli     t8, 0x0012               // t8 =  custom surface flag (damage, minimal KB)
         li      at, _last_known_speed_value
@@ -281,6 +245,41 @@ scope ZCancel {
         b       _end                     // branch to end
         lw      t9, 0x0028(v1)           // original line 2
 
+        _trip:
+        lbu     at, 0x000D(v1)              // at = player index (0 - 3)
+        li      a1, Tripping.tripping.player_trip_flag
+        addu    a1, a1, at                  // a1 = address of trip flag for this player
+        sb      at, 0x0000(a1)              // at = clear trip flag (just in case)
+
+        addiu   a1, r0, 0x0008              // a1 = 8 frames (note: hitstun needs to be higher value than 'action frame' count)
+        sh      a1, 0x0B1A(v1)              // a1 = put player in hitstun
+
+        addiu   a1, r0, Action.DamageLow3   // a1 = DamageLow3 action (0x02D)
+        or      a2, r0, r0                  // a2(starting frame) = 0
+        lui     a3, 0x3F80                  // a3(frame speed multiplier) = 1.0
+        jal     0x800E6F24                  // change action
+        sw      r0, 0x0010(sp)              // argument 4 = 0
+
+        // play sound effect
+        jal     FGM.play_                   // play sfx
+        lli     a0, 0x0456                  // tripstart
+
+        lw      v1, 0x001C(sp)              // restore player struct
+        lbu     at, 0x000D(v1)              // at = player index (0 - 3)
+        li      t0, Tripping.tripping.player_trip_flag
+        addu    t0, t0, at                  // t0 = address of trip flag for this player
+        addiu   at, r0, 0x0001
+        sb      at, 0x0000(t0)              // at = update trip flag (true)
+
+        j       0x80150AF0 + 0x4            // and skip to end
+        lw      ra, 0x0014(sp)
+
+        _sleep:
+        jal     0x801499A4               // set fighter status to sleep
+        nop
+        j       0x80150AF0 + 0x4         // and skip to end
+        lw      ra, 0x0014(sp)
+
         _last_known_speed_value:
         dw 0
 
@@ -354,6 +353,19 @@ scope ZCancel {
         addiu   t6, t6, 0x0001          // increment
         sw      t6, 0x0000(at)          // store updated z-cancel count
 
+        OS.read_word(Training.entry_z_cancel_guide + 0x4, t6) // t6 = z cancel guide toggle
+        beqzl   t6, _no_zcg_success     // branch if z cancel guide disabled
+        nop
+
+        OS.read_byte(Global.current_screen, t6) // t6 = screen_id
+        lli     at, Global.screen.TRAINING_MODE
+        bnel    t6, at, _no_zcg_success // skip if screen_id != training mode
+        nop
+
+        jal     Training.z_cancel_guide_
+        addiu   t6, r0, 1               // at = z cancel status arg (successful)
+
+        _no_zcg_success:
         // bnezl   at, 0x80150AC0       // original line 1 (need to 'j' instead of 'b')
         j       0x80150AC0              // original line 1, modified
         lui     at, 0xC1A0              // original line 2
@@ -367,6 +379,19 @@ scope ZCancel {
         addiu   t6, t6, 0x0001          // increment
         sw      t6, 0x0000(at)          // store updated z-cancel count
 
+        OS.read_word(Training.entry_z_cancel_guide + 0x4, t6) // t6 = z cancel guide toggle
+        beqzl   t6, _no_zcg_miss        // branch if z cancel guide disabled
+        nop
+
+        OS.read_byte(Global.current_screen, t6) // t6 = screen_id
+        lli     at, Global.screen.TRAINING_MODE
+        bnel    t6, at, _no_zcg_miss    // skip if screen_id != training mode
+        nop
+
+        jal     Training.z_cancel_guide_
+        addiu   t6, r0, 0                // at = z cancel status arg (missed)
+
+        _no_zcg_miss:
         // check for 'Glide'
         li      t6, Toggles.entry_z_cancel_opts
         lw      t6, 0x0004(t6)          // t0 = 0 for DEFAULT, 1 for Disabled, 2 for Melee, 3 for Auto, 4 for Glide
@@ -386,10 +411,6 @@ scope ZCancel {
     // @ Description
     // Makes sure egg lay file is present if Cruel Z-Cancel is set to Egg
     scope setup_: {
-        li      t8, ZCancel.z_cancel_status
-        sw      r0, 0x0000(t8)          // clear tics since last z
-        sw      r0, 0x0004(t8)          // clear status, landed & port bytes
-
         OS.read_word(Toggles.entry_punish_on_failed_z_cancel + 0x4, t8) // t8 = failed z cancel toggle
         lli     t0, _cruel_z_cancel.CRUEL_Z_CANCEL_MODE.EGG
         beq     t0, t8, _load_egg_file  // if egg, load file
@@ -411,12 +432,6 @@ scope ZCancel {
         nop
     }
 
-    z_cancel_status:
-    dw  0x00 // tics since last z
-    db  0 // success or failed bool
-    db  0 // just landed bool, gets checked and reset in Training.asm
-    db  0 // port
-    OS.align(4)
 }
 
 }
