@@ -160,7 +160,7 @@ scope VsStats {
     stat_tracker(tech_miss_tracker)
     stat_tracker(tech_percent_tracker)
     stat_tracker(ledge_grab_tracker)
-    stat_tracker(airdodge_counter)
+    stat_tracker(airdodge_tracker)
     stat_tracker(usp_tracker)
     stat_tracker(nsp_tracker)
     stat_tracker(dsp_tracker)
@@ -999,7 +999,7 @@ scope VsStats {
         nop
 
         _combo_stats_off:
-        b       _end                        // skip drawing combo stats if combo meter toggle is off
+        b       _page_2                     // skip drawing combo stats if combo meter toggle is off
         nop
 
         _combo_stats_on_check:
@@ -1079,7 +1079,7 @@ scope VsStats {
         draw_header(airdodge_stats, 2)
         addiu   a2, a2, -1                  // adjust y for better underline
         draw_underline(86, 2)
-        draw_row(times_dodged, 0, VsStats.airdodge_counter, 0x0000, 0x0004, -1, -1, 2)
+        draw_row(times_dodged, 0, VsStats.airdodge_tracker, 0x0000, 0x0004, -1, -1, 2)
 
 
         // Hide stat groups so they aren't visible when first entering results screen

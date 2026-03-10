@@ -183,7 +183,7 @@
 
             
             // update air dodge counter
-            li      at, VsStats.airdodge_counter
+            li      at, VsStats.airdodge_tracker
             lw      t0, 0x0084(a0)              // t0 = player struct
             lbu     t0, 0x000D(t0)              // t0 = player index (0 - 3)
             sll     t0, t0, 0x0002              // t0 = player index * 4
@@ -201,7 +201,7 @@
             nop
 
             // update air dodge counter
-            li      at, VsStats.airdodge_counter
+            li      at, VsStats.airdodge_tracker
             lw      t0, 0x0084(a0)              // t0 = player struct
             lbu     t0, 0x000D(t0)              // t0 = player index (0 - 3)
             sll     t0, t0, 0x0002              // t0 = player index * 4
