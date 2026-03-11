@@ -3,7 +3,7 @@
 
 Smash Remix Debugged is a mod for the Super Smash Bros. 64 mod, Smash Remix, this mod's purpose is to work as a template for future Smash Remix mods, adding things like new features (mentioned below) or inaccessible stuff now being accessible (like Sandbag and some inaccessible stages and songs now being accessible).
 
-It also adds some extra content, such as the Tap Jump and Walljump gameplay options, Extended VS Match Stats, Z Cancel Guide, Stage Bans (like in Project M/+), Volume settings, 4 Tournament Stage Pages with a list of viable stages for Tourney, and more.
+It also adds some extra content, such as the Tap Jump and Walljump gameplay options, More VS Match Stats, Z Cancel Guide, Stage Bans (like in Project M/+), 4 Tournament Stage Pages with a list of viable stages for Tourney, and more.
 
 # How to Play Smash Remix Debugged Online on Project64KSE
 Follow the steps on this tutorial on smash64.online, then on your Project64KSE folder, go to cfg, then open the pj64.rdb file, then go to the bottom line, and copy/paste this:
