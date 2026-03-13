@@ -31,9 +31,8 @@ scope CharacterSelect {
     db Character.id.DRAGONKING
     db Character.id.EBI
     db Character.id.PIANO
-    db Character.id.SANDBAG
     OS.align(4)
-    constant NUM_BONUS_CHARS(11)
+    constant NUM_BONUS_CHARS(10)
 
     // @ Description
     // Points to the Bonus Character index table for the current screen
@@ -3146,7 +3145,7 @@ scope CharacterSelect {
         constant MTWO(0x0001C3F8)
         constant MARTH(0x0001D4B8)
         constant SONIC(0x0001E578)
-        constant SANDBAG(0x00017038)
+        constant SANDBAG(0x00000818)
         constant SHEIK(0x000206F8)
         constant MARINA(0x000217B8)
         constant DEDEDE(0x00022878)
@@ -7212,7 +7211,7 @@ scope CharacterSelect {
     add_to_css(Character.id.MTWO,   FGM.announcer.names.MEWTWO,         1.50,         0x00010004, POKEMON,      name_texture.MEWTWO,         portrait_offsets.MTWO,           -1)
     add_to_css(Character.id.MARTH,  FGM.announcer.names.MARTH,          1.50,         0x00010004, FIRE_EMBLEM,  name_texture.MARTH,          portrait_offsets.MARTH,          -1)
     add_to_css(Character.id.SONIC,  FGM.announcer.names.SONIC,          1.50,         0x00010004, SONIC,        name_texture.SONIC,          portrait_offsets.SONIC,          -1)
-    add_to_css(Character.id.SANDBAG,FGM.announcer.names.SANDBAG,        1.50,         0x00010001, SMASH,        name_texture.JPUFF,          portrait_offsets.SANDBAG,        BOOKEND_BONUS_PORTRAIT)
+    add_to_css(Character.id.SANDBAG,FGM.announcer.names.SANDBAG,        1.50,         0x00010001, SMASH,        name_texture.JPUFF,          portrait_offsets.SANDBAG,        17)
     add_to_css(Character.id.SSONIC, FGM.announcer.names.SSONIC,         1.50,         0x00010004, SONIC,        name_texture.SSONIC,         portrait_offsets.SSONIC,         9)
     add_to_css(Character.id.SHEIK,  FGM.announcer.names.SHEIK,          1.50,         0x00010001, ZELDA,        name_texture.SHEIK,          portrait_offsets.SHEIK,          -1)
     add_to_css(Character.id.MARINA, FGM.announcer.names.MARINA,         1.50,         0x00010004, MISCHIEF_MAKERS,  name_texture.MARINA,     portrait_offsets.MARINA,         -1)

@@ -88,6 +88,10 @@ scope Sandbag {
     Character.edit_menu_action_parameters(SANDBAG, 0xD,           -1,                      0x80000000,                   -1)
     Character.edit_menu_action_parameters(SANDBAG, 0xE,           -1,                      0x80000000,                   -1)
 
+    Character.table_patch_start(variant_original, Character.id.SANDBAG, 0x4)
+    dw      Character.id.JIGGLY // set Jigglypuff as original character (not C.Falcon, who Sandbag is a clone of)
+    OS.patch_end()
+
     // Shield colors for costume matching
     Character.set_costume_shield_colors(SANDBAG, WHITE, WHITE, WHITE, WHITE, WHITE, WHITE, NA, NA)
 
