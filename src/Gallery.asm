@@ -379,13 +379,14 @@ scope Gallery {
     dh {MIDI.id.TRAVELING}
 
     bgm_banjo:
-    dh 10                                   // number of BGM
+    dh 11                                   // number of BGM
     dh {MIDI.id.BANJO_MAIN}
     dh {MIDI.id.SPIRAL_MOUNTAIN}
     dh {MIDI.id.TREASURE_TROVE_COVE}
     dh {MIDI.id.MADMONSTER}
     dh {MIDI.id.BK_FINALBATTLE}
     dh {MIDI.id.VS_KLUNGO}
+    dh {MIDI.id.LOST}
     dh {MIDI.id.OLDKINGCOAL}
     dh {MIDI.id.MRPATCH}
     dh {MIDI.id.FROSTY_VILLAGE}
@@ -786,6 +787,7 @@ scope Gallery {
     add_bgm_to_gallery({MIDI.id.MULTIMAN2}, id.DKING)
     add_bgm_to_gallery({MIDI.id.SONIC_R}, id.SONIC)
     add_bgm_to_gallery({MIDI.id.UNDERGROUND_HURRY}, id.LUIGI)
+    add_bgm_to_gallery({MIDI.id.LOST}, id.BANJO)
 
     // @ Description
     // Table which holds the 'L' and 'R' sound effects for drumming
