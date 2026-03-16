@@ -3664,6 +3664,7 @@ scope Training {
     db Character.id.SSONIC
 
     db Character.id.SANDBAG
+    db Character.id.BOSS
     db Character.id.NMARIO
     db Character.id.NFOX
     db Character.id.NDONKEY
