@@ -1,19 +1,19 @@
 # Smash Remix Debugged
 *A Smash Remix Mod Made by Brob2nd*
 
-Smash Remix Debugged is a mod for the Super Smash Bros. 64 mod, Smash Remix, this mod's purpose is to work as a template for future Smash Remix mods, adding things like new features (mentioned below) or inaccessible stuff now being accessible (like Sandbag and some inaccessible stages and songs now being accessible).
+Smash Remix Debugged is a mod for the Super Smash Bros. 64 mod, Smash Remix, this mod's purpose is to work as a template for future Smash Remix mods, adding things like new features (mentioned below) or inaccessible stuff now being accessible (like some inaccessible stages and songs now being accessible).
 
-It also adds some extra content, such as the Tap Jump and Walljump gameplay options, More VS Match Stats, Z Cancel Guide, Stage Bans (like in Project M/+), 4 Tournament Stage Pages with a list of viable stages for Tourney, and more.
+It also adds some extra content, such as playable Sandbag, the Tap Jump and Walljump gameplay options, Extended VS Match Stats, Z Cancel Guide, Stage Bans (like in Project M/+), 4 Tournament Stage Pages with a list of viable stages for Tournaments, and more.
 
 # How to Play Smash Remix Debugged Online on Project64KSE
 Follow the steps on this tutorial on smash64.online, then on your Project64KSE folder, go to cfg, then open the pj64.rdb file, then go to the bottom line, and copy/paste this:
 
-Smash Remix Debugged 1.3.1b's Info:
+Smash Remix Debugged 1.3.2's Info:
 ```
-[B627A539-D921CFB6-C:45]
+[08F735A5-F0A9861E-C:45]
 Counter Factor=1
 Culling=1
-Good Name=SmashRemixDebugged1.3.1b
+Good Name=SmashRemixDebugged1.3.2
 Internal Name=SmashRemix
 RDRAM Size=8
 SMM-Cache=0
@@ -23,12 +23,12 @@ Status=Compatible
 Use TLB=No
 ViRefresh=2200
 ```
-Smash Remix Debugged 1.3.1 (PAL)'s Info:
+Smash Remix Debugged 1.3.2 (PAL)'s Info:
 ```
-[A43DF506-DBF0EB09-C:50]
+[CBE87577-90E10CA9-C:50]
 Counter Factor=1
 Culling=1
-Good Name=SmashRemixDebugged1.3.1b (PAL60)
+Good Name=SmashRemixDebugged1.3.2 (PAL60)
 Internal Name=SmashRemix
 RDRAM Size=8
 SMM-Cache=0
@@ -65,14 +65,11 @@ A1/A2: Yes, it does! The mod itself is based/build of the latest original.z64 fi
 
 # Credits
 
-Brob2nd: Leader of the project, programmer.
+Brob2nd: Leader of the project, programmer/coder.
 
-MetaSSB / Meta Nais: Co-leader of the project, programmer, helper/assistant with programming, Special Thanks.
+Krix08: Co-leader of the project, programmer/coder, Creator of Extended VS Stats, Z Cancel Guide and Cruel Z-Cancel's Swap Music option.
 
-NewoRGBY_255/ Newo Regevoide:  Instrument Design, helper/assistant with composing songs for the mod, Special Thanks.
-
-Krix08: Creator of Extended VS Stats, Music/SFX volume toggles, Z Cancel Guide and Sleep/Trip/Swap Music options for Punish Failed Z-Cancel, Special Thanks.
-- Special thanks to the last 3 mentioned for really helping me with Smash Remix Debugged.
+MetaSSB / Meta Nais: Programmer, helper with programming.
 
 Jilly Jane: Instrument Design, Project Galleon's Piano and Overdriven/Distortion Guitar Fix.
 
@@ -110,7 +107,7 @@ You must place your legally acquired patched ROM in the 'roms' folder for this t
 #### Toggle Name: _Hitstun_
 
 ### Hitlag
-- Available Hitlag options are: 'Normal', 'Japanese', 'Melee', 'Ultimate', 'None'
+- Available Hitstun options are: 'Normal', 'Japanese', 'Melee', 'Ultimate', 'None'
 
 #### Toggle Name: _Hitlag_
 
@@ -147,8 +144,8 @@ Computer controlled players have received a variety of improvements.
 - Metal Mario, Giant DK, and polygon versions of the original cast are available via d-pad up or down.
 - Japanese versions of the original cast are available via d-pad left.
 - European versions of some of the original cast are available via d-pad right.
-- Giga Bowser, Super Sonic, and Metal Luigi are available via d-pad up.
-- Polygon versions of some of the remix cast are available via d-pad down.
+- Giga Bowser, Mad Piano, Super Sonic and Metal Luigi are available via d-pad up.
+- Polygon versions of the remix cast are available via d-pad down.
 
 ### Character Select Debug Menu
 A menu for modifying certain character attributes is available on each panel.
@@ -280,7 +277,7 @@ A menu for modifying certain character attributes is available on each panel.
 
 ### 12-Character Battle Mode
 - New VS mode for easily tracking 12cbs.
-- Features 4 preset character sets (Default, Japanese, Polygon, Remix) and allows for a custom character set per player.
+- Features 5 preset character sets (Default, Japanese, Polygon, Remix, Polygon Remix) and allows for a custom character set per player.
 - Best character for each player is tracked as the number of TKOs the opposing player experiences against your character.
 - Only ports 1 and 2 work with this mode.
 
@@ -483,7 +480,7 @@ Load a curated list of tracks.
 ### Alternate Music
 - Custom stages have up to two alternate tracks that will play at random.
 - The "Occasional" alternate track plays more frequently than the "Rare" alternate track.
-- The music track can be forced by holding a C button when choosing the stage: C-up = Default, C-left = Occasional, C-right = Rare, C-down = Rare2
+- The music track can be forced by holding a C button when choosing the stage: C-up = Default, C-left = Occasional, C-right = Rare
 
 ### Random Stage Switch
 - Changes possible outcomes of pressing RANDOM on the stage select screen.
@@ -502,11 +499,11 @@ Load a curated list of stages.
 - No Variants: All stages except for variants, Dream Land Beta 1 and 2 and How to Play. (Fray's Stage Night is included.)
 - Staff Picks: Favorites of the contributors of Smash Remix.
 
-### Random Select
-- By default, the variants (Metal Mario, Giant DK, polygons, J/E regional versions) and bonus characters (Dark Samus, Lucas, Mad Piano, etc.) are not included in the random character select that occurs when toggling the CPU button on the character select screen or by using the '?' slot.
-- This toggle allows for them each to be included, as well as selecting from Vanilla only.
+### Random Select With Variants
+- By default, the variants (Metal Mario, Giant DK, polygons, J/E regional versions) are not included in the random character select that occurs when toggling the CPU button on the character select screen.
+- This toggle allows for them to be included.
 
-#### Toggle Name: _Random Select_
+#### Toggle Name: _Random Select With Variants_
 
 ### Player Tags
 - Can store up to 20 names (which are be selected via Character Menu Panel).
@@ -605,16 +602,6 @@ When Special Model Display is Hitbox or Hitbox+, these changes are applied:
 
 #### Toggle Name: _Music Title at Match Start_
 
-### BGM Volume
-- Sets the volume of music. Volume ranges from 0-10, with 10 being default.
-
-#### Toggle Name: _BGM Volume_
-
-### SFX Volume
-- Sets the volume of sound effects. Volume ranges from 0-10, with 10 being default.
-
-#### Toggle Name: _SFX Volume_
-
 ### Disable Anti-Aliasing
 - Turn off anti-aliasing.
 
@@ -672,11 +659,6 @@ When Special Model Display is Hitbox or Hitbox+, these changes are applied:
 
 #### Toggle Name: _Screenshake_
 
-### BlastZone GFX
-- Allows shrinking or disabling the blast zone visual effects.
-
-#### Toggle Name: _BlastZone GFX_
-
 ## Training Mode
 ### Custom Menu
 - Pressing Z while the menu is open will open the custom training menu. This menu allows you to access special settings for each port.
@@ -694,7 +676,6 @@ When Special Model Display is Hitbox or Hitbox+, these changes are applied:
     - CPU DI Strength: Set CPU DI Strength. (High, Medium, Low, Random)
     - CPU DI Direction: Set CPU DI Direction. (Left, Right, Up, Down, Toward, Away, Random)
     - D-Pad Controls: Toggles the Training D-pad functions. (On, Reset Only, Disabled)
-    - Preserve menu selections: Allows player to keep Vanilla Menu selections when resetting.
 
 ### D-Pad Shortcuts
 - Pressing up on the d-pad will pause/unpause the game.
@@ -738,11 +719,6 @@ Many `Gameplay Settings` contain options that enable Japanese behavior: Hitstun,
 - Use the Japanese version's shield stun value.
 
 #### Toggle Name: _Japanese Shield Stun_
-
-### Japanese Stun/Sleep
-- Use the Japanese version's formulas for stun and sleep duration.
-
-#### Toggle Name: _Japanese Stun/Sleep_
 
 ## Single Player Modes
 
@@ -824,7 +800,6 @@ L Selects Random Character | Off                | Off               | Off       
 PK Thunder Reflect Crash Fix  | On              | On                | On                | On
 Flash Guard                | Off                | Off               | Off               | OFf
 Screenshake                | Default            | Default           | Default           | Default
-BlastZone GFX              | Default            | Default           | Default           | Default
 
 #### Gameplay Settings
 Toggle                     | Community          | Tournament        | Netplay           | Japanese
@@ -833,7 +808,6 @@ Hitstun                    | Normal             | Normal            | Normal    
 Hitlag                     | Normal             | Normal            | Normal            | Japanese
 DI                         | Normal             | Normal            | Normal            | Japanese
 Japanese Sounds            | Default            | Default           | Default           | Always
-Japanese Stun/Sleep        | Default            | Default           | Default           | On
 Momentum Slide             | Off                | Off               | Off               | On
 Shield Stun                | Normal             | Normal            | Normal            | Japanese
 Z-Cancel                   | Default            | Default           | Default           | Default
@@ -868,8 +842,6 @@ Random Music                    | Off                | Off               | On   
 Salty Runback Preserves Song    | Off                | Off               | Off               | Off
 Menu Music                      | DEFAULT            | DEFAULT           | 64                | DEFAULT
 Music Title at Match Start      | On                 | Off               | On                | On
-BGM Volume                      | 10                 | 10                | 10                | 10
-SFX Volume                      | 10                 | 10                | 10                | 10
 _Random Toggles for All Tracks_ | On                 | On                | On                | On
 
 #### Stage Settings
