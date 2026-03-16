@@ -4494,10 +4494,6 @@ scope TwelveCharBattle {
         jal     Global.get_random_int_safe_ // v0 = random character_id
         lli     a0, Character.NUM_CHARACTERS
 
-        lli     t0, Character.id.BOSS
-        beq     v0, t0, _roll               // if Master Hand, get a different ID
-        lli     t0, Character.id.SANDBAG
-        beq     v0, t0, _roll               // if Sandbag, get a different ID
         // lli     t0, Character.id.PLACEHOLDER
         // beq     v0, t0, _roll               // if invalid, get a different ID
         lli     t0, Character.id.NONE
