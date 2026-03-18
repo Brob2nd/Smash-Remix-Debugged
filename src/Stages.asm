@@ -3760,7 +3760,7 @@ scope Stages {
     dw function.CLONE                       // Melrode
     dw function.CLONE                       // Meta Crystal Remix
     dw Hazards.remix_rttf_setup_            // Remix 1p Race to the Finish
-    dw function.reapers_setup_              // Grim Reapers Cavern
+    dw Hazards.reapers_setup_               // Grim Reapers Cavern
     dw Hazards.scuttle_town_setup_          // Scuttle Town
     dw Hazards.bbh_setup_                   // Big Boo's Haunt
     dw function.CLONE                       // Yoshis Island III
