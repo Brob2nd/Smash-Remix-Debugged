@@ -5298,355 +5298,355 @@ scope Hazards {
 
     OS.align(16)
 
-//    // @ Description
-//    // This establishes Crateria hazard object in which Acid Rain is tied to
-//    scope crateria_setup: {
-//        addiu   sp, sp,-0x0060              // allocate stack space
-//        sw      ra, 0x0024(sp)              // ~
-//        sw      s0, 0x0028(sp)              // store ra, s0
-//
-//        // _check_hazard:
-//        li      t0, Toggles.entry_hazard_mode
-//        lw      t0, 0x0004(t0)              // t0 = hazard_mode (hazards disabled when t0 = 1 or 3)
-//        andi    t0, t0, 0x0001              // t0 = 1 if hazard_mode is 1 or 3, 0 otherwise
-//        bnez    t0, _end                    // if hazard_mode enabled, skip original
-//        nop
-//
-//        li      t0, 0x80131300              // load hardcoded place for stage header + 14
-//        sw      r0, 0x0060(t0)              // clear timer
-//        sw      r0, 0x005C(t0)              // clear timer
-//        lw      t0, 0x0000(t0)              // load stage header + 14
-//        lw      t1, 0x00CC(t0)              // load pointer to Acid hitbox file
-//        lw      t0, 0x0080(t0)              // load pointer to Acid Graphic file
-//
-//
-//        li      s0, 0x801313F0              // load hardcoded space used by hazards, generally for pointers
-//        sw      t0, 0x0000(s0)              // save pointer to Acid Rain Grapih file
-//        sw      t1, 0x0004(s0)              // save pointer to Acid Rain hitbox file
-//
-//        sw      at, 0x0058(s0)              // set initial state timer to 360 frames
-//
-//        li      t3, acidrain_hitbox_pointer
-//        sw      t1, 0x0000(t3)              // save pointer to pointer spot
-//        li      t2, acidrain_projectile_struct
-//        sw      t3, 0x0008(t2)              // save pointer to acid rain hitbox file
-//        li      t2, acidrain_properties_struct
-//        sw      t3, 0x0024(t2)              // save pointer to acid rain hitbox file
-//
-//        sw      s0, 0x0020(sp)              // hardcoded space used by hazards, generally for pointers
-//
-//
-//        li      a1, acidrain_cloud_         // Acid Rain routine
-//        addiu   a2, r0, 0x0001              // group
-//        addiu   a0, r0, 0x03F2              // object id
-//
-//        jal     Render.CREATE_OBJECT_       // create object
-//        lui     a3, 0x8000                  // unknown
-//
-//        sw      v0, 0x0050(sp)              // save object address
-//
-//        _end:
-//        lw      ra, 0x0024(sp)              // ~
-//        lw      s0, 0x0028(sp)              // load ra, s0
-//        jr      ra                          // return
-//        addiu   sp, sp, 0x0060              // deallocate stack space
-//    }
-//
-//    // @ Description
-//    // This routine produces rain at random intervals across the stage
-//    // a0 = Acid Rain Cloud object
-//    scope acidrain_cloud_: {
-//        addiu   sp, sp, -0x0068
-//        sw      ra, 0x0014(sp)
-//        sw      a0, 0x0000(sp)
-//        sw      s0, 0x0004(sp)
-//
-//        li      t0, 0x801313F0          // load hardcoded stage struct
-//        sw      t0, 0x0050(sp)          // save hardcoded
-//        lw      t6, 0x0060(t0)          // load timer
-//        sw      t6, 0x0064(sp)
-//        addiu   t2, t6, 0x0001          // add 1 to timer
-//        sw      t2, 0x0060(t0)          // update timer
-//        addiu   t1, r0, 0x0400          // rain end timer
-//
-//
-//
-//        beql    t1, t6, _end            // check if rain should end
-//        sw      r0, 0x0060(t0)          // restart timer
-//        addiu   t4, r0, r0
-//        slti    t4, t6, 0x001E
-//        bnez    t4, _end                // if not past minimum time for rain, don't rain
-//        lw      t5, 0x005C(t0)          // load rain loop
-//
-//        addiu   t3, r0, 0x0020          // 0x20 drops per frame
-//        sw      t3, 0x0018(sp)
-//
-//        li      t0, 0x80131460          // a0 = global ptr to camera object
-//        lw      t0, 0x0000(t0)          // a0 = global camera object
-//        addiu   t2, r0, 0x0002          // t2 = 2
-//        sw      t2, 0x108(t0)           // set mode to 2. (default is 4)
-//        addiu   at, r0, 0x001E          // timer amount for rain
-//        li      t1, 0xFFFFFFFF          // t1 = white
-//        beq     at, t6, _sfx
-//        addiu   at, r0, 0x0020          // timer amount for rain
-//        beq     at, t6, _set_color
-//        addiu   at, r0, 0x001F          // timer amount for rain
-//        li      t1, 0x040433FF          // t1 = dark blue
-//        beq     at, t6, _set_color
-//        addiu   at, r0, 0x0021          // timer amount for rain
-//        beq     at, t6, _set_color
-//        addiu   t2, r0, 0x0004          // set mode to 4
-//        beq     r0, r0, _rain_sfx
-//        sw      t2, 0x108(t0)           // set mode to 4. (default is 4)
-//
-//        _sfx:
-//        jal     0x800269C0              // play fgm
-//        addiu   a0, r0, 0x00E8          // sets the fgm id
-//        li      t1, 0xFFFFFFFF          // t1 = white
-//        li      t0, 0x80131460          // a0 = global ptr to camera object
-//        lw      t0, 0x0000(t0)          // a0 = global camera object
-//        beq     r0, r0, _play_rain
-//        _set_color:
-//        sw      t1, 0x010C(t0)          // t1 = overwrite global camera draw colour
-//
-//        _rain_sfx:
-//        lw      t0, 0x0050(sp)          // load hardcoded stage struct
-//        lw      t5, 0x005C(t0)          // load rain time
-//        addiu   t3, r0, 0x0060          // set to 60
-//
-//        beql    t5, t3, _rain_loop      // clear timer if 60 frames
-//        sw      r0, 0x005C(t0)
-//        addiu   t2, t5, 0x0001
-//        bnez    t5, _rain_loop
-//        sw      t2, 0x005C(t0)          // update timer
-//
-//        _play_rain:
-//        jal     0x800269C0              // play fgm
-//        addiu   a0, r0, 0x0400          // sets the fgm id to rain
-//
-//        _rain_loop:
-//        jal     acidrain_stage_setting_
-//        lw      a0, 0x0000(sp)          // load acid rain Object Struct
-//        lw      t3, 0x0018(sp)
-//        addiu   t3, t3, 0xFFFF          // subtract 1
-//        bne     t3, r0, _rain_loop
-//        sw      t3, 0x0018(sp)          // save updated rain amount
-//
-//
-//        _end:
-//        lw      ra, 0x0014(sp)          // load ra
-//        lw      a0, 0x0000(sp)          // load great fox object
-//        lw      s0, 0x0004(sp)
-//        addiu   sp, sp, 0x0068
-//
-//        jr      ra
-//        nop
-//    }
-//
-//    // @ Description
-//    // Subroutine which sets up the initial properties for the projectile.
-//    scope acidrain_stage_setting_: {
-//        addiu   sp, sp, -0x0050
-//        sw      s0, 0x0018(sp)
-//        sw      ra, 0x001C(sp)
-//        sw      a0, 0x0040(sp)
-//        li      s0, acidrain_properties_struct      // s0 = projectile properties struct address
-//        li      a1, acidrain_projectile_struct      // a1 = main projectile struct address
-//        addiu   a3, r0, 0x0001                      // I believe this makes the projectile hit all players
-//
-//        jal     Global.get_random_int_              // get random integer
-//        addiu   a0, r0, 0x1F40                      // decimal 8000 possible spawn points
-//        addiu   t1, r0, -4000                       // load -4000
-//        addu    t1, v0, t1                          // subtract 4000 to center
-//        mtc1    t1, f2
-//        cvt.s.w f2
-//        swc1    f2, 0x0020(sp)                      // save acid rain x spawn point
-//        li      t1, 0x45bb8000                      // load 6000 for y spawn point
-//        sw      t1, 0x0024(sp)                      // save acid rain y spawn position
-//        sw      r0, 0x0028(sp)                      // save acid rain z spawn position
-//        addiu   a2, sp, 0x0020                      // a2 = coordinates to create projectile at
-//        jal     0x801655C8                          // This is a generic routine that does much of the work for defining all projectiles
-//        sw      a2, 0x0030(sp)                      // save spawn address
-//
-//        bnez    v0, _destroyed_projectile_check_branch
-//        or      v1, v0, r0
-//        beq     r0, r0, _end
-//        or      v0, r0, r0
-//
-//        _destroyed_projectile_check_branch:
-//        lw      a0, 0x0084(v1)      // item special struct loaded in
-//
-//        addiu   t7, r0, 0x0028      // load in duration
-//        sw      t7, 0x0268(a0)      // save duration
-//
-//        _x_speed:
-//        sw      r0, 0x0020(a0)      // save x speed
-//        lui     at, 0xc2c8
-//        sw      at, 0x0024(a0)      // save y speed
-//
-//        lwc1    f12, 0x0020(a0)     // f12 = x speed
-//        lwc1    f14, 0x0024(a0)     // f14 = y speed
-//        jal     0x8001863C          // f0 = atan2f(f12, f12) = rotation angle
-//        sw      v1, 0x0034(sp)
-//        lw      t7, 0x0034(sp)      // t7 = projectile object
-//        lw      t8, 0x0074(t7)      // t8 = projectile position struct
-//        swc1    f0, 0x0038(t8)      // update rotation angle
-//
-//        jal     0x80103320
-//        lw      a0, 0x0030(sp)
-//
-//        lw      v0, 0x0028(sp)
-//
-//
-//
-//        _end:
-//        lw      ra, 0x001C(sp)
-//        lw      s0, 0x0018(sp)
-//        addiu   sp, sp, 0x0050
-//        jr      ra
-//        nop
-//    }
-//
-//    // @ Description
-//    // Main subroutine for the Acid Rain projectile.
-//    scope acidrain_main_: {
-//        _end:
-//        jr      ra
-//        or      v0, r0, r0
-//    }
-//
-//    // @ Description
-//    // This subroutine sets up the splash effect for the rain.
-//    // a0 = projectile object
-//    // a1 = projectile struct
-//    scope acidrain_after_effect_: {
-//        addiu   sp, sp, 0xFFE8              // allocate stack space
-//        sw      ra, 0x0014(sp)              // ~
-//        sw      a0, 0x0018(sp)              // store ra, a0
-//
-//        jal     0x801005C8                  // create explosion graphic?
-//        addiu   a0, a0, 0x001C              // a0 = projectile x/y/z
-//        lw      a0, 0x0018(sp)              // a0 = projectile object
-//        // copy logic from 0x80168F2C, which is used for setting up the samus bomb explosion
-//        // but omit the line which originally set the hitbox size, and the jump to return address instruction
-//        // TODO: this could be incorporated more naturally, and we could probably control the duration of the explosion hitbox if we wanted to
-//        OS.copy_segment(0xE396C, 0x38)      // ~
-//        OS.copy_segment(0xE39A8, 0x28)      // ~
-//        sw      r0, 0x0290(v0)              // copy original logic
-//        jal     0x800269C0                  // play fgm
-//        addiu   a0, r0, 0x0000              // sets the fgm id
-//        lw      ra, 0x0014(sp)              // load ra
-//        addiu   sp, sp, 0x0018              // deallocate stack space
-//        jr      ra                          // return
-//        or      v0, r0, r0                  // v0 = 0
-//    }
-//
-//    // @ Description
-//    // This subroutine destroys the rain and creates an splash gfx
-//    scope acidrain_destruction_: {
-//        addiu   sp, sp,-0x0018              // allocate stack space
-//        sw      ra, 0x0014(sp)              // store ra
-//        lw      a0, 0x0074(a0)              // ~
-//        addiu   a0, a0, 0x001C              // a0 = projectile x/y/z coords
-//        jal     0x800FF648                  // create smoke gfx
-//        lui     a1, 0x3F80                  // a1 = 1.0
-//        lw      ra, 0x0014(sp)              // load ra
-//        addiu   sp, sp, 0x0018              // deallocate stack space
-//        jr      ra                          // return
-//        lli     v0, OS.TRUE                 // return TRUE (destroys projectile)
-//    }
-//
-//    // @ Description
-//    // This subroutine destroys the rain and creates an splash gfx when colliding with clipping
-//    scope acidrain_collision_: {
-//        addiu   sp, sp,-0x0020              // allocate stack space
-//        sw      ra, 0x0014(sp)              // store ra
-//
-//        jal     0x80167C04
-//        sw      a0, 0x0018(sp)              // save projectile object
-//
-//        beq     v0, r0, _end
-//        lw      t6, 0x0018(sp)              // load projectile object
-//
-//        lw      a0, 0x0074(t6)
-//        lui     a1, 0x3F80
-//
-//        jal     0x800FF648
-//        addiu   a0, a0, 0x001C
-//
-//        beq     r0, r0, _end
-//        addiu   v0, r0, 0x0001
-//
-//        or      v0, r0, r0                  // return FALSE (prolong projectile)
-//
-//        _end:
-//        lw      ra, 0x0014(sp)              // load ra
-//        addiu   sp, sp, 0x0020              // deallocate stack space
-//        jr      ra                          // return
-//        nop
-//    }
-//
-//    acidrain_hitbox_pointer:
-//    dw  0x00000000
-//
-//    OS.align(16)
-//    acidrain_projectile_struct:
-//    constant ACIDRAIN_ID(0x1006)
-//    dw 0x00000000                           // unknown
-//    dw ACIDRAIN_ID                          // projectile id
-//    dw 0x00000000                           // address of rain file
-//    dw 0x00000000                           // offset to hitbox
-//    dw 0x1C000000                           // This determines z axis rotation? (samus is 1246)
-//    dw acidrain_main_                       // This is the main subroutine for the projectile, handles duration and other things. (default 0x80168540) (samus 0x80168F98)
-//    dw acidrain_collision_                  // This function runs when the projectile collides with clipping. (0x801685F0 - Mario) (0x80169108 - Samus)
-//    dw acidrain_destruction_                // This function runs when the projectile collides with a hurtbox.
-//    dw acidrain_destruction_                // This function runs when the projectile collides with a shield.
-//    dw acidrain_destruction_                // This function runs when the projectile collides with edges of a shield and bounces off
-//    dw acidrain_destruction_                // This function runs when the projectile collides/clangs with a hitbox.
-//    dw acidrain_destruction_                // This function runs when the projectile collides with Fox's reflector (default 0x80168748)
-//    dw acidrain_destruction_                // This function runs when the projectile collides with Ness's psi magnet
-//    OS.copy_segment(0x103904, 0x0C)         // empty
-//
-//    OS.align(16)
-//    acidrain_properties_struct:
-//    dw 999                                  // 0x0000 - duration (int)
-//    float32 999                             // 0x0004 - max speed
-//    float32 0                               // 0x0008 - min speed
-//    float32 0                               // 0x000C - gravity
-//    float32 0                               // 0x0010 - bounce multiplier
-//    float32 0.1                             // 0x0014 - rotation speed
-//    float32 270                             // 0x0018 - initial angle (ground)
-//    float32 270                             // 0x001C   initial angle (air)
-//    float32 300                             // 0x0020   initial speed
-//    dw 0x00000000                           // 0x0024   projectile data pointer
-//    dw 0x00000000                           // 0x0028   unknown (default 0)
-//    dw 0x00000000                           // 0x002C   palette index (0 = mario, 1 = luigi)
-//
-//    // Applies damage during rain
-//    // Normally an attack must have knockback in order to do damage, with the exclusion of armor, which has the unfortunate consequence of slowing the player
-//    scope acidrain_damage: {
-//       OS.patch_start(0x5FDD0, 0x800E45D0)
-//       j        acidrain_damage
-//       lw       a3, 0x000C(s4)          // original line 1, loads projectile ID
-//       _return:
-//       OS.patch_end()
-//
-//        // player struct in a0
-//        addiu   a2, r0, ACIDRAIN_ID
-//        bne     a2, a3, _end
-//        nop
-//
-//        OS.save_registers()
-//
-//        jal     0x800EA248              // jump to damage application routine
-//        addiu   a1, r0, 0x0001          // set to 1 damage per drop
-//
-//        OS.restore_registers()
-//
-//        _end:
-//        j       _return
-//        lw      a2, 0x0000(s2)          // original line 2
-//    }
+    // @ Description
+    // This establishes Crateria hazard object in which Acid Rain is tied to
+    scope crateria_setup: {
+        addiu   sp, sp,-0x0060              // allocate stack space
+        sw      ra, 0x0024(sp)              // ~
+        sw      s0, 0x0028(sp)              // store ra, s0
+
+        // _check_hazard:
+        li      t0, Toggles.entry_hazard_mode
+        lw      t0, 0x0004(t0)              // t0 = hazard_mode (hazards disabled when t0 = 1 or 3)
+        andi    t0, t0, 0x0001              // t0 = 1 if hazard_mode is 1 or 3, 0 otherwise
+        bnez    t0, _end                    // if hazard_mode enabled, skip original
+        nop
+
+        li      t0, 0x80131300              // load hardcoded place for stage header + 14
+        sw      r0, 0x0060(t0)              // clear timer
+        sw      r0, 0x005C(t0)              // clear timer
+        lw      t0, 0x0000(t0)              // load stage header + 14
+        lw      t1, 0x00CC(t0)              // load pointer to Acid hitbox file
+        lw      t0, 0x0080(t0)              // load pointer to Acid Graphic file
+
+
+        li      s0, 0x801313F0              // load hardcoded space used by hazards, generally for pointers
+        sw      t0, 0x0000(s0)              // save pointer to Acid Rain Grapih file
+        sw      t1, 0x0004(s0)              // save pointer to Acid Rain hitbox file
+
+        sw      at, 0x0058(s0)              // set initial state timer to 360 frames
+
+        li      t3, acidrain_hitbox_pointer
+        sw      t1, 0x0000(t3)              // save pointer to pointer spot
+        li      t2, acidrain_projectile_struct
+        sw      t3, 0x0008(t2)              // save pointer to acid rain hitbox file
+        li      t2, acidrain_properties_struct
+        sw      t3, 0x0024(t2)              // save pointer to acid rain hitbox file
+
+        sw      s0, 0x0020(sp)              // hardcoded space used by hazards, generally for pointers
+
+
+        li      a1, acidrain_cloud_         // Acid Rain routine
+        addiu   a2, r0, 0x0001              // group
+        addiu   a0, r0, 0x03F2              // object id
+
+        jal     Render.CREATE_OBJECT_       // create object
+        lui     a3, 0x8000                  // unknown
+
+        sw      v0, 0x0050(sp)              // save object address
+
+        _end:
+        lw      ra, 0x0024(sp)              // ~
+        lw      s0, 0x0028(sp)              // load ra, s0
+        jr      ra                          // return
+        addiu   sp, sp, 0x0060              // deallocate stack space
+    }
+
+    // @ Description
+    // This routine produces rain at random intervals across the stage
+    // a0 = Acid Rain Cloud object
+    scope acidrain_cloud_: {
+        addiu   sp, sp, -0x0068
+        sw      ra, 0x0014(sp)
+        sw      a0, 0x0000(sp)
+        sw      s0, 0x0004(sp)
+
+        li      t0, 0x801313F0          // load hardcoded stage struct
+        sw      t0, 0x0050(sp)          // save hardcoded
+        lw      t6, 0x0060(t0)          // load timer
+        sw      t6, 0x0064(sp)
+        addiu   t2, t6, 0x0001          // add 1 to timer
+        sw      t2, 0x0060(t0)          // update timer
+        addiu   t1, r0, 0x0400          // rain end timer
+
+
+
+        beql    t1, t6, _end            // check if rain should end
+        sw      r0, 0x0060(t0)          // restart timer
+        addiu   t4, r0, r0
+        slti    t4, t6, 0x001E
+        bnez    t4, _end                // if not past minimum time for rain, don't rain
+        lw      t5, 0x005C(t0)          // load rain loop
+
+        addiu   t3, r0, 0x0020          // 0x20 drops per frame
+        sw      t3, 0x0018(sp)
+
+        li      t0, 0x80131460          // a0 = global ptr to camera object
+        lw      t0, 0x0000(t0)          // a0 = global camera object
+        addiu   t2, r0, 0x0002          // t2 = 2
+        sw      t2, 0x108(t0)           // set mode to 2. (default is 4)
+        addiu   at, r0, 0x001E          // timer amount for rain
+        li      t1, 0xFFFFFFFF          // t1 = white
+        beq     at, t6, _sfx
+        addiu   at, r0, 0x0020          // timer amount for rain
+        beq     at, t6, _set_color
+        addiu   at, r0, 0x001F          // timer amount for rain
+        li      t1, 0x040433FF          // t1 = dark blue
+        beq     at, t6, _set_color
+        addiu   at, r0, 0x0021          // timer amount for rain
+        beq     at, t6, _set_color
+        addiu   t2, r0, 0x0004          // set mode to 4
+        beq     r0, r0, _rain_sfx
+        sw      t2, 0x108(t0)           // set mode to 4. (default is 4)
+
+        _sfx:
+        jal     0x800269C0              // play fgm
+        addiu   a0, r0, 0x00E8          // sets the fgm id
+        li      t1, 0xFFFFFFFF          // t1 = white
+        li      t0, 0x80131460          // a0 = global ptr to camera object
+        lw      t0, 0x0000(t0)          // a0 = global camera object
+        beq     r0, r0, _play_rain
+        _set_color:
+        sw      t1, 0x010C(t0)          // t1 = overwrite global camera draw colour
+
+        _rain_sfx:
+        lw      t0, 0x0050(sp)          // load hardcoded stage struct
+        lw      t5, 0x005C(t0)          // load rain time
+        addiu   t3, r0, 0x0060          // set to 60
+
+        beql    t5, t3, _rain_loop      // clear timer if 60 frames
+        sw      r0, 0x005C(t0)
+        addiu   t2, t5, 0x0001
+        bnez    t5, _rain_loop
+        sw      t2, 0x005C(t0)          // update timer
+
+        _play_rain:
+        jal     0x800269C0              // play fgm
+        addiu   a0, r0, 0x0400          // sets the fgm id to rain
+
+        _rain_loop:
+        jal     acidrain_stage_setting_
+        lw      a0, 0x0000(sp)          // load acid rain Object Struct
+        lw      t3, 0x0018(sp)
+        addiu   t3, t3, 0xFFFF          // subtract 1
+        bne     t3, r0, _rain_loop
+        sw      t3, 0x0018(sp)          // save updated rain amount
+
+
+        _end:
+        lw      ra, 0x0014(sp)          // load ra
+        lw      a0, 0x0000(sp)          // load great fox object
+        lw      s0, 0x0004(sp)
+        addiu   sp, sp, 0x0068
+
+        jr      ra
+        nop
+    }
+
+    // @ Description
+    // Subroutine which sets up the initial properties for the projectile.
+    scope acidrain_stage_setting_: {
+        addiu   sp, sp, -0x0050
+        sw      s0, 0x0018(sp)
+        sw      ra, 0x001C(sp)
+        sw      a0, 0x0040(sp)
+        li      s0, acidrain_properties_struct      // s0 = projectile properties struct address
+        li      a1, acidrain_projectile_struct      // a1 = main projectile struct address
+        addiu   a3, r0, 0x0001                      // I believe this makes the projectile hit all players
+
+        jal     Global.get_random_int_              // get random integer
+        addiu   a0, r0, 0x1F40                      // decimal 8000 possible spawn points
+        addiu   t1, r0, -4000                       // load -4000
+        addu    t1, v0, t1                          // subtract 4000 to center
+        mtc1    t1, f2
+        cvt.s.w f2
+        swc1    f2, 0x0020(sp)                      // save acid rain x spawn point
+        li      t1, 0x45bb8000                      // load 6000 for y spawn point
+        sw      t1, 0x0024(sp)                      // save acid rain y spawn position
+        sw      r0, 0x0028(sp)                      // save acid rain z spawn position
+        addiu   a2, sp, 0x0020                      // a2 = coordinates to create projectile at
+        jal     0x801655C8                          // This is a generic routine that does much of the work for defining all projectiles
+        sw      a2, 0x0030(sp)                      // save spawn address
+
+        bnez    v0, _destroyed_projectile_check_branch
+        or      v1, v0, r0
+        beq     r0, r0, _end
+        or      v0, r0, r0
+
+        _destroyed_projectile_check_branch:
+        lw      a0, 0x0084(v1)      // item special struct loaded in
+
+        addiu   t7, r0, 0x0028      // load in duration
+        sw      t7, 0x0268(a0)      // save duration
+
+        _x_speed:
+        sw      r0, 0x0020(a0)      // save x speed
+        lui     at, 0xc2c8
+        sw      at, 0x0024(a0)      // save y speed
+
+        lwc1    f12, 0x0020(a0)     // f12 = x speed
+        lwc1    f14, 0x0024(a0)     // f14 = y speed
+        jal     0x8001863C          // f0 = atan2f(f12, f12) = rotation angle
+        sw      v1, 0x0034(sp)
+        lw      t7, 0x0034(sp)      // t7 = projectile object
+        lw      t8, 0x0074(t7)      // t8 = projectile position struct
+        swc1    f0, 0x0038(t8)      // update rotation angle
+
+        jal     0x80103320
+        lw      a0, 0x0030(sp)
+
+        lw      v0, 0x0028(sp)
+
+
+
+        _end:
+        lw      ra, 0x001C(sp)
+        lw      s0, 0x0018(sp)
+        addiu   sp, sp, 0x0050
+        jr      ra
+        nop
+    }
+
+    // @ Description
+    // Main subroutine for the Acid Rain projectile.
+    scope acidrain_main_: {
+        _end:
+        jr      ra
+        or      v0, r0, r0
+    }
+
+    // @ Description
+    // This subroutine sets up the splash effect for the rain.
+    // a0 = projectile object
+    // a1 = projectile struct
+    scope acidrain_after_effect_: {
+        addiu   sp, sp, 0xFFE8              // allocate stack space
+        sw      ra, 0x0014(sp)              // ~
+        sw      a0, 0x0018(sp)              // store ra, a0
+
+        jal     0x801005C8                  // create explosion graphic?
+        addiu   a0, a0, 0x001C              // a0 = projectile x/y/z
+        lw      a0, 0x0018(sp)              // a0 = projectile object
+        // copy logic from 0x80168F2C, which is used for setting up the samus bomb explosion
+        // but omit the line which originally set the hitbox size, and the jump to return address instruction
+        // TODO: this could be incorporated more naturally, and we could probably control the duration of the explosion hitbox if we wanted to
+        OS.copy_segment(0xE396C, 0x38)      // ~
+        OS.copy_segment(0xE39A8, 0x28)      // ~
+        sw      r0, 0x0290(v0)              // copy original logic
+        jal     0x800269C0                  // play fgm
+        addiu   a0, r0, 0x0000              // sets the fgm id
+        lw      ra, 0x0014(sp)              // load ra
+        addiu   sp, sp, 0x0018              // deallocate stack space
+        jr      ra                          // return
+        or      v0, r0, r0                  // v0 = 0
+    }
+
+    // @ Description
+    // This subroutine destroys the rain and creates an splash gfx
+    scope acidrain_destruction_: {
+        addiu   sp, sp,-0x0018              // allocate stack space
+        sw      ra, 0x0014(sp)              // store ra
+        lw      a0, 0x0074(a0)              // ~
+        addiu   a0, a0, 0x001C              // a0 = projectile x/y/z coords
+        jal     0x800FF648                  // create smoke gfx
+        lui     a1, 0x3F80                  // a1 = 1.0
+        lw      ra, 0x0014(sp)              // load ra
+        addiu   sp, sp, 0x0018              // deallocate stack space
+        jr      ra                          // return
+        lli     v0, OS.TRUE                 // return TRUE (destroys projectile)
+    }
+
+    // @ Description
+    // This subroutine destroys the rain and creates an splash gfx when colliding with clipping
+    scope acidrain_collision_: {
+        addiu   sp, sp,-0x0020              // allocate stack space
+        sw      ra, 0x0014(sp)              // store ra
+
+        jal     0x80167C04
+        sw      a0, 0x0018(sp)              // save projectile object
+
+        beq     v0, r0, _end
+        lw      t6, 0x0018(sp)              // load projectile object
+
+        lw      a0, 0x0074(t6)
+        lui     a1, 0x3F80
+
+        jal     0x800FF648
+        addiu   a0, a0, 0x001C
+
+        beq     r0, r0, _end
+        addiu   v0, r0, 0x0001
+
+        or      v0, r0, r0                  // return FALSE (prolong projectile)
+
+        _end:
+        lw      ra, 0x0014(sp)              // load ra
+        addiu   sp, sp, 0x0020              // deallocate stack space
+        jr      ra                          // return
+        nop
+    }
+
+    acidrain_hitbox_pointer:
+    dw  0x00000000
+
+    OS.align(16)
+    acidrain_projectile_struct:
+    constant ACIDRAIN_ID(0x1006)
+    dw 0x00000000                           // unknown
+    dw ACIDRAIN_ID                          // projectile id
+    dw 0x00000000                           // address of rain file
+    dw 0x00000000                           // offset to hitbox
+    dw 0x1C000000                           // This determines z axis rotation? (samus is 1246)
+    dw acidrain_main_                       // This is the main subroutine for the projectile, handles duration and other things. (default 0x80168540) (samus 0x80168F98)
+    dw acidrain_collision_                  // This function runs when the projectile collides with clipping. (0x801685F0 - Mario) (0x80169108 - Samus)
+    dw acidrain_destruction_                // This function runs when the projectile collides with a hurtbox.
+    dw acidrain_destruction_                // This function runs when the projectile collides with a shield.
+    dw acidrain_destruction_                // This function runs when the projectile collides with edges of a shield and bounces off
+    dw acidrain_destruction_                // This function runs when the projectile collides/clangs with a hitbox.
+    dw acidrain_destruction_                // This function runs when the projectile collides with Fox's reflector (default 0x80168748)
+    dw acidrain_destruction_                // This function runs when the projectile collides with Ness's psi magnet
+    OS.copy_segment(0x103904, 0x0C)         // empty
+
+    OS.align(16)
+    acidrain_properties_struct:
+    dw 999                                  // 0x0000 - duration (int)
+    float32 999                             // 0x0004 - max speed
+    float32 0                               // 0x0008 - min speed
+    float32 0                               // 0x000C - gravity
+    float32 0                               // 0x0010 - bounce multiplier
+    float32 0.1                             // 0x0014 - rotation speed
+    float32 270                             // 0x0018 - initial angle (ground)
+    float32 270                             // 0x001C   initial angle (air)
+    float32 300                             // 0x0020   initial speed
+    dw 0x00000000                           // 0x0024   projectile data pointer
+    dw 0x00000000                           // 0x0028   unknown (default 0)
+    dw 0x00000000                           // 0x002C   palette index (0 = mario, 1 = luigi)
+
+    // Applies damage during rain
+    // Normally an attack must have knockback in order to do damage, with the exclusion of armor, which has the unfortunate consequence of slowing the player
+    scope acidrain_damage: {
+       OS.patch_start(0x5FDD0, 0x800E45D0)
+       j        acidrain_damage
+       lw       a3, 0x000C(s4)          // original line 1, loads projectile ID
+       _return:
+       OS.patch_end()
+
+        // player struct in a0
+        addiu   a2, r0, ACIDRAIN_ID
+        bne     a2, a3, _end
+        nop
+
+        OS.save_registers()
+
+        jal     0x800EA248              // jump to damage application routine
+        addiu   a1, r0, 0x0001          // set to 1 damage per drop
+
+        OS.restore_registers()
+
+        _end:
+        j       _return
+        lw      a2, 0x0000(s2)          // original line 2
+    }
 
     // @ Description
     // This establishes Rainbow Road hazard object in which Chain Chomp is tied to

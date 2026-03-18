@@ -3752,7 +3752,7 @@ scope Stages {
     dw function.CLONE                       // Mt. Dedede
     dw function.CLONE                       // Edo Town
     dw function.CLONE                       // Deku Tree DL
-    dw function.CLONE                       // Crateria/Zlanding DL
+    dw Hazards.crateria_setup               // Crateria/Zlanding DL
     dw OS.NULL                              // Goemon Break the Targets
     dw function.CLONE                       // First Destination Remix
     dw OS.NULL                              // Goemon BTP
@@ -3760,7 +3760,7 @@ scope Stages {
     dw function.CLONE                       // Melrode
     dw function.CLONE                       // Meta Crystal Remix
     dw Hazards.remix_rttf_setup_            // Remix 1p Race to the Finish
-    dw function.CLONE                       // Grim Reapers Cavern
+    dw function.reapers_setup_              // Grim Reapers Cavern
     dw Hazards.scuttle_town_setup_          // Scuttle Town
     dw Hazards.bbh_setup_                   // Big Boo's Haunt
     dw function.CLONE                       // Yoshis Island III
@@ -5627,7 +5627,7 @@ scope Stages {
     set_custom_item_spawn_rate(EDO, Dango, 0x14)
     add_bg_animation(EDO)
     add_stage(deku_tree_dl, "Deku Tree DL", {MIDI.id.KOKIRI_FOREST}, {MIDI.id.BRAWL_OOT}, {MIDI.id.SARIA}, {MIDI.id.GERUDO_VALLEY}, OS.TRUE, HAZARDS_ON_MOVEMENT_ON, OS.FALSE, OS.TRUE, class.BATTLE, -1, -1, -1, id.DEKU_TREE, variant_type.DL, 0x05, 0x05, 0x05, 0x03, 0x02, default_item_rate + 2, default_item_rate, ZELDA, Hazards.type.NONE, 65)
-    add_stage(zlanding_dl, "Crateria DL", {MIDI.id.CRATERIA_MAIN}, {MIDI.id.ZEBES_LANDING}, {MIDI.id.NORFAIR}, -1, OS.TRUE, HAZARDS_ON_MOVEMENT_ON, OS.TRUE, OS.TRUE, class.BATTLE, -1, -1, -1, id.ZLANDING, variant_type.DL, 0x05, 0x05, 0x05, default_blue_shell_rate, default_lightning_rate, default_item_rate, default_item_rate,  METROID, Hazards.type.NONE, 62)
+    add_stage(zlanding_dl, "Crateria DL", {MIDI.id.CRATERIA_MAIN}, {MIDI.id.ZEBES_LANDING}, {MIDI.id.NORFAIR}, -1, OS.TRUE, HAZARDS_OFF_MOVEMENT_ON, OS.TRUE, OS.TRUE, class.BATTLE, -1, -1, -1, id.ZLANDING, variant_type.DL, 0x05, 0x05, 0x05, default_blue_shell_rate, default_lightning_rate, default_item_rate, default_item_rate,  METROID, Hazards.type.HAZARDS, 62)
     add_stage(goemon_btt, "Break the Targets", -1, {MIDI.id.TARGET_TEST}, {MIDI.id.TARGET_TEST}, -1, OS.FALSE, HAZARDS_ON_MOVEMENT_ON, OS.FALSE, OS.FALSE, class.BTT, 0x000041B8, 0x00004610, 0x00004820, -1, -1, 0x05, 0x05, 0x05, default_blue_shell_rate, default_lightning_rate, default_item_rate, default_item_rate,  NONE, Hazards.type.NONE, 50)
     add_stage(first_remix, "First Destination Remix", {MIDI.id.FIRST_DESTINATION}, {MIDI.id.MULTIMAN2}, {MIDI.id.CREDITS_BRAWL}, -1, OS.FALSE, HAZARDS_ON_MOVEMENT_ON, OS.FALSE, OS.TRUE, class.BATTLE, -1, -1, -1, id.FIRST_DESTINATION, variant_type.REMIX, 0x05, 0x05, 0x05, default_blue_shell_rate, default_lightning_rate, default_item_rate, default_item_rate, SMASH, Hazards.type.NONE, 82)
     add_stage(btp_goemon, "Board the Platforms", -1, {MIDI.id.TARGET_TEST}, {MIDI.id.TARGET_TEST}, -1, OS.FALSE, HAZARDS_ON_MOVEMENT_ON, OS.FALSE, OS.FALSE, class.BTP, 0x00006810, 0x00006948, -1, -1, -1, 0x05, 0x05, 0x05, default_blue_shell_rate, default_lightning_rate, default_item_rate, default_item_rate,  NONE, Hazards.type.NONE, 22)
@@ -5636,7 +5636,7 @@ scope Stages {
     add_stage(meta_remix, "Meta Crystent", -1, {MIDI.id.METAL_BATTLE}, {MIDI.id.EASTON_KINGDOM}, -1, OS.FALSE, HAZARDS_ON_MOVEMENT_ON, OS.FALSE, OS.TRUE, class.BATTLE, -1, -1, -1, id.META_CRYSTAL, variant_type.REMIX, 0x05, 0x05, 0x05, default_blue_shell_rate + 1, default_lightning_rate + 1, default_item_rate, default_item_rate,  MARIO_BROS, Hazards.type.NONE, 112)
     add_stage(remix_rttf, "Remix 1p Race to the Finish", -1, {MIDI.id.TARGET_TEST}, {MIDI.id.TARGET_TEST}, -1, OS.FALSE, HAZARDS_ON_MOVEMENT_ON, OS.FALSE, OS.FALSE, class.RTTF, -1, -1, -1, -1, -1, 0x05, 0x05, 0x05, default_blue_shell_rate, default_lightning_rate, default_item_rate, default_item_rate,  NONE, Hazards.type.NONE, 142)
     set_bg_type(REMIX_RTTF, bg_type.BONUS3)
-    add_stage(reapers, "Grim Reaper's Cavern", {MIDI.id.GRIMREAPERSCAVERN}, {MIDI.id.WORLD_OF_ENVY}, {MIDI.id.ARIA_OF_THE_SOUL}, -1, OS.FALSE, HAZARDS_OFF_MOVEMENT_ON, OS.TRUE, OS.TRUE, class.BATTLE, -1, -1, -1, -1, -1, 0x05, 0x05, 0x05, default_blue_shell_rate, default_lightning_rate, default_item_rate, default_item_rate,  JACKBROS, Hazards.type.NONE, 98)
+    add_stage(reapers, "Grim Reaper's Cavern", {MIDI.id.GRIMREAPERSCAVERN}, {MIDI.id.WORLD_OF_ENVY}, {MIDI.id.ARIA_OF_THE_SOUL}, -1, OS.FALSE, HAZARDS_ON_MOVEMENT_ON, OS.TRUE, OS.TRUE, class.BATTLE, -1, -1, -1, -1, -1, 0x05, 0x05, 0x05, default_blue_shell_rate, default_lightning_rate, default_item_rate, default_item_rate,  JACKBROS, Hazards.type.NONE, 98)
     add_stage(scuttle_town, "Scuttle Town", {MIDI.id.SHANTAEMEDLEY}, {MIDI.id.BURNINGTOWN}, {MIDI.id.SHANTAEBOSS}, -1, OS.FALSE, HAZARDS_OFF_MOVEMENT_ON, OS.TRUE, OS.TRUE, class.BATTLE, -1, -1, -1, -1, -1, 0x05, 0x05, 0x05, default_blue_shell_rate, default_lightning_rate, default_item_rate, default_item_rate,  SHANTAE, Hazards.type.MOVEMENT, 147)
     add_bg_animation(SCUTTLE_TOWN)
     add_stage(big_boos_haunt, "Big Boo's Haunt", {MIDI.id.BIG_BOO}, {MIDI.id.HORROR_LAND}, {MIDI.id.GHOSTGULPING}, -1, OS.TRUE, HAZARDS_ON_MOVEMENT_ON, OS.TRUE, OS.TRUE, class.BATTLE, -1, -1, -1, -1, -1, 0x05, 0x05, 0x05, default_blue_shell_rate, default_lightning_rate, default_item_rate, default_item_rate, MARIO_BROS, Hazards.type.MOVEMENT, 6)
