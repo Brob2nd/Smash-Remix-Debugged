@@ -5,12 +5,12 @@ Smash Remix Debugged is a mod for the Super Smash Bros. 64 mod, Smash Remix, thi
 
 It also adds some extra content, such as playable Sandbag, the Tap Jump and Walljump gameplay options, Extended VS Match Stats, Z Cancel Guide, Stage Bans (like in Project M/+), 4 Tournament Stage Pages with a list of viable stages for Tournaments, and more.
 
-# How to Play Smash Remix Debugged Online on Project64KSE
-Follow the steps on this tutorial on smash64.online, then on your Project64KSE folder, go to cfg, then open the pj64.rdb file, then go to the bottom line, and copy/paste this:
+# How to Play Smash Remix Debugged Online on Project64KSE or RMG Kaillera Edition
+If you play on Project64KSE, then follow the steps on the netplay set-up tutorial on smash64.online, then on your Project64KSE folder, go to the cfg folder, then open the pj64.rdb file, then go to the bottom line, and copy/paste this:
 
 Smash Remix Debugged 1.3.2's Info:
 ```
-[08F735A5-F0A9861E-C:45]
+[08F70EE5-7AAAAF7E-C:45]
 Counter Factor=1
 Culling=1
 Good Name=SmashRemixDebugged1.3.2
@@ -25,7 +25,7 @@ ViRefresh=2200
 ```
 Smash Remix Debugged 1.3.2 (PAL)'s Info:
 ```
-[CBE87577-90E10CA9-C:50]
+[CBE9350F-35898EBA-C:50]
 Counter Factor=1
 Culling=1
 Good Name=SmashRemixDebugged1.3.2 (PAL60)
@@ -37,6 +37,24 @@ SMM-TLB=0
 Status=Compatible
 Use TLB=No
 ViRefresh=2200
+```
+If you instead play on RMG Kaillera Edition, then follow the steps on the netplay set-up tutorial on smashremix.net, then on your RMG-K folder, go to the Data folder, then open the mupen64plus.ini file, then go to the bottom line, and copy/paste this:
+
+Smash Remix Debugged 1.3.2's Info:
+```
+[43571020FA5DDB138BBD7F64A8C9C0D4]
+GoodName=SmashRemix2.0.0
+CRC=D68CEFC0 0B81D955
+RefMD5=5AAC6E652C5CF1E37A466AC0073E88CA
+CountPerOp=1
+```
+Smash Remix Debugged 1.3.2 (PAL)'s Info:
+```
+[3FD1BC92175A623D4ACB6B218ABA8C79]
+GoodName=SmashRemixDebugged1.3.2 (PAL60)
+CRC=CBE9350F 35898EBA
+RefMD5=DFBFAF5B78BE87B2762218B91CC7C935-
+CountPerOp=1
 ```
 
 # FAQ/Q&A
