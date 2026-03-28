@@ -42,10 +42,10 @@ If you instead play on RMG Kaillera Edition, then follow the steps on the netpla
 
 Smash Remix Debugged 1.3.2's Info:
 ```
-[43571020FA5DDB138BBD7F64A8C9C0D4]
-GoodName=SmashRemix2.0.0
-CRC=D68CEFC0 0B81D955
-RefMD5=5AAC6E652C5CF1E37A466AC0073E88CA
+[4F7A78991455017C84DD2A9610109475]
+GoodName=SmashRemixDebugged1.3.2
+CRC=08F70EE5 7AAAAF7E
+RefMD5=DFBFAF5B78BE87B2762218B91CC7C935-
 CountPerOp=1
 ```
 Smash Remix Debugged 1.3.2 (PAL)'s Info:
