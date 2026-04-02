@@ -366,7 +366,6 @@ scope Gallery {
     dh {MIDI.id.MM_TITLE}
     dh {MIDI.id.ESPERANCE}
 
-
     bgm_goemon:
     dh 3                                    // number of BGM
     dh {MIDI.id.OEDO_EDO}
@@ -794,6 +793,7 @@ scope Gallery {
     fgm_drum_kit:
 
     dh  0x020, 0x01F                     // Kicks
+    dh  0x08F, 0x08E                     // Japenese Kicks
     dh  0x11F, 0x033                     // Stomp / Fan smack
     dh  0x117, 0x038                     // POW Block / Koopa shell
     dh  0x03D, 0x02F                     // Gun Shoot / Bumper
@@ -809,8 +809,8 @@ scope Gallery {
     dh  0x180, 0x181                     // Kirby "Falcon Punch!"
     dh  0x256, 0x257                     // Yoshi
     dh  0x230, 0x234                     // Jigglypuff
+    dh  0x13E, 0x13F                     // Hitmonlee
     dh  0x5CD, 0x5CC                     // F-Zero Announcer "1" / "2"
-    dh  0x5CB, 0x5CE                     // F-Zero Announcer "3" / "GO"
     dh  0x52B, 0x52C                     // Kazooie Fair
     dh  0x52E, 0x52F                     // Beak Buster
     dh  0x5A1, 0x583                     // Crash Bounce / Spin
@@ -818,7 +818,7 @@ scope Gallery {
     dh  0x5F8, 0x5F9                     // Lanky "Hip" / "Hup"
     dh  0x547, 0x549                     // DKing Hurt
 
-    constant DRUM_KIT_ENTRY_COUNT(24)    // update this when we add sound effects
+    constant DRUM_KIT_ENTRY_COUNT(25)    // update this when we add sound effects
 
     drum_kit_index:
     dw  0
