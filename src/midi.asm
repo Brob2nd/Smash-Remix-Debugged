@@ -580,7 +580,7 @@ scope MIDI {
     insert_midi(STICKERBRUSH_SYMPHONY, OS.TRUE, OS.TRUE, "Stickerbrush Symphony", dkc2, 253)
     insert_midi(DOOM1, OS.TRUE, OS.TRUE, "DOOM Medley", doom, 73)
     insert_midi(RUNNING_FROM_EVIL, OS.TRUE, OS.TRUE, "Running From Evil", doom2, 225)
-     insert_midi(CONKER_THE_KING, OS.TRUE, OS.TRUE, "Conker the King (Reprise)", conker, 54)
+    insert_midi(CONKER_THE_KING, OS.TRUE, OS.TRUE, "Conker the King (Reprise)", conker, 54)
     insert_midi(GRABBAG, OS.TRUE, OS.TRUE, "Grabbag", dukenukem3d, 126)
     insert_midi(WITHMILASDIVINEPROTECTION, OS.TRUE, OS.TRUE, "With Mila's Divine Protection", fe_gaiden, 301)
     insert_midi(DKCTITLE, OS.TRUE, OS.TRUE, "Opening (Donkey Kong)", dkc, 191)

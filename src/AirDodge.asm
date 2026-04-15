@@ -180,7 +180,7 @@
             // if here, air dodge
             jal     air_dodge_initial_
             nop
-            
+
             // update air dodge tracker
             li      at, VsStats.airdodge_tracker
             lw      t0, 0x0084(a0)              // t0 = player struct
@@ -199,7 +199,7 @@
             jal     air_dash_initial_
             nop
 
-            // update air dodge counter
+            // update air dodge tracker
             li      at, VsStats.airdodge_tracker
             lw      t0, 0x0084(a0)              // t0 = player struct
             lbu     t0, 0x000D(t0)              // t0 = player index (0 - 3)

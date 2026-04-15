@@ -63,12 +63,12 @@ scope VsStats {
     tech_stats:; db "Tech Stats", 0x00
     ledge_stats:; db "Ledge Stats", 0x00
     times_grabbed:; db "Times grabbed", 0x00
-    airdodge_stats:; db "Air Dodge Stats", 0x00
-    times_dodged:; db "Times dodged", 0x00
     special_move_stats:; db "Special Move Stats", 0x00
     up_special:; db "Up Specials used", 0x00
     neutral_special:; db "Neutral Specials used", 0x00
     down_special:; db "Down Specials used", 0x00
+    airdodge_stats:; db "Air Dodge Stats", 0x00
+    times_dodged:; db "Times dodged", 0x00
     grab_stats:; db "Grab Stats", 0x00
     attempted_grabs:; db "Attempted grabs", 0x00
     attempted_throws:; db "Attempted throws", 0x00
@@ -160,10 +160,10 @@ scope VsStats {
     stat_tracker(tech_miss_tracker)
     stat_tracker(tech_percent_tracker)
     stat_tracker(ledge_grab_tracker)
-    stat_tracker(airdodge_tracker)
     stat_tracker(usp_tracker)
     stat_tracker(nsp_tracker)
     stat_tracker(dsp_tracker)
+    stat_tracker(airdodge_tracker)
     stat_tracker(grab_tracker)
     stat_tracker(throw_tracker)
     stat_tracker(throwf_tracker)
@@ -1176,7 +1176,7 @@ scope VsStats {
     }
 
     // @ Description
-    // Increment grab counter whenever someone starts a grab
+    // Increment grab tracker whenever someone starts a grab
     scope count_grabs: {
         OS.patch_start(0xC4600, 0x80149BC0)
         j   count_grabs
@@ -1199,7 +1199,7 @@ scope VsStats {
 
 
     // @ Description
-    // Increment throw counters when someone starts a throw
+    // Increment throw trackers when someone starts a throw
     scope count_throws: {
         addiu   sp, sp, -0x0014             // allocate stack space
         sw      ra, 0x0004(sp)              // save ra

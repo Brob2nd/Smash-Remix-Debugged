@@ -2086,7 +2086,7 @@ scope Stages {
         nop
         b       _end
         nop
-        
+
         _start_roulette:
         li      t1, roulette_cursor_timer         // t1 = roulette_cursor_timer
         lli     t0, random_stage_roulette.DELAY // start timer with value at target DELAY so it fires instantly
@@ -2254,7 +2254,7 @@ scope Stages {
         // ban stage logic
         _ban_stage:
         // checking for L release to reset bans
-        li      a0, Joypad.L                // a0 - L button mask 
+        li      a0, Joypad.L                // a0 - L button mask
         li      a2, Joypad.RELEASED         // a2 - type
         jal     Joypad.check_buttons_all_   // v0 = L pressed
         nop
@@ -2262,15 +2262,15 @@ scope Stages {
         nop
 
         // checking for C-Up release to ban non legal stages
-        li      a0, Joypad.CU               // a0 - C-Up button mask 
+        li      a0, Joypad.CU               // a0 - C-Up button mask
         li      a2, Joypad.RELEASED         // a2 - type
         jal     Joypad.check_buttons_all_   // v0 = C-Up released
         nop
         bnez    v0, _non_legal_ban          // if released, ban non legal stages
         nop
-        
+
         // checking for C-Down release to ban stage
-        li      a0, Joypad.CD               // a0 - C-Down button mask 
+        li      a0, Joypad.CD               // a0 - C-Down button mask
         li      a2, Joypad.RELEASED         // a2 - type
         jal     Joypad.check_buttons_all_   // v0 = C-Down released
         nop
@@ -2301,7 +2301,7 @@ scope Stages {
         multu   t3, v0                      // t3 = 1 * index
         mflo    t3
         multu   t3, t4                      // t3 = index * 4
-        mflo    t3 
+        mflo    t3
 
         // checking if already banned (unbanning if so)
         li      t0, bans_table              // checking if in bans_table
@@ -2369,11 +2369,11 @@ scope Stages {
         // if there are no bans then skip (only checking to avoid CLOUD_FADE sound from C-Up)
         li      t0, bans_table              // checking if in bans_table
         lw      t1, 0x0000(t0)              // loading ban stages 1-4
-        lw      t2, 0x0004(t0)              // loading ban stages 5-8 
+        lw      t2, 0x0004(t0)              // loading ban stages 5-8
         or      t1, t1, t2                  // seeing if any are banned
-        lw      t2, 0x0008(t0)              // loading ban stages 9-12 
+        lw      t2, 0x0008(t0)              // loading ban stages 9-12
         or      t1, t1, t2                  // seeing if any are banned
-        lw      t2, 0x000C(t0)              // loading ban stages 13-16 
+        lw      t2, 0x000C(t0)              // loading ban stages 13-16
         or      t1, t1, t2                  // seeing if any are banned
         lh      t2, 0x0010(t0)              // loading ban stages 17,18
         or      t1, t1, t2                  // seeing if any are banned
@@ -3293,8 +3293,8 @@ scope Stages {
         sw      v0, 0x0000(t0)              // saving the rectangle reference
         blt     t3, t4, _draw_bans          // if t3 <= MAX_BANS, make more ban icons
         nop
-        
-        // resetting bans table        
+
+        // resetting bans table
         li      t0, bans_table              // t0 = pointer to bans_table
         sw      r0, 0x0000(t0)              // setting bans 1-4 as 0 to reset
         sw      r0, 0x0004(t0)              // setting bans 5-8 as 0 to reset
@@ -3462,7 +3462,6 @@ scope Stages {
     db id.SUBCON                            // 46
     db id.PIRATE                            // 47
     db id.RANDOM                            // 48
-
     // page 5 (more stages)
     db id.CASINO                            // 49
     db id.MMADNESS                          // 4A
@@ -5627,7 +5626,7 @@ scope Stages {
     set_custom_item_spawn_rate(EDO, Dango, 0x14)
     add_bg_animation(EDO)
     add_stage(deku_tree_dl, "Deku Tree DL", {MIDI.id.KOKIRI_FOREST}, {MIDI.id.BRAWL_OOT}, {MIDI.id.SARIA}, {MIDI.id.GERUDO_VALLEY}, OS.TRUE, HAZARDS_ON_MOVEMENT_ON, OS.FALSE, OS.TRUE, class.BATTLE, -1, -1, -1, id.DEKU_TREE, variant_type.DL, 0x05, 0x05, 0x05, 0x03, 0x02, default_item_rate + 2, default_item_rate, ZELDA, Hazards.type.NONE, 65)
-    add_stage(zlanding_dl, "Crateria DL", {MIDI.id.CRATERIA_MAIN}, {MIDI.id.ZEBES_LANDING}, {MIDI.id.NORFAIR}, -1, OS.TRUE, HAZARDS_OFF_MOVEMENT_ON, OS.TRUE, OS.TRUE, class.BATTLE, -1, -1, -1, id.ZLANDING, variant_type.DL, 0x05, 0x05, 0x05, default_blue_shell_rate, default_lightning_rate, default_item_rate, default_item_rate,  METROID, Hazards.type.NONE, 62)
+    add_stage(zlanding_dl, "Crateria DL", {MIDI.id.CRATERIA_MAIN}, {MIDI.id.ZEBES_LANDING}, {MIDI.id.NORFAIR}, -1, OS.TRUE, HAZARDS_ON_MOVEMENT_ON, OS.TRUE, OS.TRUE, class.BATTLE, -1, -1, -1, id.ZLANDING, variant_type.DL, 0x05, 0x05, 0x05, default_blue_shell_rate, default_lightning_rate, default_item_rate, default_item_rate,  METROID, Hazards.type.NONE, 62)
     add_stage(goemon_btt, "Break the Targets", -1, {MIDI.id.TARGET_TEST}, {MIDI.id.TARGET_TEST}, -1, OS.FALSE, HAZARDS_ON_MOVEMENT_ON, OS.FALSE, OS.FALSE, class.BTT, 0x000041B8, 0x00004610, 0x00004820, -1, -1, 0x05, 0x05, 0x05, default_blue_shell_rate, default_lightning_rate, default_item_rate, default_item_rate,  NONE, Hazards.type.NONE, 50)
     add_stage(first_remix, "First Destination Remix", {MIDI.id.FIRST_DESTINATION}, {MIDI.id.MULTIMAN2}, {MIDI.id.CREDITS_BRAWL}, -1, OS.FALSE, HAZARDS_ON_MOVEMENT_ON, OS.FALSE, OS.TRUE, class.BATTLE, -1, -1, -1, id.FIRST_DESTINATION, variant_type.REMIX, 0x05, 0x05, 0x05, default_blue_shell_rate, default_lightning_rate, default_item_rate, default_item_rate, SMASH, Hazards.type.NONE, 82)
     add_stage(btp_goemon, "Board the Platforms", -1, {MIDI.id.TARGET_TEST}, {MIDI.id.TARGET_TEST}, -1, OS.FALSE, HAZARDS_ON_MOVEMENT_ON, OS.FALSE, OS.FALSE, class.BTP, 0x00006810, 0x00006948, -1, -1, -1, 0x05, 0x05, 0x05, default_blue_shell_rate, default_lightning_rate, default_item_rate, default_item_rate,  NONE, Hazards.type.NONE, 22)
@@ -5661,7 +5660,7 @@ scope Stages {
     add_stage(btp_crash, "Board The Platforms", -1, {MIDI.id.CRASHBONUS}, {MIDI.id.TARGET_TEST}, -1, OS.FALSE, HAZARDS_ON_MOVEMENT_ON, OS.FALSE, OS.FALSE, class.BTP, 0x00006950, 0x00006B38, -1, -1, -1, 0x05, 0x05, 0x05, default_blue_shell_rate, default_lightning_rate, default_item_rate, default_item_rate,  NONE, Hazards.type.NONE, 14)
     add_stage(btt_peach, "Break the Targets", -1, {MIDI.id.TARGET_TEST}, {MIDI.id.TARGET_TEST}, -1, OS.FALSE, HAZARDS_ON_MOVEMENT_ON, OS.FALSE, OS.FALSE, class.BTT, 0x00005D08, 0x000061D0, 0x000063E0, -1, -1, 0x05, 0x05, 0x05, default_blue_shell_rate, default_lightning_rate, default_item_rate, default_item_rate,  NONE, Hazards.type.NONE, 44)
     add_stage(btp_peach, "Board The Platforms", -1, {MIDI.id.TARGET_TEST}, {MIDI.id.TARGET_TEST}, -1, OS.FALSE, HAZARDS_ON_MOVEMENT_ON, OS.FALSE, OS.FALSE, class.BTP, 0x000088E0, 0x00008AC8, -1, -1, -1, 0x05, 0x05, 0x05, default_blue_shell_rate, default_lightning_rate, default_item_rate, default_item_rate,  NONE, Hazards.type.NONE, 28)
-    add_stage(soccer, "Soccer", {MIDI.id.SOCCER_MENU}, {MIDI.id.WILY_FIELD}, {MIDI.id.KENGJR}, {MIDI.id.NBA_JAM}, OS.FALSE, HAZARDS_ON_MOVEMENT_ON, OS.FALSE, OS.TRUE, class.RTTF, -1, -1, -1, id.SMASHKETBALL, variant_type.REMIX, 0x05, 0x05, 0x05, default_blue_shell_rate, default_lightning_rate, default_item_rate, default_item_rate,  REMIX, Hazards.type.NONE, 156)
+    add_stage(soccer, "Soccer", {MIDI.id.SOCCER_MENU}, {MIDI.id.WILY_FIELD}, {MIDI.id.KENGJR}, {MIDI.id.NBA_JAM}, OS.FALSE, HAZARDS_ON_MOVEMENT_ON, OS.FALSE, OS.TRUE, class.RTTF, -1, -1, -1, id.SMASHKETBALL, variant_type.REMIX, 0x05, 0x05, 0x05, default_blue_shell_rate, default_lightning_rate, default_item_rate, default_item_rate, REMIX, Hazards.type.NONE, 156)
     add_stage(time_twister, "Time Twister", {MIDI.id.CRASH3}, {MIDI.id.NSANITYBEACH}, {MIDI.id.HOGWILD}, {MIDI.id.CORTEX}, OS.TRUE, HAZARDS_ON_MOVEMENT_OFF, OS.FALSE, OS.TRUE, class.BATTLE, -1, -1, -1, -1, -1, 0x05, 0x05, 0x05, default_blue_shell_rate, default_lightning_rate, default_item_rate, default_item_rate,  CRASH, Hazards.type.MOVEMENT, 162)
     add_stage(time_twister_sss, "Time Twister (SSS)", {MIDI.id.CRASH3}, {MIDI.id.NSANITYBEACH}, {MIDI.id.HOGWILD}, {MIDI.id.CORTEX}, OS.FALSE, HAZARDS_ON_MOVEMENT_ON, OS.FALSE, OS.TRUE, class.SSS_PREVIEW, -1, -1, -1, id.TIME_TWISTER, variant_type.REMIX, 0x05, 0x05, 0x05, default_blue_shell_rate, default_lightning_rate, default_item_rate, default_item_rate,  CRASH, Hazards.type.MOVEMENT, 163)
     add_stage(nsanity_beach, "N. Sanity Beach", {MIDI.id.NSANITYBEACH}, {MIDI.id.CRASH3}, {MIDI.id.HOGWILD}, {MIDI.id.CORTEX}, OS.FALSE, HAZARDS_ON_MOVEMENT_ON, OS.FALSE, OS.TRUE, class.BATTLE, -1, -1, -1, id.TIME_TWISTER, variant_type.REMIX2, 0x05, 0x05, 0x05, default_blue_shell_rate, default_lightning_rate, default_item_rate, default_item_rate,  CRASH, Hazards.type.NONE, 121)

@@ -90,7 +90,7 @@ scope Random {
         dw 0 //dw string_0x0DD
         dw 0 //dw string_0x0DE
         dw 0 //dw string_0x0DF
-        dw 0 // dw string_0x0E0
+        dw 0 //dw string_0x0E0
         dw 0 //dw string_0x0E1
         dw 0 //dw string_0x0E2
         dw 0 //dw string_0x0E3

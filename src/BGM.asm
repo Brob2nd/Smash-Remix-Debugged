@@ -745,16 +745,16 @@ scope BGM {
         lli     t1, menu.MAIN_PERFECTDARK   // t1 = menu.MAIN_PERFECTDARK
         beq     t0, t1, _check_music_toggle // if playing PERFECTDARK, then don't restart it
         nop
-        lli     t1, menu.MAIN_CTR   // t1 = menu.MAIN_CTR
+        lli     t1, menu.MAIN_CTR           // t1 = menu.MAIN_CTR
         beq     t0, t1, _check_music_toggle // if playing CTR, then don't restart it
         nop
-        lli     t1, menu.MAIN_K64   // t1 = menu.MAIN_K64
+        lli     t1, menu.MAIN_K64           // t1 = menu.MAIN_K64
         beq     t0, t1, _check_music_toggle // if playing K64, then don't restart it
         nop
-        lli     t1, menu.MAIN_BOMBERMAN   // t1 = menu.MAIN_BOMBERMAN
+        lli     t1, menu.MAIN_BOMBERMAN     // t1 = menu.MAIN_BOMBERMAN
         beq     t0, t1, _check_music_toggle // if playing BOMBERMAN, then don't restart it
         nop
-        lli     t1, menu.MAIN_SONIC_R     // t1 = menu.MAIN_SONIC_R
+        lli     t1, menu.MAIN_SONIC_R       // t1 = menu.MAIN_SONIC_R
         beq     t0, t1, _check_music_toggle // if playing SONIC R, then don't restart it
         nop
 

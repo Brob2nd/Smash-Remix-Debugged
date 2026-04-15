@@ -75,59 +75,6 @@ scope ZCancel {
         dw  _trip
         dw  _swap_music
         dw  _random
-        
-        // A copy of 'Pause.set_alternate_music_', trimmed and modified to be a Z-Cancel punishment
-        _swap_music:
-        li      t0, Toggles.entry_play_music
-        lw      t0, 0x0004(t0)              // t0 = 0 if music is toggled off
-        beqz    t0, _swap_music_end         // skip if music is toggled off
-        nop
-        OS.save_registers()
-
-        // this block loads from the random list using a random int
-        li      t0, ZCancel._cruel_z_cancel._swapping_music
-        addiu   t8, r0, 0x0001              // ~
-        sw      t8, 0x0000(t0)              // set _swapping_music to 1
-        jal     BGM.random_music_
-        nop
-        li      t0, ZCancel._cruel_z_cancel._swapping_music
-        sw      r0, 0x0000(t0)              // set _swapping_music to 0
-        beqz    v1, _swap_music_restore     // if there were no valid entries in the random table, then don't do anything
-        nop
-        move    a0, v1                      // a0 - range (0, N-1)
-
-        jal     Global.get_random_int_      // v0 = (0, N-1)
-        nop
-        li      t0, BGM.random_table        // t0 = random_table
-        sll     v0, v0, 0x0002              // v0 = offset = random_int * 4
-        addu    t0, t0, v0                  // t0 = random_table + offset
-        lw      a1, 0x0000(t0)              // a1 = bgm_id
-        b       _play_random
-        nop
-
-        _play_random:
-        li      a0, BGM.current_track       // a0 = address of current_track
-        sw      a1, 0x0000(a0)              // store current_track
-        li      t1, BGM.vanilla_current_track // t1 = hardcoded spot for current track
-        sw      a1, 0x0000(t1)              // save as override track (vanilla)
-        lw      at, 0x0004(t1)              // at = stage music (vanilla)
-        sw      a1, 0x0004(t1)              // save as stage music (vanilla)
-        beq     at, a1, _swap_music_restore // don't change the music if it's the same track
-        nop
-        lui     a0, 0x8013
-        lw      a0, 0x1300(a0)              // a0 = stage file
-        sw      a1, 0x007C(a0)              // store bgm_id
-
-        jal     BGM.play_                   // play music
-        addiu   a0, r0, 0x0000
-
-        _swap_music_restore:
-        OS.restore_registers()
-        _swap_music_end:
-        li      at, _last_known_speed_value
-        lw      v0, 0x0000(at)           // load last known landing speed
-        b       _end                     // branch to end
-        lw      t9, 0x0028(v1)           // original line 2
 
         _on:
         lli     t8, 0x0012               // t8 =  custom surface flag (damage, minimal KB)
@@ -279,6 +226,59 @@ scope ZCancel {
         nop
         j       0x80150AF0 + 0x4         // and skip to end
         lw      ra, 0x0014(sp)
+
+        // A copy of 'Pause.set_alternate_music_', trimmed and modified to be a Z-Cancel punishment
+        _swap_music:
+        li      t0, Toggles.entry_play_music
+        lw      t0, 0x0004(t0)              // t0 = 0 if music is toggled off
+        beqz    t0, _swap_music_end         // skip if music is toggled off
+        nop
+        OS.save_registers()
+
+        // this block loads from the random list using a random int
+        li      t0, ZCancel._cruel_z_cancel._swapping_music
+        addiu   t8, r0, 0x0001              // ~
+        sw      t8, 0x0000(t0)              // set _swapping_music to 1
+        jal     BGM.random_music_
+        nop
+        li      t0, ZCancel._cruel_z_cancel._swapping_music
+        sw      r0, 0x0000(t0)              // set _swapping_music to 0
+        beqz    v1, _swap_music_restore     // if there were no valid entries in the random table, then don't do anything
+        nop
+        move    a0, v1                      // a0 - range (0, N-1)
+
+        jal     Global.get_random_int_      // v0 = (0, N-1)
+        nop
+        li      t0, BGM.random_table        // t0 = random_table
+        sll     v0, v0, 0x0002              // v0 = offset = random_int * 4
+        addu    t0, t0, v0                  // t0 = random_table + offset
+        lw      a1, 0x0000(t0)              // a1 = bgm_id
+        b       _play_random
+        nop
+
+        _play_random:
+        li      a0, BGM.current_track       // a0 = address of current_track
+        sw      a1, 0x0000(a0)              // store current_track
+        li      t1, BGM.vanilla_current_track // t1 = hardcoded spot for current track
+        sw      a1, 0x0000(t1)              // save as override track (vanilla)
+        lw      at, 0x0004(t1)              // at = stage music (vanilla)
+        sw      a1, 0x0004(t1)              // save as stage music (vanilla)
+        beq     at, a1, _swap_music_restore // don't change the music if it's the same track
+        nop
+        lui     a0, 0x8013
+        lw      a0, 0x1300(a0)              // a0 = stage file
+        sw      a1, 0x007C(a0)              // store bgm_id
+
+        jal     BGM.play_                   // play music
+        addiu   a0, r0, 0x0000
+
+        _swap_music_restore:
+        OS.restore_registers()
+        _swap_music_end:
+        li      at, _last_known_speed_value
+        lw      v0, 0x0000(at)           // load last known landing speed
+        b       _end                     // branch to end
+        lw      t9, 0x0028(v1)           // original line 2
 
         _last_known_speed_value:
         dw 0
