@@ -52,7 +52,7 @@ scope CaptainShared {
     OS.copy_segment(0xA9AF8, 0x0008)
     dw  Size.falcon.punch.render_routine_
     OS.copy_segment(0xA9B04, 0x0010)
-    
+
     kick_anim_struct_DRAGONKING:
     dw  0x060F0000
     dw  Character.DRAGONKING_file_7_ptr

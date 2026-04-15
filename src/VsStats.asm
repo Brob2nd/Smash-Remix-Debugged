@@ -1051,7 +1051,6 @@ scope VsStats {
         draw_row(neutral_special, 0, VsStats.nsp_tracker, 0x0000, 0x0004, -1, -1, 1)
         draw_row(down_special, 0, VsStats.dsp_tracker, 0x0000, 0x0004, -1, -1, 1)
 
-
         // Page 3
         _page_3:
         // Draw lines
@@ -1175,6 +1174,7 @@ scope VsStats {
         jr      ra
         addiu   sp, sp, 0x0010              // deallocate stack space
     }
+
     // @ Description
     // Increment grab counter whenever someone starts a grab
     scope count_grabs: {

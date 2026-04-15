@@ -1860,7 +1860,7 @@ scope Stages {
     }
 
     // @ Arguments
-    // a0 - hazard mode (0 - red, 1 - light blue, 2 - lighter blue, 3 - blue)
+    // a0 - hazard mode (0 - red, 1 - light blue, 2 - lighter blue, 3 - blue, 4 - black)
     scope update_cursor_color_: {
         addiu   sp, sp,-0x0010              // allocate stack space
         sw      t0, 0x0004(sp)              // ~
@@ -1883,10 +1883,10 @@ scope Stages {
 
         colors:
         dw      Color.high.RED              // RED
-        dw      0x0088FFFF                  // blue
+        dw      0x0088FFFF                  // light blue
         dw      0x39E5BAFF                  // lighter blue
         dw      Color.high.BLUE             // BLUE
-        dw      0x00000000                  // black
+        dw      Color.high.BLACK            // BLACK
     }
 
     // @ Description
