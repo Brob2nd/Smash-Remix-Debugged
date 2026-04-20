@@ -1244,9 +1244,8 @@ scope VsStats {
         lw      t2, 0x000C(sp)              // restore t2
         lw      t0, 0x0008(sp)              // restore t0
         lw      ra, 0x0004(sp)              // restore ra
-        addiu   sp, sp, 0x0014              // deallocate stack space
         jr      ra
-        nop
+        addiu   sp, sp, 0x0014              // deallocate stack space
     }
 
 }
