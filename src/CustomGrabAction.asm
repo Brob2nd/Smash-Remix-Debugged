@@ -116,3 +116,5 @@ scope CustomGrabAction: {
         nop
     }
 }
+
+} // __CUSTOMGRABACTION__

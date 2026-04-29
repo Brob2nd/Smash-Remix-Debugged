@@ -1,4 +1,7 @@
 // Reflect.asm
+if !{defined __REFLECT__} {
+define __REFLECT__()
+print "included Reflect.asm\n"
 
 // This file allows us to use custom reflect routines for the reflecting player. Usually related to an action change or fgm/gfx
 // Also some AI stuff
@@ -84,7 +87,6 @@ scope Reflect {
 			// todo: franklin badge check here
 			j		0x801338A0					// dont shoot if the opponent can reflect or absorb
 			lw		v1, 0x0008(s0)
-
 		}
 
 		// @ Description
@@ -495,9 +497,7 @@ scope Reflect {
 			_intiate_absorb:
 			j      0x801380A0
 			nop
-
 		}
-
 	}
 
     // @ Description
@@ -588,7 +588,6 @@ scope Reflect {
         _end:
         j     0x800E667C                    // original line 1 (sorta)
         lw    t6, 0x0098(sp)                // original line 2
-
     }
 
     // @ Description
@@ -708,7 +707,6 @@ scope Reflect {
         _original:
         j       _return                     // return
         sw      a0, 0x0008(v1)              // update item ownership (original line 1)
-
     }
 
     // @ Description
@@ -866,7 +864,6 @@ scope Reflect {
         _normal:
         j       _return
         nop
-
     }
 
     // @ Description
@@ -879,3 +876,5 @@ scope Reflect {
         // add more routines here
     }
 }
+
+} // __REFLECT__

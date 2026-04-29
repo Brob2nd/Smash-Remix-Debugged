@@ -1,3 +1,8 @@
+// SFXReplace.asm
+if !{defined __SFX_REPLACE__} {
+define __SFX_REPLACE__()
+print "included SFXReplace.asm\n"
+
 scope SFXReplace {
     // Notes, not up to date with tables! Tables have more sounds
     // step: 69, 6A, 6B, 6C, 6D, 6E, 6F, 70, 71, 72, 73
@@ -214,3 +219,5 @@ scope SFXReplace {
         nop
     }
 }
+
+} // __SFX_REPLACE__

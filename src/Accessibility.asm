@@ -195,4 +195,6 @@ scope Accessibility {
         nop
 
     }
+}
+
 } // __ACCESSIBILITY__

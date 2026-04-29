@@ -1,3 +1,8 @@
+// PerfectShield.asm
+if !{defined __PERFECT_SHIELD__} {
+define __PERFECT_SHIELD__()
+print "included PerfectShield.asm\n"
+
 // @ Description
 // Adds the Perfect Shield Melee mechanic.
 // Perfect shielding reduces shield stun and possible to reflect projectiles
@@ -50,8 +55,7 @@ scope PerfectShield {
         j       _return + 0x4
         lw      t2, 0x07C8(s0)                      // og line3
     }
-    
-    
+
     // @ Description
     // Reflect projectiles if under 3 frames
     scope shield_reflect_projectiles: {
@@ -136,7 +140,6 @@ scope PerfectShield {
         _original_branch:
         j       0x80166CE0 + 0x4                    // og branch location
         lw      a0, 0x0020(sp)                      // og branch line 1
-
     }
 
     // @ Description
@@ -232,7 +235,6 @@ scope PerfectShield {
         _original_branch:
         j       0x80171228 + 0x4                    // og branch location
         lw      a0, 0x0020(sp)                      // og branch line 1
-
     }
     
     // a0 = player object
@@ -264,5 +266,6 @@ scope PerfectShield {
         jr      ra
         nop
     }
-
 }
+
+} // __PERFECT_SHIELD__

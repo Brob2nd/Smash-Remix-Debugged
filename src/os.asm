@@ -1,6 +1,7 @@
 // OS.asm
 if !{defined __OS__} {
 define __OS__()
+print "included os.asm\n"
 
 // @ Description
 // This file contains useful macros and functions to make assembly easier.
@@ -153,7 +154,6 @@ scope OS {
             evaluate firstHalf({firstHalf} + 0x0001) // modify address if value is negative
         }
         lui    {register}, {firstHalf}      // register = first half of address
-
     }
 
     // Prepare a register to read from a table
@@ -179,7 +179,6 @@ scope OS {
             evaluate firstHalf({firstHalf} + 0x0001) // modify address if value is negative
         }
         lui    {register}, {firstHalf}      // register = first half of address
-
     }
 
     // Reads a word from a table and puts into the output register
@@ -196,7 +195,6 @@ scope OS {
             evaluate firstHalf({firstHalf} + 0x0001) // modify address if value is negative
         }
         lw      {output_register}, {secondHalf}({table_register})  // output
-
     }
 
     // Reads a half-word from a table and puts into the output register
@@ -213,7 +211,6 @@ scope OS {
             evaluate firstHalf({firstHalf} + 0x0001) // modify address if value is negative
         }
         lh      {output_register}, {secondHalf}({table_register})  // output
-
     }
 
     // Reads a byte from a table and puts into the output register
@@ -230,7 +227,6 @@ scope OS {
             evaluate firstHalf({firstHalf} + 0x0001) // modify address if value is negative
         }
         lb      {output_register}, {secondHalf}({table_register})  // output
-
     }
 
     // Reads a word from a given address
@@ -249,7 +245,6 @@ scope OS {
         }
         lui    {register}, {firstHalf}      // register = first half of address
         lw     {register}, {secondHalf}({register}) // register = value from address
-
     }
 
     // Reads a half-word from a given address
@@ -418,4 +413,4 @@ scope OS {
     // }
 }
 
-}
+} // __OS__

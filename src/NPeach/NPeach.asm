@@ -1,10 +1,9 @@
-// Peach.asm
+// NPeach.asm
 
 // This file contains file inclusions, action edits, and assembly for NPeach.
 
 scope NPeach {
-
-    // Modify Action Parameters             // Action                       // Animation                    // Moveset Data                 // Flags
+    // Modify Action Parameters              // Action                       // Animation                    // Moveset Data                   // Flags
     Character.edit_action_parameters(NPEACH, Action.DeadU,                   File.PEACH_TUMBLE,              -1,                               -1)
     Character.edit_action_parameters(NPEACH, Action.ScreenKO,                File.PEACH_TUMBLE,              -1,                               -1)
     Character.edit_action_parameters(NPEACH, Action.Entry,                   File.PEACH_IDLE,                -1,                               -1)
@@ -233,7 +232,7 @@ scope NPeach {
     Character.edit_action(NPEACH, Peach.Action.USPFall,    0x11,           0,                          PeachUSP.fall_interrupt_,       0x80143750,                     0x8014384C)
     Character.edit_action(NPEACH, Peach.Action.DSPPull,    0x1E,           PeachDSP.main,              0,                              0x800D8BB4,                     0x800DDF44)
 
-    // Modify Menu Action Parameters              // Action // Animation                // Moveset Data             // Flags
+    // Modify Menu Action Parameters               // Action // Animation                // Moveset Data             // Flags
     Character.edit_menu_action_parameters(NPEACH,  0x0,      File.PEACH_IDLE,            -1,                         -1)
     Character.edit_menu_action_parameters(NPEACH,  0x1,      File.PEACH_VICTORY1,        Peach.VICTORY1,             -1)
     Character.edit_menu_action_parameters(NPEACH,  0x2,      File.PEACH_VICTORY2,        Peach.VICTORY2,             -1)
@@ -300,5 +299,4 @@ scope NPeach {
 
     // Handles common things for Polygons
     Character.polygon_setup(NPEACH, PEACH)
-
 }

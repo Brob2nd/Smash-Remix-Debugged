@@ -1,4 +1,7 @@
-
+// Parry.asm
+if !{defined __PARRY__} {
+define __PARRY__()
+print "included Parry.asm\n"
 scope Parry {
     constant PARRY_SFX(0x5BB) // sound effect used for parrying
 
@@ -887,3 +890,5 @@ scope Parry {
         nop
     }
 }
+
+} // __PARRY__

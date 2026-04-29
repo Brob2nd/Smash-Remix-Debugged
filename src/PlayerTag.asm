@@ -329,4 +329,5 @@ scope PlayerTag {
         nop
     }
 }
-}
+
+} // __PLAYER_TAG__

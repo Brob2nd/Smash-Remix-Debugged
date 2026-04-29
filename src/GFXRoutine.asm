@@ -101,7 +101,6 @@ scope GFXRoutine {
         dw 0x3C000000 | (({x} & 0xFF) << 16) | (({y} & 0xFF) << 8) | ({z} & 0xFF) // command
     }
 
-
     // @ Description
     // Adds a gfx routine from a binary file.
     // name - gfx routine name, id.{name} will be created
@@ -534,4 +533,5 @@ scope GFXRoutine {
         }
     }
 }
-}
+
+} // __GFXROUTINE__

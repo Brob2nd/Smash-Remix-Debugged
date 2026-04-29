@@ -911,7 +911,6 @@ scope Gallery {
         jal     BGM.play_                   // play BGM
         lli     a0, 0                       // a0 = 0
 
-
         _end_idle_init:
         // update the character id using the current gallery index
         lbu     t0, status.index(s0)        // t0 = gallery index
@@ -1520,4 +1519,6 @@ scope Gallery {
             OS.patch_end()
         }
     }
+}
+
 } // __GALLERY__

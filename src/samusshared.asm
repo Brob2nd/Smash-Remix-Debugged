@@ -1,4 +1,7 @@
 // Samusshared.asm
+if !{defined __SAMUS_SHARED__} {
+define __SAMUS_SHARED__()
+print "included samusshared.asm\n"
 
 // This file contains shared functions by Samus Clones.
 
@@ -428,3 +431,5 @@ scope SamusShared {
     dw 0x00000000
 
 }
+
+} // __SAMUS_SHARED__

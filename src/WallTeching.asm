@@ -1,4 +1,7 @@
 // WallTeching.asm
+if !{defined __WALLTECHING__} {
+define __WALLTECHING__()
+print "included Wallteching.asm\n"
 
 scope WallTeching {
 
@@ -105,3 +108,5 @@ scope WallTeching {
     }
 
 }
+
+} // __WALLTECHING__

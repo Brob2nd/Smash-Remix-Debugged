@@ -1,6 +1,7 @@
 // ZCancel.asm
-if !{defined __ZCancel__} {
-define __ZCancel__()
+if !{defined __Z_CANCEL__} {
+define __Z_CANCEL__()
+print "included ZCancel.asm\n"
 
 include "Color.asm"
 include "Global.asm"
@@ -431,7 +432,6 @@ scope ZCancel {
         jr      ra
         nop
     }
-
 }
 
-}
+} // __Z_CANCEL__

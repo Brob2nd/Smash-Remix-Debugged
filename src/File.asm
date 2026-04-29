@@ -1,5 +1,8 @@
 // File.asm
 // This file contains constants for SmashRemix file IDs.
+if !{defined __FILE__} {
+define __FILE__()
+print "included File.asm\n"
 
 scope File {
     // vanilla
@@ -3333,4 +3336,6 @@ scope File {
     constant GBOWSER_FTILT(0x154C)
     constant GBOWSER_FTILT_LOW(0x154D)
     constant GBOWSER_TURN(0x154E)
- }
+}
+
+} // __FILE__

@@ -1,3 +1,8 @@
+// OnHit.asm
+if !{defined __ON_HIT__} {
+define __ON_HIT__()
+print "included OnHit.asm\n"
+
 scope OnHit {
     // @ Description
     // Patch that can be used to run functions when characters are hit.
@@ -29,3 +34,5 @@ scope OnHit {
         nop
     }
 }
+
+} // __ON_HIT__

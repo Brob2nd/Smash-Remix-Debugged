@@ -1,4 +1,7 @@
 // MarioShared.asm
+if !{defined __MARIO_SHARED__} {
+define __MARIO_SHARED__()
+print "included marioshared.asm\n"
 
 // This file contains shared functions by Mario and others
 
@@ -142,6 +145,7 @@ scope MarioShared {
         lw a0, 0x10(sp)
         OS.routine_end(0x20)
     }
+
     Character.table_patch_start(recovery_logic, Character.id.MARIO, 0x4)
     dw recovery_logic; OS.patch_end()
     Character.table_patch_start(recovery_logic, Character.id.JMARIO, 0x4)
@@ -199,7 +203,6 @@ scope MarioShared {
     Character.table_patch_start(pipe_turn, Character.id.CONKER, 0x1)
     db      OS.TRUE;     OS.patch_end();
 
-
     // Hardcoding for when Mario Clones use Pipes, ensures they face the correct way when entering
     scope pipe_turn_enter: {
         OS.patch_start(0xBCC40, 0x80142200)
@@ -252,3 +255,5 @@ scope MarioShared {
     }
 
 }
+
+} // __MARIO_SHARED__

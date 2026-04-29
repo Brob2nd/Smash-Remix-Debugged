@@ -33,4 +33,4 @@ if !{defined __PROJECTILE__} {
         add_projectile(RAINBOWROAD_CHAINCHOMP)
         add_projectile(CACODEMON_THUNDERBALL)
     }
-}
+} // __PROJECTILE__

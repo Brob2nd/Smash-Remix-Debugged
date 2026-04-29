@@ -1,3 +1,8 @@
+// JabLock.asm
+if !{defined __JAB_LOCK__} {
+define __JAB_LOCK__()
+print "included JabLock.asm\n"
+
 // @ Description
 // Optional toggle for a "Jab Lock" mechanic.
 scope JabLock {
@@ -90,3 +95,5 @@ scope JabLock {
         lw      t6, 0x0B18(v0)              // original line 2
     }
 }
+
+} // __JAB_LOCK__

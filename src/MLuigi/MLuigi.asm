@@ -1,6 +1,6 @@
-// MLUIGI.asm
+// MLuigi.asm
 
-// This file contains file inclusions, action edits, and assembly for MLUIGI.
+// This file contains file inclusions, action edits, and assembly for Metal Luigi.
 
 scope MLUIGI {
     // Insert Moveset files
@@ -59,12 +59,12 @@ constant STEP_FGM(0x7A)
     Character.table_patch_start(crowd_chant_fgm, Character.id.MLUIGI, 0x2)
     dh  0x0260
     OS.patch_end()
-    
+
     // Add initial script/passive armor.
     Character.table_patch_start(initial_script, Character.id.MLUIGI, 0x4)
     dw initial_script_
     OS.patch_end()
-    
+
     // @ Description
     // Sets Metal Luigi's Passive Armor. This is based on Giant DK's script at 800D7DD4.
     scope initial_script_: {
@@ -84,7 +84,7 @@ constant STEP_FGM(0x7A)
     // Set default costumes
     Character.set_default_costumes(Character.id.MLUIGI, 0, 1, 4, 5, 1, 3, 2)
     Teams.add_team_costume(YELLOW, MLUIGI, 0x4)
-    
+
     // Shield colors for costume matching
     Character.set_costume_shield_colors(MLUIGI, BLACK, RED, GREEN, BLUE, YELLOW, ORANGE, NA, NA)
 

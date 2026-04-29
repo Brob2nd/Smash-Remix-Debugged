@@ -1,4 +1,4 @@
-// J Falcon.asm
+// JFalcon.asm
 
 // This file contains file inclusions, action edits, and assembly for J Captain Falcon.
 
@@ -12,7 +12,6 @@ scope JFalcon {
     Character.edit_action_parameters(JFALCON, 0xDC,                  -1,                         NEUTRAL3,                   -1)
 
     // Modify Menu Action Parameters             // Action          // Animation                // Moveset Data             // Flags
-
 
     // Set crowd chant FGM.
      Character.table_patch_start(crowd_chant_fgm, Character.id.JFALCON, 0x2)
@@ -89,6 +88,5 @@ scope JFalcon {
         OS.UPPER(at, FALCONDIVE_AIR_SPEED_MAX_MUL)          // load upper 2 bytes of FALCONDIVE_AIR_SPEED_MAX_MUL
         j       _return                                     // return
         lwc1    f16, FALCONDIVE_AIR_SPEED_MAX_MUL & 0xFFFF(at) // load lower 2 bytes of FALCONDIVE_AIR_SPEED_MAX_MUL
-        
     }
 }

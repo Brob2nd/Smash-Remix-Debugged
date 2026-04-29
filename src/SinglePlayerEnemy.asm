@@ -195,7 +195,6 @@ scope SinglePlayerEnemy {
         ori     at, at, 0x00FF              // original line 2
         j       0x8010B754                  // return to function
         nop
-
     }
 
     // Sets it so CPU 1 is set to correct port when respawing in team modes
@@ -290,7 +289,6 @@ scope SinglePlayerEnemy {
        j        _return                     // return
        nop
     }
-
 
     string_enemy:;  String.insert("Enemy Player")
     string_start:;  String.insert("Press Z")
@@ -539,5 +537,6 @@ scope SinglePlayerEnemy {
        j        _return                 // return
        nop
     }
+}
 
 } // __SINGLE_PLAYER_ENEMY__

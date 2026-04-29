@@ -1,6 +1,8 @@
 // fireball.asm
-
 // This file allows for copies of Mario's fireball projectile to be generated.
+if !{defined __FIREBALL__} {
+define __FIREBALL__()
+print "included fireball.asm\n"
 
 include "OS.asm"
 include "Global.asm"
@@ -549,3 +551,5 @@ scope Fireball: {
     add_to_character(Character.id.JLUIGI, struct_jluigi)
     add_to_character(Character.id.DRL, struct_drl)
 }
+
+} // __FIREBALL__

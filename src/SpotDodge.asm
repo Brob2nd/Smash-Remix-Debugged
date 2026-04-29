@@ -1,6 +1,9 @@
 // SpotDodge.asm
 // Adds spot dodge mechanic to smash remix
 // by halofactory
+if !{defined __SPOT_DODGE__} {
+define __SPOT_DODGE__()
+print "included SpotDodge.asm\n"
 scope SpotDodge {
 
     // @ Description
@@ -32,7 +35,6 @@ scope SpotDodge {
         _end:
         j       0x80141FD0                      // go to end of routine
         lw      a0, 0x001C(sp)                  // restore a0
-
 
         _plat_drop_check_modified:
         or      v0, r0, r0                      // v0 = 0
@@ -92,5 +94,6 @@ scope SpotDodge {
         dw 0x04000010   // wait 16 frames
         dw 0x74000001
         dw 0x00000000
-
 }
+
+} // __SPOT_DODGE__

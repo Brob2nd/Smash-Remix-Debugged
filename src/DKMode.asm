@@ -1,5 +1,9 @@
 // DKMode.asm
 // Coded by HaloFactory
+if !{defined __DK_MODE__} {
+define __DK_MODE__()
+print "included DKMode.asm\n"
+
 scope DKMode {
 
     // 1 = DK mode, 2 = Lanky mode
@@ -213,3 +217,5 @@ scope DKMode {
         dw 0b100010001110111011101110
     }
 }
+
+} // __DK_MODE__

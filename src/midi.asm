@@ -1,6 +1,7 @@
 // MIDI.asm (Fray)
 if !{defined __MIDI__} {
 define __MIDI__()
+print "included midi.asm\n"
 
 // This file extends the music table and defines macros for including new MIDI files.
 // It also extends the instrument table and defines macros for including new instruments.
@@ -1172,7 +1173,6 @@ scope MIDI {
     add_instrument_sample(sfx3,      0x0, 0x0, 66 * 1879, 0x7F, 0x7F, 0x0, 0x7F, 87, 87,  99, 0x0, 0x3F, 0x7E, OS.FALSE, 0, 0, 0, OS.FALSE)
     add_instrument_sample(sfx4,      0x0, 0x0, 66 * 1879, 0x7F, 0x7F, 0x0, 0x7F, 88, 88, 100, 0x0, 0x3F, 0x7E, OS.FALSE, 0, 0, 0, OS.FALSE)
     add_instrument(DK_Rap, 0x7E, 0x3F, 0x05, 1200, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0)
-
 
     // TODO: be ecstatic its only 357k
     add_instrument_sample(roll-1, 0x0, 0x0, 66 * 1879, 0x7F, 0x7F, 0x0, 0x7F,  24,  24,  36, 0x0, 0x3F, 0x7E, OS.FALSE, 0, 0, 0, OS.FALSE)

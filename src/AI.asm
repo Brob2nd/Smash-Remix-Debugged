@@ -12,7 +12,6 @@ include "OS.asm"
 
 scope AI {
 
-
     is_default_cpu_lvl_set:
     dw 0
 
@@ -24,7 +23,6 @@ scope AI {
         nop
         _return:
         OS.patch_end()
-
 
         addiu   s3, s3, 0xBDC8      // og line 2
 
@@ -48,7 +46,6 @@ scope AI {
         _skip_initial_setup:
         j       _return             // return
         lui     at, 0x8014          // og line 1
-
     }
 
     // @ Description
@@ -124,8 +121,6 @@ scope AI {
         _skip_evade_check:
         j       0x80132CE8                  // skip to end of evasion routine
         nop
-
-
     }
 
     // @ Description
@@ -311,7 +306,6 @@ scope AI {
         addiu   a1, r0, 0x0C                // arg1 = command = PRESS Z
         j       0x80137FBC + 0x4            // return to end of routine
         nop
-
 
         _pikachu:
         OS.read_word(Global.match_info, v0) // v0 = current match info struct
@@ -659,7 +653,6 @@ scope AI {
         dw _fail                            // none
     }
 
-
     // @ Description
     // Usually, this function checks for a z-cancel press with 10 frames. At the end of this, at
     // holds a boolean for successful z-cancel. This function has been modified to make sure that
@@ -704,7 +697,6 @@ scope AI {
         addiu   sp, sp, 0x0010              // deallocate stack space
         j       _skip_toggle
         nop
-
 
         _normal:
         Toggles.guard(Toggles.entry_improved_ai, OS.NULL)
@@ -1021,7 +1013,6 @@ scope AI {
         _end_0x80136BF8:
         j      0x80136BF8
         nop
-
     }
 
     // @ Description
@@ -1171,7 +1162,6 @@ scope AI {
         _fox_or_ness_opponent:
         j        0x80138ED0                     // exit routine if opponent = Fox or Ness
         or       v0, r0, r0                     // v0 = 0 (original delay slot)
-
     }
 
     // @ Description
@@ -1290,7 +1280,6 @@ scope AI {
         _using_charge_attack:
         j       0x80138ED0                       // original branch when Samus is using NSP
         or      v0, r0, r0                       // original delay slot
-
     }
 
     // @ Description
@@ -1331,7 +1320,6 @@ scope AI {
         _ignore_projectile:
         j      0x80137804
         nop
-
     }
 
     // @ Description
@@ -1393,7 +1381,6 @@ scope AI {
         _goemon_usp:
         j       0x801321A4
         lbu     v0, 0x0003(t0)
-
     }
 
     // fixed Goemons recovery so he always points upwards
@@ -1459,8 +1446,6 @@ scope AI {
         j       _return
         lbu     t9, 0x0007(t8)              // og line 2
     }
-
-
 
     // CONTROLLER COMMANDS
     // 0xAxyy - yy = Stick X
@@ -2498,7 +2483,6 @@ scope AI {
             // remix
         }
 
-
         scope extend_polygon_check_: {
             OS.patch_start(0xAE2C0, 0x80133880)
             j       extend_polygon_check_
@@ -2521,10 +2505,8 @@ scope AI {
             _normal_vanilla_character:
             j       _return
             nop
-
         }
     }
-
 
     // if the opponent is far away? classic characters will do one of these jumps
     scope LONG_RANGE: {
@@ -2728,7 +2710,6 @@ scope AI {
             constant INPUT(0xFFFFFFFF)
             constant OFFSET(0x0134)
         }
-
         scope NAIR: {
             constant INPUT(0x00000013)
             constant OFFSET(0x0150)
@@ -2846,7 +2827,6 @@ scope AI {
         if {min_y} > {max_y} {
             error "min_y range must be less than max_y range"
         }
-        
         dw {input_id}
         dw {hitbox_start_frame}
         dw 0 // hitbox end frame, unused
@@ -2856,11 +2836,9 @@ scope AI {
         float32 {max_y}
     }
 
-
     macro END_ATTACKS() {
         dw 0xFFFFFFFF, 0, 0, 0, 0, 0, 0
     }
-
 
     // @ Description
     // Custom table for AI to use to finish off opponents
@@ -3006,9 +2984,7 @@ scope AI {
                 _prevent_sd:
                 j       0x80133520                      // jump to original routine
                 addiu   t2, r0, 0x0001
-
             }
-
 
             // @ Description
             // Prevents Bowser from doing a dangerous attack near ledge
@@ -3070,7 +3046,6 @@ scope AI {
                 _prevent_sd:
                 j       0x80133520                      // jump to original routine
                 addiu   t2, r0, 0x0001
-
 
             }
 
@@ -3247,7 +3222,6 @@ scope AI {
                 j       0x80133520                  // jump to original routine
                 nop
             }
-
         }
 
         // places of interest
@@ -3330,7 +3304,6 @@ scope AI {
             scope DEFAULT: {
                 constant MAIN(0x80137778)
 
-
                 // Checks own action to decide next input
                 scope ACTION_CHECK: {
                     constant MAIN(0x80136D0C)
@@ -3353,10 +3326,8 @@ scope AI {
                     // 0x801372D0 branch if unknown timer (0x2C) is not > 300
                     // 0x80137300 stick jump if unknown flag?
                     // 0x8013731C branch if not taken damage
-                        // check if state = YOSHI_TEAM, KIRBY_TEAM, or POLYGON?
+                    // check if state = YOSHI_TEAM, KIRBY_TEAM, or POLYGON?
                     // 0x8013759C if Action.Tumble
-
-
                 }
 
                 // Loops through each player. Run away from them if they meet a criteria
@@ -3413,7 +3384,6 @@ scope AI {
                         // 0x80135CB8 - skip if tangibility(0x144) = FALSE
                         // 0x80135CCC - skip if hitbox(0x150) <= 0
                         // 0x80135CF8 - skip if projectile not moving towards cpu
-
                         // 0x80135E70 - Check if cpu can reflect/absorb this (character id check)
                     }
 
@@ -3429,7 +3399,6 @@ scope AI {
 
                         // 0x80136114 - Reflect/Absorb check
                     }
-
                 }
                 // IF HAZARD FOUND, SET STATE TO SHIELD
 
@@ -3437,7 +3406,6 @@ scope AI {
                 // 0x801379B4 - exit routine if no item is in hand
                 // ^ check if holding crate, barrel, capsule, or egg
                 // Sets state to ITEM_HAVE if they have another item
-
             }
 
             // @ Description
@@ -3495,7 +3463,7 @@ scope AI {
                         // loops through each
                         // a0 = target player
                         scope ATTACK_CHECK: {
-                                constant MAIN(0x80132EC8)
+                            constant MAIN(0x80132EC8)
                         }
 
                         // 0x801332E0 check if target in Action.PASS
@@ -3508,8 +3476,6 @@ scope AI {
                         // 0x- check if target has a super star?
                     }
 
-
-
                     // @ Description
                     // Used while an item is held by cpu players
                     scope ITEM_HAVE: {
@@ -3521,8 +3487,6 @@ scope AI {
                         // 0x80138318 - branch if NOT a Pokeball
                     }
                 }
-
-
             }
         }
 
@@ -3627,7 +3591,6 @@ scope AI {
             _original_end:
             j           0x80149EA8                  // jump to end of grab interrupt
             lw          ra, 0x0014(sp)              // load ra
-
         }
 
         // Run away from opponents who are coming off the respawn plat
@@ -3654,7 +3617,6 @@ scope AI {
             _normal:
             j       0x80132CAC
             lw      v0, 0x084C(s0)              // original branch line 2
-
         }
 
         // @ Description
@@ -3696,7 +3658,6 @@ scope AI {
             bnez    at, _set_input
             addiu   a1, r0, AI.ROUTINE.TAUNT       // do taunt
 
-
             // level_10:
             lw      t6, 0x0008(a0)              // t6 = current character id
             addiu   at, r0, Character.id.NESS
@@ -3721,7 +3682,6 @@ scope AI {
             _no_input:
             j       0x80137768          // original branch
             or      v0, r0, r0          // original branch line 2
-
         }
 
         // ftComputerProcessAll 8013A834+50
@@ -4776,7 +4736,7 @@ scope AI {
 
                     // target X = ledge X (previously set already)
                 }
-                
+
                 _end:
                 addiu sp, sp, 0x30
 
@@ -5244,7 +5204,7 @@ scope AI {
                 // so for us, if we're grounded we consider ground friction will be active while we perform our move
                 // for the opponent, we keep the simple vanilla approach and just project their movement based on current speed
                 cvt.s.w f2, f4 // f2 = hit_frame (float)
-                
+
                 scope predict_my_x: {
                     lwc1 f18, 0x1ac(sp) // f18 = this_pos_x
                     lwc1 f4, 0x1a4(sp) // f4 = this_vel_x
@@ -5276,7 +5236,7 @@ scope AI {
 
                     _calc_pos:
                     or at, r0, a0 // at = hit_frame (int)
-                    
+    
                     _loop_start: {
                         // if at <= 0, end loop
                         blez at, _loop_end
@@ -5498,7 +5458,7 @@ scope AI {
             addiu t0, t0, -10 // t0 = 0 if level 10
             bnez t0, _end // if not lv10, perform original logic
             nop
-            
+
             addu t9, sp, a0
             sw t7, 0x10C(t9) // save input type to this slot
 
@@ -6126,7 +6086,6 @@ scope AI {
             b       _end
             addiu   a1, r0, AI.ROUTINE.MULTI_SHINE // custom
 
-
             b       _continue
             nop
 
@@ -6359,7 +6318,6 @@ scope AI {
         // Character.table_patch_start(close_quarter_combat, Character.id.GBOWSER, 0x4)
         // dw     stop_roll_spam_._skip; OS.patch_end()
 
-
         // @ Description
         // Allows cpus to perform a shield drop instead of a normal plat drop
         scope shield_drop_: {
@@ -6492,7 +6450,6 @@ scope AI {
         //     OS.patch_end();
 
         // }
-
 
         // @ Description
         // Helps level 10 Fox not spam his up special
@@ -6897,6 +6854,7 @@ scope AI {
                 lli     at, 0x000A          // at = 10
                 beql    t6, at, pc() + 8    // if level 10...
                 lw      t9, 0x003C(sp)      // ...then set the offset to be for "1"
+
                 _render_number_return:
                 jr      ra
                 lw      a0, 0x0034(sp)      // original line 2 - a0 = CPU level object
@@ -7093,7 +7051,6 @@ scope AI {
                 }
             }
         }
-
 
         // @ Description
         // asm fixes and so LVL 10 works in normal gameplay without causing issues for the other cpu levels
@@ -7323,15 +7280,13 @@ scope AI {
 
     // fox laser shoot 80135374, 80135ABC (jal 0x80132758), 80138EAC (jal 0x80132778)
 
-
     // 0x80132EC8 loops through each entry in attack behaviour struct to see if the cpu should attack
-
 
     // related to off-ledge
     // TRACK OPPONENT PLAYER IF OFF STAGE 0x80132A98
     // Manage off-stage AI 0x80134B30
 
     }
-
+}
 
 } // __AI__

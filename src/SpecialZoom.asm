@@ -1,3 +1,7 @@
+// SpecialZoom.asm
+if !{defined __SPECIAL_ZOOM__} {
+define __SPECIAL_ZOOM__()
+print "included SpecialZoom.asm\n"
 scope Zoom {
 
     // offset_y:
@@ -75,7 +79,6 @@ scope Zoom {
         // j       _return
         // nop
     // }
-
 
     constant ZOOM_DURATION(0x0028)
 
@@ -1629,3 +1632,5 @@ scope Zoom {
         nop
     }
 }
+
+} // SPECIALZOOM

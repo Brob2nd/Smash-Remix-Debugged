@@ -1,9 +1,8 @@
-// nwario.asm
+// NWario.asm
 
 // This file contains file inclusions, action edits, and assembly for Wario.
 
-        // insert moveset
-
+    // insert moveset
 
 scope NWARIO {
     // Modify Action Parameters             // Action               // Animation                // Moveset Data             // Flags
@@ -14,7 +13,7 @@ scope NWARIO {
     Character.edit_action_parameters(NWARIO, Action.Run,             File.WARIO_RUN,             Wario.RUN,                        -1)
     Character.edit_action_parameters(NWARIO, Action.RunBrake,        File.WARIO_RUN_BRAKE,       -1,                         -1)
     Character.edit_action_parameters(NWARIO, Action.Turn,            File.WARIO_TURN,            -1,                         -1)
-    Character.edit_action_parameters(NWARIO, Action.TurnRun,         File.WARIO_RUN_TURN,        Wario.RUN_TURN,                   -1)
+    Character.edit_action_parameters(NWARIO, Action.TurnRun,         File.WARIO_RUN_TURN,        Wario.RUN_TURN,             -1)
     Character.edit_action_parameters(NWARIO, Action.JumpSquat,       File.WARIO_LANDING,         -1,                         -1)
     Character.edit_action_parameters(NWARIO, Action.ShieldJumpSquat, File.WARIO_LANDING,         -1,                         -1)
     Character.edit_action_parameters(NWARIO, Action.JumpF,           File.WARIO_JUMP_F,          Wario.JUMP_1,                     -1)
@@ -32,9 +31,9 @@ scope NWARIO {
     Character.edit_action_parameters(NWARIO, Action.TechB,           -1,                         Wario.TECH_ROLL,                  -1)
     Character.edit_action_parameters(NWARIO, Action.RollF,           -1,                         Wario.ROLL_F,                     -1)
     Character.edit_action_parameters(NWARIO, Action.RollB,           -1,                         Wario.ROLL_B,                     -1)
-    Character.edit_action_parameters(NWARIO, Action.CliffAttackQuick1, File.WARIO_LEDGE_ATK_F_1, -1,                         -1)
+    Character.edit_action_parameters(NWARIO, Action.CliffAttackQuick1, File.WARIO_LEDGE_ATK_F_1, -1,                               -1)
     Character.edit_action_parameters(NWARIO, Action.CliffAttackQuick2, File.WARIO_LEDGE_ATK_F_2, Wario.EDGE_ATTACK_F,              -1)
-    Character.edit_action_parameters(NWARIO, Action.CliffAttackSlow2, -1,                        Wario.EDGE_ATTACK_S,              -1)
+    Character.edit_action_parameters(NWARIO, Action.CliffAttackSlow2,-1,                         Wario.EDGE_ATTACK_S,              -1)
     Character.edit_action_parameters(NWARIO, Action.ShieldBreak,     -1,                         Wario.SHIELD_BREAK,               -1)
     Character.edit_action_parameters(NWARIO, Action.Stun,            -1,                         Wario.STUN,                       -1)
     Character.edit_action_parameters(NWARIO, Action.Sleep,           -1,                         Wario.ASLEEP,                     -1)
@@ -68,7 +67,7 @@ scope NWARIO {
     Character.edit_action_parameters(NWARIO, Action.AttackAirB,      File.WARIO_BAIR,            Wario.BAIR,                       -1)
     Character.edit_action_parameters(NWARIO, Action.AttackAirU,      File.WARIO_UAIR,            Wario.UAIR,                       -1)
     Character.edit_action_parameters(NWARIO, Action.AttackAirD,      File.WARIO_DAIR,            Wario.DAIR,                       0)
-    Character.edit_action_parameters(NWARIO, Action.LandingAirX,     File.WARIO_LANDING,         -1,                         -1)
+    Character.edit_action_parameters(NWARIO, Action.LandingAirX,     File.WARIO_LANDING,         -1,                               -1)
     Character.edit_action_parameters(NWARIO, Action.LandingAirU,     File.WARIO_LANDING_U,       Wario.LANDING_AIR_U,              -1)
     Character.edit_action_parameters(NWARIO, 0xDD,                   File.WARIO_IDLE,            0x80000000,                      0x00000000)
     Character.edit_action_parameters(NWARIO, 0xDE,                   File.WARIO_IDLE,            0x80000000,                      0x00000000)
@@ -79,30 +78,30 @@ scope NWARIO {
     Character.edit_action_parameters(NWARIO, 0xE3,                   File.WARIO_DSP_GROUND,      Wario.DSP_GROUND,                 0)
     Character.edit_action_parameters(NWARIO, 0xE4,                   File.WARIO_DSP_AIR,         Wario.DSP_AIR,                    0)
 
-    // Modify Actions            // Action          // Staling ID   // Main ASM                 // Interrupt/Other ASM          // Movement/Physics ASM         // Collision ASM
+    // Modify Actions            // Action          // Staling ID   // Main ASM                  // Interrupt/Other ASM         // Movement/Physics ASM         // Collision ASM
     Character.edit_action(NWARIO, 0xDD,              -1,             0x8013D994,                 0x00000000,                    0x00000000,                     0x00000000)
     Character.edit_action(NWARIO, 0xDE,              -1,             0x8013D994,                 0x00000000,                    0x00000000,                     0x00000000)
-    Character.edit_action(NWARIO, 0xDF,              -1,             0x800D94C4,                 WarioNSP.ground_move_,          WarioNSP.ground_physics_,       WarioNSP.ground_collision_)
-    Character.edit_action(NWARIO, 0xE0,              -1,             0x800D94E8,                 WarioNSP.air_move_,             WarioNSP.air_physics_,          WarioNSP.air_collision_)
-    Character.edit_action(NWARIO, 0xE1,              -1,             WarioUSP.main_,             WarioUSP.change_direction_,     WarioUSP.physics_,              WarioUSP.collision_)
-    Character.edit_action(NWARIO, 0xE2,              0x1E,           0x800D94C4,                 0,                              0x800D8BB4,                     0x800DDEE8)
-    Character.edit_action(NWARIO, 0xE3,              -1,             0x800D94E8,                 WarioDSP.ground_move_,          WarioDSP.physics_,              WarioDSP.collision_)
-    Character.edit_action(NWARIO, 0xE4,              -1,             0x800D94E8,                 WarioDSP.air_move_,             WarioDSP.physics_,              WarioDSP.collision_)
+    Character.edit_action(NWARIO, 0xDF,              -1,             0x800D94C4,                 WarioNSP.ground_move_,          WarioNSP.ground_physics_,      WarioNSP.ground_collision_)
+    Character.edit_action(NWARIO, 0xE0,              -1,             0x800D94E8,                 WarioNSP.air_move_,             WarioNSP.air_physics_,         WarioNSP.air_collision_)
+    Character.edit_action(NWARIO, 0xE1,              -1,             WarioUSP.main_,             WarioUSP.change_direction_,     WarioUSP.physics_,             WarioUSP.collision_)
+    Character.edit_action(NWARIO, 0xE2,              0x1E,           0x800D94C4,                 0,                              0x800D8BB4,                    0x800DDEE8)
+    Character.edit_action(NWARIO, 0xE3,              -1,             0x800D94E8,                 WarioDSP.ground_move_,          WarioDSP.physics_,             WarioDSP.collision_)
+    Character.edit_action(NWARIO, 0xE4,              -1,             0x800D94E8,                 WarioDSP.air_move_,             WarioDSP.physics_,             WarioDSP.collision_)
 
     // Add Action Parameters                // Action Name      // Base Action  // Animation                // Moveset Data             // Flags
     Character.add_new_action_params(WARIO,  NSP_Recoil_Ground,  -1,             File.WARIO_NSP_RECOIL_G,    Wario.NSP_RECOIL,                 0)
     Character.add_new_action_params(WARIO,  NSP_Recoil_Air,     -1,             File.WARIO_NSP_RECOIL_A,    Wario.NSP_RECOIL,                 0)
 
-    // Add Actions                  // Action Name      // Base Action  //Parameters                        // Staling ID   // Main ASM                 // Interrupt/Other ASM          // Movement/Physics ASM         // Collision ASM
+    // Add Actions                   // Action Name      // Base Action  //Parameters                        // Staling ID   // Main ASM                 // Interrupt/Other ASM          // Movement/Physics ASM         // Collision ASM
     Character.add_new_action(NWARIO, NSP_Recoil_Ground,  -1,             ActionParams.NSP_Recoil_Ground,     0x12,           0x800D94C4,                 0,                              0x800D8BB4,                     WarioNSP.recoil_ground_collision_)
     Character.add_new_action(NWARIO, NSP_Recoil_Air,     -1,             ActionParams.NSP_Recoil_Air,        0x12,           0x800D94E8,                 WarioNSP.recoil_move_,          WarioNSP.recoil_physics_,       WarioNSP.recoil_air_collision_)
 
-    // Modify Menu Action Parameters                // Action           // Animation                // Moveset Data             // Flags
+    // Modify Menu Action Parameters                 // Action           // Animation                // Moveset Data             // Flags
     Character.edit_menu_action_parameters(NWARIO,    0x0,                File.WARIO_IDLE,            Wario.IDLE,                 -1)
     Character.edit_menu_action_parameters(NWARIO,    0x1,                File.WARIO_VICTORY_1,       0x80000000,                  0)
     Character.edit_menu_action_parameters(NWARIO,    0x2,                File.WARIO_VICTORY_2,       0x80000000,                  0)
     Character.edit_menu_action_parameters(NWARIO,    0x3,                File.WARIO_VICTORY_3,       0x80000000,                  0)
-    Character.edit_menu_action_parameters(NWARIO,    0x4,                File.WARIO_VICTORY_3,       0x80000000,                      0)
+    Character.edit_menu_action_parameters(NWARIO,    0x4,                File.WARIO_VICTORY_3,       0x80000000,                  0)
     Character.edit_menu_action_parameters(NWARIO,    0x5,                File.WARIO_CLAP,            Wario.CLAPPING,              0)
     Character.edit_menu_action_parameters(NWARIO,    0xD,                File.WARIO_POSE_1P,         Wario.POSE_1P,              -1)
     Character.edit_menu_action_parameters(NWARIO,    0xE,                File.WARIO_1P_CPU_POSE,     0x80000000,                 -1)
@@ -158,5 +157,4 @@ scope NWARIO {
 
     // Handles common things for Polygons
     Character.polygon_setup(NWARIO, WARIO)
-
 }

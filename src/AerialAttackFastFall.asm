@@ -2,6 +2,9 @@
 // Adds the ability to fast fall while performing a normal aerial attack. A mechanic intrduced in smash melee
 // coded by halofactory
 // based on gameshark code @ https://smashboards.com/threads/gameshark-code-collection.341009/
+if !{defined __AERIAL_ATTACK_FAST_FALL__} {
+define __AERIAL_ATTACK_FAST_FALL__()
+print "included Accessibility.asm\n"
 scope AerialAttackFastFall {
 
     // @ Description
@@ -19,8 +22,7 @@ scope AerialAttackFastFall {
         _normal:
         j       0x800D90E0 + 4              // default routine
         addiu   sp, sp, -0x0020             // default routine line 1
-
-    }
+}
 
     OS.patch_start(0xA5638, 0x80129E38) // nair
     dw  fast_fall_check
@@ -37,5 +39,6 @@ scope AerialAttackFastFall {
     OS.patch_start(0xA5688, 0x80129E88) // dair
     dw  fast_fall_check
     OS.patch_end()
-
 }
+
+} // __AERIAL_ATTACK_FAST_FALL__

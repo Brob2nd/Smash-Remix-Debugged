@@ -1,5 +1,8 @@
 // ResultsScreen.asm
 // thanks to tehzz for providing documentation
+if !{defined __RESULTS_SCREEN__} {
+define __RESULTS_SCREEN__()
+print "included resultsscreen.asm\n"
 
 include "OS.asm"
 include "Global.asm"
@@ -821,4 +824,5 @@ scope ResultsScreen {
     add_to_results_screen(Character.id.NPEACH,   FGM.announcer.names.NFIGHTER,               SMASH,           Character.id.CAPTAIN, 185,     POLY PEACH,      20,     0.6,       0x0B)
     add_to_results_screen(Character.id.NCRASH,   FGM.announcer.names.NFIGHTER,               SMASH,           Character.id.CAPTAIN, 185,     POLY CRASH,      20,     0.6,       0x0B)
 }
-}
+
+} // __RESULTS_SCREEN__

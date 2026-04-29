@@ -1,5 +1,6 @@
-if !{defined __VanillaLv10Attacks__} {
-define __VanillaLv10Attacks__()
+// VanillaLv10Attacks.asm
+if !{defined __VANILLALV10ATTACKS__} {
+define __VANILLALV10ATTACKS__()
 print "included VanillaLv10Attacks.asm\n"
 
 scope VanillaLv10Attacks: {
@@ -543,3 +544,5 @@ scope VanillaLv10Attacks: {
         OS.patch_end()
     }
 }
+
+} // __VANILLALV10ATTACKS__

@@ -1066,3 +1066,5 @@ scope SinglePlayerMenus: {
         nop
     }
 }
+
+} // __SINGLE_PLAYER_MENUS__

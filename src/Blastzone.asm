@@ -1,3 +1,8 @@
+// Blastzone.asm
+if !{defined __BLASTZONE__} {
+define __BLASTZONE__()
+print "included BGM.asm\n"
+
 scope BlastZone: {
     // Blast zone warping coded by halofactory
 
@@ -105,7 +110,6 @@ scope BlastZone: {
         _skip:
         j       _return
         nop
-
     }
     // hook over routine that KOS players on right side of screen
     scope loop_screen_right_: {
@@ -316,7 +320,6 @@ scope BlastZone: {
         nop
     }
 
-
     // hook before player is KO'd at bottom blast zone
     scope loop_screen_bottom_: {
         OS.patch_start(0xB78A8,0x8013CE68)
@@ -429,3 +432,5 @@ scope BlastZone: {
         nop
     }
 }
+
+} // __BLASTZONE__

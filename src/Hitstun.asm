@@ -1,3 +1,8 @@
+// Hitstun.asm
+if !{defined __HITSUN__} {
+define __HITSTUN__()
+print "included Hitstun.asm\n"
+
 scope Hitstun {
     // @ Description
     // Toggle for Melee Style Hitstun.
@@ -8,7 +13,6 @@ scope Hitstun {
         nop
         hitstun_end_:
         OS.patch_end()
-
 
         lui     at, 0x3FF0                  // original line 1 (1.875 fp)
         mtc1    at, f4                      // original line 2, move to floating point register (f4)
@@ -21,3 +25,5 @@ scope Hitstun {
         nop
     }
 }
+
+} // __HITSTUN__

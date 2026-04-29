@@ -1,3 +1,8 @@
+// Poison.asm
+if !{defined __POISON__} {
+define __POISON__()
+print "included Poison.asm\n"
+
 // @ Description
 // Apply poison effects
 scope Poison {
@@ -134,7 +139,7 @@ scope Poison {
         addiu   at, r0, Stamina.STAMINA_MODE    // stamina mode
         bne     t2, at, _continue
         lw      t2, 0x002C(a2)           // t2 = current hp
-        
+
         lb      t4, 0x000D(a2)          // t5 = player port
         sll     at, t4, 0x3             // calculate offset
         subu    at, at, t4
@@ -147,7 +152,7 @@ scope Poison {
         lb      at, 0x002B(at)          // load stock amount
         bltz    at, _exit_1             // skip if the player is already defeated
         nop
-        
+
         li      at, Stamina.TOTAL_HP    // load total hitpoints address
         lw      at, 0x0000(at)          // load total hitpoints amount
         slt     t3, at, t7              // if total hitpoints are less than total percent set t7
@@ -155,7 +160,7 @@ scope Poison {
         addu    t7, at, r0
         beq     r0, r0, _continue
         nop
-        
+
         //addiu   at, r0, Action.Grab
         //lw      t2, 0x0024(a2)           // t2 = current action
         //
@@ -276,6 +281,6 @@ scope Poison {
         sw      r0, 0x001C(at)
     }
 
-
-
 }
+
+} // __POISON__

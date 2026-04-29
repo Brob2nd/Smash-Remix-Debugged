@@ -1,6 +1,8 @@
 // Command.asm (Fray)
-
 // This file adds support for new commands in the moveset microcode
+if !{defined __COMMAND__} {
+define __COMMAND__()
+print "included Command.asm\n"
 
 include "OS.asm"
 
@@ -785,7 +787,6 @@ scope Command {
             lwc1    f16, 0x0000(t0)         // f16 = translation multiplier
             mul.s   f18, f18, f16           // apply translation multiplier
 
-
 			li      t0, Size.multiplier_table    // t0 = size.multiplier_table
             lbu     t1, 0x000D(a0)          // t1 = port
             sll     t1, t1, 0x0002          // t1 = index = port * 4
@@ -855,7 +856,6 @@ scope Command {
 			beq		r0, r0, _end
 			mul.s   f18, f4, f18            // apply super multiplier
 
-
 			_poison:
 			lui		t1, POISON_MULT			// load poison size multiplier
 			mtc1    t1, f4					// move 1.8(fp) to f4 register
@@ -875,7 +875,6 @@ scope Command {
         float32 1.0                         // p2 translation multiplier
         float32 1.0                         // p3 translation multiplier
         float32 1.0                         // p4 translation multiplier
-
     }
 
     // @ Description
@@ -1173,3 +1172,4 @@ scope Command {
     pullvar base, origin
 }
 
+} // __COMMAND__

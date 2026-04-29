@@ -1,4 +1,7 @@
-
+// FootStool.asm
+if !{defined __FOOTSTOOL__} {
+define __FOOTSTOOL__()
+print "included FootStool.asm\n"
 
 // @ Description
 // Adds the Brawl mechanic allowing players to footstool jump off eachother
@@ -66,7 +69,6 @@ scope FootStool {
         _no_jump:
         j       0x80140324
         addiu   sp, sp, 0x0050
-
     }
     // @ Description
     // if here, then character is performing a mid-air jump
@@ -172,7 +174,6 @@ scope FootStool {
         lw      ra, 0x001C(sp)              // ~
         jr      ra                          // return
         addiu   sp, sp, 0x0050              // deallocate stack space
-
     }
 
     // @ Description
@@ -626,5 +627,6 @@ scope FootStool {
         jr      ra
         addiu   sp, sp, 0x028
     }
-
 }
+
+} // __FOOTSTOOL__

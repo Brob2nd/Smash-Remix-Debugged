@@ -67,4 +67,5 @@ scope Skeleton {
         apply_skeleton_mode(t7, t4)
     }
 }
-}
+
+} // __SKELETON__

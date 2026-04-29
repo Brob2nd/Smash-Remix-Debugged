@@ -1,8 +1,9 @@
 // CharacterDataScreen.asm
 // Coded by MarioReincarnate
 // Additional help from Halofactory
-if !{defined __CharacterDataScreen__} {
-define __CharacterDataScreen__()
+if !{defined __CHARACTERDATASCREEN__} {
+define __CHARACTERDATASCREEN__()
+print "included CharacterDataScreen.asm\n"
 
 include "Color.asm"
 include "Global.asm"
@@ -794,7 +795,6 @@ scope CharacterDataScreen {
         constant crash_body_slam(0x8000C7C8)
         constant spin(0x8000C908)
         constant diggin_it(0x8000CA48)
-
     }
 
     // name, bio_offset, unknown2, unknown3, name_X, name_Y,                 name_offset, works_offset, nsp_offset, dsp_offset, usp_offset, use_existing_special_actions, special_char, use_existing_jab_actions, jab_char)
@@ -1003,4 +1003,4 @@ scope CharacterDataScreen {
 
 }
 
-}
+} // __CHARACTERDATASCREEN__

@@ -296,5 +296,6 @@ dw 0
 
 training_skip_advance:
 dw 0
+}
 
 } // __SPEED__

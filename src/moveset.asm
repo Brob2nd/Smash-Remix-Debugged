@@ -1,7 +1,9 @@
 // Moveset.asm (Fray)
-
 // This file adds support for reading moveset data from a pointer, and contains other moveset data
 // related constants and macros.
+if !{defined __MOVESET__} {
+define __MOVESET__()
+print "included moveset.asm\n"
 
 scope Moveset {
     // @ Description
@@ -49,14 +51,14 @@ scope Moveset {
         dw 0x90000000                       // command
         dw {address}                        // pointer
     }
-    
+
     // @ Description
     // adds a LOOP moveset command
     macro LOOP(count) {
         dh 0x8000                       // command
         dh {count}                      // loop interations
     }
-    
+
     // @ Description
     // adds a END_LOOP moveset command
     macro END_LOOP() {
@@ -124,7 +126,6 @@ scope Moveset {
         dw  0x18000000
     }
 
-
     // @ Description
     // adds a SLOPE_CONTOUR moveset command
     // 0 = none
@@ -178,13 +179,13 @@ scope Moveset {
     macro RETURN() {
         dw 0x8C000000                       // command
     }
-    
+
     // @ Description
     // adds a END moveset command
     macro END() {
         dw 0x00000000                       // command
     }
-    
+
     // @ Description
     // adds a CREATE_GFX command
     macro CREATE_GFX(bone, id, x1, y1, z1, x2, y2, z2) {
@@ -205,7 +206,7 @@ scope Moveset {
     macro GO_TO_FILE(offset) {
         dh 0xDB00 ; dh {offset}
     }
-    
+
     // @ Description
     // adds a SFX moveset command
     macro SFX(fgm_id) {
@@ -219,7 +220,7 @@ scope Moveset {
         dh 0x4400
         dh {fgm_id}
     }
-    
+
     // @ Description
     // Alternate VOICE moveset command
     // Stops playing voice on action change
@@ -252,8 +253,6 @@ scope Moveset {
         dw 0, 0, 0;
     }
 
-
-
     // @ Description
     // adds a HIDE_ITEM moveset command
     macro HIDE_ITEM() {
@@ -265,7 +264,7 @@ scope Moveset {
     macro SHOW_ITEM() {
         dw 0xC0000001;
     }
-    
+
     // @ Description
     // adds a SET_FLAG moveset command
     // Sets variable 0x17C, 0x180, or 0x184 in player struct to TRUE
@@ -313,3 +312,5 @@ scope Moveset {
         insert ITEM_THROW_AIR_SMASH_FB,"moveset/ITEM_THROW_AIR_SMASH_FB.bin"
     }
 }
+
+} // __MOVESET__

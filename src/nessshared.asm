@@ -1,4 +1,7 @@
 // Nessshared.asm
+if !{defined __NESS_SHARED__} {
+define __NESS_SHARED__()
+print "included nessshared.asm\n"
 
 // This file contains shared functions by Ness Clones.
 
@@ -27,7 +30,6 @@ scope NessShared {
         _normal:
         j       _return
         nop
-
     }
 
     // @ Description
@@ -64,10 +66,7 @@ scope NessShared {
         lwc1    f4, 0x0020(t0)      // og line 1
         j       _return
         lui     at, 0x8019          // og line 2
-
     }
-
-
 
     // @ Description
     // loads a different pointer for Ness clones/Kirby when spawning pkfire graphic.
@@ -277,7 +276,6 @@ scope NessShared {
         lui     a1, AIR_SPEED_MULTIPLIER_LUCAS
         j       _return                     // return
         mtc1    t8, f8                      // f8 = landing fsm
-
     }
 
     // @ Description
@@ -500,7 +498,7 @@ scope NessShared {
         j       _return                     // return
         lw      t7, 0x0008(v1)              // original line 1
     }
-    
+
     // 80185614+28
     scope pkfire_pillar_gravity_: {
         OS.patch_start(0x10007C, 0x8018563C)
@@ -510,12 +508,12 @@ scope NessShared {
         nop
         _return:
         OS.patch_end()
-        
+
         constant U_ITPKFIRE_GRAVITY(0x3EE66666)     // float: 0.45F
         constant U_ITPKFIRE_TVEL(0x425C)            // float: 55F
         constant J_ITPKFIRE_GRAVITY(0x3ECCCCCD)     // float: 0.4F
         constant J_ITPKFIRE_TVEL(0x4248)            // float: 50F
-        
+
         // a0 = item struct, a1 = gravity, a2 = terminal velocity
         beqzl   a1, _jness                  // take branch if J Ness
         lui     a1, J_ITPKFIRE_GRAVITY >> 16 // load upper 2 bytes of J_ITPKFIRE_GRAVITY
@@ -523,7 +521,7 @@ scope NessShared {
         li      a1, U_ITPKFIRE_GRAVITY      // otherwise, load U gravity (original line 1/2)
         j       0x80172558                  // modified original line 3
         lui     a2, U_ITPKFIRE_TVEL         // load U terminal velocity (original line 4)
-        
+
         _jness:
         ori     a1, a1, J_ITPKFIRE_GRAVITY & 0xFFFF // load lower 2 bytes of J_ITPKFIRE_GRAVITY
         j       0x80172558                  // modified original line 3
@@ -740,7 +738,6 @@ scope NessShared {
         nop
         lui     a1, 0x8019                  // original line
         addiu   a1, a1, 0x9238              // original line
-
 
         _end:
         lw      t1, 0x0004(sp)              // ~
@@ -983,7 +980,6 @@ scope NessShared {
     dw Character.LUCAS_file_7_ptr
     OS.copy_segment(0x106088, 0x20)
 
-
     // establishes a pointer to the character struct that can be used for a character id check during
     // special_struct3.
     scope get_pkthunder_playerstruct1_: {
@@ -1150,8 +1146,7 @@ scope NessShared {
 		_normal:
 		j		0x80138A9C						// skip rest of routine if not Ness.
 		lw		ra, 0x0014(sp)					// original
-
-	}
+    }
 
 
 	// @ Description
@@ -1263,7 +1258,6 @@ scope NessShared {
 		//lwc1    f6, 0x0230(v0)				// f6 = previous y coord cpu was going towards
 		//swc1    f4, 0x0000(at)				// save x
 		//swc1    f6, 0x0004(at)				// save y
-
 
 		_continue_0:
 		beqzl	a0, _continue
@@ -1397,7 +1391,7 @@ scope NessShared {
         nop
         b _end
         nop
-        
+
         _going_left:
         // check if ledge grab X < ledge X
         // if so, dsp
@@ -1426,3 +1420,5 @@ scope NessShared {
     Character.table_patch_start(recovery_logic, Character.id.LUCAS, 0x4)
     dw recovery_logic; OS.patch_end()
 }
+
+} // __NESS_SHARED__

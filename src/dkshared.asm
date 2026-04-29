@@ -1,4 +1,7 @@
 // dkshared.asm
+if !{defined __DK_SHARED__} {
+define __DK_SHARED__()
+print "included dkshared.asm\n"
 
 // This file contains shared functions by DK Clones.
 
@@ -363,7 +366,7 @@ scope DKShared {
         _sonic:
         addiu   at, r0, 0x0001
         lw      t6, 0x0044(s0)              // load direction
-        bne     t6, at, _sonic_left                 // if facing left, use left
+        bne     t6, at, _sonic_left         // if facing left, use left
         sw      r0, 0x0044(s0)              // clears out player facing
         li      a0, sonic_entry_struct_right
         beq     r0, r0, _end
@@ -384,7 +387,6 @@ scope DKShared {
         j       _return                     // return
         nop
     }
-
 
     sonic_entry_struct_right:
     // Entry Objects like the barrel have structs which are used to load them, similar to the Blue Falcon and others
@@ -589,3 +591,5 @@ scope DKShared {
     Character.table_patch_start(cpu_post_process, Character.id.JDK, 0x4)
     dw cpu_post_process; OS.patch_end()
 }
+
+} // __DK_SHARED__

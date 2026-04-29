@@ -1873,5 +1873,6 @@ scope Costumes {
     // Set default costumes
     Character.set_default_costumes(Character.id.BOSS, 0, 0, 0, 0, 0, 0, 0)
     Character.set_default_costumes(Character.id.METAL, 0, 1, 4, 5, 1, 3, 2)
+}
 
 } // __COSTUMES__

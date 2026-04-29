@@ -1,4 +1,7 @@
 // Action.asm
+if !{defined __ACTION__} {
+define __ACTION__()
+print "included Action.asm\n"
 
 // This file contains constants for known action IDs
 scope Action {
@@ -2106,5 +2109,6 @@ scope Action {
         jal     0x800E6F24                  // change action
         sw      r0, 0x0010(sp)              // argument 4 = 0
     }
-
 }
+
+} // __ACTION__

@@ -1,7 +1,9 @@
 // KirbyHats.asm
-
 // This file allows for adding Kirby "hats" without needing to modify Kirby's original files.
 // (We do have to add a req file and pointer to the Kirby Character file, but that's it.)
+if !{defined __KIRBY_HATS__} {
+define __KIRBY_HATS__()
+print "included KirbyHats.asm\n"
 
 scope KirbyHats {
     // @ Description
@@ -871,3 +873,5 @@ scope KirbyHats {
         sw      t5, 0x0ADC(s0)              // original line 2 - set power to suck
     }
 }
+
+} // __KIRBY_HATS__

@@ -1,4 +1,7 @@
 // jigglypuffkirbyshared.asm
+if !{defined __JIGGLYPUFF_KIRBY_SHARED__} {
+define __JIGGLYPUFF_KIRBY_SHARED__()
+print "included jigglypuffkirbyshared.asm\n"
 
 // This file contains shared functions by Jigglypuff and Kirby Clones.
 
@@ -256,7 +259,6 @@ scope JigglypuffKirbyShared: {
         _return:
         OS.patch_end()
 
-
         addiu   at, r0, Character.id.JKIRBY     // JKIRBY ID
         beq     t6, at, _infinite_fix_1
         nop
@@ -275,8 +277,6 @@ scope JigglypuffKirbyShared: {
         or      a0, s0, r0                 // original line 2
         _return:
         OS.patch_end()
-
-
 
         beq     v0, at, _kirbyfthrow_1          // modified original line 1
         addiu   at, r0, Character.id.JKIRBY     // JKIRBY ID
@@ -431,8 +431,6 @@ scope JigglypuffKirbyShared: {
         nop
         _return:
         OS.patch_end()
-
-
 
         beq     v0, at, _pokeballflash          // modified original line 1 part 1
 
@@ -850,7 +848,6 @@ scope JigglypuffKirbyShared: {
         _puff_kirby:
         j       _return                    // take puff or kirbys branch
         nop
-
     }
 
     // @ Description
@@ -879,7 +876,6 @@ scope JigglypuffKirbyShared: {
         addiu   at, r0, 0x000D              // original logic, flag for Puff USP?
         j       0x80133F84                  // branch seems to prevent the cpu from using the attack
         lbu     t7, 0x0002(v1)              // original logic. affects next attack
-
     }
 
     OS.align(16)
@@ -1255,3 +1251,5 @@ scope JigglypuffKirbyShared: {
     Character.table_patch_start(cpu_attack_weight, Character.id.JKIRBY, 0x4)
     dw cpu_attack_weight_kirby; OS.patch_end()
 }
+
+} // __JIGGLYPUFF_KIRBY_SHARED__

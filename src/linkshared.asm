@@ -1,4 +1,7 @@
 // Linkshared.asm
+if !{defined __LINK_SHARED__} {
+define __LINK_SHARED__()
+print "included linkshared.asm\n"
 
 // This file contains shared functions by Link Clones.
 
@@ -917,7 +920,7 @@ scope recovery_logic: {
         _left:
         lwc1 f6, 0x01CC+0x4C(a0) // load nearest LEFT ledge X
         lwc1 f8, 0x01CC+0x50(a0) // load nearest LEFT ledge Y
-        
+
         b _check_end
         nop
 
@@ -975,3 +978,5 @@ Character.table_patch_start(recovery_logic, Character.id.JLINK, 0x4)
 dw recovery_logic; OS.patch_end()
 Character.table_patch_start(recovery_logic, Character.id.ELINK, 0x4)
 dw recovery_logic; OS.patch_end()
+
+} // __LINK_SHARED__

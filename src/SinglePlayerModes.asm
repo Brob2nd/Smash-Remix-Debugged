@@ -1,3 +1,8 @@
+// SinglePlayerModes.asm
+if !{defined __SINGLE_PLAYER_MODES__} {
+define __SINGLE_PLAYER_MODES__()
+print "included SinglePlayerModes.asm\n"
+
 include "FGM.asm"
 
 scope SinglePlayerModes: {
@@ -145,7 +150,6 @@ scope SinglePlayerModes: {
         _1p:
         j       _return
         nop
-
 
         _1p_load:
         addiu   sp, sp,-0x0020              // allocate stack space
@@ -464,7 +468,7 @@ scope SinglePlayerModes: {
         addiu    t6, r0, 0x0001                 // set team attack on
         j        _return
         sb        t6, 0x0009(t7)                // original line 2
-        }
+    }
 
     //  @ Description
     //  Set Item Spawn rate
@@ -493,7 +497,7 @@ scope SinglePlayerModes: {
         _multiman:
         j       _return
         addiu   t6, r0, 0x0000                  // set item spawn rate to none
-        }
+    }
 
     // @ Description
     // Set player handicap/knockback ratio
@@ -552,7 +556,7 @@ scope SinglePlayerModes: {
         _cruel:
         j       _return
         addiu   t8, r0, 0x0018                  // set opponent knockback to what it is on very hard
-        }
+    }
 
     // @ Description
     //  Loads number of opponents
@@ -590,7 +594,7 @@ scope SinglePlayerModes: {
         _bonus3:
         j        _return
         addiu    t4, r0, 0x0003                 // set opponent number to 3 as is normally done
-        }
+    }
 
     // @ Description
     //    Loads opponent number
@@ -630,7 +634,7 @@ scope SinglePlayerModes: {
         nop
         j       _return
         nop
-        }
+    }
 
     // @ Description
     //  Loads opponent 2
@@ -705,7 +709,6 @@ scope SinglePlayerModes: {
         beqz    at, _infinite_time              // if rest stage, have infinite time
         nop
 
-
         _1p:
         sltiu   at, t9, 0x0007
         beq     at, r0, _branch
@@ -727,7 +730,7 @@ scope SinglePlayerModes: {
         li      t9, 0x8018D6D0                  // infinite time
         j       _return
         nop
-        }
+    }
 
     // @ Description
     //    Stops strange glitch which messes up position of percents during the transition from 34 to 35 KOs
@@ -1511,7 +1514,7 @@ scope SinglePlayerModes: {
         _multiman:
         j        _return
         addiu    t7, v0, r0                     // prevent change to spawn counter 1
-        }
+    }
 
     // @ Description
     //    Prevents a branch from being taken that occassionally leads to crashes and serves no purpose
@@ -1540,7 +1543,7 @@ scope SinglePlayerModes: {
         _multiman:
         j        _return
         addiu    t9, r0, 0x0001                 // set to safe number that won't take branch
-        }
+    }
 
     // @ Description
     //    Prevents a counter from changing so that spawns may continue indefinitely
@@ -1568,7 +1571,7 @@ scope SinglePlayerModes: {
         _multiman:
         j        _return
         nop
-        }
+    }
 
     // @ Description
     //    Prevents a counter from changing so that match never ends due to KOs of opponents
@@ -1934,8 +1937,6 @@ scope SinglePlayerModes: {
         bnez    t1, _multiman               // if multiman, skip
         nop
 
-
-
         _1p:
         lw      t1, 0x0004(sp)              // load t1
         lw      t2, 0x0008(sp)              // load t2
@@ -1943,8 +1944,6 @@ scope SinglePlayerModes: {
 
         j        _return
         lbu      t9, 0x493B(t9)           // original line 2
-
-
 
         _multiman:
         lw      t1, 0x0004(sp)              // load t1
@@ -2183,7 +2182,6 @@ scope SinglePlayerModes: {
         nop
     }
 
-
     // @ Description
     // Revises the original selection of polygon characters so that it works indefinetly and is more random
     scope multiman_random: {
@@ -2268,7 +2266,7 @@ scope SinglePlayerModes: {
         _branch:
         j       0x8018F19C                  // modified original line 1, part 2
         nop
-        }
+    }
 
     // @ Description
     // This refreshes the player KO flag for every new match
@@ -2283,7 +2281,7 @@ scope SinglePlayerModes: {
         sw      r0, 0x0000(at)              // set to 0
         j        _return
         lui     at, 0x8019                  // original line 2
-        }
+    }
 
     // @ Description
     // Sets up custom display used by Multiman Modes
@@ -2399,7 +2397,6 @@ scope SinglePlayerModes: {
 
         jr      ra
         nop
-
     }
 
     // @ Description
@@ -2437,7 +2434,6 @@ scope SinglePlayerModes: {
         _0x800E6418:
         j       0x800E6418
         nop
-
     }
 
     // @ Description
@@ -2560,7 +2556,7 @@ scope SinglePlayerModes: {
          _end:        
          j       _return
          subu        a0, t6, a2                   // original line 2, has to be here, because our code wouldn't work otherwise
-        }
+    }
 
     // @ Description
     // Changes Change Action routine for Remix 1p Final stage
@@ -3508,7 +3504,6 @@ scope SinglePlayerModes: {
     dw progress_icon.dk_crew     // progress icon
     dw SinglePlayer.name_texture.DK_CREW + 0x10    // name texture
 
-
     OS.align(16)
 
     // @ Description
@@ -4067,7 +4062,6 @@ scope SinglePlayerModes: {
         beq     r0, r0, _end
         lw      t7, 0x0000(t0)              // load Remix 1p Polygon ID
 
-    
         _end:
         lw      t0, 0x0004(sp)              // load registers
         lw      t1, 0x0008(sp)              // load registers
@@ -4210,7 +4204,6 @@ scope SinglePlayerModes: {
         nop
     }
 
-
     // @ Description
     // Changes polygon file loading to be Remix Polygons
     scope polygon_allocation: {
@@ -4237,7 +4230,6 @@ scope SinglePlayerModes: {
         sll     t8, t7, 0x0002              // count multiplied by 4 to get offset
         addu    a0, t8, t6                  // get address of polygon ID
         lw      a0, 0x0000(a0)              // load ID
-
 
         sll     at, a0, 0x0002              // times id by 4 to get offset
         addu    at, at, v0                  // address of polygon's character struct
@@ -4295,7 +4287,6 @@ scope SinglePlayerModes: {
         lui     a1, 0x8011                  // original line 2
     }
 
-
     // @ Description
     // Changes address used for character name text
     scope title_card_text_name: {
@@ -4317,7 +4308,7 @@ scope SinglePlayerModes: {
         _normal:
         j       _return
         addiu   t7, t7, 0x4F24                  // original line 1
-        }
+    }
 
     // @ Description
     // Changes the process by which textures are added to the text object in title card mode to add team, giant, and other various tweaks
@@ -4482,7 +4473,7 @@ scope SinglePlayerModes: {
         _1p_specialized:
         j       0x801325EC
         sll     t1, a2, 0x2                 // original line 2
-       }
+    }
 
     // @ Description
     // Changes positioning of Overall Text in Giant and Team Modes
@@ -4561,7 +4552,7 @@ scope SinglePlayerModes: {
         swc1    f4, 0x0058(t6)              // original line 1
         j       _return
         lw      t8, 0x0028(sp)              // original line 2
-       }
+    }
 
     _giant_flag:
     dw  0x00000000
@@ -4718,7 +4709,7 @@ scope SinglePlayerModes: {
         _cpu_called:
         j       0x80134804                  // jump if cpu already called in normal match, modified original line 1
         nop
-        }
+    }
 
     // @ Description
     // Refreshes the Giant, CPU, and Team Flag
@@ -4737,7 +4728,7 @@ scope SinglePlayerModes: {
         j       _return
         lw      s1, 0x0018(sp)              // original line 2
 
-        }
+    }
 
 //  // Changes address used for ally name announcement
 // scope title_card_voice_name: {
@@ -4747,18 +4738,18 @@ scope SinglePlayerModes: {
 //      _return:
 //      OS.patch_end()
 //
-//     li      t0, singleplayer_mode_flag       // t0 = singleplayer mode flag
-//      lw      t0, 0x0000(t0)              // t0 = 4 if Remix 1p
-//     bne     t0, t6, _normal               // if not Remix 1p, skip
-//      sw      ra, 0x0014(sp)                // original line 2
+//     li      t0, singleplayer_mode_flag     // t0 = singleplayer mode flag
+//     lw      t0, 0x0000(t0)                 // t0 = 4 if Remix 1p
+//     bne     t0, t6, _normal                // if not Remix 1p, skip
+//     sw      ra, 0x0014(sp)                 // original line 2
 //
 //     li        t7, announcer_calls
-//      j       _return
-//      nop
+//     j       _return
+//     nop
 //
 //     _normal:
-//      j        _return
-//     addiu   t7, t7, 0x5A68              // original line 1
+//     j        _return
+//     addiu   t7, t7, 0x5A68                 // original line 1
 //     }
 
     // Changes address used for character name announcement
@@ -4782,7 +4773,7 @@ scope SinglePlayerModes: {
         addiu   t2, t2, 0x5A98              // original line 1
         j        _return
         addiu   t5, t2, 0x0030                // original line 2
-        }
+    }
 
     // @ Description
     // Changes address used for character model scale
@@ -4805,7 +4796,7 @@ scope SinglePlayerModes: {
         _normal:
         j        _return
         addiu   t7, t7, 0x5180              // original line 1
-        }
+    }
 
     // @ Description
     // Changes address used for title card character loading 1
@@ -4828,7 +4819,7 @@ scope SinglePlayerModes: {
         _normal:
         j        _return
         addiu   t6, t6, 0x51B8              // original line 1
-        }
+    }
 
     // @ Description
     // Changes address used for title card character loading 1
@@ -4851,7 +4842,7 @@ scope SinglePlayerModes: {
         _normal:
         j        _return
         addiu   t6, t6, 0x5B00                // original line 1
-        }
+    }
 
     // @ Description
     // Changes pointer to part1 pointer which establishes the stage settings of 1p for Remix 1p and Allstar
@@ -4882,7 +4873,7 @@ scope SinglePlayerModes: {
         _normal:
         j        _return
         sll     t6, v0, 0x4                    // original line 2
-        }
+    }
 
     // @ Description
     // Changes pointer to part2 pointer which establishes the stage settings of 1p for Remix 1p
@@ -4908,11 +4899,10 @@ scope SinglePlayerModes: {
         _remix_1p:
         li      t9, MATCH_SETTINGS_PART2      // load address of Remix Match Settings Part 2
 
-
         _normal:
         j        _return
         sb      t4, 0x0001(t5)                // original line 2
-        }
+    }
 
     // @ Description
     // Changes pointer in which progess icons are pulled from to the Remix versions
@@ -4941,7 +4931,6 @@ scope SinglePlayerModes: {
 
         addiu   a0, r0, 0x000A                  // Keep progress icons correct for Metal Bros
 
-
         _standard_remix_1p:
         li      t6, progress_icon_struct      // load address of Remix Progress Icons
         j       _return
@@ -4950,7 +4939,7 @@ scope SinglePlayerModes: {
         _normal:
         j        _return
         addiu   t6, t6, 0x4E78                  // original line 2
-        }
+    }
 
         // Forces a Doubles Style Load up for the Metal Bros and also revises title card to be Metal Bros
         scope metal_bros_magic: {
@@ -5003,7 +4992,7 @@ scope SinglePlayerModes: {
         _normal:
         j        _return
         lbu     t6, 0x0017(a1)                 // original line 2
-        }
+    }
 
         // Fixes Crash with Metal bros, this routine controls loading allies and camera and such on title screen
         scope metal_bros_bug_fix: {
@@ -5300,7 +5289,6 @@ scope SinglePlayerModes: {
      dw     0x00000013        // Dark Samus
      OS.align(16)
 
-
     // @ Description
     // Allows another character to appear in Yoshi's Title Card
     scope remix_yoshi_card: {
@@ -5322,7 +5310,7 @@ scope SinglePlayerModes: {
         _normal:
         j       _return
         addiu   s3, r0, 0x0006              // original line 2, load Yoshi
-        }
+    }
 
     // @ Description
     // Skips a routine that normally sets shades if Yoshi Player
@@ -5389,7 +5377,6 @@ scope SinglePlayerModes: {
         lw      v0, 0x0008(sp)
         addiu   sp, sp, 0x0010              // remove stack space
 
-
         _normal:
         jal     0x800E9248                  // original line 1, sets costume ID and shade for character, amongst various other things
         nop
@@ -5452,7 +5439,6 @@ scope SinglePlayerModes: {
         addiu   t9, r0, ALLSTAR_ID         // insert Allstar 1p ID
         _return:
         OS.patch_end()
-
 
         li      at, singleplayer_mode_flag  // at = singleplayer flag address
         lw      at, 0x0000(at)              // at = 4 if remix
@@ -5580,7 +5566,6 @@ scope SinglePlayerModes: {
         mfhi           a1
         or             a0, s2, r0
 
-
         beq            r0, r0, _branch_2        // skip shade stuff for now
         nop
 
@@ -5663,7 +5648,6 @@ scope SinglePlayerModes: {
         bnezl   a0, _normal
         lbu     a0, 0x000A(a1)              // load character id
 
-
         lbu     a0, 0x0009(a1)              // load character id
 
         _normal:
@@ -5692,7 +5676,6 @@ scope SinglePlayerModes: {
         lbu     a0, 0x0000(a0)              // load flag
         bnezl   a0, _vanilla
         lbu     a0, 0x0009(a1)              // load character id
-
 
         lbu     a0, 0x000A(a1)              // load character id
         _vanilla:
@@ -5994,14 +5977,12 @@ scope SinglePlayerModes: {
         // bne     at, t2, _standard           // do dsp as normal, as it is not giga bowser or bowser
         // nop
 
-
         // _cpu_check:
         // lbu     at, 0x0023(v0)              // load player types
         // beqz    at, _standard               // if player type = 0, then its a human player and it should proceed as normal
         // nop
 
         // addiu   t1, r0, r0                  // set t1 to 0, so it takes branch that skips function
-
 
         // _standard:
         // lw      at, 0x0000(sp)
@@ -6061,7 +6042,6 @@ scope SinglePlayerModes: {
         beqz    at, _standard               // if player type = 0, then its a human player and it should proceed as normal
         nop
         addiu   t0, r0, r0                  // set t1 to 0, so it takes branch that skips function
-
 
         _standard:
         lw      at, 0x0000(sp)
@@ -6607,6 +6587,7 @@ scope SinglePlayerModes: {
         li      at, all_star_stage_used_table
         lli     t0, Stages.id.MAX_STAGE_ID
         addu    at, at, t0                  // at = address of last stage used flag
+
         _clear_stage_used_loop:
         sb      r0, 0x0000(at)              // clear flag
         addiu   at, at, -0x0001             // at--
@@ -7009,7 +6990,6 @@ scope SinglePlayerModes: {
        _return:
        OS.patch_end()
 
-
        li      a1, singleplayer_mode_flag  // at = singleplayer flag address
        lw      a1, 0x0000(a1)              // at = 4 if remix
        bne     a1, a0, _normal             // if not Allstar, proceed as normal
@@ -7168,11 +7148,8 @@ scope SinglePlayerModes: {
         bne     a1, at, _normal             // if not Allstar, proceed as normal
         nop
 
-
-
         beq     a3, r0, _rtf_spawn_style    // if at the rest stage (same as Hyrule in normal 1p), use rtf style spawning
         nop
-
 
         _normal:
         j       _return                     // modified original line 1
@@ -7210,7 +7187,6 @@ scope SinglePlayerModes: {
         addiu   at, r0, 0x0014          // refill ammo when spawned
         sh      at, 0x0AE2(v1)          // save ammo to ammo location
 
-
         _allstar_check:
         li      at, allstar_limbo       // load limbo
         sw      r0, 0x0000(at)          // clear flag
@@ -7237,7 +7213,6 @@ scope SinglePlayerModes: {
        bne     t6, r0, _normal             // if not stage zero (normal = Link/Hyrule, allstar= Rest Area), jump to normal
        nop
 
-
        j       0x8018E97C                  // skip Go sound and object
        nop
 
@@ -7247,7 +7222,7 @@ scope SinglePlayerModes: {
 
        j       _return                     // return
        nop
-   }
+    }
 
     // @ Description
     // Offsets to the icon image footers in the Stock Icons file.
@@ -7524,7 +7499,6 @@ scope SinglePlayerModes: {
 
         lli     a3, 0x0000                  // a3 = (no) routine
 
-
         addiu   at, r0, 0x000A              // divide by 10, so there are 10 icons per row
         divu    t9, at
         mflo    t7                          // quotient (current row)
@@ -7603,7 +7577,6 @@ scope SinglePlayerModes: {
         mflo    t1                          // place product in t1
         addu    t2, t2, t1                  // add to get address of primary character
 
-
         _loop:
         sw      t2, 0x0064(sp)              // save address of current character loading
         sw      t8, 0x0060(sp)              // save amount of loops remaining
@@ -7614,7 +7587,6 @@ scope SinglePlayerModes: {
         li      t3, CharacterSelect.portrait_offset_by_character_table  // load address of offset table
         addu    t3, t3, t2                  // add to get address of offset
         lw      t3, 0x0000(t3)              // load characters offset
-
 
         lli     a0, 0x04                    // a0 = room
         lli     a1, 0x00                    // a1 = group
@@ -7642,7 +7614,6 @@ scope SinglePlayerModes: {
 
         _slot_1:
         lui      s1, 0xC348                 // s1 = ulx (-200)
-
 
         _render:
         li      s2, 0x447a0000              // s2 = uly
@@ -7810,7 +7781,6 @@ scope SinglePlayerModes: {
         nop
     }
 
-
     // @ Description
     // Prevents hearts from fading in allstar mode, uses a generic routine which determines when items begin to fade and get destroyed
     // a2=active item struct
@@ -7820,7 +7790,6 @@ scope SinglePlayerModes: {
         addiu   v0, r0, ALLSTAR_ID
         _return:
         OS.patch_end()
-
 
         li      t9, singleplayer_mode_flag  // at = singleplayer flag address
         lw      t9, 0x0000(t9)              // at = 5 if allstar
@@ -7842,6 +7811,7 @@ scope SinglePlayerModes: {
 
         _normal:
         lhu     v0, 0x02D2(a2)              // original line 1, loads a timer of sorts for destruction of items
+
         _rest:
         j       _return                     // modified original line 1
         srl     t9, v0, 0x4                 // original line 2
@@ -7855,7 +7825,6 @@ scope SinglePlayerModes: {
         addiu   t2, r0, ALLSTAR_ID
         _return:
         OS.patch_end()
-
 
         li      t3, singleplayer_mode_flag  // at = singleplayer flag address
         lw      t3, 0x0000(t3)              // at = 5 if allstar
@@ -7897,7 +7866,6 @@ scope SinglePlayerModes: {
         _return:
         OS.patch_end()
 
-
         li      s1, singleplayer_mode_flag  // at = singleplayer flag address
         lw      s1, 0x0000(s1)              // at = 5 if allstar
         bne     s1, s0, _normal             // if not Allstar, proceed as normal
@@ -7923,7 +7891,6 @@ scope SinglePlayerModes: {
         addiu   a1, r0, ALLSTAR_ID
         _return:
         OS.patch_end()
-
 
         li      t6, singleplayer_mode_flag  // at = singleplayer flag address
         lw      t6, 0x0000(t6)              // at = 5 if allstar
@@ -7955,7 +7922,6 @@ scope SinglePlayerModes: {
         addiu   t7, r0, ALLSTAR_ID          // insert allstar mode ID
         _return:
         OS.patch_end()
-
 
         li      t6, singleplayer_mode_flag  // at = singleplayer flag address
         lw      t6, 0x0000(t6)              // at = 5 if allstar
@@ -7995,7 +7961,6 @@ scope SinglePlayerModes: {
         _return:
         OS.patch_end()
 
-
         li      t6, singleplayer_mode_flag  // at = singleplayer flag address
         lw      t6, 0x0000(t6)              // at = 5 if allstar
         beq     t6, t7, _remix              // if Remix 1p, clear size status
@@ -8027,9 +7992,9 @@ scope SinglePlayerModes: {
         lw      t7, 0x50E8(t7)              // original line 2
     }
 
-   // @ Description
-   // Displays percent
-   scope display_percent: {
+    // @ Description
+    // Displays percent
+    scope display_percent: {
        OS.patch_start(0x10D158, 0x8018E8f8)
        j       display_percent
        addiu   at, r0, ALLSTAR_ID
@@ -8046,7 +8011,6 @@ scope SinglePlayerModes: {
        bne     t7, r0, _normal             // if not stage zero (normal = Link/Hyrule, allstar= Rest Area), jump to normal
        nop
 
-
        jal     0x8010e690                  // display percent
        nop
 
@@ -8054,10 +8018,10 @@ scope SinglePlayerModes: {
        lui      t7, 0x800A                 // original line 1
        j       _return                     // return
        lbu      t7, 0x4AE3(t7)             // original line 2
-   }
+    }
 
-   // Records percent at end of match by using the Heavy Damage Bonus check to determine percent
-   scope record_percent: {
+    // Records percent at end of match by using the Heavy Damage Bonus check to determine percent
+    scope record_percent: {
        OS.patch_start(0x10EC20, 0x801903C0)
        j       record_percent
        addiu   at, r0, ALLSTAR_ID
@@ -8083,8 +8047,8 @@ scope SinglePlayerModes: {
        slti    at, t6, 0x00C8              // original line 2, shift logically to determine if percent is 200 or more
     }
 
-   // Change stage ID to 0xD so game ends after final stage in allstar
-   scope end_allstar: {
+    // Change stage ID to 0xD so game ends after final stage in allstar
+    scope end_allstar: {
        OS.patch_start(0x10F768, 0x80190F08)
        j       end_allstar
        addiu   at, r0, ALLSTAR_ID
@@ -8106,10 +8070,10 @@ scope SinglePlayerModes: {
        lbu     t1, 0x0017(v1)              // original line 1, load current stage id
        j       _return                     // return
        addiu   at, r0, 0x000B              // original line 2
-   }
+    }
 
-   // Prevents score from being erased
-   scope prevent_erase: {
+    // Prevents score from being erased
+    scope prevent_erase: {
        OS.patch_start(0x520CC, 0x800D68CC)
        j       prevent_erase
        addiu   t3, r0, ALLSTAR_ID
@@ -8125,10 +8089,10 @@ scope SinglePlayerModes: {
        _allstar:
        j       _return                     // return
        sw     r0, 0x0024(s2)               // original line 2
-   }
+    }
 
-   // Prevents stock from being reset
-   scope stock_prevent: {
+    // Prevents stock from being reset
+    scope stock_prevent: {
        OS.patch_start(0x520d8, 0x800D68D8)
        j       stock_prevent
        addiu   t3, r0, ALLSTAR_ID
@@ -8152,8 +8116,8 @@ scope SinglePlayerModes: {
        sb     r0, 0x0D64(at)               // original line 2
     }
 
-   // Prevents total accumulated damage from being reset
-   scope damage_prevent: {
+    // Prevents total accumulated damage from being reset
+    scope damage_prevent: {
        OS.patch_start(0x520E8, 0x800D68E8)
        j       damage_prevent
        addiu   at, r0, ALLSTAR_ID
@@ -8178,8 +8142,8 @@ scope SinglePlayerModes: {
        nop
     }
 
-   // Reduces costume option so all vanilla characters work
-   scope costume_fix: {
+    // Reduces costume option so all vanilla characters work
+    scope costume_fix: {
        OS.patch_start(0x10C350, 0x8018DAf0)
        j       costume_fix
        addiu   t5, r0, ALLSTAR_ID
@@ -8215,8 +8179,8 @@ scope SinglePlayerModes: {
        addiu    s0, s0, 0x0001              // original line 2
     }
 
-   // Prevents No Miss Points from being awarded
-   scope no_miss: {
+    // Prevents No Miss Points from being awarded
+    scope no_miss: {
        OS.patch_start(0x10EC88, 0x80190428)
        j       no_miss
        addiu   at, r0, ALLSTAR_ID
@@ -8244,8 +8208,8 @@ scope SinglePlayerModes: {
        nop
     }
 
-   // Prevents No Miss Points from being awarded
-   scope no_miss_2: {
+    // Prevents No Miss Points from being awarded
+    scope no_miss_2: {
        OS.patch_start(0x10ECB4, 0x80190454)
        j       no_miss_2
        addiu   at, r0, ALLSTAR_ID
@@ -8299,12 +8263,12 @@ scope SinglePlayerModes: {
     allstar_final_id_space:                // additional space for final battle so it can have random costumes + multiple character ID
     dw        0x00000000
     dw        0x00000000
-    
+
     OS.align(16)
     allstar_final_order_space:             // additional space for final battle so it can have random costumes + multiple character ID
     dw        0x00000000
     dw        0x00000000
-    
+
     scope _nSC1PGameStageAllstarFinal_: {
         // based on nSC1PGameStageZako and nSC1PGameStageYoshi
         // This routine will be jumped to via sc1PGameSetupStageAll, which is the overall routine
@@ -8313,7 +8277,7 @@ scope SinglePlayerModes: {
         li             t7, end_game_flag    
         addiu          t5, r0, 0x0001
         sw             t5, 0x0000(t7)       // set flag so game will end after victor
-        
+
         // character id setting
 
         li      s0,     allstar_final_id_space      // load new space for character IDs
@@ -8324,23 +8288,23 @@ scope SinglePlayerModes: {
         addu    t5, t8, r0
         addiu   at, r0, TOTAL_CHARACTERS_ALLSTAR_FINAL
         addiu   t4, r0, 0x0002              // set countdown for 3 characters at end
-        
+
         _id_loop:
         lhu     t6, 0x0000(t5)              // load character ID
         sb      t6, 0x0000(s0)              // save character ID
         addiu   s0, s0, 0x0001              // next ID address for saving
         addiu   t5, t5, 0x0002              // add 0x2 if not at end of characters
-        
+
         bnezl   t4, _loop_check             // check if at end of three character options
         addiu   t4, t4, 0xFFFF              // subtract from three character countdown
-        
+
         addu    t5, t8, r0                  // address of last 3 characters in current format [update]
         addiu   t4, r0, 0x0002              // reset countdown
-        
+
         _loop_check:
         bnez    at, _id_loop                // loop for all IDs
         addiu   at, at, 0xFFFF              // subtract from ID
-        
+
         or             s2, r0, r0
         lui     s0, 0x8019
         addiu   s0, s0, 0x2fb0               // costume id space
@@ -8348,39 +8312,39 @@ scope SinglePlayerModes: {
         addiu   s1, r0, TOTAL_CHARACTERS_ALLSTAR_FINAL
         lui            s3, 0x8019
         addiu          s3, s3, 0x2fb6
-        
+
         _costume_loop:
         jal            0x80018994     // random integer
         addiu          a0, r0, 0x0006
-        
+
         andi           a0, s2, 0xffff
-        
+
         // modified version of costume_fix
-        
+
         lbu     t7, 0x0000(t3)              // load character id
         slti    t7, t7, Character.id.BOSS   // if less than master hand, set to 1
-        
+
         beqz    t7, _standard_costume       // if a Remix character, function as normal
         nop
-        
+
         slti     t7, v0, 0x4                 // if higher than 4th costume, select another
-        
+
         bnez     t7, _standard_costume       // branch if not less than 0
         nop
-        
+
         addiu    sp, sp,-0x0010              // allocate stack space
         sw       a0, 0x0004(sp)              // save registers
         sw       t6, 0x0008(sp)              // save registers
         sw       a1, 0x000C(sp)              // save registers
-        
+
         jal      Global.get_random_int_
         addiu    a0, r0, 0x0004
-        
+
         lw       a0, 0x0004(sp)              // load registers
         lw       t6, 0x0008(sp)              // load registers
         lw       a1, 0x000C(sp)              // load registers
         addiu    sp, sp, 0x0010              // deallocate stack space
-        
+
         _standard_costume:
         addiu    t5, r0, 0x0001             // return to original code from yoshi routine
         addiu    s0, s0, 0x0001
@@ -8399,19 +8363,19 @@ scope SinglePlayerModes: {
         sb             r0, 0x0000 (s1)
         or             s3, r0, r0
         addiu          s2, r0, 0x0003
-        
+
         _branch_6:
         jal            0x8018d280           // beginning of loop for the 3 starting CPUs, this routine begins setting them up
         or             a0, s4, r0
-        
+
         or             s4, v0, r0
         or             a0, s7, r0           // Match settings Part 1
         lw             a1, 0x0040 (sp)      // Match settings Part 2
         or             a2, v0, r0
-        
+
         jal            0x8018d4ec           // sc1pGameSetupEnemyPlayer
         or             a3, r0, r0
-        
+
         lbu            t9, 0x0000 (s1)
         li             t3, 0x80192FB0       // where costumes are stored
         sll            t6, s4, 3
@@ -8429,7 +8393,7 @@ scope SinglePlayerModes: {
         sb             t4, 0x0023 (t5)      // save character id
         sb             t3, 0x0026 (t5)      // save costume id
         lbu            v1, 0x0000(s1)
-        
+
         addiu          t7, t7, 0x2fe0
         sll            t9, s4, 5
         addu           v0, t9, t7
@@ -8443,14 +8407,14 @@ scope SinglePlayerModes: {
         addiu          t4, v1, 0x0001
         sw             t6, 0x0014 (v0)
         sb             t4, 0x0000 (s1)
-        
+
         bne            s3, s2, _branch_6    // loop for all players
         swc1           f6, 0x001c (v0)
-        
+
         j              0x8018dff4       // jump to standard routines for 1p setup
         lw             t5, 0x0000 (s6)        
     }
-    
+
     // @ Description
     //  This creates and additional hardcoded location for the game to pull the icons typically used in sSC1PGameEnemyTeamSprites
     scope _SC1PGameEnemyTeamSprites_expansion: {
@@ -8459,26 +8423,26 @@ scope SinglePlayerModes: {
         sw      t2, 0x0000(v0)              // original line 1, save first character icon thing
         _return:
         OS.patch_end()
-    
+
         li      v1, singleplayer_mode_flag  // v1 = singleplayer mode flag
         lw      v1, 0x0000(v1)              // v1 = mode flag
         addiu   s2, r0, ALLSTAR_ID          // s2 = allstar flag
         bne     v1, s2, _end                // if not allstar, skip
         nop
-        
+
         li      v1, STAGE_FLAG              // load current stage ID address
         lb      v1, 0x0000(v1)              // load stage ID
         addiu   s2, r0, 0x000C              // stage C - Allstar Final Battle
         bne     v1, s2, _end                // if not final stage, skip
         nop
-        
+
         lui     s2, 0x800A
         lw      s2, 0x50E8(s2)              // stage info struct loaded in
-        
+
         lw      a3, 0x0008(t0)              // load first character id
         sw      a3, 0x0004(v0)              // save id
         sw      t2, 0x0008(v0)              // save first character icon address
-        
+
         lw      a3, 0xEC(s2)                // load second character
         lw      a3, 0x84(a3)                // load player struct
         lw      v1, 0x0008(a3)              // load player id
@@ -8488,7 +8452,7 @@ scope SinglePlayerModes: {
         lw      v1, 0x0000(a3)
         sh      t4, 0x0014(v1)              // apply SP_TRANSPARENT and SP_TEXSHUF to icon
         sw      a3, 0x0010(v0)              // save second character icon address
-        
+
         lw      a3, 0x160(s2)               // load third character
         lw      a3, 0x84(a3)                // load player struct
         lw      v1, 0x0008(a3)              // load player id
@@ -8507,63 +8471,62 @@ scope SinglePlayerModes: {
         lw      v1, 0x0000(a3)
         sh      t4, 0x0014(v1)              // apply SP_TRANSPARENT and SP_TEXSHUF to icon
         sw      a3, 0x0020(v0)              // save fourth character icon address
-    
+
         _end:
         j       _return
         lw      v1, 0x0000(t2)              // original line 2, put first character icon thing into v1, it goes on to save a number to this location for unknown reasons, may have to do this for the other characters (I did, it was for SP_TRANSPARENT and SP_TEXSHUF
     }
-    
+
     // @ Description
     //  This swaps the pointer for icons so that when loaded it can change
-    
+
     scope _stock_loading_allstar: {
         OS.patch_start(0x10D534, 0x8018ECD4)
         j       _stock_loading_allstar
         addiu   t7, r0, ALLSTAR_ID          // t7 = allstar flag
         _return:
         OS.patch_end()
-    
+
         li      t6, singleplayer_mode_flag  // t6 = singleplayer mode flag
         lw      t6, 0x0000(t6)              // t6 = mode flag
         bne     t6, t7, _yoshi_check        // if not allstar, skip
         nop
-        
+
         li      t6, STAGE_FLAG                // load current stage ID address
         lb      t6, 0x0000(t6)                // load stage ID
         addiu   t7, r0, 0x000C                // stage C - Allstar Final Battle
         bne     t6, t7, _yoshi_check          // if not final stage, skip
         nop
-        
+
         li      s3, allstar_final_id_space
         // a2 is off here and the count for total characters may be off
         addu    t7, s3, a2                     // address of current character
         lbu     t7, 0x0000(t7)                 // load id of character
         li      t6, 0x801938CC                 // load hardcoded space where the game places icons pointer 801938CC
         addiu   t9, t6, 0x0004                 // address of first character id
-        
+
         _character_check:
         lw      at, 0x0000(t9)              // for id of first character
         bnel    at, t7, _character_check
         addiu   t9, t9, 0x0008              // move to next ID
-    
+
         lw      at, 0x0004(t9)              // load address of icon file
         sw      at, 0x0000(t6)              // save current icon address to hardcode location
-        
+
         beq     r0, r0, _0x8018ECF8         // take the path of the yoshi
         lw      t6, 0x0000(a1)              // original line 2
-        
+
         _yoshi_check:
         beql    v1, t3, _0x8018ECF8         // modified original line 1, checks if on Yoshi Team
         lw      t6, 0x0000(a1)              // original line 2
-        
+
         _end:
         j       _return                     // return to other stage checks
         nop
-        
+
         _0x8018ECF8:                        // proceed to yoshi icon porton
         j       0x8018ecf8
         nop
-        
     }
     
     // @ Description
@@ -8574,30 +8537,29 @@ scope SinglePlayerModes: {
         sw      s2, 0x0028(sp)              // original line 1
         _return:
         OS.patch_end()
-        
-        
+
         sw      s1, 0x0024(sp)              // original line 2
-        
+
         li      t6, singleplayer_mode_flag  // t6 = singleplayer mode flag
         lw      t6, 0x0000(t6)              // t6 = mode flag
         addiu   t7, r0, ALLSTAR_ID          // t7 = allstar flag
         bne     t6, t7, _end                // if not allstar, skip
         nop
-        
+
         li      t6, STAGE_FLAG              // load current stage ID address
         lb      t6, 0x0000(t6)              // load stage ID
         addiu   t7, r0, 0x000C              // stage C - Allstar Final Battle
         bne     t6, t7, _end                // if not final stage, skip
         nop
-        
+
         j       0x8018ee8C
         sw      s0, 0x0020(sp)              // skipped this line because of the jump, so need to add back in
-    
+
         _end:
         j       _return
         nop
     }
-    
+
     // @ Description
     //  Puts the correct costume address for Allstar 1p
     scope _allstar_final_costume_address_fix: {
@@ -8606,27 +8568,27 @@ scope SinglePlayerModes: {
         addiu   t7, r0, ALLSTAR_ID
         _return:
         OS.patch_end()
-        
+
         li      t8, singleplayer_mode_flag  // t8 = singleplayer mode flag
         lw      t8, 0x0000(t8)              // t8 = mode flag
         bne     t8, t7, _end                // if not allstar, skip
         nop
-        
+
         li      t8, STAGE_FLAG              // load current stage ID address
         lb      t8, 0x0000(t8)              // load stage ID
         addiu   t7, r0, 0x000C              // stage C - Allstar Final Battle
         bne     t8, t7, _end                // if not final stage, skip
         nop
-        
+
         lui     s3, 0x8019
         addiu   s3, s3, 0x2FB0              // put in correct address for costumes
-    
+
         _end:
         lw      t7, 0x0000(a1)              // original line 1
         j       _return
         addu    t8, s3, a2                  // original line 2
     }
-    
+
     // @ Description
     //  Puts the correct character address for Allstar 1p
     scope _allstar_final_character_address_fix: {
@@ -8635,31 +8597,29 @@ scope SinglePlayerModes: {
         addiu   t5, r0, ALLSTAR_ID
         _return:
         OS.patch_end()
-        
+
         li      v0, singleplayer_mode_flag  // v0 = singleplayer mode flag
         lw      v0, 0x0000(v0)              // v0 = mode flag
         bne     t5, v0, _end                // if not allstar, skip
         nop
-        
+
         li      t5, STAGE_FLAG              // load current stage ID address
         lb      t5, 0x0000(t5)              // load stage ID
         addiu   v0, r0, 0x000C              // stage C - Allstar Final Battle
         bne     t5, v0, _end                // if not final stage, skip
         nop
-        
+
         li      t4, allstar_final_id_space
         addu    t4, t3, t4                  // correct ID requested address
         j       _return
         lbu     t4, 0x0000(t4)
-        
-        
-    
+
         _end:
         addu    t4, t4, t3                  // original line 1
         j       _return
         lbu     t4, 0x2FB0(t4)              // original line 2
     }
-    
+
     // @ Description
     //  Puts the correct costume for Allstar 1p, when spawning next character after KO
     scope _allstar_final_costume_set: {
@@ -8668,20 +8628,20 @@ scope SinglePlayerModes: {
         sb      t4, 0x0023(t5)              // original line 1, save character ID
         _return:
         OS.patch_end()
-        
+
         // a2=player struct
         addiu   t7, r0, ALLSTAR_ID          // allstar ID in t7
         li      t8, singleplayer_mode_flag  // t8 = singleplayer mode flag
         lw      t8, 0x0000(t8)              // t8 = mode flag
         bne     t8, t7, _end                // if not allstar, skip
         nop
-        
+
         li      t8, STAGE_FLAG              // load current stage ID address
         lb      t8, 0x0000(t8)              // load stage ID
         addiu   t7, r0, 0x000C              // stage C - Allstar Final Battle
         bne     t7, t8, _end                // if not final stage, skip
         nop
-        
+
         // problem a2 is actually the former character each time, not the new character
         // 800D7FEC updates the attributes struct
         // 8050bbb0 Stamina.stamina_stock_2 os within
@@ -8700,17 +8660,17 @@ scope SinglePlayerModes: {
         //lw      t8, 0x0008(a3)              // t8 = series icon footer address
         //lw      a3, 0x0034(t8)              // a3 = series icon address
         //sw      a3, 0x0044(t7)              // update series icon
-        
+
         li      t8, 0x80192FB0              // costume storage address
         addu    t8, t3, t8                  // correct costume address
         lbu     t8, 0x0000(t8)              // correct costume
         sb      t8, 0x0026(t5)              // save costume to character creation space
-    
+
         _end:
         j       _return
         lbu     v0, 0x2FA9(v0)              // original line 2
     }
-    
+
     // @ Description
     //  Puts the correct series icon for Allstar 1p, when spawning next character after KO
     scope _allstar_final_series_stock_set: {
@@ -8719,24 +8679,23 @@ scope SinglePlayerModes: {
         sw      v0, 0x003C(sp)              // original line 1, save player object to stack
         _return:
         OS.patch_end()
-        
+
         // v0=player object
         // a0, a1, t0, t6, t7
-        
+
         // state checking
         addiu   a0, r0, ALLSTAR_ID          // allstar ID in a0
         li      a1, singleplayer_mode_flag  // a1 = singleplayer mode flag
         lw      a1, 0x0000(a1)              // a1 = mode flag
         bne     a0, a1, _end                // if not allstar, skip
         lw      a2, 0x0084(v0)              // original line 2, load player struct from new player object
-        
+ 
         li      a1, STAGE_FLAG              // load current stage ID address
         lb      a1, 0x0000(a1)              // load stage ID
         addiu   a0, r0, 0x000C              // stage C - Allstar Final Battle
         bne     a1, a0, _end                // if not final stage, skip
         nop
-    
-    
+
         // series icon
         lbu     a1, 0x000D(a2)              // a1 = port_id
         li      a0, 0x80131598              // a0 = sIFCommonPlayerDamageInterface[]
@@ -8751,8 +8710,7 @@ scope SinglePlayerModes: {
         lw      t0, 0x0008(a1)              // t0 = series icon footer address
         lw      a1, 0x0034(t0)              // a1 = series icon address
         sw      a1, 0x0044(a0)              // update series icon
-        
-        
+
         // stock icon
         lbu     a0, 0x000D(a2)              // port id
         sll     a0, a0, 2                   // offsetting
@@ -8760,7 +8718,7 @@ scope SinglePlayerModes: {
         addu    t7, t7, a0                  // add offset
         lw      t7, 0x17D0(t7)              // load correct stock icon object
         lw      t7, 0x0074(t7)              // load stock texture info
-        
+
         lw      t6, 0x09C8(a2)              // attributes struct
         lw      t6, 0x0340(t6)              // ftSprites struct address
         lw      a1, 0x0000(t6)              // load stock icon footer
@@ -8772,9 +8730,11 @@ scope SinglePlayerModes: {
         lw      a0, 0x0000(a0)              // load correct pallette address
         sw      a0, 0x0030(t7)              // save palette address to stock icon object
         sw      a1, 0x0044(t7)              // save stock icon address to stock icon object
-    
+
         _end:
         j       _return
         nop
     }
 }
+
+} // __SINGLE_PLAYER_MODES__

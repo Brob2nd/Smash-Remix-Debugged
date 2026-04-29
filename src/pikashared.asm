@@ -1,4 +1,7 @@
 // Pikashared.asm
+if !{defined __PIKA_SHARED__} {
+define __PIKA_SHARED__()
+print "included pikashared.asm\n"
 
 // This file contains shared functions by Pika Clones.
 
@@ -186,6 +189,7 @@ scope PikaShared {
         _end:
         OS.routine_end(0x20)
     }
+
     // Assign custom recovery logic to all Pikas
     Character.table_patch_start(cpu_post_process, Character.id.PIKACHU, 0x4)
     dw cpu_post_process; OS.patch_end()
@@ -238,7 +242,7 @@ scope PikaShared {
         addiu   at, r0, 0x0017                  // original line 2
     }
 
-// character ID check add for when Pika Clones perform Forward Smash
+    // character ID check add for when Pika Clones perform Forward Smash
     scope forward_smash_fix_1: {
         OS.patch_start(0xCA898, 0x8014FE58)
         j       forward_smash_fix_1
@@ -632,3 +636,5 @@ scope PikaShared {
     // Pikachu shares hardcodings with Jigglypuff and some of his hardcodings are in jigglypuffkirbyshared.asm
 
     }
+
+} // __PIKA_SHARED__

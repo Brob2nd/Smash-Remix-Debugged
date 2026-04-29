@@ -1,6 +1,7 @@
 // FPS.asm
 if !{defined __FPS__} {
 define __FPS__()
+print "included FPS.asm\n"
 
 include "Color.asm"
 include "Global.asm"
@@ -184,9 +185,7 @@ scope FPS {
         li      t0, last_os_get_count       // t0 = address of last_os_get_count
         b      _done
         sw      t7, 0x0000(t0)              // update last_os_get_count
-
     }
-
 }
 
-}
+} // __FPS__

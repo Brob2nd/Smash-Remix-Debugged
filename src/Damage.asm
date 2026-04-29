@@ -365,7 +365,6 @@ scope Damage {
         addiu   sp, sp, 0x28
     }
 
-
 	// Based on melees bury time formula but
 	constant initial_buried_time(99)				// frames
 	constant buried_percent_multiplier(0x3F333333)	// 0.7
@@ -445,12 +444,10 @@ scope Damage {
         addiu   at, at, initial_buried_time // at = inital time plus player percent thing
         sw      at, 0x026C(s0)              // save buried timer
 
-
         // set buried
         jal     bury_player_
         lw      a0, 0x0028(sp)              // a0 = player object
         lw      a0, 0x0028(sp)
-
 
         _end:
         lw      ra, 0x0024(sp)
@@ -569,7 +566,6 @@ scope Damage {
         jr      ra
         addiu   sp, sp, 0x20
     }
-
 
     // @ Description
 	// Buries a grounded player.
@@ -944,7 +940,6 @@ scope Damage {
 
     }
 
-
     // ADD NEW DAMAGE TYPES HERE
 
     print "============================== DAMAGE TYPES ============================== \n"
@@ -971,4 +966,5 @@ scope Damage {
         constant SLEEP(0x6)
     }
 }
-}
+
+} // __DAMAGE__

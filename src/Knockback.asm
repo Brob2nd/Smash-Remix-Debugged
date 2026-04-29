@@ -1,4 +1,7 @@
 // Knockback.asm
+if !{defined __KNOCKBACK__} {
+define __KNOCKBACK__()
+print "included Knockback.asm\n"
 
 // @ Description
 // This file contains a randomizer for knockback angles.
@@ -161,7 +164,6 @@ scope Knockback {
         b       _end                        // branch to end
         sw      t6, 0x0028(t0)              // original line 2
 
-
         _random:
         li      t6, random_table            // t6 = random_table
         addu    t6, t6, t7                  // t6 = random_table + (port * 4)
@@ -245,3 +247,5 @@ scope Knockback {
     //    addiu   sp, sp, 0x0040          // deallocate stack space
     //}
 }
+
+} // __KNOCKBACK__

@@ -47,7 +47,7 @@ scope Surface {
         // print message
         print "Added Surface Type: {name} - ID is 0x" ; OS.print_hex(new_surface_count + 0xF) ; print "\n"
     }
-    
+
     // @ Description
     // Move/extend the original 6 knockback structs
     macro move_original_structs() {
@@ -63,7 +63,7 @@ scope Surface {
             evaluate n({n}+1)
         }
     }
-    
+
     // @ Description
     // Add new knockback structs
     macro add_new_structs() {
@@ -83,13 +83,13 @@ scope Surface {
             evaluate n({n}+1)
         }
     }
-    
+
     // @ Description
     // Writes new surfaces to the ROM
     macro write_surfaces() {
         // Move/extend original knockback structs
         move_original_structs()
-        
+
         // Add zebes acid struct
         zebes_acid_struct:
         dw 0x00000000
@@ -100,10 +100,10 @@ scope Surface {
         dw 0x0000001E
         dw 0x00000001
         dw 0xFFFFFFFF
-        
+
         // Add new knockback structs
         add_new_structs()
-    
+
         // Define a table containing knockback struct pointers for surfaces.
         knockback_table:
         // define original knockback structs
@@ -138,12 +138,11 @@ scope Surface {
             evaluate n({n}+1)
         }
     }
-    
-    
+
     // ADD NEW SURFACES HERE
-    
+
     print "============================== SURFACE TYPES ============================== \n"
-    
+
     // name - surface name, used for display only
     // friction - friction value used by the surface, default = 4.0
     // bool_knockback - OS.FALSE = no knockback, OS.TRUE = apply knockback
@@ -155,7 +154,7 @@ scope Surface {
     // base_knockback - parameter for knockback
     // effect - parameter for knockback
     // fgm - FGM id to use when applying knockback
-    
+
     add_surface(big_blue_surface_1, 4.0, OS.TRUE, 8, 4, 105, 5, 0, 125, 1, -1)
     add_surface(cool_cool_surface_1, 0.3, OS.FALSE, 0, 0, 0, 0, 0, 0, 0, 0)
     add_surface(failed_z_cancel, 4.0, OS.TRUE, 0x00010008, 7, 90, 0, 0, 0x20, 0, 0x0038) // unused bit as override flag
@@ -181,18 +180,18 @@ scope Surface {
 
     // write surfaces to ROM
     write_surfaces()
-    
+
     print "========================================================================== \n"
-    
+
     // ASM PATCHES
-    
+
     // @ Description
     // Modifies the 3 known functions which load the friction of a surface to load from an
     // extended friction table.
     scope get_friction_: {
         constant UPPER(friction_table >> 16)
         constant LOWER(friction_table & 0xFFFF)
-        
+
         // this patch modifies the general grounded physics function which is used to load/apply friction most of the time
         OS.patch_start(0x543DC, 0x800D8BDC)
         if LOWER > 0x7FFF {
@@ -203,7 +202,7 @@ scope Surface {
         addu    at, at, t9
         lwc1    f4, LOWER(at)
         OS.patch_end()
-        
+
         // this patch modifies a function which loads from the friction table after a character has
         // taken low knockback?
         OS.patch_start(0x5D9DC, 0x800E21DC)
@@ -228,7 +227,7 @@ scope Surface {
         lwc1    f8, LOWER(at)
         OS.patch_end()  
     }
-    
+
     // @ Description
     // Revised version of in-game function which is used for loading a knockback struct for a
     // surface. Originally, a jump table was used, but it is replaced by an extended struct table.
@@ -237,7 +236,7 @@ scope Surface {
         // t0 = surface id - 7
         bltzl   t0, _end                    // skip if surface id < 7
         or      v0, r0, r0                  // v0 = 0 (disable knockback)		
-        
+
         // check if surface is bounce
         // t9 = surface id
         addiu   at, r0, 0x24                // at = bounce surface id
@@ -287,12 +286,12 @@ scope Surface {
         //fill 0x800E5D10 - pc()              // nop the rest of the original function
         OS.patch_end()
     }
-    
+
     scope _bounce: {
         addiu   sp, sp, -0x20               // allocate stackspace
         sw      ra, 0x14(sp)                // store ra
         sw      a0, 0x18(sp)                // store player struct
-        
+
         lw      at, 0x09EC(a0)              // at = on hit routine
         beqzl   at, _check_on_hit_routine_2
         lw      at, 0x09F0(a0)              // at = on hit routine
@@ -302,12 +301,12 @@ scope Surface {
         li      ra, _start_jump             // ra = _start_jump
         jr      at                          // run on hit routine
         lw      a0, 0x0004(a0)              // a0 = player obj
-        
+
         _start_jump:
         lw      a0, 0x18(sp)                // restore player struct
         jal     0x800E98B0                  // clear gfx overlay routine
         lw      a0, 0x0004(a0)              // a0 = player obj
-        
+
         lw      a0, 0x18(sp)                // restore player struct
         // make the player jump
         lli     a1, Action.JumpF            // a1(action id) = JumpF
@@ -350,12 +349,12 @@ scope Surface {
         nop
         _return:
         OS.patch_end()
-        
+
         lw      v1, 0x0034(sp)              // v1 = knockback struct
         lw      at, 0x001C(v1)              // at = FGM id
         bltz    at, _original               // branch if FGM id < 0
         nop
-        
+
         _override:
         // TODO: figure out what this timer/variable is being used for..
         // My theory is that this timer disables knockback from the surface until it resets to 0.
@@ -368,7 +367,7 @@ scope Surface {
         addiu   sp, sp, 0x0028              // ~
         jr      ra                          // end subroutine using original logic
         nop
-        
+
         _original:
         lw      v1, 0x0038(sp)              // original line 1
         sltiu   at, v1, 0x000A              // original line 2
@@ -449,7 +448,7 @@ scope Surface {
         nop
 
     }
-    
+
     scope item_apply_conveyor_surface: {
         OS.patch_start(0xEA324, 0x8016F8E4)
         j       item_apply_conveyor_surface
@@ -532,7 +531,7 @@ scope Surface {
     constant CLIFF(0x3000)
     constant CLIFF_RIGHT(0x1000)
     constant CLIFF_LEFT(0x2000)
-	
+
 	// @ Description
 	// Returns flag of clipping.
 	// A0 = clipping ID
@@ -545,7 +544,7 @@ scope Surface {
 		addu	a1, t7, t3
 		lhu		v0, 0x0000(a1)
 		sll		a0, v0, 1					// a0 = offset
-		
+
 		// then we get the clipping id
 		lw		t1, 0x1374(at)				// t1 = clipping struct 1
 		lw		t8, 0x1370(at)				// t8 = clipping struct 2
@@ -562,4 +561,5 @@ scope Surface {
 	}
 
 }
-}
+
+} // __SURFACE__

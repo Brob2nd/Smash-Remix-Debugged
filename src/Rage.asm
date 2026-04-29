@@ -1,3 +1,8 @@
+// Rage.asm
+if !{defined __RAGE__} {
+define __RAGE__()
+print "included Rage.asm\n"
+
 scope Rage {
     attacker_damage_percent:
     db 0x0000
@@ -294,3 +299,5 @@ scope Rage {
         nop
     }
 }
+
+} // __RAGE__

@@ -1,4 +1,7 @@
 // Yoshishared.asm
+if !{defined __YOSHI_SHARED__} {
+define __YOSHI_SHARED__()
+print "included yoshishared.asm\n"
 
 // This file contains shared functions by Yoshi Clones.
 
@@ -114,7 +117,6 @@ scope YoshiShared {
         j       _return
         nop
     }
-
 
     // Hardcoding for Yoshi Clones to execute the Yoshi Egg Shield Roll
     scope yoshi_shield_fix_5: {
@@ -301,9 +303,7 @@ scope YoshiShared {
         _yoshi_recover_1:                     // no up special
         j       0x80135628                    // modified original line 1 part 2
         addiu  at, r0, 0x000A                 // original line 2
-
     }
-
 
     // Yoshi has a hardcoded projectile struct for his up special similar to Ness and Link. This code inserts a new pointer to the clones main file so the game doesn't crash.
     scope up_special_struct_fix: {
@@ -369,7 +369,6 @@ scope YoshiShared {
         j       _return                     // return
         nop
     }
-
 
     OS.align(16)
     upspecial_struct_jyoshi:
@@ -625,3 +624,5 @@ scope YoshiShared {
     Character.table_patch_start(cpu_attack_weight, Character.id.JYOSHI, 0x4)
     dw cpu_attack_weight; OS.patch_end()
 }
+
+} // __YOSHI_SHARED__

@@ -1,15 +1,19 @@
 // LedgeTrump.asm
 // Removes the ability to ledge hog other players, the trumped player will fall off the ledge
 // by halofactory
+if !{defined __LEDGE_TRUMP__} {
+define __LEDGE_TRUMP__()
+print "included LedgeTrump.asm\n"
+
 scope LedgeTrump {
 
     // check right ledge = 800DB590
     // check left ledge = 800DB6F0
-    
+
     constant PUSH_Y_VELOCITY(0x4248) // 50
     constant PUSH_X_VELOCITY(0x4248) // 50
     constant LAG_FRAMES(30)
-    
+
     // temp value
     player_on_cliff:
     dw      0
@@ -37,7 +41,7 @@ scope LedgeTrump {
         nop
         b       _ledge_trump_end
         nop
-        
+
         _ledge_trump_continue:
         li      at, player_on_cliff
         sw      v1, 0x0000(at)              // store v1
@@ -77,7 +81,6 @@ scope LedgeTrump {
         _normal:
         j       0x800DE69C              // og line 1 modified
         lw      v0, 0x0024(sp)          // og line 2
-
     }
 
     // @ Description
@@ -101,3 +104,5 @@ scope LedgeTrump {
     }
 
 }
+
+} // __LEDGE_TRUMP__

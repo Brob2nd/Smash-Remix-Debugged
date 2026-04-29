@@ -1,4 +1,7 @@
 // FoxShared.asm
+if !{defined __FOX_SHARED__} {
+define __FOX_SHARED__()
+print "included foxshared.asm\n"
 
 scope FoxShared {
     scope recovery_logic: {
@@ -63,7 +66,7 @@ scope FoxShared {
             _left:
             lwc1 f6, 0x01CC+0x4C(a0) // load nearest LEFT ledge X
             lwc1 f8, 0x01CC+0x50(a0) // load nearest LEFT ledge Y
-            
+
             b _check_end
             nop
 
@@ -182,3 +185,5 @@ scope FoxShared {
     Character.table_patch_start(cpu_post_process, Character.id.JFOX, 0x4)
     dw cpu_post_process; OS.patch_end()
 }
+
+} // __FOX_SHARED__
