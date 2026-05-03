@@ -946,7 +946,7 @@ scope Costumes {
         db 0x05                             // Yoshi
         db 0x05                             // Captain Falcon
         db 0x04                             // Kirby
-        db 0x03                             // Pikachu
+        db 0x04                             // Pikachu
         db 0x04                             // Jigglypuff
         db 0x03                             // Ness
         db 0x00                             // Master Hand

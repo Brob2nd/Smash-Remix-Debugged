@@ -9,7 +9,7 @@ scope pikachu_costumes {
 
     // @ Description
     // Number of original costumes
-    constant NUM_COSTUMES(4 + 2) // 2 skipped
+    constant NUM_COSTUMES(5 + 1) // 1 skipped
 
     parts_table:
     constant PARTS_TABLE_ORIGIN(origin())
@@ -17,7 +17,7 @@ scope pikachu_costumes {
     db NUM_EXTRA_COSTUMES       // 0x0 - number of extra costumes
     db 0x7                      // 0x1 - special part ID (hat)
     db 0x3                      // 0x2 - special part image index start
-    db 0x2                      // 0x3 - costumes to skip
+    db 0x1                      // 0x3 - costumes to skip
     fill 4 + (NUM_PARTS - 1) * 8
 
     Costumes.define_part(1, 1, Costumes.part_type.DIFFUSE_AMBIENT_COLORS | Costumes.part_type.PALETTE)       // part 0x1_0 - pelvis
