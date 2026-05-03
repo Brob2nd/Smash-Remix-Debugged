@@ -1,3 +1,4 @@
+// Playlist created by: Nintendo
 // Always call add_music_profile first to create the profile
 add_music_profile(vanilla, "Vanilla")
 
@@ -15,6 +16,7 @@ add_to_music_profile(vanilla, META_CRYSTAL)
 add_to_music_profile(vanilla, MUSHROOM_KINGDOM)
 add_to_music_profile(vanilla, PEACHS_CASTLE)
 add_to_music_profile(vanilla, PLANET_ZEBES)
+add_to_music_profile(vanilla, RESULTS)
 add_to_music_profile(vanilla, SAFFRON_CITY)
 add_to_music_profile(vanilla, SECTOR_Z)
 add_to_music_profile(vanilla, TRAINING_MODE)

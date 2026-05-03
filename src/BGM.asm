@@ -223,7 +223,6 @@ scope BGM {
         bnez    t0, _save                   // if we should play the Main song, skip to end
         nop                                 // else, check to see which other song to play
 
-
         sltiu   t0, v0, CHANCE_MAIN + CHANCE_OCCASIONAL + CHANCE_RARE
         beql    t0, r0, _get_bgm_id         // if (v0 > main + occasional chances)
         ori     a0, r0, 0x0004              // we'll use the Rare2 song
@@ -423,6 +422,7 @@ scope BGM {
         add_to_list(Toggles.entry_random_music_bonus, menu.BONUS)
         add_to_list(Toggles.entry_random_music_credits, menu.CREDITS)
         add_to_list(Toggles.entry_random_music_training_mode, special.TRAINING)
+        add_to_list(Toggles.entry_random_music_results, menu.RESULTS)
 
         // Add custom MIDIs
         define n(0x2F)
@@ -895,7 +895,6 @@ scope BGM {
         beq     t1, t0, _done               // if set to 'RANDOM ALL', then don't stop it
         nop
 
-
         jal     BGM.stop_                   // original line 1
         nop                                 // original line 2
 
@@ -906,7 +905,6 @@ scope BGM {
         addiu   sp, sp, 0x0020              // deallocate stack space
         jr      ra
         nop
-
     }
 
     // @ Description
@@ -973,7 +971,6 @@ scope BGM {
         jr      ra
         nop
     }
-
 
     // @ Description
     // Sets up music title stuff
@@ -1204,7 +1201,7 @@ scope BGM {
     dw 0x0,                                        0x0                                                    // Falcon victory
     dw 0x0,                                        0x0                                                    // Pikachu/Jigglypuff victory
     dw 0x0,                                        0x0                                                    // Link victory
-    dw 0x0,                                        0x0                                                    // Results
+    dw MIDI.game_{MIDI.GAME_ssb}_title,            Toggles.entry_random_music_results + 0x28
     dw 0x0,                                        0x0                                                    // Master Hand 1
     dw MIDI.game_{MIDI.GAME_ssb}_title,            Toggles.entry_random_music_final_destination + 0x28    // Master Hand 2 (intro) - putting the title to avoid crash on FD
     dw MIDI.game_{MIDI.GAME_ssb}_title,            Toggles.entry_random_music_final_destination + 0x28
@@ -1546,7 +1543,6 @@ scope BGM {
     // @ Description
     // Location where current track is written in vanilla.
     constant vanilla_current_track(0x8013139C)
-
 }
 
 } // __BGM__

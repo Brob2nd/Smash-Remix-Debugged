@@ -157,7 +157,6 @@ scope Toggles {
         OS.patch_start(0x11D0AC, 0x8013211C)
         lui     at, 0x42E4              // original was 0x42CC
         OS.patch_end()
-
     }
 
     // @ Description
@@ -1570,7 +1569,6 @@ scope Toggles {
     dw num_9
     dw num_10
 
-
     string_table_screenshake:
     dw default
     dw light
@@ -1827,7 +1825,6 @@ scope Toggles {
         lli     a0, 0x0008                  // t1 = 8 (BLASTCORPS)
         bne     a0, t0, _end                // don't play SFX unless menu track is BLASTCORPS
         lli     a0, 0x537                   // a0 - fgm_id (Time to get Moving!)
-
 
         _play:
         jal     FGM.play_                   // play menu sound
@@ -2454,7 +2451,6 @@ scope Toggles {
     entry_move_staling:;                entry("Move Staling", Menu.type.INT, 0, 0, 0, 0, 0, 6, OS.NULL, string_table_move_staling, OS.NULL, entry_stopwatch_behaviour)
     entry_stopwatch_behaviour:;         entry("Stopwatch Item", Menu.type.INT, 0, 0, 0, 0, 0, 4, OS.NULL, string_table_stopwatch_item, OS.NULL, OS.NULL)
 
-
     evaluate num_gameplay_toggles(num_toggles - {num_remix_toggles})
     evaluate gameplay_toggles_block_size(block_size)
     global variable block_size(0)
@@ -2485,7 +2481,8 @@ scope Toggles {
     entry_random_music_meta_crystal:;       entry_bool_with_a("Meta Crystal", OS.TRUE, OS.TRUE, OS.TRUE, OS.TRUE, preview_bgm_, BGM.stage.META_CRYSTAL, entry_random_music_mushroom_kingdom)
     entry_random_music_mushroom_kingdom:;   entry_bool_with_a("Mushroom Kingdom", OS.TRUE, OS.TRUE, OS.TRUE, OS.TRUE, preview_bgm_, BGM.stage.MUSHROOM_KINGDOM, entry_random_music_peachs_castle)
     entry_random_music_peachs_castle:;      entry_bool_with_a("Peach's Castle", OS.TRUE, OS.TRUE, OS.TRUE, OS.TRUE, preview_bgm_, BGM.stage.PEACHS_CASTLE, entry_random_music_planet_zebes)
-    entry_random_music_planet_zebes:;       entry_bool_with_a("Planet Zebes", OS.TRUE, OS.TRUE, OS.TRUE, OS.TRUE, preview_bgm_, BGM.stage.PLANET_ZEBES, entry_random_music_saffron_city)
+    entry_random_music_planet_zebes:;       entry_bool_with_a("Planet Zebes", OS.TRUE, OS.TRUE, OS.TRUE, OS.TRUE, preview_bgm_, BGM.stage.PLANET_ZEBES, entry_random_music_results)
+    entry_random_music_results:;            entry_bool_with_a("Results", OS.TRUE, OS.TRUE, OS.TRUE, OS.TRUE, preview_bgm_, BGM.menu.RESULTS, entry_random_music_saffron_city)
     entry_random_music_saffron_city:;       entry_bool_with_a("Saffron City", OS.TRUE, OS.TRUE, OS.TRUE, OS.TRUE, preview_bgm_, BGM.stage.SAFFRON_CITY, entry_random_music_sector_z)
     entry_random_music_sector_z:;           entry_bool_with_a("Sector Z", OS.TRUE, OS.TRUE, OS.TRUE, OS.TRUE, preview_bgm_, BGM.stage.SECTOR_Z, entry_random_music_training_mode)
     entry_random_music_training_mode:;      entry_bool_with_a("Training Mode", OS.TRUE, OS.TRUE, OS.TRUE, OS.TRUE, preview_bgm_, BGM.special.TRAINING, entry_random_music_yoshis_island)
@@ -2954,10 +2951,11 @@ scope Toggles {
     evaluate music_toggle_MUSHROOM_KINGDOM(10)
     evaluate music_toggle_PEACHS_CASTLE(11)
     evaluate music_toggle_PLANET_ZEBES(12)
-    evaluate music_toggle_SAFFRON_CITY(13)
-    evaluate music_toggle_SECTOR_Z(14)
-    evaluate music_toggle_TRAINING_MODE(15)
-    evaluate music_toggle_YOSHIS_ISLAND(16)
+    evaluate music_toggle_RESULTS(13)
+    evaluate music_toggle_SAFFRON_CITY(14)
+    evaluate music_toggle_SECTOR_Z(15)
+    evaluate music_toggle_TRAINING_MODE(16)
+    evaluate music_toggle_YOSHIS_ISLAND(17)
 
     // @ Description
     // Adds a track to a music profile
@@ -3411,8 +3409,6 @@ scope Toggles {
         jr      ra                          // return
         nop
     }
-
 }
-
 
 } // __TOGGLES__
