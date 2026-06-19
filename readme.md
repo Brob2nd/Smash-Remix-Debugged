@@ -1,12 +1,17 @@
 # Smash Remix Debugged
+
 *A Smash Remix Mod Made by Brob2nd*
+
+<img width="499" height="335" alt="Smash Remix Debugged" src="https://github.com/user-attachments/assets/82d42dbe-b93d-4e7e-a238-3ff54bde8617" />
 
 Smash Remix Debugged is a mod for the Super Smash Bros. 64 mod, Smash Remix, this mod's purpose is to work as a template for future Smash Remix mods, adding things like new features (mentioned below) or inaccessible stuff now being accessible (like some inaccessible stages and songs now being accessible).
 
 It also adds some extra content, such as playable Sandbag, the Tap Jump and Walljump gameplay options, Extended VS Match Stats, Z Cancel Guide, Stage Bans (like in Project M/+), 4 Tournament Stage Pages with a list of viable stages for Tournaments, and more.
 
 # How to Play Smash Remix Debugged Online on Project64KSE or RMG Kaillera Edition
-If you play on Project64KSE, then follow the steps on the netplay set-up tutorial on smash64.online, then on your Project64KSE folder, go to the cfg folder, then open the pj64.rdb file, then go to the bottom line, and copy/paste this:
+If you play on RMG Kaillera Edition, then follow the steps on the netplay set-up tutorial on smashremix.net, and since Smash Remix Debugged's crc is already included with RMG-K, that means you would be ready to play!
+
+If you instead play on Project64KSE, then follow the steps on the netplay set-up tutorial on smash64.online, then on your Project64KSE folder, go to the cfg folder, then open the pj64.rdb file, then go to the bottom line, and copy/paste this:
 
 Smash Remix Debugged 1.3.2's Info:
 ```
@@ -20,6 +25,7 @@ SMM-Cache=0
 SMM-FUNC=0
 SMM-TLB=0
 Status=Compatible
+
 Use TLB=No
 ViRefresh=2200
 ```
@@ -37,24 +43,6 @@ SMM-TLB=0
 Status=Compatible
 Use TLB=No
 ViRefresh=2200
-```
-If you instead play on RMG Kaillera Edition, then follow the steps on the netplay set-up tutorial on smashremix.net, then on your RMG-K folder, go to the Data folder, then open the mupen64plus.ini file, then go to the bottom line, and copy/paste this:
-
-Smash Remix Debugged 1.3.2's Info:
-```
-[4F7A78991455017C84DD2A9610109475]
-GoodName=SmashRemixDebugged1.3.2
-CRC=08F70EE5 7AAAAF7E
-RefMD5=DFBFAF5B78BE87B2762218B91CC7C935-
-CountPerOp=1
-```
-Smash Remix Debugged 1.3.2 (PAL)'s Info:
-```
-[3FD1BC92175A623D4ACB6B218ABA8C79]
-GoodName=SmashRemixDebugged1.3.2 (PAL60)
-CRC=CBE9350F 35898EBA
-RefMD5=DFBFAF5B78BE87B2762218B91CC7C935-
-CountPerOp=1
 ```
 
 # FAQ/Q&A
