@@ -193,7 +193,6 @@ scope Accessibility {
         _j_0x80102290:
         j       0x80102290                  // jump
         nop
-
     }
 }
 

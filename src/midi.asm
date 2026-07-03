@@ -235,7 +235,6 @@ scope MIDI {
     add_game(warioware, "WarioWare, Inc.: Mega Microgame$!")
     add_game(wwtouched, "WarioWare: Touched!")
     add_game(dkarc, "Donkey Kong/Donkey Kong Jr.")
-    add_game(dkl, "Donkey Kong Land")
     add_game(dkc, "Donkey Kong Country")
     add_game(dkc2, "Donkey Kong Country 2: Diddy's Kong Quest")
     add_game(dk64, "Donkey Kong 64")

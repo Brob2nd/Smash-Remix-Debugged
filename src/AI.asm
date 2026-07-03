@@ -5236,7 +5236,7 @@ scope AI {
 
                     _calc_pos:
                     or at, r0, a0 // at = hit_frame (int)
-    
+
                     _loop_start: {
                         // if at <= 0, end loop
                         blez at, _loop_end

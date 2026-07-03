@@ -429,7 +429,6 @@ scope SamusShared {
     dw 0x00000000
     dw 0x000027E8
     dw 0x00000000
-
 }
 
 } // __SAMUS_SHARED__

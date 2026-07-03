@@ -1,4 +1,4 @@
-// Playlist created by: Brobgonal Second/Brob2nd.
+// Playlist created by: Brob2nd.
 // Features medley themes and arrangements.
 // Always call add_music_profile first to create the profile
 add_music_profile(medleys, "Medleys")

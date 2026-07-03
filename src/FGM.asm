@@ -1,5 +1,4 @@
 // FGM.asm
-// FGM.asm
 if !{defined __FGM__} {
 define __FGM__()
 print "included FGM.asm\n"

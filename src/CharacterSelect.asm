@@ -1,4 +1,4 @@
-// Character.asm
+// CharacterSelect.asm
 if !{defined __CHARACTER_SELECT__} {
 define __CHARACTER_SELECT__()
 print "included CharacterSelect.asm\n"

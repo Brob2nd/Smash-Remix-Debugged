@@ -1,8 +1,9 @@
 // captainshared.asm
-// This file contains shared functions by Captain Falcon Clones.
 if !{defined __CAPTAIN_SHARED__} {
 define __CAPTAIN_SHARED__()
 print "included captainshared.asm\n"
+
+// This file contains shared functions by Captain Falcon Clones.
 
 scope CaptainShared {
     // Original Falcon Punch animation struct: 0xA9AEC
