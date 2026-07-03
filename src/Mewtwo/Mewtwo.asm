@@ -562,54 +562,49 @@ scope Mewtwo {
     }
 
     // Originally, Mewtwo was intended to use a unique graphical effect for Up Smash. This was never finished.
-    // @ Description
-    // Modifies the standard Up Smash Main Routine so that Mewtwo can use his Up Smash GFX
-        OS.patch_start(0xA5608, 0x80129E08)
-        dw      custom_usmash_
-        OS.patch_end()
-
-        scope custom_usmash_: {
-        addiu   sp, sp, -0x0018
-        sw      ra, 0x0014(sp)
-        sw      a0, 0x000C(sp)
-        sw      a2, 0x0004(sp)
-        sw      v1, 0x0010(sp)
-        lw      at, 0x0008(a2)              // load character ID
-        lli     t0, Character.id.MTWO       // at = id.MTWO
-        bne     at, t0, _normal             // do normal routine if not Mewtwo
-        define toggleAddress(0x00000000)
-        evaluate toggleAddress(Toggles.entry_mewtwo_custom_usmash_gfx + 0x04)
-        OS.read_word({toggleAddress}, at)   // at = toggle value
-        beqz    at, _normal                 // if toggle disabled, do normal routine
-        nop
-        lw      at, 0x017C(a2)              // load moveset variable 1 (54000000)
-        beqz    at, _normal                 // if variable not active, do normal routine
-        sw      a0, 0x0018(sp)              // save a0 to stack
-        addiu   t0, r0, 0x0002
-        beq     at, t0, _end_graphics       // if at stage 2, end graphics
-        addu    v1, r0, a2                  // place player struct in v1
-        jal     0x80101F84                  // falcon punch animation struct routine
-        lw      a0, 0x0004(v1)              // load player object into a0
-        lw      v1, 0x0004(sp)
-        lbu     t1, 0x018F(v1)
-        ori     t2, t1, 0x0010
-        sb      t2, 0x018F(v1)              // this is done so that the GFX can be destroyed, this a bitfield related to the bone struct
-        beq     r0, r0, _normal
-        sw      r0, 0x017C(v1)
-
-       _end_graphics:
-        lw      v1, 0x0004(sp)              // load player struct
-        jal     0x800E9C3C                  // routine that ends graphics
-        lw      a0, 0x0004(v1)              // load player object into a0
-
-        _normal:
-        lw      v1, 0x0010(sp)
-        lw      a0, 0x000C(sp)
-        jal     0x800D94C4                  // original Up Smash Routine
-        lw      a2, 0x0004(sp)
-        lw      ra, 0x0014(sp)
-        addiu   sp, sp, 0x0018
-        jr      ra
-        nop
-    }
-}
+//  // @ Description
+//  // Modifies the standard Up Smash Main Routine so that Mewtwo can use his Up Smash GFX
+//      OS.patch_start(0xA5608, 0x80129E08)
+//      dw      custom_usmash_
+//      OS.patch_end()
+//
+//      scope custom_usmash_: {
+//      addiu   sp, sp, -0x0018
+//      sw      ra, 0x0014(sp)
+//      sw      a0, 0x000C(sp)
+//      sw      a2, 0x0004(sp)
+//      sw      v1, 0x0010(sp)
+//      lw      at, 0x0008(a2)              // load character ID
+//      lli     t0, Character.id.MTWO       // at = id.MTWO
+//      bne     at, t0, _normal             // do normal routine if not Mewtwo
+//      lw      at, 0x017C(a2)              // load moveset variable 1 (54000000)
+//      beqz    at, _normal                 // if variable not active, do normal routine
+//      sw      a0, 0x0018(sp)              // save a0 to stack
+//      addiu   t0, r0, 0x0002
+//      beq     at, t0, _end_graphics       // if at stage 2, end graphics
+//      addu    v1, r0, a2                  // place player struct in v1
+//      jal     0x80101F84                  // falcon punch animation struct routine
+//      lw      a0, 0x0004(v1)              // load player object into a0
+//      lw      v1, 0x0004(sp)
+//      lbu     t1, 0x018F(v1)
+//      ori     t2, t1, 0x0010
+//      sb      t2, 0x018F(v1)              // this is done so that the GFX can be destroyed, this a bitfield related to the bone struct
+//      beq     r0, r0, _normal
+//      sw      r0, 0x017C(v1)
+//
+//      _end_graphics:
+//      lw      v1, 0x0004(sp)              // load player struct
+//      jal     0x800E9C3C                  // routine that ends graphics
+//      lw      a0, 0x0004(v1)              // load player object into a0
+//
+//      _normal:
+//      lw      v1, 0x0010(sp)
+//      lw      a0, 0x000C(sp)
+//      jal     0x800D94C4                  // original Up Smash Routine
+//      lw      a2, 0x0004(sp)
+//      lw      ra, 0x0014(sp)
+//      addiu   sp, sp, 0x0018
+//      jr      ra
+//      nop
+//  }
+   }
