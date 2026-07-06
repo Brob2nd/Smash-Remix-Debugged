@@ -1181,6 +1181,19 @@ scope Toggles {
     dw on
     dw unlimited
 
+    string_table_move_buffer:
+    dw default
+    dw num_1
+    dw num_2
+    dw num_3
+    dw num_4
+    dw num_5
+    dw num_6
+    dw num_7
+    dw num_8
+    dw num_9
+    dw num_10
+
     // @ Description
     // Failed Z-Cancel strings
     _7:; db "7% Damage", 0x00
@@ -1588,6 +1601,27 @@ scope Toggles {
     // Blastzone GFX strings
     reduced:; db "REDUCED", 0x00
     OS.align(4)
+
+    // @ Description
+    // 12CB format strings (Default = winner locked to character; Winners Unlocked = free reselect
+    // after a win). Read 12CB-only by TwelveCharBattle.prevent_defeated_char_select_/prevent_token_pickup_.
+    string_12cb_format_default:;  String.insert("DEFAULT")
+    string_12cb_format_unlocked:; String.insert("WINNERS UNLOCKED")
+    OS.align(4)
+    string_table_12cb_format:
+    dw string_12cb_format_default
+    dw string_12cb_format_unlocked
+
+    // @ Description
+    // 12CB stock format strings (Default = retain remaining stocks between matches; Reset Stocks =
+    // reset survivors to full each match, Tournament-1 style). Read 12CB-only by
+    // TwelveCharBattle.set_initial_stock_count_/update_stocks_remaining_.
+    string_12cb_stock_default:; String.insert("DEFAULT")
+    string_12cb_stock_reset:;   String.insert("RESET STOCKS")
+    OS.align(4)
+    string_table_12cb_stock_format:
+    dw string_12cb_stock_default
+    dw string_12cb_stock_reset
 
     // @ Description
     // Pokemon Stadium Announcer strings
@@ -2409,7 +2443,9 @@ scope Toggles {
     entry_pk_thunder_reflect_crash_fix:;entry_bool("PK Thunder Reflect Crash Fix", OS.TRUE, OS.TRUE, OS.TRUE, OS.TRUE, entry_flash_guard)
     entry_flash_guard:;                 entry_bool("Flash Guard", OS.FALSE, OS.FALSE, OS.FALSE, OS.FALSE, entry_screenshake)
     entry_screenshake:;                 entry("Screenshake", Menu.type.INT, OS.FALSE, OS.FALSE, OS.FALSE, OS.FALSE, 0, 2, OS.NULL, string_table_screenshake, OS.NULL, entry_blastzone_gfx)
-    entry_blastzone_gfx:;               entry("BlastZone GFX", Menu.type.INT, 0, 0, 0, 0, 0, 2, OS.NULL, string_table_blastzone_gfx, OS.NULL, OS.NULL)
+    entry_blastzone_gfx:;               entry("BlastZone GFX", Menu.type.INT, 0, 0, 0, 0, 0, 2, OS.NULL, string_table_blastzone_gfx, OS.NULL, entry_12cb_format)
+    entry_12cb_format:;                 entry("12CB Format", Menu.type.INT, 0, 0, 0, 0, 0, 1, OS.NULL, string_table_12cb_format, OS.NULL, entry_12cb_stock_format)
+    entry_12cb_stock_format:;           entry("12CB Stock format", Menu.type.INT, 0, 0, 0, 0, 0, 1, OS.NULL, string_table_12cb_stock_format, OS.NULL, OS.NULL)
 
     evaluate num_remix_toggles(num_toggles)
     evaluate remix_toggles_block_size(block_size)
@@ -2425,7 +2461,8 @@ scope Toggles {
     entry_j_stun_sleep:;                entry_bool("Japanese Stun/Sleep", OS.FALSE, OS.FALSE, OS.FALSE, OS.TRUE, entry_momentum_slide)
     entry_momentum_slide:;              entry_bool("Momentum Slide", OS.FALSE, OS.FALSE, OS.FALSE, OS.TRUE, entry_shieldstun)
     entry_shieldstun:;                  entry("Shield Stun", Menu.type.INT, 0, 0, 0, 1, 0, 4, OS.NULL, string_table_shieldstun, OS.NULL, entry_z_cancel_opts)
-    entry_z_cancel_opts:;               entry("Z-Cancel", Menu.type.INT, OS.FALSE, OS.FALSE, OS.FALSE, OS.FALSE, 0, 4, OS.NULL, string_table_z_cancel_opts, OS.NULL, entry_punish_on_failed_z_cancel)
+    entry_z_cancel_opts:;               entry("Z-Cancel", Menu.type.INT, OS.FALSE, OS.FALSE, OS.FALSE, OS.FALSE, 0, 4, OS.NULL, string_table_z_cancel_opts, OS.NULL, entry_move_buffer)
+    entry_move_buffer:;                 entry("Move Buffer", Menu.type.INT, 0, 0, 0, 0, 0, 10, OS.NULL, string_table_move_buffer, OS.NULL, entry_punish_on_failed_z_cancel)
     entry_punish_on_failed_z_cancel:;   entry("Punish Failed Z-Cancel", Menu.type.INT, OS.FALSE, OS.FALSE, OS.FALSE, OS.FALSE, 0, 12, punish_fgm_, string_table_failed_z_cancel, OS.NULL, entry_improved_ai)
     entry_improved_ai:;                 entry_bool("Improved AI", OS.TRUE, OS.FALSE, OS.TRUE, OS.TRUE, entry_tripping)
     entry_tripping:;                    entry("Tripping", Menu.type.INT, 0, 0, 0, 0, 0, 3, OS.NULL, string_table_tripping, OS.NULL, entry_rage)

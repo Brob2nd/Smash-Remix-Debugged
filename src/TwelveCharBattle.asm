@@ -2930,6 +2930,13 @@ scope TwelveCharBattle {
         beqz    t0, _end                    // if not started, return normally
         nop
 
+        // 12CB "Winners Unlocked" format: the winner may select any alive character.
+        // (Default keeps the vanilla "winner must keep their character" rule below.)
+        // Only reached for 12CB here (twelve_cb_flag set + not Tournament), so this is 12CB-only.
+        OS.read_word(Toggles.entry_12cb_format + 0x4, t0) // t0 = 0 = Default (locked), 1 = Winners Unlocked
+        bnez    t0, _end                    // Winners Unlocked -> allow selecting any live character
+        nop
+
         // if the player won last match, make sure they can't select a different character
         jal     get_last_match_portrait_and_stocks_ // v0 = remaining stocks, v1 = portrait_id of last match
         nop
@@ -3354,6 +3361,13 @@ scope TwelveCharBattle {
         li      t0, twelve_cb_flag
         lw      t0, 0x0000(t0)              // t0 = 1 if 12cb mode
         beqz    t0, _end                    // if not 12cb mode, return normally
+        nop
+
+        // 12CB "Winners Unlocked" format: allow grabbing any token (incl. the CPU's) like Tournament,
+        // so a new matchup can be set up freely after a win. (Default keeps the vanilla lock below.)
+        // Only reached for 12CB here (twelve_cb_flag set + not Tournament).
+        OS.read_word(Toggles.entry_12cb_format + 0x4, t0) // t0 = 0 = Default (locked), 1 = Winners Unlocked
+        bnez    t0, _end                    // Winners Unlocked -> allow pickup
         nop
 
         li      t0, config.status
