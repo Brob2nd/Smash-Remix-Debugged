@@ -20,6 +20,15 @@ scope TwelveCharBattle {
     twelve_cb_flag:
     dw OS.FALSE
 
+    // @ Description
+    // Phase B: maximum CSS slot capacity. 12CB uses NUM_SLOTS (24)
+    constant MAX_SLOTS(24)
+
+    // @ Description
+    // Phase B: runtime slot count -- 24 for 12CB. Set every time we enter the CSS in before_css_setup_.
+    slot_count:
+    dw 24
+
     macro define_match_struct() {
         define n(1)
         while {n} < 24 {
@@ -3449,6 +3458,16 @@ scope TwelveCharBattle {
         sll     t8, t8, 0x0003              // t8 = t8 * 8 (offset to previous match)
         addu    a0, t6, t8                  // t6 = previous match struct
         lb      t8, 0x0002(a0)              // t8 = remaining stocks (0xFFFFFFFF if no stocks remaining)
+
+        // 12CB: the "12CB stock format" toggle picks the behavior (Default = retain remaining stocks,
+        // Reset Stocks = full each match like Tournament 1). 12CB-only (we already know not Tournament).
+        OS.read_word(Toggles.entry_12cb_stock_format + 0x4, t7) // t7 = 0 = Default (retain), 1 = Reset Stocks
+        beqz    t7, _use_remaining_stocks   // Default -> keep remaining (vanilla 12CB)
+        nop
+        b       _get_portrait_stock_count   // Reset Stocks -> full stocks via portrait count
+        lbu     t8, 0x000B(a0)              // t8 = current match portrait_id (delay slot)
+
+        _use_remaining_stocks:
         bgtz    t8, _end                    // if the player was not previously defeated, use remaining stocks
         nop
         lbu     t8, 0x000B(a0)              // t8 = portrait_id of current match
@@ -5460,6 +5479,30 @@ scope TwelveCharBattle {
         li      t0, config.stocks_by_portrait_id
         addu    t0, t0, v0                  // t0 = address of stock count for this portrait_id
         sb      t5, 0x0000(t0)              // update stock count
+
+        // 12CB: the "12CB stock format" toggle picks the behavior (Default = retain remaining stocks,
+        // Reset Stocks = refill survivors to full like Tournament 1). 12CB-only (not Tournament here).
+        OS.read_word(Toggles.entry_12cb_stock_format + 0x4, t1) // t1 = 0 = Default (retain), 1 = Reset Stocks
+        beqz    t1, _end                    // Default -> retain remaining (no reset)
+        nop
+        b       _do_t1_refill               // Reset Stocks -> refill survivors to full
+        nop
+
+        _do_t1_refill:
+        li      t1, config.stocks_by_portrait_id
+        li      t3, config.num_stocks
+        lw      t3, 0x0000(t3)              // t3 = full stock count
+        OS.read_word(slot_count, t2)        // PHASE B: loop over all active slots (24 or 32)
+        lli     t0, 0x00FF                  // t0 = eliminated marker (0-based -1)
+        _t1_refill:
+        lbu     v0, 0x0000(t1)              // current stock for this portrait
+        beq     v0, t0, _t1_refill_next     // eliminated (0xFF) -> leave eliminated
+        nop
+        sb      t3, 0x0000(t1)              // survivor -> reset to full
+        _t1_refill_next:
+        addiu   t2, t2, -0x0001
+        bnez    t2, _t1_refill
+        addiu   t1, t1, 0x0001              // next portrait (delay slot)
 
         _end:
         lw      ra, 0x0004(sp)              // restore registers
