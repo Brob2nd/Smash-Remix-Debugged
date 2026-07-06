@@ -1603,20 +1603,20 @@ scope Toggles {
     OS.align(4)
 
     // @ Description
-    // 12CB format strings (Default = winner locked to character; Winners Unlocked = free reselect
+    // 12CB format strings (WINNERS LOCKED = winner locked to character; WINNERS UNLOCKED = free reselect
     // after a win). Read 12CB-only by TwelveCharBattle.prevent_defeated_char_select_/prevent_token_pickup_.
-    string_12cb_format_default:;  String.insert("DEFAULT")
+    string_12cb_format_locked:;  String.insert("WINNERS LOCKED")
     string_12cb_format_unlocked:; String.insert("WINNERS UNLOCKED")
     OS.align(4)
     string_table_12cb_format:
-    dw string_12cb_format_default
+    dw string_12cb_format_locked
     dw string_12cb_format_unlocked
 
     // @ Description
-    // 12CB stock format strings (Default = retain remaining stocks between matches; Reset Stocks =
+    // 12CB stock format strings (KEEP STOCKS = retain remaining stocks between matches; RESET STOCKS =
     // reset survivors to full each match, Tournament-1 style). Read 12CB-only by
     // TwelveCharBattle.set_initial_stock_count_/update_stocks_remaining_.
-    string_12cb_stock_default:; String.insert("DEFAULT")
+    string_12cb_stock_default:; String.insert("KEEP STOCKS")
     string_12cb_stock_reset:;   String.insert("RESET STOCKS")
     OS.align(4)
     string_table_12cb_stock_format:
@@ -2445,7 +2445,7 @@ scope Toggles {
     entry_screenshake:;                 entry("Screenshake", Menu.type.INT, OS.FALSE, OS.FALSE, OS.FALSE, OS.FALSE, 0, 2, OS.NULL, string_table_screenshake, OS.NULL, entry_blastzone_gfx)
     entry_blastzone_gfx:;               entry("BlastZone GFX", Menu.type.INT, 0, 0, 0, 0, 0, 2, OS.NULL, string_table_blastzone_gfx, OS.NULL, entry_12cb_format)
     entry_12cb_format:;                 entry("12CB Format", Menu.type.INT, 0, 0, 0, 0, 0, 1, OS.NULL, string_table_12cb_format, OS.NULL, entry_12cb_stock_format)
-    entry_12cb_stock_format:;           entry("12CB Stock format", Menu.type.INT, 0, 0, 0, 0, 0, 1, OS.NULL, string_table_12cb_stock_format, OS.NULL, OS.NULL)
+    entry_12cb_stock_format:;           entry("12CB Stock Format", Menu.type.INT, 0, 0, 0, 0, 0, 1, OS.NULL, string_table_12cb_stock_format, OS.NULL, OS.NULL)
 
     evaluate num_remix_toggles(num_toggles)
     evaluate remix_toggles_block_size(block_size)
