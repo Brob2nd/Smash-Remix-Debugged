@@ -21,11 +21,11 @@ scope TwelveCharBattle {
     dw OS.FALSE
 
     // @ Description
-    // Phase B: maximum CSS slot capacity. 12CB uses NUM_SLOTS (24)
+    // Maximum CSS slot capacity. 12CB uses NUM_SLOTS (24)
     constant MAX_SLOTS(24)
 
     // @ Description
-    // Phase B: runtime slot count -- 24 for 12CB. Set every time we enter the CSS in before_css_setup_.
+    // Runtime slot count -- 24 for 12CB. Set every time we enter the CSS in before_css_setup_.
     slot_count:
     dw 24
 
