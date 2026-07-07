@@ -8,7 +8,7 @@ Smash Remix Debugged is a mod for the Super Smash Bros. 64 mod, Smash Remix, thi
 
 It also adds some extra content, such as playable Sandbag, the Tap Jump and Walljump gameplay options, Extended VS Match Stats, Z Cancel Guide, Stage Bans (like in Project M/+), 4 Tournament Stage Pages with a list of viable stages for Tournaments, and more.
 
-# How to Play Smash Remix Debugged Online on Project64KSE or RMG Kaillera Edition
+# How to Play Smash Remix Debugged Online on RMG Kaillera Edition or Project64KSE
 If you play on RMG Kaillera Edition, then follow the steps on the netplay set-up tutorial on smashremix.net, and since Smash Remix Debugged's crc is already included with RMG-K, that means you would be ready to play!
 
 If you instead play on Project64KSE, then follow the steps on the netplay set-up tutorial on smash64.online, then on your Project64KSE folder, go to the cfg folder, then open the pj64.rdb file, then go to the bottom line, and copy/paste this:
@@ -75,13 +75,15 @@ Brob2nd: Leader of the project, programmer/coder.
 
 Krix08: Co-leader of the project, programmer/coder, Creator of Extended VS Stats, Z Cancel Guide and Cruel Z-Cancel's Swap Music option.
 
-MetaSSB / Meta Nais: Programmer, helper with programming.
+MetaSSB / Meta Nais: Programmer, help with programming.
 
 Jilly Jane: Instrument Design, Project Galleon's Piano and Overdriven/Distortion Guitar Fix.
 
 Halofactory: Creator of the Tap Jump option.
 
 FASTLIKERAT: Creator of the Stage Bans feature.
+
+Jonathan Wesely: Creator of the 12 Character Battle format toggles and the Move Buffer gameplay option.
 
 kathy: Creator of the Walljump gameplay option.
 
