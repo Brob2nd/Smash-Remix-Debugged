@@ -1375,11 +1375,15 @@ scope Toggles {
     speed_default:;  db "1/1", 000
     speed_5_6_fast:; db "1.2x", 000
     speed_3_4_fast:; db "1.3x", 000
+    speed_5_7_fast:; db "1.4x", 000
     speed_2_3_fast:; db "1.5x", 000
+    speed_5_8_fast:; db "1.6x", 000
     speed_4_7_fast:; db "1.75x", 000
     speed_2_0_fast:; db "2.0x", 000
     speed_3_0_fast:; db "3.0x", 000
     speed_1_8_slow:; db "1/8", 000
+    speed_1_6_slow:; db "1/6", 000
+    speed_1_5_slow:; db "1/5", 000
     speed_1_4_slow:; db "1/4", 000
     speed_1_3_slow:; db "1/3", 000
     speed_1_2_slow:; db "1/2", 000
@@ -1391,11 +1395,15 @@ scope Toggles {
     dw speed_default
     dw speed_5_6_fast
     dw speed_3_4_fast
+    dw speed_5_7_fast
     dw speed_2_3_fast
+    dw speed_5_8_fast
     dw speed_4_7_fast
     dw speed_2_0_fast
     dw speed_3_0_fast
     dw speed_1_8_slow
+    dw speed_1_6_slow
+    dw speed_1_5_slow
     dw speed_1_4_slow
     dw speed_1_3_slow
     dw speed_1_2_slow
@@ -2478,7 +2486,7 @@ scope Toggles {
     entry_wall_teching:;                entry_bool("Wall Teching", OS.FALSE, OS.FALSE, OS.FALSE, OS.FALSE, entry_charged_smashes)
     entry_charged_smashes:;             entry("Charge Smashes", Menu.type.INT, 0, 0, 0, 0, 0, 2, OS.NULL, string_table_charged_smash, OS.NULL, entry_item_containers)
     entry_item_containers:;             entry("Item Containers", Menu.type.INT, 0, 0, 0, 0, 0, 3, OS.NULL, string_table_item_containers, OS.NULL, entry_game_speed)
-    entry_game_speed:;                  entry("Game Speed", Menu.type.INT, 0, 0, 0, 0, 0, 12, OS.NULL, string_table_speed, OS.NULL, entry_special_zoom)
+    entry_game_speed:;                  entry("Game Speed", Menu.type.INT, 0, 0, 0, 0, 0, 16, OS.NULL, string_table_speed, OS.NULL, entry_special_zoom)
     entry_special_zoom:;                entry("Special Zoom (BETA)", Menu.type.INT, 0, 0, 0, 0, 0, 2, OS.NULL, string_table_special_zoom, OS.NULL, entry_blastzone_warp)
     entry_blastzone_warp:;              entry("BlastZone Warp (BETA)", Menu.type.INT, 0, 0, 0, 0, 0, 3, OS.NULL, string_table_blast_zone, OS.NULL, entry_walljump)
     entry_walljump:;                    entry_bool("Wall Jumping (BETA)", OS.FALSE, OS.FALSE, OS.FALSE, OS.FALSE, entry_single_button_mode)

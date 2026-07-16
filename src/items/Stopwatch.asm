@@ -1162,15 +1162,19 @@ dw   0xA1333399          // speed up  (red)
 speed_table:
 db 1,1,1,1,1             // 1.2x speed
 db 2,2,2,2,2,2           // 1.3x speed
-db 3,3                   // 1.5x speed
+                         // 1.4x speed
+db 4,4                   // 1.5x speed
+                         // 1.6x speed
                          // 1.75 speed
                          // 2.0x speed
                          // 3.0x speed
                          // 1/8 speed
+                         // 1/6 speed
+                         // 1/5 speed
                          // 1/4 speed
                          // 1/3 speed
-db 10,10                 // 1/2 speed
-db 11,11,11,11,11        // 2/3 speed
+db 14,14                 // 1/2 speed
+db 15,15,15,15,15        // 2/3 speed
                          // 3/4 speed
 OS.align(4)
 
