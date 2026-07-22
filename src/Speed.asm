@@ -75,9 +75,9 @@ scope Speed {
 
         _handle_2x_3x:
         // 2x and 3x speeds don't need a timer check (or table read)
-        addiu   t7, r0, 7                           // t7 = 5 (2.0x speed)
+        addiu   t7, r0, 7                           // t7 = 7 (2.0x speed)
         beq     t6, t7, _additional_frame_advance   // branch if 2x speed
-        addiu   t7, r0, 8                           // t7 = 6 (3.0x speed)
+        addiu   t7, r0, 8                           // t7 = 8 (3.0x speed)
         beq     t6, t7, _additional_frame_advance_3 // branch if 3x speed
         nop
 
@@ -177,9 +177,9 @@ scope Speed {
 
         _handle_2x_3x:
         // 2x and 3x speeds don't need a timer check (or table read)
-        addiu   t7, r0, 7                           // t7 = 5 (2.0x speed)
+        addiu   t7, r0, 7                           // t7 = 7 (2.0x speed)
         beq     t6, t7, _additional_frame_advance   // branch if 2x speed
-        addiu   t7, r0, 8                           // t7 = 6 (3.0x speed)
+        addiu   t7, r0, 8                           // t7 = 8 (3.0x speed)
         beq     t6, t7, _additional_frame_advance_3 // branch if 3x speed
         nop
 
