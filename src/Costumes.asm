@@ -982,12 +982,12 @@ scope Costumes {
         db 0x04                             // J Mario
         db 0x03                             // J Luigi
         db 0x04                             // J Donkey Kong
-        db 0x03                             // E Pikachu
+        db 0x04                             // E Pikachu
         db 0x04                             // J Jigglypuff
         db 0x04                             // E Jigglypuff
         db 0x04                             // J Kirby
         db 0x05                             // J Yoshi
-        db 0x03                             // J Pikachu
+        db 0x04                             // J Pikachu
         db 0x04                             // E Samus
         db 0x05                             // Bowser
         db 0x05                             // Giga Bowser
