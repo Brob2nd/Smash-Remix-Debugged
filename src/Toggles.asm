@@ -702,6 +702,8 @@ scope Toggles {
         beq     t1, a0, _reset_menu_music
         lli     a0, BGM.menu.MAIN_MK64
         beq     t1, a0, _reset_menu_music
+        lli     a0, BGM.menu.MAIN_JFG
+        beq     t1, a0, _reset_menu_music
         lli     a0, BGM.menu.MAIN_SBK
         beq     t1, a0, _reset_menu_music
         lli     a0, BGM.menu.MAIN_MARIOPARTY
@@ -1181,18 +1183,6 @@ scope Toggles {
     dw on
     dw unlimited
 
-    string_table_move_buffer:
-    dw default
-    dw num_1
-    dw num_2
-    dw num_3
-    dw num_4
-    dw num_5
-    dw num_6
-    dw num_7
-    dw num_8
-    dw num_9
-    dw num_10
 
     // @ Description
     // Failed Z-Cancel strings
@@ -1443,6 +1433,7 @@ scope Toggles {
     menu_music_blastcorps:; db "BLAST CORPS", 0x00
     menu_music_dkr:; db "DIDDY KONG RACING", 0x00
     menu_music_mk64:; db "MARIO KART 64", 0x00
+    menu_music_jfg:; db "JET FORCE GEMINI", 0x00
     menu_music_sbk:; db "SNOWBOARD KIDS", 0x00
     menu_music_marioparty:; db "MARIO PARTY", 0x00
     menu_music_marioartist:; db "MARIO ARTIST: TALENT STUDIO", 0x00
@@ -1469,6 +1460,7 @@ scope Toggles {
     dw menu_music_blastcorps
     dw menu_music_dkr
     dw menu_music_mk64
+    dw menu_music_jfg
     dw menu_music_sbk
     dw menu_music_marioparty
     dw menu_music_marioartist
@@ -1484,7 +1476,7 @@ scope Toggles {
 
     // Update this when we add a menu track
     scope menu_music {
-        constant MAX_VALUE(22)
+        constant MAX_VALUE(23)
     }
 
     // @ Description
@@ -1929,28 +1921,31 @@ scope Toggles {
         lli     t1, 0x000A                  // t1 = 10 (MK64)
         beql    t1, t0, _play               // if MK64, then use MK64 BGM
         addiu   a1, r0, BGM.menu.MAIN_MK64
-        lli     t1, 0x000B                  // t1 = 11 (SBK)
+        lli     t1, 0x000B                  // t1 = 11 (JFG)
+        beql    t1, t0, _play               // if JFG, then use JFG BGM
+        addiu   a1, r0, BGM.menu.MAIN_JFG
+        lli     t1, 0x000C                  // t1 = 12 (SBK)
         beql    t1, t0, _play               // if SBK, then use SBK BGM
         addiu   a1, r0, BGM.menu.MAIN_SBK
-        lli     t1, 0x000C                  // t1 = 12 (MARIOPARTY)
+        lli     t1, 0x000D                  // t1 = 13 (MARIOPARTY)
         beql    t1, t0, _play               // if MARIOPARTY, then use MARIOPARTY BGM
         addiu   a1, r0, BGM.menu.MAIN_MARIOPARTY
-        lli     t1, 0x000D                  // t1 = 13 (MARIOARIST)
+        lli     t1, 0x000E                  // t1 = 14 (MARIOARIST)
         beql    t1, t0, _play               // if MARIOARIST, then use MARIOARIST BGM
         addiu   a1, r0, BGM.menu.MAIN_MARIOARTIST
-        lli     t1, 0x000E                  // t1 = 14 (PERFECTDARK)
+        lli     t1, 0x000F                  // t1 = 15 (PERFECTDARK)
         beql    t1, t0, _play               // if PERFECTDARK, then use PERFECTDARK BGM
         addiu   a1, r0, BGM.menu.MAIN_PERFECTDARK
-        lli     t1, 0x000F                  // t1 = 15 (CTR)
+        lli     t1, 0x0010                  // t1 = 16 (CTR)
         beql    t1, t0, _play               // if CTR, then use CTR BGM
         addiu   a1, r0, BGM.menu.MAIN_CTR
-        lli     t1, 0x0010                  // t1 = 16 (K64)
+        lli     t1, 0x0011                  // t1 = 17 (K64)
         beql    t1, t0, _play               // if K64, then use K64 BGM
         addiu   a1, r0, BGM.menu.MAIN_K64
-        lli     t1, 0x0011                  // t1 = 17 (BOMBERMAN)
+        lli     t1, 0x0012                  // t1 = 18 (BOMBERMAN)
         beql    t1, t0, _play               // if BOMBERMAN, then use BOMBERMAN BGM
         addiu   a1, r0, BGM.menu.MAIN_BOMBERMAN
-        lli     t1, 0x0012                  // t1 = 18 (SONIC R)
+        lli     t1, 0x0013                  // t1 = 19 (SONIC R)
         beql    t1, t0, _play               // if SONIC R, then use SONIC R BGM
         addiu   a1, r0, BGM.menu.MAIN_SONIC_R
         lli     t1, menu_music.MAX_VALUE - 3 // t1 = max value of menu music - 3 (RANDOM)
@@ -3085,6 +3080,7 @@ scope Toggles {
     // Include music profiles here
     include "/music/profiles/vanilla.asm"
     include "/music/profiles/classics.asm"
+    include "/music/profiles/menu.asm"
     include "/music/profiles/intobattle.asm"
     include "/music/profiles/positivevibes.asm"
     include "/music/profiles/slappers.asm"

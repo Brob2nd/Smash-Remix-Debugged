@@ -580,7 +580,7 @@ scope BGM {
         sw      v0, 0x0014(sp)              // ~
 
         li      t0, Toggles.entry_menu_music
-        lw      t0, 0x0004(t0)              // t0 = 0 if DEFAULT, 1 if 64, 2 if MELEE, 3 if MENU 2, 4 if BRAWL, 5 if GOLDENEYE, 6 if MARIOTENNIS, 7 if FILESELECT_SM64, 8 if BLASTCORPS, 9 if DKR, 10 if MK64, 11 if SBK, 12 if MARIOPARTY, 13 if TALENTSTUDIO... you get the idea
+        lw      t0, 0x0004(t0)              // t0 = 0 if DEFAULT, 1 if 64, 2 if MELEE, 3 if MENU 2, 4 if BRAWL, 5 if GOLDENEYE, 6 if MARIOTENNIS, 7 if FILESELECT_SM64, 8 if BLASTCORPS, 9 if DKR, 10 if MK64, 11 if JFG, 12 if SBK, 13 if MARIOPARTY, 14 if TALENTSTUDIO... you get the idea
 
         _check_music_value:
         beqz    t0, _alt_menu_music         // branch if 0 (DEFAULT)
@@ -615,28 +615,31 @@ scope BGM {
         lli     t1, 0x000A                  // t1 = 10 (MK64)
         beql    t1, t0, _check_current_track// if MK64, then use MK64 BGM
         addiu   a1, r0, menu.MAIN_MK64
-        lli     t1, 0x000B                  // t1 = 11 (SBK)
+        lli     t1, 0x000B                  // t1 = 11 (JFG)
+        beql    t1, t0, _check_current_track// if JFG, then use JFG BGM
+        addiu   a1, r0, menu.MAIN_JFG
+        lli     t1, 0x000C                  // t1 = 12 (SBK)
         beql    t1, t0, _check_current_track// if SBK, then use SBK BGM
         addiu   a1, r0, menu.MAIN_SBK
-        lli     t1, 0x000C                  // t1 = 12 (MARIOPARTY)
+        lli     t1, 0x000D                  // t1 = 13 (MARIOPARTY)
         beql    t1, t0, _check_current_track// if MARIOPARTY, then use MARIOPARTY BGM
         addiu   a1, r0, menu.MAIN_MARIOPARTY
-        lli     t1, 0x000D                  // t1 = 13 (MARIOARTIST)
+        lli     t1, 0x000E                  // t1 = 14 (MARIOARTIST)
         beql    t1, t0, _check_current_track// if MARIOARTIST, then use MARIOARTIST BGM
         addiu   a1, r0, menu.MAIN_MARIOARTIST
-        lli     t1, 0x000E                  // t1 = 14 (PERFECTDARK)
+        lli     t1, 0x000F                  // t1 = 15 (PERFECTDARK)
         beql    t1, t0, _check_current_track// if PERFECTDARK, then use PERFECTDARK BGM
         addiu   a1, r0, menu.MAIN_PERFECTDARK
-        lli     t1, 0x000F                  // t1 = 15 (CTR)
+        lli     t1, 0x0010                  // t1 = 16 (CTR)
         beql    t1, t0, _check_current_track// if CTR, then use CTR BGM
         addiu   a1, r0, menu.MAIN_CTR
-        lli     t1, 0x0010                  // t1 = 16 (K64)
+        lli     t1, 0x0011                  // t1 = 17 (K64)
         beql    t1, t0, _check_current_track// if K64, then use K64 BGM
         addiu   a1, r0, menu.MAIN_K64
-        lli     t1, 0x0011                  // t1 = 17 (BOMBERMAN)
+        lli     t1, 0x0012                  // t1 = 18 (BOMBERMAN)
         beql    t1, t0, _check_current_track// if BOMBERMAN, then use BOMBERMAN BGM
         addiu   a1, r0, menu.MAIN_BOMBERMAN
-        lli     t1, 0x0012                  // t1 = 18 (SONIC)
+        lli     t1, 0x0013                  // t1 = 19 (SONIC)
         beql    t1, t0, _check_current_track// if SONIC, then use SONIC BGM
         addiu   a1, r0, menu.MAIN_SONIC_R
         lli     t1, Toggles.menu_music.MAX_VALUE // t1 = max value of menu music (OFF)
@@ -732,6 +735,9 @@ scope BGM {
         nop
         lli     t1, menu.MAIN_MK64          // t1 = menu.MAIN_MK64
         beq     t0, t1, _check_music_toggle // if playing MK64, then don't restart it
+        nop
+        lli     t1, menu.MAIN_JFG    // t1 = menu.MAIN_JFG
+        beq     t0, t1, _check_music_toggle // if playing JFG, then don't restart it
         nop
         lli     t1, menu.MAIN_SBK           // t1 = menu.MAIN_SBK
         beq     t0, t1, _check_music_toggle // if playing SBK, then don't restart it
@@ -855,6 +861,9 @@ scope BGM {
         beq     t0, t1, _done               // if playing MAIN_DKR, then don't stop it
         nop
         lli     t1, menu.MAIN_MK64          // t1 = menu.MAIN_MK64
+        beq     t0, t1, _done               // if playing MAIN_MK64, then don't stop it
+        nop
+        lli     t1, menu.MAIN_JFG          // t1 = menu.MAIN_MK64
         beq     t0, t1, _done               // if playing MAIN_MK64, then don't stop it
         nop
         lli     t1, menu.MAIN_SBK           // t1 = menu.MAIN_SBK
@@ -1520,6 +1529,7 @@ scope BGM {
         constant MAIN_BLASTCORPS(262)
         constant MAIN_DKR(280)
         constant MAIN_MK64(283)
+        constant MAIN_JFG(294)
         constant MAIN_SBK(296)
         constant MAIN_MARIOARTIST(307)
         constant MAIN_MARIOPARTY(309)
