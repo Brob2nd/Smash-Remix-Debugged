@@ -57,6 +57,14 @@ MrMarioBros222: Fixer of the Sandbag 1P Modes crashes and animations changes.
 
 MichaelthemanX: Sandbag's Announcer.
 
+Yaruzu: Arranger of 'Battle - Humans, Demons and...' and 'Lance Battle' songs.
+
+Daniel Welch: Composer of the Masked Dedede song.
+
+coffee: Composer of the Donkey Kong Jr. song.
+
+NewSupKaizo55/Krix08: Arrangers of the "Bassdrive" song.
+
 Loogi, Krix08 and Arrowshoes: Sandbag's Crowd Chant.
 
 # Smash Remix
