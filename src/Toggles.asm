@@ -1183,7 +1183,6 @@ scope Toggles {
     dw on
     dw unlimited
 
-
     // @ Description
     // Failed Z-Cancel strings
     _7:; db "7% Damage", 0x00
@@ -1601,27 +1600,6 @@ scope Toggles {
     // Blastzone GFX strings
     reduced:; db "REDUCED", 0x00
     OS.align(4)
-
-    // @ Description
-    // 12CB format strings (WINNERS LOCKED = winner locked to character; WINNERS UNLOCKED = free reselect
-    // after a win). Read 12CB-only by TwelveCharBattle.prevent_defeated_char_select_/prevent_token_pickup_.
-    string_12cb_format_locked:;  String.insert("WINNERS LOCKED")
-    string_12cb_format_unlocked:; String.insert("WINNERS UNLOCKED")
-    OS.align(4)
-    string_table_12cb_format:
-    dw string_12cb_format_locked
-    dw string_12cb_format_unlocked
-
-    // @ Description
-    // 12CB stock format strings (KEEP STOCKS = retain remaining stocks between matches; RESET STOCKS =
-    // reset survivors to full each match, Tournament-1 style). Read 12CB-only by
-    // TwelveCharBattle.set_initial_stock_count_/update_stocks_remaining_.
-    string_12cb_stock_default:; String.insert("KEEP STOCKS")
-    string_12cb_stock_reset:;   String.insert("RESET STOCKS")
-    OS.align(4)
-    string_table_12cb_stock_format:
-    dw string_12cb_stock_default
-    dw string_12cb_stock_reset
 
     // @ Description
     // Pokemon Stadium Announcer strings
@@ -2446,9 +2424,7 @@ scope Toggles {
     entry_pk_thunder_reflect_crash_fix:;entry_bool("PK Thunder Reflect Crash Fix", OS.TRUE, OS.TRUE, OS.TRUE, OS.TRUE, entry_flash_guard)
     entry_flash_guard:;                 entry_bool("Flash Guard", OS.FALSE, OS.FALSE, OS.FALSE, OS.FALSE, entry_screenshake)
     entry_screenshake:;                 entry("Screenshake", Menu.type.INT, OS.FALSE, OS.FALSE, OS.FALSE, OS.FALSE, 0, 2, OS.NULL, string_table_screenshake, OS.NULL, entry_blastzone_gfx)
-    entry_blastzone_gfx:;               entry("BlastZone GFX", Menu.type.INT, 0, 0, 0, 0, 0, 2, OS.NULL, string_table_blastzone_gfx, OS.NULL, entry_12cb_format)
-    entry_12cb_format:;                 entry("12CB Format", Menu.type.INT, 0, 0, 0, 0, 0, 1, OS.NULL, string_table_12cb_format, OS.NULL, entry_12cb_stock_format)
-    entry_12cb_stock_format:;           entry("12CB Stock Format", Menu.type.INT, 0, 0, 0, 0, 0, 1, OS.NULL, string_table_12cb_stock_format, OS.NULL, OS.NULL)
+    entry_blastzone_gfx:;               entry("BlastZone GFX", Menu.type.INT, 0, 0, 0, 0, 0, 2, OS.NULL, string_table_blastzone_gfx, OS.NULL, OS.NULL)
 
     evaluate num_remix_toggles(num_toggles)
     evaluate remix_toggles_block_size(block_size)
