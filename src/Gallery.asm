@@ -810,7 +810,7 @@ scope Gallery {
     fgm_drum_kit:
 
     dh  0x020, 0x01F                     // Kicks
-    dh  0x08F, 0x08E                     // Japenese Kicks
+    dh  0x08F, 0x08E                     // Japanese Kicks
     dh  0x11F, 0x033                     // Stomp / Fan smack
     dh  0x117, 0x038                     // POW Block / Koopa shell
     dh  0x03D, 0x02F                     // Gun Shoot / Bumper
