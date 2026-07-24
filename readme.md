@@ -8,42 +8,8 @@ Smash Remix Debugged is a mod for the Super Smash Bros. 64 mod, Smash Remix, thi
 
 It also adds some extra content, such as playable Sandbag, the Tap Jump and Walljump gameplay options, Extended VS Match Stats, Z Cancel Guide, Stage Bans (like in Project M/+), 4 Tournament Stage Pages with a list of viable stages for Tournaments, and more.
 
-# How to Play Smash Remix Debugged Online on RMG Kaillera Edition or Project64KSE
-If you play on RMG Kaillera Edition, then follow the steps on the netplay set-up tutorial on smashremix.net, and since Smash Remix Debugged's crc is already included with RMG-K, that means you would be ready to play!
-
-If you instead play on Project64KSE, then follow the steps on the netplay set-up tutorial on smash64.online, then on your Project64KSE folder, go to the cfg folder, then open the pj64.rdb file, then go to the bottom line, and copy/paste this:
-
-Smash Remix Debugged 1.3.2's Info:
-```
-[08F70EE5-7AAAAF7E-C:45]
-Counter Factor=1
-Culling=1
-Good Name=SmashRemixDebugged1.3.2
-Internal Name=SmashRemix
-RDRAM Size=8
-SMM-Cache=0
-SMM-FUNC=0
-SMM-TLB=0
-Status=Compatible
-
-Use TLB=No
-ViRefresh=2200
-```
-Smash Remix Debugged 1.3.2 (PAL)'s Info:
-```
-[CBE9350F-35898EBA-C:50]
-Counter Factor=1
-Culling=1
-Good Name=SmashRemixDebugged1.3.2 (PAL60)
-Internal Name=SmashRemix
-RDRAM Size=8
-SMM-Cache=0
-SMM-FUNC=0
-SMM-TLB=0
-Status=Compatible
-Use TLB=No
-ViRefresh=2200
-```
+# How to Play Smash Remix Debugged Online on RMG Kaillera Edition
+If you play on RMG Kaillera Edition, then you will just need to follow the steps on the netplay set-up tutorial on smashremix.net and download the Smash Remix Debugged patch, since Smash Remix Debugged is already included with RMG-K, that means you are ready to play!
 
 # FAQ/Q&A
 
