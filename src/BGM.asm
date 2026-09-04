@@ -863,8 +863,8 @@ scope BGM {
         lli     t1, menu.MAIN_MK64          // t1 = menu.MAIN_MK64
         beq     t0, t1, _done               // if playing MAIN_MK64, then don't stop it
         nop
-        lli     t1, menu.MAIN_JFG          // t1 = menu.MAIN_MK64
-        beq     t0, t1, _done               // if playing MAIN_MK64, then don't stop it
+        lli     t1, menu.MAIN_JFG           // t1 = menu.MAIN_JFG
+        beq     t0, t1, _done               // if playing MAIN_JFG, then don't stop it
         nop
         lli     t1, menu.MAIN_SBK           // t1 = menu.MAIN_SBK
         beq     t0, t1, _done               // if playing MAIN_SBK, then don't stop it
