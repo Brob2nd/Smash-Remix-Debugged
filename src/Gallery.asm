@@ -166,11 +166,10 @@ scope Gallery {
     dh {MIDI.id.TALENTSTUDIO}
 
     bgm_dk:
-    dh 10                                   // number of BGM
+    dh 9                                   // number of BGM
     dh BGM.stage.CONGO_JUNGLE
     dh {MIDI.id.DK_MEDLEY}
     dh {MIDI.id.DKCTITLE}
-    {MIDI.id.DK_JR_STAGE}
     dh {MIDI.id.SKERRIES}
     dh {MIDI.id.GANGPLANK}
     dh {MIDI.id.SNAKEY_CHANTEY}
@@ -313,10 +312,9 @@ scope Gallery {
     dh {MIDI.id.PORKY}
 
     bgm_lucas:
-    dh 7                                    // number of BGM
+    dh 6                                   // number of BGM
     dh {MIDI.id.TAZMILY}
     dh {MIDI.id.UNFOUNDED_REVENGE}
-    dh {MIDI.id.DCMC}
     dh {MIDI.id.PORKY_MEDLEY}
     dh {MIDI.id.SAMBA_DE_COMBO}
     dh {MIDI.id.EVEN_DRIER_GUYS}
