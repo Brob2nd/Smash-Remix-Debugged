@@ -4004,7 +4004,7 @@ scope Character {
     define_character(NPEACH, FOX, File.NPEACH_MAIN, 0x0D0, 0, File.NPEACH_CHARACTER, File.PEACH_SHIELD_POSE, 0x0D2, File.PEACH_TURNIP_INFO, 0x0A1, 0x013C, 0x428, 0x0, OS.FALSE, OS.FALSE, Stages.id.BTT_STG1, Stages.id.BTP_POLY, Stages.id.BTT_STG1, Stages.id.BTP_POLY, sound_type.U, variant_type.POLYGON)
     // 0x60 - NCRASH
     define_character(NCRASH, MARIO, File.NCRASH_MAIN, 0x0CA, 0, File.NCRASH_CHARACTER, File.CRASH_SHIELD_POSE, 0x0CC,  File.CRASH_SPIN_GFX, File.CRASH_ENTRY, 0, 0x2C0, 9, OS.FALSE, OS.FALSE, Stages.id.BTT_STG1, Stages.id.BTP_POLY, Stages.id.BTT_STG1, Stages.id.BTP_POLY, sound_type.U, variant_type.POLYGON)
-    // remix polygon characters ids get updated with every added remix non-polygon character, these get automatically updated too and incremented by 1
+    // remix polygon characters ids get automatically updated and incremented by 1 with every added remix non-polygon character
 
     print "========================================================================== \n"
     print "# Remix Fighters = "; print "0x"; OS.print_hex(NUM_REMIX_FIGHTERS); print " \n";
