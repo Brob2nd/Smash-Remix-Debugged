@@ -442,7 +442,7 @@ scope Gallery {
     dh {MIDI.id.DK_RAP}
 
     bgm_dking:
-    dh 8                                    // number of BGM
+    dh 7                                    // number of BGM
     dh {MIDI.id.DRAGONKING}
     dh {MIDI.id.FIRST_DESTINATION}
     dh {MIDI.id.MULTIMAN}
@@ -450,7 +450,6 @@ scope Gallery {
     dh {MIDI.id.METAL_BATTLE}
     dh {MIDI.id.TABUU}
     dh {MIDI.id.FD_BRAWL}
-    dh {MIDI.id.CRUEL}
 
     bgm_remix:
     dh 12                                   // number of BGM
@@ -795,7 +794,6 @@ scope Gallery {
     add_bgm_to_gallery({MIDI.id.LOST}, id.BANJO)
     add_bgm_to_gallery({MIDI.id.DREAMLANDBETA}, id.DEDEDE)
     add_bgm_to_gallery({MIDI.id.ITSATRAP_SM64}, id.PEACH)
-    add_bgm_to_gallery({MIDI.id.CASTLEWALL}, id.PEACH)
     add_bgm_to_gallery({MIDI.id.JUNGLEJAPES64}, id.LANKY)
     add_bgm_to_gallery({MIDI.id.BASSDRIVE}, id.LUIGI)
     add_bgm_to_gallery({MIDI.id.MASKEDDEDEDE}, id.DEDEDE)

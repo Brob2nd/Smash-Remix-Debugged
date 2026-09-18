@@ -687,8 +687,6 @@ scope MIDI {
     insert_midi(BLUE_RESORT, OS.TRUE, OS.TRUE, "Blue Resort", bomberman, 29)
     insert_midi(LOST, OS.TRUE, OS.TRUE, "Lost", dream, 163)
     insert_midi(DREAMLANDBETA, OS.TRUE, OS.TRUE, "Gourmet Race (Alternate)", kirbysuperstar, 130)
-    insert_midi(CRUEL, OS.TRUE, OS.TRUE, "Cruel Multi-Man Mode", brawl, 65)
-    insert_midi(CASTLEWALL, OS.TRUE, OS.TRUE, "Inside the Castle Walls", sm64, 144)
     insert_midi(JUNGLEJAPES64, OS.TRUE, OS.TRUE, "Jungle Japes", dk64, 146)
     insert_midi(HUMANSDEMONSAND, OS.TRUE, OS.TRUE, "Battle - Humans, Demons, and...", smtv, 15)
     insert_midi(BASSDRIVE, OS.TRUE, OS.TRUE, "BassDrive", smkr, 14)
